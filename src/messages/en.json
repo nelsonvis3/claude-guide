@@ -16,7 +16,9 @@
     "loginWhy": "Save your points, stickers and streak to your account and continue on any device.",
     "logout": "Sign out",
     "savedCloud": "Your progress is saved to your account.",
-    "usage": "Usage"
+    "usage": "Usage",
+    "study": "Study",
+    "prompt": "Prompts"
   },
   "mascot": {
     "name": "Tilde",
@@ -1109,5 +1111,160 @@
       "Superhero"
     ],
     "wrongCurrent": "Your current password isn't correct."
+  },
+  "study": {
+    "title": "How to study without giving up",
+    "lead": "Learning with AI is still learning. Here are the techniques that work best according to learning science, and what to do when it gets hard, because it will.",
+    "learnTitle": "How to learn better",
+    "learnLead": "Small changes that make a big difference in how much sticks.",
+    "learn": {
+      "recall": {
+        "title": "Recall, don't reread",
+        "body": "Close the lesson and try to explain or write down what you saw. The effort of remembering locks it in far better than reading it again. That's what each step's quiz is for."
+      },
+      "spaced": {
+        "title": "Space out your reviews",
+        "body": "Come back to a topic the next day, a few days later and a week later. A little review now and then beats a one-night marathon."
+      },
+      "focus": {
+        "title": "Focus blocks",
+        "body": "Work 25 minutes without your phone, then rest 5 (the Pomodoro technique). During the break your brain switches to diffuse mode and keeps making connections."
+      },
+      "build": {
+        "title": "Do, don't just watch",
+        "body": "Watching tutorials feels like progress without the progress. After each step, try it in a project of your own, even a tiny one. When you get stuck, that's when you're learning."
+      },
+      "explain": {
+        "title": "Explain it simply",
+        "body": "If you can't explain it to Tilde in simple words, you don't fully get it yet (the Feynman technique). Whatever you can't explain is what you need to review."
+      },
+      "rest": {
+        "title": "Sleep and rest",
+        "body": "Your brain consolidates what you learned while you sleep. One more hour of sleep often pays off more than one more hour of study."
+      }
+    },
+    "gritTitle": "When it gets hard",
+    "gritLead": "Every good programmer has been through this. It isn't a lack of talent: it's part of the path.",
+    "grit": {
+      "valley": {
+        "title": "The valley is normal",
+        "body": "At first everything is new and exciting; then comes a stretch where it feels like you're not moving. That's where you learn the most and where most people quit. Knowing it helps you get through."
+      },
+      "struggle": {
+        "title": "Getting stuck is learning",
+        "body": "Frustration means you're at the edge of what you know. If everything is easy, you're not growing. Tell yourself \"I can't do it yet\" instead of \"I can't do it\"."
+      },
+      "impostor": {
+        "title": "Impostor syndrome",
+        "body": "Feeling like you don't know enough happens even to people with years of experience. Compare yourself today with yourself a month ago, not with others."
+      },
+      "ask": {
+        "title": "Ask for help well",
+        "body": "After trying for a while, ask. Say what you wanted to do, what you tried and the exact error. Often just writing it down solves it (rubber duck debugging)."
+      },
+      "small": {
+        "title": "A little, every day",
+        "body": "Fifteen minutes a day is worth more than five hours on a Sunday. That's what your streak is for: you don't need a big day, you just need not to break it."
+      },
+      "away": {
+        "title": "Step away and come back",
+        "body": "If you've been stuck for an hour, get up, take a walk or sleep on it. Many solutions show up once you stop staring at the screen."
+      }
+    },
+    "booksTitle": "Recommended books",
+    "booksLead": "On learning, habits and the craft of programming. Titles are in their original language; most have translations.",
+    "books": {
+      "mind": "How the brain learns: focused and diffuse modes, Pomodoro and how to beat procrastination. By the author of the Learning How to Learn course.",
+      "stick": "What science says about studying: why recalling and spacing beat rereading and highlighting.",
+      "mindset": "The difference between believing ability is fixed or that it can be trained, and how that changes the way you face mistakes.",
+      "atomic": "How to build small habits that last. Ideal for studying every day without relying on motivation.",
+      "deep": "Why focusing without distractions is an advantage and how to train it.",
+      "grit": "Sustained passion and perseverance matter more than talent for long-term achievement.",
+      "ultra": "Strategies to learn hard skills fast, with your own projects and direct practice.",
+      "brain": "How to read and understand other people's code, and why confusing code is so tiring. Written for programmers.",
+      "pragmatic": "Practical advice on programming well and keeping on learning throughout your career.",
+      "apprentice": "Patterns for people starting out in software: how to learn, find mentors and avoid getting stuck."
+    },
+    "tilde": "If it didn't work out today, you'll see it more clearly tomorrow. I'll be right here. 🐾"
+  },
+  "prompt": {
+    "title": "Prompt generator",
+    "lead": "Write what you want however it comes out and Tilde turns it into a clear prompt for Claude Code. It runs in your browser: nothing is sent.",
+    "idea": "What do you want Claude to do?",
+    "ideaHint": "However it comes out. E.g. add google login and save the user",
+    "kind": "Task type",
+    "kinds": {
+      "build": "Build something new",
+      "fix": "Fix a bug",
+      "refactor": "Clean up code",
+      "test": "Add tests",
+      "explain": "Understand code"
+    },
+    "context": "Context (optional)",
+    "contextHint": "Files, stack, the exact error… E.g. @src/auth.ts, Next.js",
+    "done": "When is it done? (optional)",
+    "doneHint": "E.g. I can log in with Google and land on the home page",
+    "rulesTitle": "Extra rules",
+    "rules": {
+      "small": "Minimal changes: don't touch what you don't need to.",
+      "ask": "If something is unclear, ask me before assuming.",
+      "plan": "Show me a plan first and wait for my OK before editing.",
+      "safe": "Don't delete files or commit without asking me."
+    },
+    "result": "Your prompt",
+    "empty": "Write what you want above and the prompt shows up here, ready to copy.",
+    "tipsTitle": "Why it works",
+    "tips": [
+      "One goal per prompt: if it's two tasks, send two prompts.",
+      "Concrete context: name files with @, paste the exact error or a screenshot.",
+      "Say how to verify it: a test, a command or something you can see.",
+      "For big tasks, ask for a plan first (Shift+Tab until plan mode)."
+    ],
+    "out": {
+      "h": {
+        "goal": "Goal",
+        "context": "Context",
+        "steps": "Steps",
+        "rules": "Rules",
+        "done": "Done when"
+      },
+      "context": "Before changing anything, read the code this task touches and follow its patterns.",
+      "steps": {
+        "build": [
+          "Explore the related code and tell me in a few lines what you'll change.",
+          "Implement it following the project's style and patterns.",
+          "Add or update tests for the new case."
+        ],
+        "fix": [
+          "Reproduce the bug and find the root cause before touching anything.",
+          "Fix it where the problem starts, not where it shows.",
+          "Add a test that fails without the fix and passes with it."
+        ],
+        "refactor": [
+          "Read the code and its tests; if tests are missing, add them before changing anything.",
+          "Restructure in small steps without changing what the code does.",
+          "Run the tests after each step."
+        ],
+        "test": [
+          "Read the code and list the important cases, including edge cases and errors.",
+          "Write the tests with the framework and style the project already uses.",
+          "If a test uncovers a bug, tell me before changing the code."
+        ],
+        "explain": [
+          "Read the related code without changing anything.",
+          "Explain how it works, from the big picture to the details, with file:line references.",
+          "Point out anything that looks risky or confusing."
+        ]
+      },
+      "done": {
+        "build": "It works as I asked, the tests pass and the build compiles.",
+        "fix": "The bug no longer shows up and the tests pass.",
+        "refactor": "The behavior is the same and the tests pass.",
+        "test": "The new tests pass and cover the listed cases.",
+        "explain": "I understand the whole flow and know which files to touch."
+      },
+      "summary": "At the end, summarize what you changed and what you couldn't verify.",
+      "stop": "."
+    }
   }
 }

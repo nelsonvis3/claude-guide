@@ -242,3 +242,20 @@ export function resolve(key: string): Rec {
   if (ns === "kw") return { key, ns, id, install: `/plugin marketplace add anthropics/knowledge-work-plugins\n/plugin install ${id}@knowledge-work-plugins` };
   return { key, ns, id, install: `/${id}` };
 }
+
+// Página /estudiar: textos en study.learn.<id>, study.grit.<id> y study.books.<id>.
+export const LEARN_TIPS = ["recall", "spaced", "focus", "build", "explain", "rest"];
+export const GRIT_TIPS = ["valley", "struggle", "impostor", "ask", "small", "away"];
+// Títulos en su idioma original para que se encuentren en cualquier librería.
+export const BOOKS: { id: string; title: string; author: string; year: number }[] = [
+  { id: "mind", title: "A Mind for Numbers", author: "Barbara Oakley", year: 2014 },
+  { id: "stick", title: "Make It Stick", author: "Peter C. Brown, Henry L. Roediger III, Mark A. McDaniel", year: 2014 },
+  { id: "mindset", title: "Mindset", author: "Carol S. Dweck", year: 2006 },
+  { id: "atomic", title: "Atomic Habits", author: "James Clear", year: 2018 },
+  { id: "deep", title: "Deep Work", author: "Cal Newport", year: 2016 },
+  { id: "grit", title: "Grit", author: "Angela Duckworth", year: 2016 },
+  { id: "ultra", title: "Ultralearning", author: "Scott H. Young", year: 2019 },
+  { id: "brain", title: "The Programmer's Brain", author: "Felienne Hermans", year: 2021 },
+  { id: "pragmatic", title: "The Pragmatic Programmer", author: "David Thomas, Andrew Hunt", year: 2019 },
+  { id: "apprentice", title: "Apprenticeship Patterns", author: "Dave H. Hoover, Adewale Oshineye", year: 2009 },
+];

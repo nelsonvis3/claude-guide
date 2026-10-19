@@ -16,7 +16,9 @@
     "loginWhy": "Salve seus pontos, stickers e sequência na sua conta e continue em qualquer dispositivo.",
     "logout": "Sair",
     "savedCloud": "Seu progresso fica salvo na sua conta.",
-    "usage": "Consumo"
+    "usage": "Consumo",
+    "study": "Estudar",
+    "prompt": "Prompts"
   },
   "mascot": {
     "name": "Tilde",
@@ -1109,5 +1111,160 @@
       "Super-herói"
     ],
     "wrongCurrent": "A senha atual não está correta."
+  },
+  "study": {
+    "title": "Como estudar sem desistir",
+    "lead": "Aprender com IA continua sendo aprender. Aqui estão as técnicas que funcionam melhor segundo a ciência da aprendizagem e o que fazer quando ficar difícil, porque vai ficar.",
+    "learnTitle": "Como aprender melhor",
+    "learnLead": "Mudanças pequenas que fazem muita diferença no quanto você retém.",
+    "learn": {
+      "recall": {
+        "title": "Relembre, não releia",
+        "body": "Feche a lição e tente explicar ou escrever o que viu. O esforço de lembrar fixa muito mais do que ler de novo. É para isso que servem os testes de cada passo."
+      },
+      "spaced": {
+        "title": "Revise com intervalos",
+        "body": "Volte a um tema no dia seguinte, alguns dias depois e uma semana depois. Revisar um pouco de vez em quando rende mais do que uma maratona de uma noite."
+      },
+      "focus": {
+        "title": "Blocos de foco",
+        "body": "Trabalhe 25 minutos sem o celular e descanse 5 (técnica Pomodoro). Na pausa, o cérebro passa para o modo difuso e continua fazendo conexões."
+      },
+      "build": {
+        "title": "Faça, não só assista",
+        "body": "Assistir tutoriais dá sensação de avanço sem avanço. Depois de cada passo, teste num projeto seu, mesmo que pequeno. Quando você trava, é aí que está aprendendo."
+      },
+      "explain": {
+        "title": "Explique de forma simples",
+        "body": "Se você não consegue explicar para a Tilde com palavras simples, ainda não entendeu de verdade (técnica Feynman). O que você não consegue explicar é o que precisa revisar."
+      },
+      "rest": {
+        "title": "Durma e descanse",
+        "body": "O cérebro consolida o que você aprendeu enquanto dorme. Uma hora a mais de sono costuma render mais do que uma hora a mais de estudo."
+      }
+    },
+    "gritTitle": "Quando fica difícil",
+    "gritLead": "Todo mundo que programa bem passou por isso. Não é falta de talento: faz parte do caminho.",
+    "grit": {
+      "valley": {
+        "title": "O vale é normal",
+        "body": "No começo tudo é novo e empolgante; depois vem uma fase em que parece que você não avança. É onde mais se aprende e onde mais gente desiste. Saber disso ajuda a atravessar."
+      },
+      "struggle": {
+        "title": "Travar é aprender",
+        "body": "A frustração avisa que você está no limite do que sabe. Se tudo é fácil, você não está crescendo. Diga “ainda não consigo” em vez de “não consigo”."
+      },
+      "impostor": {
+        "title": "A síndrome do impostor",
+        "body": "Sentir que não sabe o suficiente acontece até com quem tem anos de experiência. Compare você de hoje com você de um mês atrás, não com os outros."
+      },
+      "ask": {
+        "title": "Peça ajuda do jeito certo",
+        "body": "Depois de tentar por um tempo, pergunte. Conte o que queria fazer, o que tentou e o erro exato. Muitas vezes, só de escrever, você mesmo resolve (o método do patinho de borracha)."
+      },
+      "small": {
+        "title": "Pouco, mas todo dia",
+        "body": "Quinze minutos por dia valem mais do que cinco horas num domingo. Sua sequência existe para isso: não precisa de um grande dia, precisa não parar."
+      },
+      "away": {
+        "title": "Afaste-se e volte",
+        "body": "Se você está travado há uma hora, levante, caminhe ou durma. Muitas soluções aparecem quando você para de olhar para a tela."
+      }
+    },
+    "booksTitle": "Livros recomendados",
+    "booksLead": "Sobre aprender, hábitos e o ofício de programar. Os títulos estão no idioma original; quase todos têm tradução.",
+    "books": {
+      "mind": "Como o cérebro aprende: modo focado e difuso, Pomodoro e como vencer a procrastinação. Da autora do curso Learning How to Learn.",
+      "stick": "O que a ciência diz sobre estudar: por que relembrar e espaçar vencem reler e sublinhar.",
+      "mindset": "A diferença entre acreditar que a habilidade é fixa ou que se treina, e como isso muda a forma de encarar os erros.",
+      "atomic": "Como criar hábitos pequenos que duram. Ideal para estudar todo dia sem depender da motivação.",
+      "deep": "Por que se concentrar sem distrações é uma vantagem e como treinar isso.",
+      "grit": "Paixão e perseverança sustentadas pesam mais do que o talento nas conquistas de longo prazo.",
+      "ultra": "Estratégias para aprender habilidades difíceis rápido, com projetos próprios e prática direta.",
+      "brain": "Como ler e entender código alheio, e por que código confuso cansa tanto. Escrito para quem programa.",
+      "pragmatic": "Conselhos de ofício para programar bem e continuar aprendendo a carreira toda.",
+      "apprentice": "Padrões para quem está começando em software: como aprender, buscar mentores e não estagnar."
+    },
+    "tilde": "Se hoje não deu certo, amanhã você vai ver mais claro. Eu te espero aqui. 🐾"
+  },
+  "prompt": {
+    "title": "Gerador de prompts",
+    "lead": "Escreva o que quer do jeito que sair e a Tilde organiza num prompt claro para o Claude Code. Funciona no seu navegador: nada é enviado.",
+    "idea": "O que você quer que o Claude faça?",
+    "ideaHint": "Do jeito que sair. Ex.: adiciona login com google e salva o usuário",
+    "kind": "Tipo de tarefa",
+    "kinds": {
+      "build": "Criar algo novo",
+      "fix": "Corrigir um erro",
+      "refactor": "Organizar código",
+      "test": "Adicionar testes",
+      "explain": "Entender código"
+    },
+    "context": "Contexto (opcional)",
+    "contextHint": "Arquivos, stack, o erro exato… Ex.: @src/auth.ts, Next.js",
+    "done": "Quando está pronto? (opcional)",
+    "doneHint": "Ex.: consigo entrar com o Google e volto para o início",
+    "rulesTitle": "Regras extras",
+    "rules": {
+      "small": "Mudanças mínimas: não mexa no que não precisa.",
+      "ask": "Se algo não estiver claro, me pergunte antes de supor.",
+      "plan": "Primeiro me mostre um plano e espere meu OK antes de editar.",
+      "safe": "Não apague arquivos nem faça commits sem me perguntar."
+    },
+    "result": "Seu prompt",
+    "empty": "Escreva acima o que você quer e o prompt aparece aqui, pronto para copiar.",
+    "tipsTitle": "Por que funciona",
+    "tips": [
+      "Um objetivo por prompt: se são duas tarefas, mande dois prompts.",
+      "Contexto concreto: cite arquivos com @, cole o erro exato ou uma captura de tela.",
+      "Diga como verificar: um teste, um comando ou algo que você possa ver.",
+      "Em tarefas grandes, peça um plano primeiro (Shift+Tab até o modo plan)."
+    ],
+    "out": {
+      "h": {
+        "goal": "Objetivo",
+        "context": "Contexto",
+        "steps": "Passos",
+        "rules": "Regras",
+        "done": "Pronto quando"
+      },
+      "context": "Antes de mudar qualquer coisa, leia o código que esta tarefa envolve e siga seus padrões.",
+      "steps": {
+        "build": [
+          "Explore o código relacionado e me diga em poucas linhas o que vai mudar.",
+          "Implemente seguindo o estilo e os padrões do projeto.",
+          "Adicione ou atualize os testes do caso novo."
+        ],
+        "fix": [
+          "Reproduza o erro e encontre a causa raiz antes de mexer em qualquer coisa.",
+          "Corrija onde o problema nasce, não onde ele aparece.",
+          "Adicione um teste que falhe sem a correção e passe com ela."
+        ],
+        "refactor": [
+          "Leia o código e os testes; se faltarem testes, adicione antes de mudar.",
+          "Reorganize em passos pequenos sem mudar o que o código faz.",
+          "Rode os testes depois de cada passo."
+        ],
+        "test": [
+          "Leia o código e liste os casos importantes, incluindo os limites e os erros.",
+          "Escreva os testes com o framework e o estilo que o projeto já usa.",
+          "Se um teste revelar um bug, me avise antes de mudar o código."
+        ],
+        "explain": [
+          "Leia o código relacionado sem modificar nada.",
+          "Me explique como funciona, do geral ao particular, com referências arquivo:linha.",
+          "Aponte o que parecer arriscado ou confuso."
+        ]
+      },
+      "done": {
+        "build": "Funciona como pedi, os testes passam e o build compila.",
+        "fix": "O erro não aparece mais e os testes passam.",
+        "refactor": "O comportamento é o mesmo e os testes passam.",
+        "test": "Os testes novos passam e cobrem os casos da lista.",
+        "explain": "Entendo o fluxo completo e sei quais arquivos mexer."
+      },
+      "summary": "No final, resuma o que você mudou e o que não conseguiu verificar.",
+      "stop": "."
+    }
   }
 }

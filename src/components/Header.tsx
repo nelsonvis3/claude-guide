@@ -64,10 +64,13 @@ export default function Header({ user, canLogin }: { user: User; canLogin: boole
           <img src="/tilde/icon.png" alt="" className="size-8 rounded-full" />
           {t("meta.title")}
         </Link>
-        <nav className="flex gap-1 text-[0.95rem] font-bold text-ink-2">
+        {/* En celular no entran todos: el menú se desliza de costado en vez de sumar otro renglón al header fijo. */}
+        <nav className="flex max-w-full gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] text-[0.95rem] font-bold text-ink-2">
           <Link href="/#ruta" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.route")}</Link>
           <Link href="/consumo" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.usage")}</Link>
           <Link href="/chuleta" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.guide")}</Link>
+          <Link href="/estudiar" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.study")}</Link>
+          <Link href="/prompts" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.prompt")}</Link>
         </nav>
         <div className="ml-auto flex items-center gap-2">
           <label className="sr-only" htmlFor="lang">{t("nav.lang")}</label>

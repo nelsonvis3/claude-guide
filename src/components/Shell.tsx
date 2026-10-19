@@ -37,7 +37,7 @@ export default async function Shell({ children }: { children: (user: User) => Re
               <p className="mt-2 max-w-[40ch] text-[0.95rem] text-ink-2">{messages.footer.tagline}</p>
             </div>
             {[
-              { title: messages.footer.product, links: [["/#ruta", messages.nav.route], ["/examen", messages.exam.title], ["/consumo", messages.nav.usage], ["/chuleta", messages.nav.guide]] },
+              { title: messages.footer.product, links: [["/#ruta", messages.nav.route], ["/examen", messages.exam.title], ["/consumo", messages.nav.usage], ["/chuleta", messages.nav.guide], ["/estudiar", messages.nav.study], ["/prompts", messages.nav.prompt]] },
               { title: messages.footer.help, links: [["/contacto?tipo=query", messages.contact.types.query], ["/contacto?tipo=complaint", messages.contact.types.complaint], ["/contacto?tipo=suggestion", messages.contact.types.suggestion]] },
               { title: messages.footer.legal, links: [["/terminos", messages.footer.terms], ["https://code.claude.com/docs", messages.nav.docs]] },
             ].map((col) => (

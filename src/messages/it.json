@@ -16,7 +16,9 @@
     "loginWhy": "Salva punti, sticker e serie nel tuo account e continua da qualsiasi dispositivo.",
     "logout": "Esci",
     "savedCloud": "I tuoi progressi sono salvati nel tuo account.",
-    "usage": "Consumo"
+    "usage": "Consumo",
+    "study": "Studiare",
+    "prompt": "Prompt"
   },
   "mascot": {
     "name": "Tilde",
@@ -1109,5 +1111,160 @@
       "Supereroe"
     ],
     "wrongCurrent": "La password attuale non è corretta."
+  },
+  "study": {
+    "title": "Come studiare senza arrendersi",
+    "lead": "Imparare con l'IA è sempre imparare. Ecco le tecniche che funzionano meglio secondo la scienza dell'apprendimento e cosa fare quando diventa difficile, perché lo diventerà.",
+    "learnTitle": "Imparare meglio",
+    "learnLead": "Piccoli cambiamenti che fanno una grande differenza su quanto ti resta.",
+    "learn": {
+      "recall": {
+        "title": "Ricorda, non rileggere",
+        "body": "Chiudi la lezione e prova a spiegare o scrivere quello che hai visto. Lo sforzo di ricordare fissa molto più che rileggere. A questo servono i quiz di ogni passo."
+      },
+      "spaced": {
+        "title": "Ripassa a intervalli",
+        "body": "Torna su un argomento il giorno dopo, qualche giorno dopo e dopo una settimana. Ripassare un po' ogni tanto rende più di una maratona di una notte."
+      },
+      "focus": {
+        "title": "Blocchi di concentrazione",
+        "body": "Lavora 25 minuti senza telefono e riposa 5 (la tecnica del pomodoro). Durante la pausa il cervello passa alla modalità diffusa e continua a creare collegamenti."
+      },
+      "build": {
+        "title": "Fai, non limitarti a guardare",
+        "body": "Guardare tutorial dà la sensazione di avanzare senza avanzare. Dopo ogni passo, provalo in un tuo progetto, anche piccolissimo. Quando ti blocchi, è lì che stai imparando."
+      },
+      "explain": {
+        "title": "Spiegalo in modo semplice",
+        "body": "Se non riesci a spiegarlo a Tilde con parole semplici, non l'hai ancora capito del tutto (la tecnica di Feynman). Quello che non riesci a spiegare è ciò che devi ripassare."
+      },
+      "rest": {
+        "title": "Dormi e riposa",
+        "body": "Il cervello consolida ciò che hai imparato mentre dormi. Un'ora di sonno in più spesso rende più di un'ora di studio in più."
+      }
+    },
+    "gritTitle": "Quando diventa difficile",
+    "gritLead": "Chiunque programmi bene ci è passato. Non è mancanza di talento: fa parte del percorso.",
+    "grit": {
+      "valley": {
+        "title": "La valle è normale",
+        "body": "All'inizio tutto è nuovo ed entusiasmante; poi arriva una fase in cui sembra di non avanzare. È lì che si impara di più ed è lì che la maggior parte delle persone molla. Saperlo aiuta ad attraversarla."
+      },
+      "struggle": {
+        "title": "Bloccarsi è imparare",
+        "body": "La frustrazione segnala che sei al limite di ciò che sai. Se tutto è facile, non stai crescendo. Di' a te stesso «non ci riesco ancora» invece di «non ci riesco»."
+      },
+      "impostor": {
+        "title": "La sindrome dell'impostore",
+        "body": "Sentire di non sapere abbastanza capita anche a chi ha anni di esperienza. Confrontati con te stesso di un mese fa, non con gli altri."
+      },
+      "ask": {
+        "title": "Chiedi aiuto nel modo giusto",
+        "body": "Dopo averci provato per un po', chiedi. Racconta cosa volevi ottenere, cosa hai provato e l'errore esatto. Spesso, solo scrivendolo, lo risolvi da solo (il metodo della paperella di gomma)."
+      },
+      "small": {
+        "title": "Poco, ma ogni giorno",
+        "body": "Quindici minuti al giorno valgono più di cinque ore la domenica. A questo serve la tua serie: non serve una grande giornata, serve non interromperla."
+      },
+      "away": {
+        "title": "Allontanati e torna",
+        "body": "Se sei bloccato da un'ora, alzati, fai una passeggiata o dormici sopra. Molte soluzioni arrivano quando smetti di fissare lo schermo."
+      }
+    },
+    "booksTitle": "Libri consigliati",
+    "booksLead": "Su apprendimento, abitudini e il mestiere di programmare. I titoli sono in lingua originale; quasi tutti hanno una traduzione.",
+    "books": {
+      "mind": "Come impara il cervello: modalità concentrata e diffusa, pomodoro e come sconfiggere la procrastinazione. Dall'autrice del corso Learning How to Learn.",
+      "stick": "Cosa dice la scienza sullo studio: perché ricordare e distanziare battono rileggere e sottolineare.",
+      "mindset": "La differenza tra credere che le capacità siano fisse o allenabili, e come questo cambia il modo di affrontare gli errori.",
+      "atomic": "Come costruire piccole abitudini che durano. Ideale per studiare ogni giorno senza dipendere dalla motivazione.",
+      "deep": "Perché concentrarsi senza distrazioni è un vantaggio e come allenarlo.",
+      "grit": "Passione e perseveranza costanti contano più del talento nei risultati a lungo termine.",
+      "ultra": "Strategie per imparare in fretta abilità difficili, con progetti propri e pratica diretta.",
+      "brain": "Come leggere e capire il codice altrui, e perché il codice confuso stanca così tanto. Scritto per chi programma.",
+      "pragmatic": "Consigli di mestiere per programmare bene e continuare a imparare per tutta la carriera.",
+      "apprentice": "Modelli per chi inizia nel software: come imparare, trovare mentori e non fermarsi."
+    },
+    "tilde": "Se oggi non è andata, domani lo vedrai più chiaro. Io ti aspetto qui. 🐾"
+  },
+  "prompt": {
+    "title": "Generatore di prompt",
+    "lead": "Scrivi quello che vuoi come ti viene e Tilde lo trasforma in un prompt chiaro per Claude Code. Funziona nel tuo browser: non viene inviato nulla.",
+    "idea": "Cosa vuoi che faccia Claude?",
+    "ideaHint": "Come ti viene. Es.: aggiungi il login con google e salva l'utente",
+    "kind": "Tipo di attività",
+    "kinds": {
+      "build": "Creare qualcosa di nuovo",
+      "fix": "Correggere un errore",
+      "refactor": "Riordinare il codice",
+      "test": "Aggiungere test",
+      "explain": "Capire il codice"
+    },
+    "context": "Contesto (facoltativo)",
+    "contextHint": "File, stack, l'errore esatto… Es.: @src/auth.ts, Next.js",
+    "done": "Quando è finito? (facoltativo)",
+    "doneHint": "Es.: riesco a entrare con Google e torno alla home",
+    "rulesTitle": "Regole extra",
+    "rules": {
+      "small": "Modifiche minime: non toccare ciò che non serve.",
+      "ask": "Se qualcosa non è chiaro, chiedimelo prima di supporre.",
+      "plan": "Prima mostrami un piano e aspetta il mio OK prima di modificare.",
+      "safe": "Non cancellare file e non fare commit senza chiedermelo."
+    },
+    "result": "Il tuo prompt",
+    "empty": "Scrivi qui sopra cosa vuoi e il prompt compare qui, pronto da copiare.",
+    "tipsTitle": "Perché funziona",
+    "tips": [
+      "Un obiettivo per prompt: se sono due attività, manda due prompt.",
+      "Contesto concreto: indica i file con @, incolla l'errore esatto o uno screenshot.",
+      "Di' come verificarlo: un test, un comando o qualcosa che puoi vedere.",
+      "Per le attività grandi, chiedi prima un piano (Shift+Tab fino alla modalità plan)."
+    ],
+    "out": {
+      "h": {
+        "goal": "Obiettivo",
+        "context": "Contesto",
+        "steps": "Passi",
+        "rules": "Regole",
+        "done": "Finito quando"
+      },
+      "context": "Prima di cambiare qualsiasi cosa, leggi il codice coinvolto in questa attività e seguine i pattern.",
+      "steps": {
+        "build": [
+          "Esplora il codice collegato e dimmi in poche righe cosa cambierai.",
+          "Implementalo seguendo lo stile e i pattern del progetto.",
+          "Aggiungi o aggiorna i test del nuovo caso."
+        ],
+        "fix": [
+          "Riproduci l'errore e trova la causa principale prima di toccare qualsiasi cosa.",
+          "Correggilo dove nasce il problema, non dove si vede.",
+          "Aggiungi un test che fallisca senza la correzione e passi con essa."
+        ],
+        "refactor": [
+          "Leggi il codice e i suoi test; se mancano test, aggiungili prima di cambiare.",
+          "Riorganizza a piccoli passi senza cambiare ciò che fa il codice.",
+          "Esegui i test dopo ogni passo."
+        ],
+        "test": [
+          "Leggi il codice ed elenca i casi importanti, inclusi i casi limite e gli errori.",
+          "Scrivi i test con il framework e lo stile che il progetto usa già.",
+          "Se un test scopre un bug, avvisami prima di cambiare il codice."
+        ],
+        "explain": [
+          "Leggi il codice collegato senza modificare nulla.",
+          "Spiegami come funziona, dal generale al particolare, con riferimenti file:riga.",
+          "Segnala ciò che ti sembra rischioso o confuso."
+        ]
+      },
+      "done": {
+        "build": "Funziona come ho chiesto, i test passano e la build compila.",
+        "fix": "L'errore non compare più e i test passano.",
+        "refactor": "Il comportamento è lo stesso e i test passano.",
+        "test": "I nuovi test passano e coprono i casi dell'elenco.",
+        "explain": "Capisco tutto il flusso e so quali file toccare."
+      },
+      "summary": "Alla fine, riassumi cosa hai cambiato e cosa non sei riuscito a verificare.",
+      "stop": "."
+    }
   }
 }

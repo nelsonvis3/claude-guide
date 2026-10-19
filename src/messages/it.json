@@ -1029,5 +1029,85 @@
       "suggestion": "Suggerimenti",
       "other": "Altro"
     }
+  },
+  "account": {
+    "menu": "Menu dell'account",
+    "settings": "Impostazioni",
+    "achievements": "I miei traguardi",
+    "loginTitle": "Accedi a Procode",
+    "registerTitle": "Crea il tuo account",
+    "oauthError": "Non siamo riusciti a farti accedere con quel provider. Riprova o scegli un altro modo.",
+    "orEmail": "oppure con la tua email",
+    "name": "Nome",
+    "email": "Email",
+    "password": "Password",
+    "passwordRule": "Almeno 8 caratteri.",
+    "createAccount": "Crea account",
+    "noAccount": "Non hai un account? Crealo qui",
+    "haveAccount": "Hai già un account? Accedi",
+    "profile": "Profilo",
+    "displayName": "Come ti chiama Tilde",
+    "displayNameNote": "Si usa nei saluti e nel tuo certificato.",
+    "photo": "Foto profilo",
+    "presetAvatar": "Scegli questo avatar",
+    "upload": "Carica una foto",
+    "useAccountPhoto": "Usa la foto del mio account",
+    "saving": "Salvataggio…",
+    "photoError": "Non siamo riusciti a salvare la foto. Prova un'altra immagine PNG, JPG o WebP.",
+    "appearance": "Aspetto",
+    "theme": "Tema",
+    "accent": "Colore della pagina",
+    "tilde": "Colore di Tilde",
+    "shop": "Animali e costumi",
+    "shopLead": "Presto potrai cambiare animale e vestire Tilde con costumi speciali.",
+    "pets": "Animali",
+    "outfits": "Costumi",
+    "soon": "Prossimamente",
+    "notifications": "Notifiche",
+    "security": "Sicurezza",
+    "currentPassword": "Password attuale",
+    "newPassword": "Nuova password",
+    "passwordChanged": "Fatto, la tua password è stata cambiata.",
+    "changePassword": "Cambia password",
+    "passwordElsewhere": "La tua password è gestita da {provider}. Per cambiarla, fallo dal tuo account {provider}.",
+    "errors": {
+      "invalid": "Controlla i dati: l'email deve essere valida e la password di almeno 8 caratteri.",
+      "taken": "Esiste già un account con questa email. Accedi con la tua password.",
+      "wrong": "L'email o la password non corrispondono.",
+      "locked": "Troppi tentativi. Aspetta 15 minuti e riprova.",
+      "unavailable": "Questa opzione non è ancora disponibile.",
+      "error": "Qualcosa è andato storto. Riprova."
+    },
+    "themes": {
+      "system": "Automatico",
+      "light": "Chiaro",
+      "dark": "Scuro"
+    },
+    "accents": {
+      "violet": "Viola",
+      "blue": "Blu",
+      "green": "Verde",
+      "pink": "Rosa",
+      "orange": "Arancione"
+    },
+    "cats": {
+      "blanca": "Bianca",
+      "naranja": "Arancione",
+      "gris": "Grigia",
+      "negra": "Nera",
+      "crema": "Crema"
+    },
+    "petsNames": [
+      "Cane",
+      "Volpe",
+      "Panda"
+    ],
+    "outfitsNames": [
+      "Astronauta",
+      "Mago",
+      "Pirata",
+      "Supereroe"
+    ],
+    "wrongCurrent": "La password attuale non è corretta."
   }
 }

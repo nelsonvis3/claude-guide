@@ -1029,5 +1029,85 @@
       "suggestion": "ご提案",
       "other": "その他"
     }
+  },
+  "account": {
+    "menu": "アカウントメニュー",
+    "settings": "設定",
+    "achievements": "実績",
+    "loginTitle": "Procode にログイン",
+    "registerTitle": "アカウントを作成",
+    "oauthError": "そのサービスでログインできませんでした。もう一度試すか、別の方法を選んでください。",
+    "orEmail": "またはメールアドレスで",
+    "name": "名前",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "passwordRule": "8 文字以上。",
+    "createAccount": "アカウントを作成",
+    "noAccount": "アカウントがない場合はこちらで作成",
+    "haveAccount": "アカウントをお持ちの場合はログイン",
+    "profile": "プロフィール",
+    "displayName": "Tilde からの呼ばれ方",
+    "displayNameNote": "あいさつと修了証に使われます。",
+    "photo": "プロフィール写真",
+    "presetAvatar": "このアバターを選ぶ",
+    "upload": "写真をアップロード",
+    "useAccountPhoto": "アカウントの写真を使う",
+    "saving": "保存中…",
+    "photoError": "写真を保存できませんでした。別の PNG・JPG・WebP 画像を試してください。",
+    "appearance": "外観",
+    "theme": "テーマ",
+    "accent": "ページの色",
+    "tilde": "Tilde の色",
+    "shop": "ペットと衣装",
+    "shopLead": "まもなくペットを変えたり、Tilde に特別な衣装を着せたりできるようになります。",
+    "pets": "ペット",
+    "outfits": "衣装",
+    "soon": "近日公開",
+    "notifications": "通知",
+    "security": "セキュリティ",
+    "currentPassword": "現在のパスワード",
+    "newPassword": "新しいパスワード",
+    "passwordChanged": "パスワードを変更しました。",
+    "changePassword": "パスワードを変更",
+    "passwordElsewhere": "パスワードは {provider} で管理されています。変更は {provider} のアカウントから行ってください。",
+    "errors": {
+      "invalid": "入力内容を確認してください。メールアドレスが正しく、パスワードが 8 文字以上である必要があります。",
+      "taken": "このメールアドレスのアカウントはすでにあります。パスワードでログインしてください。",
+      "wrong": "メールアドレスまたはパスワードが違います。",
+      "locked": "試行回数が多すぎます。15 分待ってからもう一度お試しください。",
+      "unavailable": "このオプションはまだ利用できません。",
+      "error": "問題が発生しました。もう一度お試しください。"
+    },
+    "themes": {
+      "system": "自動",
+      "light": "ライト",
+      "dark": "ダーク"
+    },
+    "accents": {
+      "violet": "バイオレット",
+      "blue": "ブルー",
+      "green": "グリーン",
+      "pink": "ピンク",
+      "orange": "オレンジ"
+    },
+    "cats": {
+      "blanca": "ホワイト",
+      "naranja": "オレンジ",
+      "gris": "グレー",
+      "negra": "ブラック",
+      "crema": "クリーム"
+    },
+    "petsNames": [
+      "イヌ",
+      "キツネ",
+      "パンダ"
+    ],
+    "outfitsNames": [
+      "宇宙飛行士",
+      "魔法使い",
+      "海賊",
+      "スーパーヒーロー"
+    ],
+    "wrongCurrent": "現在のパスワードが正しくありません。"
   }
 }

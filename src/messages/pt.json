@@ -1029,5 +1029,85 @@
       "suggestion": "Sugestões",
       "other": "Outro"
     }
+  },
+  "account": {
+    "menu": "Menu da conta",
+    "settings": "Configurações",
+    "achievements": "Minhas conquistas",
+    "loginTitle": "Entre no Procode",
+    "registerTitle": "Crie sua conta",
+    "oauthError": "Não conseguimos entrar com esse provedor. Tente de novo ou escolha outra forma de entrar.",
+    "orEmail": "ou com seu e-mail",
+    "name": "Nome",
+    "email": "E-mail",
+    "password": "Senha",
+    "passwordRule": "Mínimo de 8 caracteres.",
+    "createAccount": "Criar conta",
+    "noAccount": "Não tem conta? Crie aqui",
+    "haveAccount": "Já tem conta? Entre",
+    "profile": "Perfil",
+    "displayName": "Como a Tilde te chama",
+    "displayNameNote": "Usado nas saudações e no seu certificado.",
+    "photo": "Foto de perfil",
+    "presetAvatar": "Escolher este avatar",
+    "upload": "Enviar uma foto",
+    "useAccountPhoto": "Usar a foto da minha conta",
+    "saving": "Salvando…",
+    "photoError": "Não conseguimos salvar a foto. Tente outra imagem PNG, JPG ou WebP.",
+    "appearance": "Aparência",
+    "theme": "Tema",
+    "accent": "Cor da página",
+    "tilde": "Cor da Tilde",
+    "shop": "Mascotes e roupas",
+    "shopLead": "Em breve você poderá trocar de mascote e vestir a Tilde com roupas especiais.",
+    "pets": "Mascotes",
+    "outfits": "Roupas",
+    "soon": "Em breve",
+    "notifications": "Notificações",
+    "security": "Segurança",
+    "currentPassword": "Senha atual",
+    "newPassword": "Nova senha",
+    "passwordChanged": "Pronto, sua senha foi alterada.",
+    "changePassword": "Alterar senha",
+    "passwordElsewhere": "Sua senha é gerenciada pelo {provider}. Para alterá-la, faça isso na sua conta do {provider}.",
+    "errors": {
+      "invalid": "Revise os dados: o e-mail precisa ser válido e a senha ter pelo menos 8 caracteres.",
+      "taken": "Já existe uma conta com esse e-mail. Entre com sua senha.",
+      "wrong": "O e-mail ou a senha não conferem.",
+      "locked": "Muitas tentativas. Espere 15 minutos e tente de novo.",
+      "unavailable": "Esta opção ainda não está disponível.",
+      "error": "Algo deu errado. Tente de novo."
+    },
+    "themes": {
+      "system": "Automático",
+      "light": "Claro",
+      "dark": "Escuro"
+    },
+    "accents": {
+      "violet": "Violeta",
+      "blue": "Azul",
+      "green": "Verde",
+      "pink": "Rosa",
+      "orange": "Laranja"
+    },
+    "cats": {
+      "blanca": "Branca",
+      "naranja": "Laranja",
+      "gris": "Cinza",
+      "negra": "Preta",
+      "crema": "Creme"
+    },
+    "petsNames": [
+      "Cachorro",
+      "Raposa",
+      "Panda"
+    ],
+    "outfitsNames": [
+      "Astronauta",
+      "Mago",
+      "Pirata",
+      "Super-herói"
+    ],
+    "wrongCurrent": "A senha atual não está correta."
   }
 }

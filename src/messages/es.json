@@ -1029,5 +1029,85 @@
       "suggestion": "Sugerencias",
       "other": "Otro"
     }
+  },
+  "account": {
+    "menu": "Menú de la cuenta",
+    "settings": "Ajustes",
+    "achievements": "Mis logros",
+    "loginTitle": "Entrá a Procode",
+    "registerTitle": "Creá tu cuenta",
+    "oauthError": "No pudimos iniciar sesión con ese proveedor. Probá de nuevo o elegí otra forma de entrar.",
+    "orEmail": "o con tu correo",
+    "name": "Nombre",
+    "email": "Correo",
+    "password": "Contraseña",
+    "passwordRule": "Mínimo 8 caracteres.",
+    "createAccount": "Crear cuenta",
+    "noAccount": "¿No tenés cuenta? Creala acá",
+    "haveAccount": "¿Ya tenés cuenta? Entrá",
+    "profile": "Perfil",
+    "displayName": "Cómo te llama Tilde",
+    "displayNameNote": "Se usa en los saludos y en tu certificado.",
+    "photo": "Foto de perfil",
+    "presetAvatar": "Elegir este avatar",
+    "upload": "Subir una foto",
+    "useAccountPhoto": "Usar la foto de mi cuenta",
+    "saving": "Guardando…",
+    "photoError": "No pudimos guardar la foto. Probá con otra imagen PNG, JPG o WebP.",
+    "appearance": "Apariencia",
+    "theme": "Tema",
+    "accent": "Color de la página",
+    "tilde": "Color de Tilde",
+    "shop": "Mascotas y trajes",
+    "shopLead": "Muy pronto vas a poder cambiar de mascota y vestir a Tilde con trajes especiales.",
+    "pets": "Mascotas",
+    "outfits": "Trajes",
+    "soon": "Próximamente",
+    "notifications": "Notificaciones",
+    "security": "Seguridad",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Contraseña nueva",
+    "passwordChanged": "Listo, tu contraseña se cambió.",
+    "changePassword": "Cambiar contraseña",
+    "passwordElsewhere": "Tu contraseña la maneja {provider}. Para cambiarla, hacelo desde tu cuenta de {provider}.",
+    "errors": {
+      "invalid": "Revisá los datos: el correo tiene que ser válido y la contraseña de al menos 8 caracteres.",
+      "taken": "Ya hay una cuenta con ese correo. Entrá con tu contraseña.",
+      "wrong": "El correo o la contraseña no coinciden.",
+      "locked": "Demasiados intentos. Esperá 15 minutos y probá de nuevo.",
+      "unavailable": "Esta opción todavía no está disponible.",
+      "error": "Algo salió mal. Probá de nuevo."
+    },
+    "themes": {
+      "system": "Automático",
+      "light": "Claro",
+      "dark": "Oscuro"
+    },
+    "accents": {
+      "violet": "Violeta",
+      "blue": "Azul",
+      "green": "Verde",
+      "pink": "Rosa",
+      "orange": "Naranja"
+    },
+    "cats": {
+      "blanca": "Blanca",
+      "naranja": "Naranja",
+      "gris": "Gris",
+      "negra": "Negra",
+      "crema": "Crema"
+    },
+    "petsNames": [
+      "Perro",
+      "Zorro",
+      "Panda"
+    ],
+    "outfitsNames": [
+      "Astronauta",
+      "Mago",
+      "Pirata",
+      "Superhéroe"
+    ],
+    "wrongCurrent": "La contraseña actual no es correcta."
   }
 }

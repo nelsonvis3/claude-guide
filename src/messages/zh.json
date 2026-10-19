@@ -1029,5 +1029,85 @@
       "suggestion": "建议",
       "other": "其他"
     }
+  },
+  "account": {
+    "menu": "账户菜单",
+    "settings": "设置",
+    "achievements": "我的成就",
+    "loginTitle": "登录 Procode",
+    "registerTitle": "创建账户",
+    "oauthError": "无法通过该服务登录。请重试或选择其他登录方式。",
+    "orEmail": "或使用邮箱",
+    "name": "名字",
+    "email": "邮箱",
+    "password": "密码",
+    "passwordRule": "至少 8 个字符。",
+    "createAccount": "创建账户",
+    "noAccount": "没有账户？在这里创建",
+    "haveAccount": "已有账户？登录",
+    "profile": "个人资料",
+    "displayName": "Tilde 怎么称呼你",
+    "displayNameNote": "用于问候语和你的证书。",
+    "photo": "头像",
+    "presetAvatar": "选择这个头像",
+    "upload": "上传照片",
+    "useAccountPhoto": "使用我账户的照片",
+    "saving": "保存中…",
+    "photoError": "无法保存照片。请换一张 PNG、JPG 或 WebP 图片。",
+    "appearance": "外观",
+    "theme": "主题",
+    "accent": "页面颜色",
+    "tilde": "Tilde 的颜色",
+    "shop": "宠物和服装",
+    "shopLead": "很快你就可以更换宠物，并给 Tilde 穿上特别的服装。",
+    "pets": "宠物",
+    "outfits": "服装",
+    "soon": "即将推出",
+    "notifications": "通知",
+    "security": "安全",
+    "currentPassword": "当前密码",
+    "newPassword": "新密码",
+    "passwordChanged": "好了，你的密码已更改。",
+    "changePassword": "更改密码",
+    "passwordElsewhere": "你的密码由 {provider} 管理。请在你的 {provider} 账户中更改。",
+    "errors": {
+      "invalid": "请检查信息：邮箱必须有效，密码至少 8 个字符。",
+      "taken": "该邮箱已有账户。请用密码登录。",
+      "wrong": "邮箱或密码不正确。",
+      "locked": "尝试次数过多。请等待 15 分钟后再试。",
+      "unavailable": "此选项暂不可用。",
+      "error": "出了点问题，请重试。"
+    },
+    "themes": {
+      "system": "自动",
+      "light": "浅色",
+      "dark": "深色"
+    },
+    "accents": {
+      "violet": "紫色",
+      "blue": "蓝色",
+      "green": "绿色",
+      "pink": "粉色",
+      "orange": "橙色"
+    },
+    "cats": {
+      "blanca": "白色",
+      "naranja": "橘色",
+      "gris": "灰色",
+      "negra": "黑色",
+      "crema": "奶油色"
+    },
+    "petsNames": [
+      "小狗",
+      "狐狸",
+      "熊猫"
+    ],
+    "outfitsNames": [
+      "宇航员",
+      "魔法师",
+      "海盗",
+      "超级英雄"
+    ],
+    "wrongCurrent": "当前密码不正确。"
   }
 }

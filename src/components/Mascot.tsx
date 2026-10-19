@@ -1,6 +1,7 @@
 "use client";
 import { motion, useReducedMotion } from "motion/react";
 import type { Role } from "@/lib/content";
+import { useCatDir } from "@/lib/cat";
 
 export type Mood = "wave" | "talk" | "think" | "happy" | "wow";
 
@@ -19,6 +20,7 @@ export default function Mascot({ mood, size = 220, role, bounce = 0, backdrop = 
   mood: Mood; size?: number; role?: Role; bounce?: number; backdrop?: boolean;
 }) {
   const reduce = useReducedMotion();
+  const dir = useCatDir();
   const thinking = mood === "think";
   const excited = mood === "happy" || mood === "wow";
   return (
@@ -33,9 +35,9 @@ export default function Mascot({ mood, size = 220, role, bounce = 0, backdrop = 
       <svg viewBox={`0 0 ${W} ${H}`} width={size} height={(size * H) / W} aria-hidden="true" className="overflow-visible">
         {backdrop && <circle cx="104" cy="124" r="126" fill={BACKDROP} />}
         <ellipse cx="106" cy="235" rx="84" ry="11" fill="#7a5683" opacity={backdrop ? 1 : 0.35} />
-        <image href="/tilde/body.png" width={W} height={H} />
+        <image href={`${dir}/body.png`} width={W} height={H} />
         <motion.image
-          href="/tilde/head.png"
+          href={`${dir}/head.png`}
           width={W}
           height={H}
           style={{ transformBox: "view-box", originX: "100px", originY: "160px" }}
@@ -62,6 +64,7 @@ export default function Mascot({ mood, size = 220, role, bounce = 0, backdrop = 
 // El disparador va en el contenedor: la imagen arranca recortada y nunca contaría como visible.
 export function Peek({ size = 96, className = "" }: { size?: number; className?: string }) {
   const reduce = useReducedMotion();
+  const dir = useCatDir();
   return (
     <motion.div
       aria-hidden="true"
@@ -79,7 +82,7 @@ export function Peek({ size = 96, className = "" }: { size?: number; className?:
         transition={{ type: "spring", stiffness: 140, damping: 14, delay: 0.2 }}
       >
         <motion.image
-          href="/tilde/head.png"
+          href={`${dir}/head.png`}
           width="208"
           height="242"
           style={{ transformBox: "view-box", originX: "100px", originY: "160px" }}

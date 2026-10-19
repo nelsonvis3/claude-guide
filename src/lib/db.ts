@@ -21,6 +21,24 @@ function ensureSchema() {
         add column if not exists lang text,
         add column if not exists seen_at timestamptz not null default now(),
         add column if not exists reminded_at timestamptz`;
+    // Cuentas con email y contraseña. failed/locked_until frenan los intentos por fuerza bruta.
+    await sql!`
+      create table if not exists users (
+        id uuid primary key default gen_random_uuid(),
+        email text not null unique,
+        name text not null,
+        password_hash text not null,
+        failed int not null default 0,
+        locked_until timestamptz,
+        created_at timestamptz not null default now()
+      )`;
+    // Foto de perfil: un avatar prearmado ("preset:<id>") o una imagen chica subida (data URL).
+    await sql!`
+      create table if not exists avatars (
+        user_id text primary key,
+        image text not null,
+        updated_at timestamptz not null default now()
+      )`;
   })();
   return ready;
 }
@@ -57,4 +75,57 @@ export async function dueReminders() {
 
 export async function markReminded(userId: string) {
   await sql!`update profiles set reminded_at = now() where user_id = ${userId}`;
+}
+
+type UserRow = { id: string; email: string; name: string; password_hash: string; failed: number; locked_until: Date | null };
+
+// Devuelve null si el email ya está registrado.
+export async function createUser(email: string, name: string, passwordHash: string) {
+  await ensureSchema();
+  const [row] = await sql!<{ id: string }[]>`
+    insert into users (email, name, password_hash) values (${email}, ${name}, ${passwordHash})
+    on conflict (email) do nothing returning id`;
+  return row?.id ?? null;
+}
+
+export async function findUser(by: { email: string } | { id: string }) {
+  await ensureSchema();
+  const [row] = "email" in by
+    ? await sql!<UserRow[]>`select * from users where email = ${by.email}`
+    : await sql!<UserRow[]>`select * from users where id = ${by.id}`;
+  return row ?? null;
+}
+
+const MAX_FAILED = 5;
+// Tras 5 intentos fallidos la cuenta queda bloqueada 15 minutos.
+export async function recordLogin(id: string, ok: boolean) {
+  if (ok) {
+    await sql!`update users set failed = 0, locked_until = null where id = ${id}`;
+    return;
+  }
+  await sql!`
+    update users set
+      failed = case when failed + 1 >= ${MAX_FAILED} then 0 else failed + 1 end,
+      locked_until = case when failed + 1 >= ${MAX_FAILED} then now() + interval '15 minutes' else locked_until end
+    where id = ${id}`;
+}
+
+export async function setPassword(id: string, passwordHash: string) {
+  await sql!`update users set password_hash = ${passwordHash} where id = ${id}`;
+}
+
+export async function getAvatar(userId: string) {
+  if (!sql) return null;
+  await ensureSchema();
+  const [row] = await sql<{ image: string }[]>`select image from avatars where user_id = ${userId}`;
+  return row?.image ?? null;
+}
+
+export async function setAvatar(userId: string, image: string | null) {
+  await ensureSchema();
+  if (image === null) await sql!`delete from avatars where user_id = ${userId}`;
+  else
+    await sql!`
+      insert into avatars (user_id, image) values (${userId}, ${image})
+      on conflict (user_id) do update set image = excluded.image, updated_at = now()`;
 }

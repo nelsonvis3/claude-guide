@@ -1029,5 +1029,85 @@
       "suggestion": "제안",
       "other": "기타"
     }
+  },
+  "account": {
+    "menu": "계정 메뉴",
+    "settings": "설정",
+    "achievements": "내 업적",
+    "loginTitle": "Procode 로그인",
+    "registerTitle": "계정 만들기",
+    "oauthError": "해당 서비스로 로그인하지 못했습니다. 다시 시도하거나 다른 방법을 선택하세요.",
+    "orEmail": "또는 이메일로",
+    "name": "이름",
+    "email": "이메일",
+    "password": "비밀번호",
+    "passwordRule": "8자 이상.",
+    "createAccount": "계정 만들기",
+    "noAccount": "계정이 없나요? 여기서 만드세요",
+    "haveAccount": "이미 계정이 있나요? 로그인",
+    "profile": "프로필",
+    "displayName": "Tilde가 부르는 이름",
+    "displayNameNote": "인사말과 수료증에 사용됩니다.",
+    "photo": "프로필 사진",
+    "presetAvatar": "이 아바타 선택",
+    "upload": "사진 업로드",
+    "useAccountPhoto": "내 계정 사진 사용",
+    "saving": "저장 중…",
+    "photoError": "사진을 저장하지 못했습니다. 다른 PNG, JPG, WebP 이미지를 사용해 보세요.",
+    "appearance": "화면",
+    "theme": "테마",
+    "accent": "페이지 색상",
+    "tilde": "Tilde 색상",
+    "shop": "펫과 의상",
+    "shopLead": "곧 펫을 바꾸고 Tilde에게 특별한 의상을 입힐 수 있어요.",
+    "pets": "펫",
+    "outfits": "의상",
+    "soon": "출시 예정",
+    "notifications": "알림",
+    "security": "보안",
+    "currentPassword": "현재 비밀번호",
+    "newPassword": "새 비밀번호",
+    "passwordChanged": "비밀번호가 변경되었습니다.",
+    "changePassword": "비밀번호 변경",
+    "passwordElsewhere": "비밀번호는 {provider}에서 관리합니다. {provider} 계정에서 변경하세요.",
+    "errors": {
+      "invalid": "입력 내용을 확인하세요. 이메일이 올바르고 비밀번호가 8자 이상이어야 합니다.",
+      "taken": "이 이메일로 된 계정이 이미 있습니다. 비밀번호로 로그인하세요.",
+      "wrong": "이메일 또는 비밀번호가 일치하지 않습니다.",
+      "locked": "시도 횟수가 너무 많습니다. 15분 후에 다시 시도하세요.",
+      "unavailable": "이 옵션은 아직 사용할 수 없습니다.",
+      "error": "문제가 발생했습니다. 다시 시도하세요."
+    },
+    "themes": {
+      "system": "자동",
+      "light": "라이트",
+      "dark": "다크"
+    },
+    "accents": {
+      "violet": "바이올렛",
+      "blue": "블루",
+      "green": "그린",
+      "pink": "핑크",
+      "orange": "오렌지"
+    },
+    "cats": {
+      "blanca": "흰색",
+      "naranja": "주황색",
+      "gris": "회색",
+      "negra": "검은색",
+      "crema": "크림색"
+    },
+    "petsNames": [
+      "강아지",
+      "여우",
+      "판다"
+    ],
+    "outfitsNames": [
+      "우주비행사",
+      "마법사",
+      "해적",
+      "슈퍼히어로"
+    ],
+    "wrongCurrent": "현재 비밀번호가 올바르지 않습니다."
   }
 }

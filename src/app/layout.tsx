@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, Atkinson_Hyperlegible_Next, JetBrains_Mono } from "next/font/google";
-import { getLang, getMessages } from "@/lib/i18n-server";
+import { getLang, getMessages, getPrefs } from "@/lib/i18n-server";
 import "./globals.css";
 
 const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin", "latin-ext"], axes: ["wdth"] });
@@ -14,8 +14,14 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const lang = await getLang();
+  const { theme, accent } = await getPrefs();
   return (
-    <html lang={lang} className={`${archivo.variable} ${atkinson.variable} ${jetbrains.variable}`}>
+    <html
+      lang={lang}
+      data-theme={theme === "system" ? undefined : theme}
+      data-accent={accent === "violet" ? undefined : accent}
+      className={`${archivo.variable} ${atkinson.variable} ${jetbrains.variable}`}
+    >
       <body className="min-h-dvh">{children}</body>
     </html>
   );

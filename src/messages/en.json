@@ -1029,5 +1029,85 @@
       "suggestion": "Suggestions",
       "other": "Other"
     }
+  },
+  "account": {
+    "menu": "Account menu",
+    "settings": "Settings",
+    "achievements": "My achievements",
+    "loginTitle": "Sign in to Procode",
+    "registerTitle": "Create your account",
+    "oauthError": "We couldn't sign you in with that provider. Try again or pick another way in.",
+    "orEmail": "or with your email",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordRule": "At least 8 characters.",
+    "createAccount": "Create account",
+    "noAccount": "No account? Create one here",
+    "haveAccount": "Already have an account? Sign in",
+    "profile": "Profile",
+    "displayName": "What Tilde calls you",
+    "displayNameNote": "Used in greetings and on your certificate.",
+    "photo": "Profile photo",
+    "presetAvatar": "Choose this avatar",
+    "upload": "Upload a photo",
+    "useAccountPhoto": "Use my account photo",
+    "saving": "Saving…",
+    "photoError": "We couldn't save the photo. Try another PNG, JPG or WebP image.",
+    "appearance": "Appearance",
+    "theme": "Theme",
+    "accent": "Page color",
+    "tilde": "Tilde's color",
+    "shop": "Pets and outfits",
+    "shopLead": "Soon you'll be able to switch pets and dress Tilde in special outfits.",
+    "pets": "Pets",
+    "outfits": "Outfits",
+    "soon": "Coming soon",
+    "notifications": "Notifications",
+    "security": "Security",
+    "currentPassword": "Current password",
+    "newPassword": "New password",
+    "passwordChanged": "Done, your password was changed.",
+    "changePassword": "Change password",
+    "passwordElsewhere": "Your password is managed by {provider}. To change it, do it from your {provider} account.",
+    "errors": {
+      "invalid": "Check your details: the email must be valid and the password at least 8 characters.",
+      "taken": "There's already an account with that email. Sign in with your password.",
+      "wrong": "The email or password doesn't match.",
+      "locked": "Too many attempts. Wait 15 minutes and try again.",
+      "unavailable": "This option isn't available yet.",
+      "error": "Something went wrong. Try again."
+    },
+    "themes": {
+      "system": "Automatic",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "accents": {
+      "violet": "Violet",
+      "blue": "Blue",
+      "green": "Green",
+      "pink": "Pink",
+      "orange": "Orange"
+    },
+    "cats": {
+      "blanca": "White",
+      "naranja": "Orange",
+      "gris": "Gray",
+      "negra": "Black",
+      "crema": "Cream"
+    },
+    "petsNames": [
+      "Dog",
+      "Fox",
+      "Panda"
+    ],
+    "outfitsNames": [
+      "Astronaut",
+      "Wizard",
+      "Pirate",
+      "Superhero"
+    ],
+    "wrongCurrent": "Your current password isn't correct."
   }
 }

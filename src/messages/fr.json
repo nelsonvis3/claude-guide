@@ -1029,5 +1029,85 @@
       "suggestion": "Suggestions",
       "other": "Autre"
     }
+  },
+  "account": {
+    "menu": "Menu du compte",
+    "settings": "Réglages",
+    "achievements": "Mes succès",
+    "loginTitle": "Connecte-toi à Procode",
+    "registerTitle": "Crée ton compte",
+    "oauthError": "Impossible de te connecter avec ce fournisseur. Réessaie ou choisis un autre moyen.",
+    "orEmail": "ou avec ton e-mail",
+    "name": "Nom",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "passwordRule": "8 caractères minimum.",
+    "createAccount": "Créer un compte",
+    "noAccount": "Pas de compte ? Crée-le ici",
+    "haveAccount": "Déjà un compte ? Connecte-toi",
+    "profile": "Profil",
+    "displayName": "Comment Tilde t'appelle",
+    "displayNameNote": "Utilisé dans les salutations et sur ton certificat.",
+    "photo": "Photo de profil",
+    "presetAvatar": "Choisir cet avatar",
+    "upload": "Importer une photo",
+    "useAccountPhoto": "Utiliser la photo de mon compte",
+    "saving": "Enregistrement…",
+    "photoError": "Impossible d'enregistrer la photo. Essaie une autre image PNG, JPG ou WebP.",
+    "appearance": "Apparence",
+    "theme": "Thème",
+    "accent": "Couleur de la page",
+    "tilde": "Couleur de Tilde",
+    "shop": "Animaux et tenues",
+    "shopLead": "Bientôt, tu pourras changer d'animal et habiller Tilde de tenues spéciales.",
+    "pets": "Animaux",
+    "outfits": "Tenues",
+    "soon": "Bientôt",
+    "notifications": "Notifications",
+    "security": "Sécurité",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "passwordChanged": "C'est fait, ton mot de passe a été changé.",
+    "changePassword": "Changer le mot de passe",
+    "passwordElsewhere": "Ton mot de passe est géré par {provider}. Pour le changer, passe par ton compte {provider}.",
+    "errors": {
+      "invalid": "Vérifie tes informations : l'e-mail doit être valide et le mot de passe faire au moins 8 caractères.",
+      "taken": "Un compte existe déjà avec cet e-mail. Connecte-toi avec ton mot de passe.",
+      "wrong": "L'e-mail ou le mot de passe ne correspond pas.",
+      "locked": "Trop de tentatives. Attends 15 minutes et réessaie.",
+      "unavailable": "Cette option n'est pas encore disponible.",
+      "error": "Un problème est survenu. Réessaie."
+    },
+    "themes": {
+      "system": "Automatique",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "accents": {
+      "violet": "Violet",
+      "blue": "Bleu",
+      "green": "Vert",
+      "pink": "Rose",
+      "orange": "Orange"
+    },
+    "cats": {
+      "blanca": "Blanche",
+      "naranja": "Orange",
+      "gris": "Grise",
+      "negra": "Noire",
+      "crema": "Crème"
+    },
+    "petsNames": [
+      "Chien",
+      "Renard",
+      "Panda"
+    ],
+    "outfitsNames": [
+      "Astronaute",
+      "Magicien",
+      "Pirate",
+      "Super-héros"
+    ],
+    "wrongCurrent": "Ton mot de passe actuel n'est pas correct."
   }
 }

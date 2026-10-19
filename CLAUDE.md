@@ -35,6 +35,6 @@ Hecho el 2026-10-18: lecciones propias con terminal y prueba, bloqueo en orden, 
 
 1. **Traducir las lecciones a ja, zh y ko** (`src/lessons/<idioma>.json`); hoy caen al inglés.
 2. **Más contenido en la ruta, de noob a pro:** más pasos y lecciones más detalladas, sobre todo de plugins y skills, explicados para que cualquiera los entienda.
-3. **Rutas especializadas de pago** por área (frontend, backend, etc.). Falta definir precio y medio de pago.
+3. **Rutas especializadas de pago** por área (frontend, backend, etc.). Pagos con PayPal y Mercado Pago; falta definir precios.
 4. **Menú de usuario con ajustes (con sesión):** colores de la página a gusto, foto de perfil, color del gato, cambiar de mascota y trajes de gato pagos. El arte de colores, mascotas y trajes lo pasa Nelson (no redibujar a Tilde). La contraseña la manejan GitHub y Google.
 5. **Curso de inglés A1 → conversacional avanzado**, con pruebas reales y validación por micrófono. Arranca cuando Nelson diga «go english»; no empezar antes.

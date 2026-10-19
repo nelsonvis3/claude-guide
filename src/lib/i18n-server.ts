@@ -3,6 +3,7 @@ import { cookies, headers } from "next/headers";
 import { LANGS, type Lang } from "./content";
 import type { LessonText } from "@/components/Lesson";
 import type { Messages } from "./i18n";
+import { PREFS, type Accent, type Cat, type Theme } from "./prefs";
 
 export async function getLang(): Promise<Lang> {
   const fromCookie = (await cookies()).get("lang")?.value;
@@ -40,4 +41,14 @@ export async function getLessons(lang: Lang): Promise<Record<string, LessonText>
   const out: Record<string, LessonText> = {};
   for (const l of chain) Object.assign(out, await load(l as Lang));
   return out;
+}
+
+// Apariencia guardada en cookies; lo desconocido vuelve al valor de base.
+export async function getPrefs() {
+  const jar = await cookies();
+  const pick = <T extends string>(key: keyof typeof PREFS, fallback: T) => {
+    const v = jar.get(key)?.value;
+    return ((PREFS[key] as readonly string[]).includes(v ?? "") ? v : fallback) as T;
+  };
+  return { theme: pick<Theme>("theme", "system"), accent: pick<Accent>("accent", "violet"), cat: pick<Cat>("cat", "blanca") };
 }

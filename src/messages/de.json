@@ -1029,5 +1029,85 @@
       "suggestion": "Vorschläge",
       "other": "Sonstiges"
     }
+  },
+  "account": {
+    "menu": "Kontomenü",
+    "settings": "Einstellungen",
+    "achievements": "Meine Erfolge",
+    "loginTitle": "Bei Procode anmelden",
+    "registerTitle": "Konto erstellen",
+    "oauthError": "Die Anmeldung mit diesem Anbieter hat nicht geklappt. Versuch es noch mal oder wähl einen anderen Weg.",
+    "orEmail": "oder mit deiner E-Mail",
+    "name": "Name",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "passwordRule": "Mindestens 8 Zeichen.",
+    "createAccount": "Konto erstellen",
+    "noAccount": "Kein Konto? Hier erstellen",
+    "haveAccount": "Schon ein Konto? Anmelden",
+    "profile": "Profil",
+    "displayName": "Wie Tilde dich nennt",
+    "displayNameNote": "Wird in Begrüßungen und auf deinem Zertifikat verwendet.",
+    "photo": "Profilbild",
+    "presetAvatar": "Diesen Avatar wählen",
+    "upload": "Foto hochladen",
+    "useAccountPhoto": "Foto meines Kontos verwenden",
+    "saving": "Wird gespeichert…",
+    "photoError": "Das Foto konnte nicht gespeichert werden. Versuch ein anderes PNG-, JPG- oder WebP-Bild.",
+    "appearance": "Darstellung",
+    "theme": "Design",
+    "accent": "Seitenfarbe",
+    "tilde": "Tildes Farbe",
+    "shop": "Haustiere und Outfits",
+    "shopLead": "Bald kannst du das Haustier wechseln und Tilde besondere Outfits anziehen.",
+    "pets": "Haustiere",
+    "outfits": "Outfits",
+    "soon": "Demnächst",
+    "notifications": "Benachrichtigungen",
+    "security": "Sicherheit",
+    "currentPassword": "Aktuelles Passwort",
+    "newPassword": "Neues Passwort",
+    "passwordChanged": "Fertig, dein Passwort wurde geändert.",
+    "changePassword": "Passwort ändern",
+    "passwordElsewhere": "Dein Passwort wird von {provider} verwaltet. Ändere es in deinem {provider}-Konto.",
+    "errors": {
+      "invalid": "Prüf deine Angaben: Die E-Mail muss gültig sein und das Passwort mindestens 8 Zeichen haben.",
+      "taken": "Mit dieser E-Mail gibt es schon ein Konto. Melde dich mit deinem Passwort an.",
+      "wrong": "E-Mail oder Passwort stimmen nicht.",
+      "locked": "Zu viele Versuche. Warte 15 Minuten und versuch es erneut.",
+      "unavailable": "Diese Option ist noch nicht verfügbar.",
+      "error": "Etwas ist schiefgelaufen. Versuch es noch mal."
+    },
+    "themes": {
+      "system": "Automatisch",
+      "light": "Hell",
+      "dark": "Dunkel"
+    },
+    "accents": {
+      "violet": "Violett",
+      "blue": "Blau",
+      "green": "Grün",
+      "pink": "Rosa",
+      "orange": "Orange"
+    },
+    "cats": {
+      "blanca": "Weiß",
+      "naranja": "Orange",
+      "gris": "Grau",
+      "negra": "Schwarz",
+      "crema": "Creme"
+    },
+    "petsNames": [
+      "Hund",
+      "Fuchs",
+      "Panda"
+    ],
+    "outfitsNames": [
+      "Astronaut",
+      "Zauberer",
+      "Pirat",
+      "Superheld"
+    ],
+    "wrongCurrent": "Dein aktuelles Passwort ist nicht richtig."
   }
 }

@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* Mapa de senderismo: papel salvia con curvas de nivel, ruta en cobalto, hitos en amarillo señal. */
+:root {
+  color-scheme: light;
+  --bg: #eef3ef;
+  --surface: #ffffff;
+  --surface-2: #e3ebe5;
+  --ink: #10232a;
+  --ink-2: #4a5f66;
+  --line: #c9d7ce;
+  --contour: #cfdcd3;
+  --cobalt: #2a5bd7;
+  --cobalt-ink: #ffffff;
+  --marker: #f5c518;
+  --marker-ink: #10232a;
+  --save: #1d7f53;
+  --spend: #a34d16;
+  /* Series de gráficos: paleta de referencia validada (adyacentes, CVD) */
+  --s1: #2a78d6;
+  --s2: #eb6834;
+  --s3: #1baf7a;
+  --s4: #eda100;
+  --bar-muted: #86b6ef;
+  --bar-strong: #1c5cab;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0d1a1e;
+    --surface: #14252a;
+    --surface-2: #1b2f35;
+    --ink: #e3ede8;
+    --ink-2: #9db3ae;
+    --line: #2a4046;
+    --contour: #1a2d32;
+    --cobalt: #7096f2;
+    --cobalt-ink: #0d1a1e;
+    --marker: #f5c518;
+    --marker-ink: #0d1a1e;
+    --save: #4cc38a;
+    --spend: #f0965f;
+    --s1: #3987e5;
+    --s2: #d95926;
+    --s3: #199e70;
+    --s4: #c98500;
+    --bar-muted: #256abf;
+    --bar-strong: #86b6ef;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0d1a1e;
+  --surface: #14252a;
+  --surface-2: #1b2f35;
+  --ink: #e3ede8;
+  --ink-2: #9db3ae;
+  --line: #2a4046;
+  --contour: #1a2d32;
+  --cobalt: #7096f2;
+  --cobalt-ink: #0d1a1e;
+  --marker: #f5c518;
+  --marker-ink: #0d1a1e;
+  --save: #4cc38a;
+  --spend: #f0965f;
+  --s1: #3987e5;
+  --s2: #d95926;
+  --s3: #199e70;
+  --s4: #c98500;
+  --bar-muted: #256abf;
+  --bar-strong: #86b6ef;
+}
+
+@theme inline {
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-atkinson);
+  --font-mono: var(--font-jetbrains);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-ink: var(--cobalt-ink);
+  --color-marker: var(--marker);
+  --color-marker-ink: var(--marker-ink);
+  --color-save: var(--save);
+  --color-spend: var(--spend);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Titulares expandidos, como rótulos de mapa */
+.display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-variation-settings: "wdth" 118;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+
+:focus-visible {
+  outline: 3px solid var(--marker);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+input[type="range"] {
+  accent-color: var(--cobalt);
+}

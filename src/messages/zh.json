@@ -1,0 +1,849 @@
+{
+  "meta": {
+    "title": "Claude Code 路线图",
+    "description": "Claude Code 从入门到精通：按你的用法会花多少钱、哪个模型适合你、先学什么。"
+  },
+  "nav": {
+    "route": "我的路线",
+    "guide": "速查表",
+    "savedLocal": "你的路线保存在这个浏览器里，不需要账号。",
+    "lang": "语言",
+    "unofficial": "独立项目，与 Anthropic 无关。价格和功能来自 Claude Code 官方文档，查阅日期为 2026 年 10 月 18 日。",
+    "docs": "官方文档",
+    "skip": "跳到内容"
+  },
+  "mascot": {
+    "name": "Tilde",
+    "greet": "喵！我是 Tilde。我来帮你把 Claude Code 从入门用到精通。",
+    "greet2": "回答七个问题，我就为你规划路线：学什么、哪个模型和哪些 skills 适合你、要花多少钱。",
+    "askName": "首先，我该怎么称呼你？",
+    "askUse": "太好了，{name}。你主要用 Claude Code 做什么？",
+    "askExp": "到目前为止你用了多少？",
+    "askTime": "你打算花多少时间在上面？",
+    "askModel": "你会用哪个模型？不确定的话，文档推荐从 Sonnet 开始。",
+    "askFeatures": "最后一个：你想加点什么？绿色的省 token，其余的增加能力也增加消耗。",
+    "done": "好了，{name}！下面是你的预估用量和路线。改任何答案，数字都会重新计算。",
+    "reactCheap": "Pro 套餐完全够用。",
+    "reactMid": "这个节奏需要 Max 套餐了。",
+    "reactHigh": "哇，重度使用！看看省钱技巧吧。",
+    "anon": "探索者",
+    "askRole": "你是做什么工作的？这样我能推荐适合你的 skills 和插件。"
+  },
+  "onboarding": {
+    "start": "开始",
+    "next": "继续",
+    "back": "返回",
+    "skip": "跳过",
+    "finish": "查看我的路线",
+    "namePlaceholder": "你的名字或昵称",
+    "step": "第 {n} 题，共 {total} 题",
+    "hours": "每天小时数",
+    "days": "每周天数",
+    "hoursValue": "{n} 小时",
+    "daysValue": "{n} 天",
+    "effort": "推理强度",
+    "effortHint": "强度越高，推理 token 越多，按输出计费。Sonnet 5.5 和 Opus 5.5 默认为中。",
+    "subagentModel": "子代理模型",
+    "advisorModel": "顾问模型",
+    "inherit": "与会话相同",
+    "restart": "重新回答",
+    "more": "这是什么？"
+  },
+  "uses": {
+    "learn": {
+      "t": "学习和探索",
+      "d": "理解别人的代码、学一门语言、提问。"
+    },
+    "fixes": {
+      "t": "修 bug 和小改动",
+      "d": "修复错误、调整样式、零散任务。"
+    },
+    "fullstack": {
+      "t": "日常开发",
+      "d": "每天在应用里做完整功能。"
+    },
+    "refactor": {
+      "t": "大型重构",
+      "d": "迁移、跨大量文件的改动、审计。"
+    },
+    "automation": {
+      "t": "自动化",
+      "d": "CI、PR 审查、定时任务、脚本。"
+    },
+    "content": {
+      "t": "写代码不多",
+      "d": "简单网站、文档、数据、原型。"
+    }
+  },
+  "experience": {
+    "new": {
+      "t": "从没用过",
+      "d": "从安装开始。"
+    },
+    "some": {
+      "t": "试过一点",
+      "d": "会提一些基本请求。"
+    },
+    "daily": {
+      "t": "经常用",
+      "d": "想把它用到极致。"
+    }
+  },
+  "models": {
+    "haiku": {
+      "t": "Haiku 5.5",
+      "d": "最快最便宜。适合探索和子代理。"
+    },
+    "sonnet": {
+      "t": "Sonnet 5.5",
+      "d": "均衡之选：大多数编码任务。"
+    },
+    "opus": {
+      "t": "Opus 5.5",
+      "d": "复杂推理和架构。Pro 和 Max 的默认模型。"
+    },
+    "fable": {
+      "t": "Fable 5.1",
+      "d": "能力最强，适合最长最难的任务。也最贵。"
+    }
+  },
+  "effortLevels": {
+    "low": "低",
+    "medium": "中",
+    "high": "高",
+    "xhigh": "很高",
+    "max": "最高"
+  },
+  "features": {
+    "clear": {
+      "t": "任务之间用 /clear",
+      "d": "换话题时从头开始。旧上下文每条消息都要付费。"
+    },
+    "plan": {
+      "t": "Plan mode",
+      "d": "Claude 先探索并提出方案，再动代码。避免返工。"
+    },
+    "hooks": {
+      "t": "过滤型 hooks",
+      "d": "在 Claude 读取前裁剪长输出（测试、日志）的脚本。"
+    },
+    "codeintel": {
+      "t": "Code intelligence",
+      "d": "语言插件：直接跳到定义，不用读整个文件。"
+    },
+    "skills": {
+      "t": "Skills",
+      "d": "可复用的指令和流程，只在需要时加载。"
+    },
+    "mcp": {
+      "t": "MCP 服务器",
+      "d": "把 Claude 连接到 GitHub、Notion、数据库、浏览器等。"
+    },
+    "subagents": {
+      "t": "子代理",
+      "d": "拥有独立上下文、只交回摘要的工作者。"
+    },
+    "advisor": {
+      "t": "顾问（advisor）",
+      "d": "Claude 在关键时刻咨询的更强模型。"
+    },
+    "loop": {
+      "t": "/loop",
+      "d": "会话开着时，每隔 X 分钟重复一个提示。"
+    },
+    "ultracode": {
+      "t": "Ultracode / 工作流",
+      "d": "Claude 用脚本编排大量子代理来完成大任务。"
+    },
+    "teams": {
+      "t": "代理团队",
+      "d": "多个协同的 Claude 实例。实验性功能，非常贵。"
+    },
+    "fast": {
+      "t": "Fast mode",
+      "d": "更快的 Opus，价格翻倍。只影响 Opus。"
+    }
+  },
+  "results": {
+    "title": "你的预估用量",
+    "lead": "按这种用法走 API 会花多少钱。Pro 和 Max 不按 token 付费：用量计入套餐限额。",
+    "day": "每天",
+    "week": "每周",
+    "month": "每月",
+    "tokens": "{n} token",
+    "planTitle": "推荐套餐",
+    "planNote": "我们的经验估算：Anthropic 没有公布每个套餐相当于多少美元。Max 5x 和 Max 20x 提供 Pro 每个会话用量的 5 倍和 20 倍，限额每 5 小时和每周重置。用 /usage 可以查看剩余额度。",
+    "adjust": "调整",
+    "disclaimer": "仅为估算。实际用量取决于项目规模、会话时长以及 Claude 读取了多少内容。按官方平均值校准：每位开发者每个活跃日约 13 美元，90% 的用户低于 30 美元。",
+    "you": "你"
+  },
+  "plans": {
+    "pro": {
+      "t": "Pro · 每月 20 美元",
+      "d": "够用来学习和轻度到中度使用。"
+    },
+    "max5": {
+      "t": "Max 5x · 每月 100 美元",
+      "d": "每天用 Claude Code 工作好几个小时。"
+    },
+    "max20": {
+      "t": "Max 20x · 每月 200 美元",
+      "d": "整天重度使用，搭配 Opus 和子代理。"
+    },
+    "max20plus": {
+      "t": "Max 20x + 额度，或 API",
+      "d": "这个量很可能超出限额。开启用量额度，或通过 API 付费并设置支出上限。"
+    }
+  },
+  "charts": {
+    "modelsTitle": "同样的用法，不同的模型",
+    "modelsLead": "不加顾问和子代理时，每个模型单独使用一天的花费。差别在于每 token 单价：Opus 5.5 是 Sonnet 5.5 的两倍，Fable 5.1 是五倍，Haiku 5.5 只要零头。",
+    "strategiesTitle": "组合模型",
+    "strategiesLead": "让每个模型做最擅长的事：Sonnet 写代码，Haiku 探索，Opus 审查。",
+    "strategies": {
+      "opusAll": "全部用 Opus",
+      "sonnetAll": "全部用 Sonnet",
+      "trio": "Sonnet + Haiku 子代理 + Opus 顾问",
+      "haikuAdvisor": "Haiku + Opus 顾问"
+    },
+    "trioNote": "社交媒体上流传的技巧是 `claude --advisor opus --subagents haiku`。`--advisor` 参数确实存在，但 `--subagents` 不在文档里。让子代理用 Haiku 的官方方法是环境变量：",
+    "trioWhy": "顾问每次被调用都会不走缓存地读完整个对话，所以会增加成本。换来的是在困难决策上的质量，而不必一直为 Opus 付费。",
+    "breakdownTitle": "钱都花到哪去了？",
+    "breakdownLead": "Claude Code 每次请求都会重新发送整个对话。所以几乎所有 token 都是缓存读取：单价极低，但数量以百万计。按金额算，缓存写入和输出更重：token 少，但贵。短会话和 /clear 能同时减少两者。",
+    "parts": {
+      "cacheRead": "缓存读取",
+      "cacheWrite": "缓存写入",
+      "input": "新输入",
+      "output": "输出和推理"
+    },
+    "perDay": "每天 {v}",
+    "table": "以表格查看",
+    "model": "模型",
+    "cost": "每天花费",
+    "selected": "你的模型",
+    "rowTokens": "Token",
+    "rowUsd": "花费"
+  },
+  "phases": {
+    "start": {
+      "t": "第一步",
+      "d": "第 1 天：安装、提供上下文、学会提问。"
+    },
+    "habits": {
+      "t": "习惯",
+      "d": "第 1 周：先规划、会验证、选对模型。"
+    },
+    "extend": {
+      "t": "扩展",
+      "d": "第 1 个月：skills、MCP、hooks、子代理和插件。"
+    },
+    "pro": {
+      "t": "进阶",
+      "d": "自动化、并行化、组合模型。"
+    }
+  },
+  "route": {
+    "title": "你的路线",
+    "lead": "勾选你已经掌握的内容。从高亮的路段开始。",
+    "startHere": "从这里开始",
+    "done": "已掌握",
+    "progress": "已掌握 {done} / {total}",
+    "tryIt": "试试看",
+    "doc": "查看文档",
+    "copy": "复制",
+    "copied": "已复制",
+    "forYou": "适合你的用法",
+    "inEstimate": "已计入估算"
+  },
+  "nodes": {
+    "install": {
+      "t": "安装并登录",
+      "d": "安装 Claude Code，在项目里打开终端，输入 claude。用 Pro 或 Max 套餐登录，或使用 API key。"
+    },
+    "init": {
+      "t": "/init 和 CLAUDE.md",
+      "d": "/init 读取你的项目，写出包含命令、约定和结构的 CLAUDE.md。Claude 每次会话开始时都会读它。"
+    },
+    "prompting": {
+      "t": "怎么提需求",
+      "d": "说清楚哪个文件、什么场景、怎样算完成。含糊的请求会让它读遍整个项目，花得更多。",
+      "p": "会话过期后用户无法登录。检查 src/auth，尤其是 token 刷新。写一个会失败的测试，修好它，然后运行测试。"
+    },
+    "modes": {
+      "t": "权限模式",
+      "d": "Shift+Tab 在手动（全部询问）、接受编辑、plan mode 和 auto 之间切换。auto 模式下，后台分类器会检查每个操作。"
+    },
+    "mentions": {
+      "t": "@ 和 !",
+      "d": "@ 指定一个文件让它读取。! 在你的终端里运行命令，并把输出加入对话。"
+    },
+    "interrupt": {
+      "t": "停止和回退",
+      "d": "Esc 可以停下 Claude，已完成的工作不会丢。按两次 Esc 或 /rewind 可把对话和代码回退到之前的某个点。"
+    },
+    "context": {
+      "t": "管理上下文",
+      "d": "/clear 从头开始，/compact 总结之前的内容，/context 显示什么在占空间。上下文小 = 回答更好也更便宜。"
+    },
+    "usage": {
+      "t": "查看用量",
+      "d": "/usage 显示本次会话花了多少、套餐还剩多少，以及哪些 skills、MCP 或子代理消耗最多。"
+    },
+    "planmode": {
+      "t": "探索、规划、编码",
+      "d": "推荐流程：用 plan mode 阅读并提出方案，你批准计划，Claude 实现后提交。如果改动一句话就能说清，就跳过规划。"
+    },
+    "verify": {
+      "t": "给它验证的手段",
+      "d": "最能提升结果的做法：测试、用来对比的截图或预期输出。它能自己检查，就能自己修正错误。",
+      "p": "写一个 validateEmail 函数。用例：user@example.com 有效，invalid 无效，user@.com 无效。实现后运行测试。"
+    },
+    "models": {
+      "t": "模型和推理强度",
+      "d": "/model 切换模型，/effort 调整推理量。在提示里写 ultrathink，可以只在这一轮更深入地思考。"
+    },
+    "sessions": {
+      "t": "会话",
+      "d": "claude --continue 恢复上一次会话，/resume 选择一个会话。/rename 给它命名，/branch 尝试另一个方向而不丢掉当前的。"
+    },
+    "btw": {
+      "t": "顺便一问",
+      "d": "/btw 快速问一个关于会话的问题，不加入对话，也不弄脏上下文。"
+    },
+    "images": {
+      "t": "图片和截图",
+      "d": "用 Ctrl+V 粘贴截图：要实现的设计、屏幕上的错误或图表。Claude 能看到并与结果对比。"
+    },
+    "review": {
+      "t": "提交前审查",
+      "d": "/diff 显示改动，/code-review 在你的 diff 里找 bug，/security-review 找安全漏洞。"
+    },
+    "automode": {
+      "t": "Auto mode",
+      "d": "Claude 不必每一步都请求许可，安全检查在后台进行。适合长任务。"
+    },
+    "claudemd": {
+      "t": "好的 CLAUDE.md",
+      "d": "少于 200 行：它猜不到的命令、项目特有的规则和已知的坑。不是每次都需要的内容放进 skill。"
+    },
+    "skills": {
+      "t": "Skills",
+      "d": "一个写有指令或流程（部署、发布、审查）的 SKILL.md。在被使用前，只有描述会占用上下文。用 /名称 调用。"
+    },
+    "mcp": {
+      "t": "MCP",
+      "d": "把 Claude 连接到外部服务：GitHub、Notion、Slack、数据库、Figma。工具按需加载。如果有 CLI（gh、aws），通常更省。"
+    },
+    "hooks": {
+      "t": "Hooks",
+      "d": "在事件发生时自动运行的脚本：每次编辑后格式化，或拦截危险命令。除非有返回内容，否则不占上下文。它们是始终生效的规则，而不是请求。"
+    },
+    "subagents": {
+      "t": "子代理",
+      "d": "Claude 把任务交给拥有独立上下文的代理（Explore、Plan 或你自己的），只收回摘要。你的对话保持干净。"
+    },
+    "plugins": {
+      "t": "插件和插件市场",
+      "d": "把 skills、hooks、子代理和 MCP 打包在一起。通过 /plugin 安装，也包括 Anthropic 官方插件市场。"
+    },
+    "codeintel": {
+      "t": "Code intelligence",
+      "d": "语言服务器插件（TypeScript、Python 等）。Claude 直接跳到定义，编辑时就能看到类型错误，不必读整个文件。"
+    },
+    "mods": {
+      "t": "Mods",
+      "d": "改变 Claude Code 的界面和行为：面板、自定义命令、工具调用规则。可以让 Claude 帮你写一个。"
+    },
+    "styles": {
+      "t": "输出风格",
+      "d": "改变所有回答的语气和格式：更简洁、更详细，或者换成工程师以外的角色。"
+    },
+    "statusline": {
+      "t": "状态栏",
+      "d": "一条显示你始终想看的信息的栏：模型、上下文百分比、花费、git 分支。"
+    },
+    "advisor": {
+      "t": "顾问",
+      "d": "在决定方案前、错误反复出现时、或宣布完成前，Claude 会咨询更强的模型。用 --advisor、/advisor 或 advisorModel 开启。"
+    },
+    "subagentModel": {
+      "t": "Sonnet 写代码，Haiku 探索，Opus 审查",
+      "d": "会话用 Sonnet，子代理用 Haiku，Opus 当顾问：各司其职。注意：--subagents 不是文档里的参数，要用 CLAUDE_CODE_SUBAGENT_MODEL 变量。"
+    },
+    "opusplan": {
+      "t": "opusplan",
+      "d": "在 plan mode 中使用 Opus，实现时切换到 Sonnet。贵的用来思考，便宜的用来执行。"
+    },
+    "loop": {
+      "t": "/loop",
+      "d": "在会话保持打开时按间隔重复一个提示：盯部署、查 CI。每一轮都会重发上下文，注意间隔。"
+    },
+    "routines": {
+      "t": "Routines",
+      "d": "在云端运行的定时任务，电脑关机也照样跑：每天早上审查 PR、审计依赖。"
+    },
+    "background": {
+      "t": "后台代理",
+      "d": "/background 让会话自己继续运行，/fork 复制会话，/subtask 带着完整对话启动子代理。claude agents 列出全部。"
+    },
+    "worktrees": {
+      "t": "Worktrees",
+      "d": "在同一个仓库里并行运行多个会话而互不干扰：每个都在自己的 git worktree 里。"
+    },
+    "goal": {
+      "t": "/goal",
+      "d": "给它一个完成条件，Claude 会一轮接一轮地工作，直到满足为止。"
+    },
+    "workflows": {
+      "t": "工作流和 /batch",
+      "d": "适合几个子代理搞不定的工作：Claude 写脚本把任务分给大量代理，并交叉核对结果。"
+    },
+    "teams": {
+      "t": "代理团队",
+      "d": "多个 Claude 实例共享任务、互相通信。实验性功能：队友在 plan mode 时大约消耗 7 倍的 token。"
+    },
+    "headless": {
+      "t": "无头模式和 Agent SDK",
+      "d": "claude -p 不带界面运行，适合脚本和 CI。Agent SDK（Python 和 TypeScript）让你用 Claude Code 的引擎构建自己的代理。"
+    },
+    "github": {
+      "t": "GitHub Actions",
+      "d": "在 issue 或 PR 里 @claude，它会通过 Actions 回复、审查或开 PR。"
+    },
+    "chrome": {
+      "t": "Chrome 中的 Claude",
+      "d": "Claude 在浏览器里打开你的应用、点击、读取控制台，确认改动真的生效。"
+    },
+    "insights": {
+      "t": "/insights",
+      "d": "一份关于你工作方式的报告：在哪些项目上、在哪里卡住、值得尝试哪些功能。"
+    },
+    "runverify": {
+      "t": "/run 和 /verify",
+      "d": "Claude 启动你的应用，确认改动真的生效，而不只是测试通过。/run-skill-generator 能教它怎么启动你的项目。"
+    },
+    "simplify": {
+      "t": "/simplify",
+      "d": "提交前，四个代理审查你的改动，找出重复代码、多余的复杂度和性能问题，并应用修复。"
+    },
+    "skilldoctor": {
+      "t": "/skill-doctor",
+      "d": "显示每个 skill 消耗多少 token、你用得多频繁。关掉多余的：每条描述在每条消息里都会占用上下文。"
+    },
+    "fewerprompts": {
+      "t": "/fewer-permission-prompts",
+      "d": "分析你的会话，允许你最常用的安全命令，不再每次 ls 或 git status 都请求许可。"
+    },
+    "debug": {
+      "t": "/debug 和 /doctor",
+      "d": "出问题时（hook 不运行、MCP 连不上），/debug 会开启日志并替你读取。/doctor 会检查整个安装并提出修复建议。"
+    },
+    "deepresearch": {
+      "t": "/deep-research",
+      "d": "一个内置工作流，并行搜索网页、交叉核对来源，交给你一份带引用的报告。"
+    },
+    "ultrareview": {
+      "t": "/code-review ultra",
+      "d": "合并前在云端由多个代理深度审查。/autofix-pr 会盯着你的 PR，CI 失败时推送修复。"
+    },
+    "remote": {
+      "t": "从手机或另一台电脑",
+      "d": "/remote-control 在 claude.ai 或手机应用里打开会话，/teleport 把云端会话拉到你的终端，/desktop 把它交给桌面应用。"
+    }
+  },
+  "anatomy": {
+    "title": "好提示的结构",
+    "bad": "之前",
+    "good": "之后",
+    "badPrompt": "修一下登录的 bug",
+    "goodParts": [
+      "会话过期后用户无法登录。",
+      "检查 src/auth，尤其是 token 刷新。",
+      "写一个能复现错误的测试，修复它，再运行测试。",
+      "找到根本原因，不要只掩盖症状。"
+    ],
+    "why": "第一个迫使 Claude 去猜，还要读半个项目。第二个告诉它发生了什么、看哪里、怎样确认完成，以及要避免什么。",
+    "parts": {
+      "symptom": "症状",
+      "where": "看哪里",
+      "verify": "怎么验证",
+      "constraint": "要避免什么"
+    }
+  },
+  "tips": {
+    "saveTitle": "少花钱",
+    "save": [
+      "每次换任务都 /clear。长会话里哪怕一条短消息也会重读全部历史。",
+      "日常用 Sonnet；只在困难决策时用 Opus 或 Fable。更好的做法：Sonnet 配 Opus 顾问。",
+      "用 CLAUDE_CODE_SUBAGENT_MODEL=haiku 让子代理跑在 Haiku 上。",
+      "机械性任务降低推理强度（/effort low）。",
+      "有 CLI（gh、aws）就比 MCP 服务器更轻量。用 /mcp 关掉不用的 MCP。",
+      "CLAUDE.md 保持简短；具体内容放进 skills。",
+      "闲置超过一小时缓存会过期，第一条消息要重新处理全部内容。与其恢复一个巨大的会话，不如 /clear。"
+    ],
+    "maxTitle": "发挥最大价值",
+    "max": [
+      "始终给它验证手段：测试、截图、预期输出。",
+      "对方案没把握或要改很多文件时，用 plan mode。",
+      "长任务用 Opus 顾问：重构、反复出现的 bug。",
+      "一个会话写，另一个会话审：审查者不会被自己的代码带偏。",
+      "用 worktrees 和后台代理并行工作。",
+      "必须每次发生的事交给 hooks；需要判断的事交给 skills。",
+      "时不时运行 /insights，看看时间都耗在哪了。"
+    ]
+  },
+  "guide": {
+    "title": "Claude Code 速查表",
+    "lead": "最值得掌握的命令、快捷键和模式。全部对照官方文档核实过。",
+    "commands": "命令",
+    "shortcuts": "键盘快捷键",
+    "modes": "权限模式",
+    "filter": "筛选命令和 skills",
+    "empty": "没有命令匹配“{q}”。换个词试试。",
+    "back": "返回我的路线",
+    "skills": "内置 skills",
+    "skillsLead": "Claude Code 自带，无需安装。用 /名称 调用；在有用时 Claude 也会自己使用。",
+    "mods": "Mods",
+    "plugins": "插件",
+    "jump": "跳转到",
+    "roles": "按角色",
+    "community": "社区仓库",
+    "communityLead": "使用最多的项目，GitHub 星数截至 2026 年 10 月 18 日。它们不是 Anthropic 出品：安装前请逐一检查。",
+    "group": {
+      "tokens": "少花 token",
+      "workflow": "工作流和合集",
+      "video": "视频"
+    },
+    "askills": "Anthropic skills",
+    "askillsLead": "官方仓库 anthropics/skills：Office 文档和 PDF、设计、生成艺术、网页测试等。分两个包安装。",
+    "knowledge": "按工作领域划分的插件",
+    "knowledgeLead": "anthropics/knowledge-work-plugins 有 123 个面向非编程工作的插件。这里是 Anthropic 自己的，每个领域一个。"
+  },
+  "commands": {
+    "init": "分析项目并创建 CLAUDE.md。",
+    "clear": "以空上下文开始新对话。",
+    "compact": "总结对话以释放上下文。可以指定要保留的内容。",
+    "context": "以网格显示上下文被什么占用，并给出建议。",
+    "usage": "会话花费、套餐限额和消耗最多的部分。别名：/cost、/stats。",
+    "model": "切换模型；用方向键调整推理强度。",
+    "effort": "推理级别：low、medium、high、xhigh、max 或 ultracode。",
+    "plan": "进入 plan mode，并从你给的任务开始。",
+    "rewind": "把对话和代码回退到之前的某个点。",
+    "resume": "恢复之前的对话。",
+    "btw": "顺便一问，不加入对话。",
+    "diff": "审查工作区的改动。",
+    "code-review": "在你的 diff、PR 或分支里找 bug。--fix 会应用修复。",
+    "security-review": "在你分支的改动里找安全漏洞。",
+    "memory": "编辑 CLAUDE.md 和自动记忆。",
+    "skills": "列出 skills；按 t 按 token 排序。",
+    "mcp": "管理 MCP 服务器：连接、启用、停用。",
+    "hooks": "显示已配置的 hooks。",
+    "plugin": "安装、启用和停用插件。",
+    "agents": "提醒如何创建或编辑子代理。",
+    "advisor": "开启顾问：fable、opus、sonnet 或 off。",
+    "loop": "按间隔重复一个提示。",
+    "schedule": "创建在云端运行的 routines。",
+    "goal": "Claude 一直工作到满足某个条件。",
+    "background": "把会话转到后台。",
+    "fork": "把对话复制到一个后台会话。",
+    "subtask": "带着完整对话启动一个子代理。",
+    "batch": "并行进行大规模改动：拆成 5 到 30 个单元。",
+    "output-style": "更改回答风格。",
+    "statusline": "配置状态栏。",
+    "insights": "关于你如何使用 Claude Code 的 HTML 报告。",
+    "doctor": "检查安装、设置和 CLAUDE.md，并提出修复建议。",
+    "powerup": "带动画演示的交互式功能课程。",
+    "fast": "开启或关闭 fast mode。",
+    "permissions": "允许、询问和拒绝的规则。",
+    "export": "把对话导出为文本。",
+    "ultrareview": "在云端由多个代理进行深度代码审查。是 /code-review ultra 的别名。",
+    "autofix-pr": "启动一个云端会话，盯着你分支的 PR，CI 失败或有评论时推送修复。",
+    "skill-doctor": "每个 skill 占用多少上下文、你用得多频繁，方便关掉多余的。",
+    "team-onboarding": "根据你最近 30 天的使用情况，生成给新同事的上手指南。",
+    "import": "导入你在 Codex、Gemini CLI 或 Cursor 中的配置：指令、MCP、命令、子代理和 skills。",
+    "remote-control": "让会话可以从 claude.ai 或手机上操作。别名：/rc。",
+    "teleport": "把云端会话连同分支和对话拉到你的终端。别名：/tp。",
+    "desktop": "在桌面应用中继续当前会话。别名：/app。",
+    "focus": "专注视图：只显示你最后的提示、工具摘要和最终回答。",
+    "recap": "一行会话摘要。",
+    "tasks": "查看和管理后台工作，包括已完成的子代理。",
+    "workflows": "工作流进度：查看、暂停、恢复或保存。",
+    "sandbox": "开启沙箱：限制终端命令能访问的文件和网络。",
+    "autocompact": "上下文填到多满时自动压缩，例如 500k。",
+    "add-dir": "给会话添加另一个工作目录。",
+    "cd": "把会话移到另一个文件夹，不丢失对话。",
+    "keybindings": "打开你的键盘快捷键文件。",
+    "terminal-setup": "在 VS Code、Cursor、Alacritty 或 Zed 中设置 Shift+Enter 换行。",
+    "voice": "语音输入：按住或点按录音。",
+    "usage-credits": "用量额度，达到套餐上限后还能继续工作。",
+    "rate-limit-options": "达到上限时的选项：等待并自动继续、使用额度或升级套餐。",
+    "release-notes": "按版本查看更新日志，不加入对话。",
+    "artifacts": "列出你的 artifacts，可附加到会话、在浏览器打开或复制链接。",
+    "auto-mode-setup": "根据你的项目和最近的会话，生成 auto mode 配置草案。",
+    "config": "打开设置，或直接修改某个值：/config theme=dark。",
+    "copy": "把最后一条回答或代码块复制到剪贴板。",
+    "rename": "给会话命名。",
+    "branch": "从当前对话分出一个分支，尝试别的方向而不丢掉当前的。",
+    "theme": "更改配色主题，包括适合色觉障碍的主题。",
+    "tui": "更改终端渲染方式；fullscreen 可避免闪烁。",
+    "reload-plugins": "无需重启即可重新加载插件。",
+    "reload-skills": "无需重启即可重新扫描新增或修改的 skills。",
+    "list-agents": "列出 Claude 可以发消息的子代理、队友和会话。",
+    "artifact-capabilities": "已发布的 artifact 能做什么：使用你的连接器、提供下载等。",
+    "artifact-diagramming": "指导 Claude 绘制在浅色和深色模式下都清晰的 SVG 图。",
+    "claude-api": "Claude API 和 Managed Agents 参考：迁移模型、审查提示、优化成本。",
+    "claude-in-chrome": "Claude 在你的浏览器里完成任务：测试页面、填写表单、读取控制台。",
+    "dataviz": "图表和仪表盘指南：选择图表形式，检查配色的色盲友好性和对比度。",
+    "debug": "开启调试日志并读取，用来诊断会话问题。",
+    "deep-research": "工作流：并行搜索网页、交叉核对来源，写出带引用的报告。",
+    "design": "在 Claude Design 画布上以画板形式绘制界面、流程或落地页草图。",
+    "design-sync": "把仓库里的 React 设计系统上传到 Claude Design，让它使用你真实的组件。",
+    "fewer-permission-prompts": "分析你的会话，允许你最常用的只读命令，减少询问。",
+    "run": "启动并操作你的应用，亲眼看到改动生效，而不只是测试通过。",
+    "run-skill-generator": "通过一个项目 skill，教 /run 和 /verify 如何构建和启动你的应用。",
+    "simplify": "四个代理并行审查你的改动（复用、简洁、效率、抽象层级），并应用修复。",
+    "slides": "根据你的需求生成一份 Claude Slides 演示文稿 artifact。",
+    "update-config": "描述一个改动（权限、变量、hook），Claude 会编辑对应的 settings.json。",
+    "verify": "确认改动符合预期：构建、运行并观察应用。",
+    "workflow-authoring": "编写动态工作流脚本的参考。"
+  },
+  "shortcuts": {
+    "cycleModes": "切换权限模式（手动、接受编辑、plan、auto）。",
+    "interrupt": "停下 Claude，已完成的工作不会丢。",
+    "rewind": "输入为空时，打开回退菜单。",
+    "shell": "在开头输入：运行终端命令。",
+    "mention": "指定一个文件。",
+    "editor": "在编辑器里编辑提示（或计划）。",
+    "transcript": "显示工具调用和推理的细节。",
+    "history": "搜索以前的提示。",
+    "pasteImage": "粘贴剪贴板里的图片。",
+    "background": "把命令和代理转到后台。",
+    "todo": "显示或隐藏 Claude 的任务清单。",
+    "stash": "暂存写了一半的提示，之后再取回。",
+    "switchModel": "切换模型而不清空提示。",
+    "fastToggle": "开启或关闭 fast mode。",
+    "help": "输入为空时，显示所有快捷键。"
+  },
+  "modes": {
+    "default": "手动：不询问就只能读取。适合敏感工作或不熟悉的代码。",
+    "acceptEdits": "不询问就编辑文件并使用基本的文件命令。",
+    "plan": "读取并提出计划；在你批准前不做编辑。",
+    "auto": "全部自动执行，安全检查在后台进行。适合长任务。",
+    "dontAsk": "只执行预先批准的操作，其余一律拒绝。适合 CI 和脚本。",
+    "bypassPermissions": "全部不询问。只能在隔离的容器或虚拟机里用。"
+  },
+  "modGuide": {
+    "lead": "Mod 是一种插件，带有在 Claude Code 内部运行的 JavaScript 或 TypeScript 代码。和 hooks、skills、MCP 不同，它能在界面上绘制内容，并介入每一个事件。",
+    "canTitle": "它能做什么",
+    "can": [
+      "在对话旁边绘制面板，或在提示框上方绘制一条横栏，支持标签页、按钮和文本框。",
+      "改变 Claude Code 原本绘制的内容：工具调用那一行、加载动画、提问对话框。",
+      "拦截或修改工具调用：先问你一个问题、不运行工具直接给出结果，或把请求发给另一个模型。",
+      "添加一个 /命令，立即运行你的函数，不消耗 Claude 的回合。",
+      "在事件之间共享数据：例如统计工具调用次数，并显示在加载动画旁边。"
+    ],
+    "samplesTitle": "Anthropic 的示例 mods",
+    "samples": {
+      "token-weather": "在提示框上方显示你的上下文“天气预报”。",
+      "blast-radius": "拦截危险命令（rm -rf、强制推送），展示它们会改变什么，让你选择继续或取消。",
+      "replay-theater": "添加 /replay，逐步回看上一轮的文件编辑。"
+    },
+    "createTitle": "自己做一个",
+    "create": "把你想要的告诉 Claude：它会加载 /plugin-authoring skill，替你写好 mod。然后用 /reload-plugins 重新加载。",
+    "builtin": "你其实已经在用 mods 了：/diff 就是内置的一个。在 /plugin 的 Installed 标签页里，它们列在 Built-in 下面。",
+    "safetyTitle": "注意安全",
+    "safety": "Mod 以你的权限运行，没有沙箱：能读写文件、看到你的提示，还能不经询问批准工具调用。只安装你信任的作者的 mod，安装前先检查它会做什么："
+  },
+  "pluginGuide": {
+    "lead": "插件把 skills、hooks、子代理、MCP 服务器和 mods 打包成一个可以用一条命令安装的东西。官方插件市场已默认添加，共有 {total} 个插件：{anthropic} 个来自 Anthropic，其余来自 GitHub、Figma、Vercel 等公司。",
+    "install": "用 /plugin（Discover 标签页）或在 claude.com/marketplace/plugins 浏览。安装方法：",
+    "anthropicTitle": "Anthropic 官方的",
+    "lspTitle": "按语言划分的 Code intelligence",
+    "lsp": "每种语言一个插件：Claude 能直接跳到定义，编辑时就看到类型错误。",
+    "partnersTitle": "热门连接器",
+    "community": "还有一个社区插件市场：/plugin marketplace add anthropics/claude-plugins-community。Anthropic 不审核第三方插件市场，添加前请先阅读插件安全页面。",
+    "snapshot": "目录查阅于 2026 年 10 月 18 日，变化频繁。"
+  },
+  "plugins": {
+    "feature-dev": "完整的功能开发流程，由代理负责探索代码、设计架构和审查质量。",
+    "code-review": "用多个专门的代理审查 PR，并按置信度过滤误报。",
+    "pr-review-toolkit": "PR 审查代理：评论、测试、错误处理、类型和简化。",
+    "commit-commands": "用于提交、推送和创建 PR 的命令。",
+    "code-simplifier": "在不改变行为的前提下简化最近代码的代理。",
+    "security-guidance": "编辑时提示不安全的写法，并审查 diff 和提交中的安全漏洞。",
+    "claude-security": "深度扫描你代码中的漏洞，每个发现在报告前都会被反复验证。",
+    "frontend-design": "设计有个性的界面，远离千篇一律的 AI 风格。",
+    "claude-code-setup": "分析你的代码，推荐合适的 hooks、skills、MCP 和子代理。",
+    "claude-md-management": "审查你的 CLAUDE.md，并用每次会话学到的内容保持更新。",
+    "hookify": "根据用 markdown 写的规则创建 hooks，阻止不想要的行为。",
+    "skill-creator": "创建新的 skills、改进现有的，并衡量它们的效果。",
+    "plugin-dev": "开发插件的工具包：hooks、MCP、命令和代理。",
+    "mcp-server-dev": "设计和构建能与 Claude 良好配合的 MCP 服务器的指南。",
+    "agent-sdk-dev": "使用 Claude Agent SDK 的工具包。",
+    "ralph-loop": "让 Claude 看着上一次的成果反复做同一个任务，直到完成的循环（Ralph Wiggum 技巧）。",
+    "playground": "创建带控件、实时预览和可复制提示的交互式 HTML playground。",
+    "session-report": "你的用量 HTML 报告：token、缓存效率、子代理和最贵的提示。",
+    "receipts": "成果报告：你在哪些项目上交付了什么，方便向上级说明用量或做自我评估。",
+    "explanatory-output-style": "补充关于实现决策的教学性说明。",
+    "learning-output-style": "学习模式：让你自己写代码的关键部分。",
+    "code-modernization": "用 /modernize 引导式改造遗留代码：评估、地图、业务规则和计划。",
+    "project-artifact": "把项目状态页发布成可分享的 artifact。",
+    "github": "通过 GitHub 官方 MCP 服务器处理 issue、PR、审查和仓库搜索。",
+    "figma": "读取设计文件、组件和 token，并转成代码。",
+    "context7": "任何库的最新、按版本区分的文档。",
+    "playwright": "浏览器自动化和端到端测试（Microsoft 出品）。",
+    "supabase": "Supabase 项目的数据库、认证、存储和 SQL。",
+    "vercel": "部署、构建状态、日志和域名。",
+    "stripe": "开发支付集成用的 Stripe 工具。",
+    "sentry": "生产环境错误、堆栈跟踪和 issue 搜索。",
+    "linear": "在 Linear 中创建和更新 issue 与项目。",
+    "notion": "搜索、创建和编辑 Notion 页面和数据库。",
+    "slack": "搜索你 Slack 里的消息、频道和讨论串。",
+    "chrome-devtools-mcp": "控制和检查 Chrome：性能、网络和控制台。",
+    "firebase": "Firebase 的 Firestore、认证、函数和托管。",
+    "atlassian": "Jira 和 Confluence：issue、文档和迭代。",
+    "cloudflare": "Workers、Durable Objects、Wrangler 以及 Cloudflare 平台的其余部分。",
+    "datadog": "Datadog 的日志、指标、追踪和仪表盘（预览版）。",
+    "canva": "通过 Canva 的 MCP 服务器创建、编辑、调整尺寸和审查设计。",
+    "adobe-for-creativity": "Adobe 的创意工具：编辑图片、去背景、矢量化和自动化设计。",
+    "expo": "Expo 官方 skills，用于创建、发布和调试 React Native 应用。",
+    "aws-core": "在 AWS 上构建、部署和运维：基础设施即代码和核心服务。",
+    "duckdb-skills": "读取任意数据文件并用 DuckDB 查询。",
+    "databricks": "Databricks 的 CLI、Apps、Lakebase、作业和管道。",
+    "grafana-mcp": "Grafana 的仪表盘、数据源、告警和事件。",
+    "swift-lsp": "Swift 的 Code intelligence（SourceKit-LSP）。",
+    "kotlin-lsp": "Kotlin 的 Code intelligence。"
+  },
+  "roles": {
+    "frontend": {
+      "t": "前端",
+      "d": "好看又好用的界面：设计、组件、浏览器测试和最新文档。"
+    },
+    "backend": {
+      "t": "后端",
+      "d": "API、数据库和安全：不用通读就能浏览大型代码、检查漏洞、监控错误。"
+    },
+    "fullstack": {
+      "t": "全栈",
+      "d": "从设计到部署：完整的工作流、git、代码审查和跨会话记忆。"
+    },
+    "mobile": {
+      "t": "移动端",
+      "d": "React Native 或原生应用：Expo、Swift 和 Kotlin 语言服务器，以及后端。"
+    },
+    "devops": {
+      "t": "DevOps",
+      "d": "云、监控和自动化：部署、告警、定时任务和始终生效的规则。"
+    },
+    "data": {
+      "t": "数据",
+      "d": "SQL、表格和可视化：探索数据、做图表和带来源的报告。"
+    },
+    "designer": {
+      "t": "平面设计",
+      "d": "海报、生成艺术、主题、品牌形象，以及与 Canva、Adobe、Figma 的连接。"
+    },
+    "video": {
+      "t": "视频",
+      "d": "用代码做视频：动画、字幕、配音和导出，还有 GIF 和图片编辑。"
+    },
+    "marketing": {
+      "t": "营销与内容",
+      "d": "活动、品牌语调、文档、演示文稿和带来源的调研。"
+    },
+    "pm": {
+      "t": "产品（PM）",
+      "d": "需求文档、路线图、工单和演示文稿，连接 Linear、Jira 和 Notion。"
+    },
+    "qa": {
+      "t": "QA 与测试",
+      "d": "端到端测试、浏览器检查、PR 审查和错误追踪。"
+    },
+    "student": {
+      "t": "学生",
+      "d": "边做边学：会讲解的输出风格、交互式课程和用量控制。"
+    }
+  },
+  "recs": {
+    "title": "为你的角色推荐",
+    "lead": "选择你的角色，我们会列出值得添加的 skills、插件和仓库，并附上安装命令。",
+    "pickRole": "选择你的角色",
+    "saversTitle": "少花 token",
+    "saversLead": "适用于任何角色。节省比例由各项目自己公布：前后用 /usage 测一测。",
+    "src": {
+      "builtin": "Claude Code 内置",
+      "official": "官方插件市场",
+      "anthropicSkills": "Anthropic skills",
+      "knowledgeWork": "Anthropic · knowledge work",
+      "community": "社区"
+    }
+  },
+  "community": {
+    "caveman": "让 Claude 回答简短直接。项目称平均减少 65% 的输出 token。",
+    "rtk": "用 Rust 写的代理，在终端命令输出进入上下文前先压缩。号称节省 60% 到 90%。",
+    "headroom": "在工具输出、日志和文件送到模型前进行压缩。",
+    "context-mode": "把工具输出隔离在沙箱里，并保存会话记忆，避免上下文被塞满。",
+    "claude-mem": "跨会话的持久记忆：记录代理做了什么，压缩后在需要时取回。",
+    "serena": "像 IDE 一样按符号浏览和编辑代码的 MCP 服务器，不必读整个文件。",
+    "ponytail": "让 Claude 只写能完整解决问题的最小改动，不写多余代码。",
+    "ccusage": "读取本地日志，按天、会话或模型统计 token 和花费。它不省钱，只负责计量。",
+    "codeburn": "本地仪表盘，显示 Claude Code 和另外 36 个工具的 token 用量和花费。",
+    "superpowers": "一整套方法论：头脑风暴、规划、TDD、系统化调试，以及用子代理做代码审查。",
+    "mattpocock-skills": "Matt Pocock 的实战工程 skills：需求、工单、TDD、代码审查和领域建模。",
+    "ecc": "Everything Claude Code：集 skills、代理、记忆、安全和性能优化于一体的系统。",
+    "ui-ux-pro-max": "UI/UX 设计知识：打造专业界面的风格、配色、字体和模式。",
+    "awesome-claude-skills": "由 Composio 维护的 Claude skills 和资源精选列表。",
+    "awesome-claude-code": "最知名的 Claude Code 资源列表：命令、hooks、工作流和工具。",
+    "wshobson-agents": "包含几十个按语言和任务划分的专业代理插件的插件市场。",
+    "claude-code-router": "根据任务把 Claude Code 的请求转发给不同的模型和服务商。",
+    "claude-code-templates": "安装现成代理、命令、MCP 和 skills 并监控 Claude Code 的命令行工具。",
+    "vercel-agent-skills": "Vercel 官方 skills：React 和 Next.js 最佳实践、性能和部署。",
+    "hyperframes": "HeyGen 出品：写 HTML 就能渲染成视频，带动画、字幕、配音和音频。",
+    "remotion-skills": "Remotion 官方 skills，用来创建、加字幕和渲染用 React 做的视频。"
+  },
+  "askills": {
+    "docx": "创建、读取和编辑 Word 文档。",
+    "pdf": "提取文字和表格，合并、拆分 PDF 并填写表单。",
+    "pptx": "创建和编辑 PowerPoint 演示文稿。",
+    "xlsx": "打开、编辑和创建 Excel 表格，支持公式和图表。",
+    "canvas-design": "按设计理念制作 PNG 和 PDF 格式的海报、作品和视觉艺术。",
+    "algorithmic-art": "用 p5.js 做生成艺术，可通过种子和参数探索。",
+    "theme-factory": "十套配色和字体主题，可用于幻灯片、文档或落地页。",
+    "brand-guidelines": "套用 Anthropic 的视觉形象。可作为你自己品牌 skill 的模板。",
+    "frontend-design": "设计有个性的界面，远离千篇一律的 AI 风格。",
+    "web-artifacts-builder": "用 React、Tailwind 和 shadcn/ui 构建复杂的 HTML artifacts。",
+    "webapp-testing": "用 Playwright 测试本地网页应用：验证功能、截图、读取日志。",
+    "mcp-builder": "构建高质量 MCP 服务器的指南。",
+    "skill-creator": "创建和改进 skills，并衡量它们的效果。",
+    "doc-coauthoring": "引导式流程，用来合写文档、方案和需求文档。",
+    "internal-comms": "按公司格式撰写内部沟通：动态、报告、公告。",
+    "slack-gif-creator": "为 Slack 优化的动图。",
+    "claude-api": "用于开发 AI 应用的 Claude API 和 SDK 文档。",
+    "academy-guide": "根据你想学的内容推荐 Anthropic Academy 的课程和教程。",
+    "discernment-nudge": "在每条回答末尾附上两三个问题，帮你核对关键信息。"
+  },
+  "kw": {
+    "productivity": "任务、每日计划和工作记忆，连接日历、邮件和聊天。",
+    "marketing": "在保持品牌语调的同时，做内容、活动和效果分析。",
+    "brand-voice": "发现你的品牌语调，写出指南，并检查内容是否符合。",
+    "design": "设计评审、设计系统、界面文案、无障碍审查和交付。",
+    "data": "SQL、数据探索、可视化和仪表盘。",
+    "engineering": "站会、代码审查、架构决策、事故处理和技术文档。",
+    "product-management": "需求文档、路线图和用户研究总结。",
+    "sales": "准备通话、跟进、客户调研和销售预测。",
+    "customer-support": "工单分流、回复、升级和知识库。",
+    "finance": "记账、对账、财务报表和差异分析。",
+    "legal": "合同审查、保密协议和合规。",
+    "operations": "供应商、流程、变更管理和产能。",
+    "human-resources": "招聘、入职、绩效评估和制度。",
+    "small-business": "现成的工作流，用你已有的工具让小生意成长。"
+  },
+  "builtinMods": {
+    "cc-plugin-diff": "接管 /diff 并绘制它的面板。",
+    "cc-plugin-agents-md": "把 AGENTS.md 作为项目指令加载。",
+    "cc-plugin-plugin-authoring": "给 Claude 编写 mods 的 skill。",
+    "cc-plugin-you-should-know": "侧边代理会在提示框上方提醒你遗漏的事。默认关闭。",
+    "cc-plugin-sec-default": "保护组织管理的内容不受你自己安装的 mods 影响。",
+    "cc-plugin-telemetry": "发送 Claude Code 及其内置 mods 的指标。"
+  }
+}

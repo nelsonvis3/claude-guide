@@ -1,0 +1,849 @@
+{
+  "meta": {
+    "title": "Claude Code Pfad",
+    "description": "Vom Einsteiger zum Profi in Claude Code: was du je nach Arbeitsweise ausgibst, welches Modell passt und was du zuerst lernen solltest."
+  },
+  "nav": {
+    "route": "Mein Pfad",
+    "guide": "Spickzettel",
+    "savedLocal": "Dein Pfad wird in diesem Browser gespeichert. Kein Konto nötig.",
+    "lang": "Sprache",
+    "unofficial": "Unabhängiges Projekt, nicht mit Anthropic verbunden. Preise und Funktionen stammen aus der offiziellen Claude-Code-Dokumentation, Stand 18. Oktober 2026.",
+    "docs": "Offizielle Dokumentation",
+    "skip": "Zum Inhalt springen"
+  },
+  "mascot": {
+    "name": "Tilde",
+    "greet": "Miau! Ich bin Tilde. Ich helfe dir, in Claude Code vom Einsteiger zum Profi zu werden.",
+    "greet2": "Beantworte sieben Fragen und ich zeichne deinen Pfad: was du lernen solltest, welches Modell und welche Skills passen und was du ausgibst.",
+    "askName": "Zuerst: Wie soll ich dich nennen?",
+    "askUse": "Super, {name}. Wofür wirst du Claude Code hauptsächlich nutzen?",
+    "askExp": "Wie viel hast du es bisher genutzt?",
+    "askTime": "Wie viel Zeit wirst du damit verbringen?",
+    "askModel": "Mit welchem Modell wirst du arbeiten? Wenn du unsicher bist: Sonnet ist der Startpunkt, den die Doku empfiehlt.",
+    "askFeatures": "Letzte Frage: Was willst du dazunehmen? Die grünen sparen Tokens, die anderen bringen mehr Leistung und Verbrauch.",
+    "done": "Fertig, {name}! Unten siehst du deinen geschätzten Verbrauch und deinen Pfad. Ändere eine Antwort und die Zahlen passen sich an.",
+    "reactCheap": "Das passt locker in den Pro-Plan.",
+    "reactMid": "Dieses Tempo verlangt schon einen Max-Plan.",
+    "reactHigh": "Wow, intensive Nutzung! Schau dir die Spartipps an.",
+    "anon": "Entdecker",
+    "askRole": "Und was machst du beruflich? Dann empfehle ich dir die passenden Skills und Plugins."
+  },
+  "onboarding": {
+    "start": "Los geht's",
+    "next": "Weiter",
+    "back": "Zurück",
+    "skip": "Überspringen",
+    "finish": "Meinen Pfad ansehen",
+    "namePlaceholder": "Dein Name oder Spitzname",
+    "step": "Frage {n} von {total}",
+    "hours": "Stunden pro Tag",
+    "days": "Tage pro Woche",
+    "hoursValue": "{n} Std.",
+    "daysValue": "{n} Tage",
+    "effort": "Denkaufwand",
+    "effortHint": "Mehr Aufwand = mehr Reasoning-Tokens, die als Ausgabe berechnet werden. Sonnet 5.5 und Opus 5.5 stehen standardmäßig auf mittel.",
+    "subagentModel": "Modell der Subagenten",
+    "advisorModel": "Berater-Modell",
+    "inherit": "Wie die Sitzung",
+    "restart": "Neu beantworten",
+    "more": "Was ist das?"
+  },
+  "uses": {
+    "learn": {
+      "t": "Lernen und erkunden",
+      "d": "Fremden Code verstehen, eine Sprache lernen, Fragen stellen."
+    },
+    "fixes": {
+      "t": "Bugs und kleine Änderungen",
+      "d": "Fehler beheben, Styles anpassen, einzelne Aufgaben."
+    },
+    "fullstack": {
+      "t": "Tägliche Entwicklung",
+      "d": "Komplette Features in einer App, jeden Tag."
+    },
+    "refactor": {
+      "t": "Große Refactorings",
+      "d": "Migrationen, Änderungen über viele Dateien, Audits."
+    },
+    "automation": {
+      "t": "Automatisieren",
+      "d": "CI, PR-Reviews, geplante Aufgaben, Skripte."
+    },
+    "content": {
+      "t": "Wenig Programmieren",
+      "d": "Einfache Websites, Dokumente, Daten, Prototypen."
+    }
+  },
+  "experience": {
+    "new": {
+      "t": "Noch nie benutzt",
+      "d": "Wir starten bei der Installation."
+    },
+    "some": {
+      "t": "Ein bisschen ausprobiert",
+      "d": "Einfache Dinge kann ich schon anfragen."
+    },
+    "daily": {
+      "t": "Nutze es oft",
+      "d": "Ich will alles herausholen."
+    }
+  },
+  "models": {
+    "haiku": {
+      "t": "Haiku 5.5",
+      "d": "Das schnellste und günstigste. Ideal zum Erkunden und für Subagenten."
+    },
+    "sonnet": {
+      "t": "Sonnet 5.5",
+      "d": "Die Balance: die meisten Coding-Aufgaben."
+    },
+    "opus": {
+      "t": "Opus 5.5",
+      "d": "Komplexes Denken und Architektur. Standardmodell bei Pro und Max."
+    },
+    "fable": {
+      "t": "Fable 5.1",
+      "d": "Das leistungsstärkste, für die längsten und schwierigsten Aufgaben. Das teuerste."
+    }
+  },
+  "effortLevels": {
+    "low": "Niedrig",
+    "medium": "Mittel",
+    "high": "Hoch",
+    "xhigh": "Sehr hoch",
+    "max": "Maximum"
+  },
+  "features": {
+    "clear": {
+      "t": "/clear zwischen Aufgaben",
+      "d": "Bei Themenwechsel neu anfangen. Alter Kontext wird bei jeder Nachricht bezahlt."
+    },
+    "plan": {
+      "t": "Plan mode",
+      "d": "Claude erkundet und schlägt vor, bevor es Code anfasst. Vermeidet doppelte Arbeit."
+    },
+    "hooks": {
+      "t": "Filternde Hooks",
+      "d": "Skripte, die lange Ausgaben (Tests, Logs) kürzen, bevor Claude sie liest."
+    },
+    "codeintel": {
+      "t": "Code Intelligence",
+      "d": "Sprach-Plugin: springt direkt zur Definition, statt ganze Dateien zu lesen."
+    },
+    "skills": {
+      "t": "Skills",
+      "d": "Wiederverwendbare Anweisungen und Workflows, die nur bei Bedarf geladen werden."
+    },
+    "mcp": {
+      "t": "MCP-Server",
+      "d": "Claude mit GitHub, Notion, Datenbanken, dem Browser … verbinden."
+    },
+    "subagents": {
+      "t": "Subagenten",
+      "d": "Helfer mit eigenem Kontext, die dir eine Zusammenfassung zurückgeben."
+    },
+    "advisor": {
+      "t": "Berater (advisor)",
+      "d": "Ein stärkeres Modell, das Claude in Schlüsselmomenten fragt."
+    },
+    "loop": {
+      "t": "/loop",
+      "d": "Einen Prompt alle X Minuten wiederholen, solange die Sitzung offen ist."
+    },
+    "ultracode": {
+      "t": "Ultracode / Workflows",
+      "d": "Claude orchestriert per Skript viele Subagenten für große Aufgaben."
+    },
+    "teams": {
+      "t": "Agent Teams",
+      "d": "Mehrere koordinierte Claude-Instanzen. Experimentell und sehr teuer."
+    },
+    "fast": {
+      "t": "Fast mode",
+      "d": "Schnelleres Opus zum doppelten Preis. Betrifft nur Opus."
+    }
+  },
+  "results": {
+    "title": "Dein geschätzter Verbrauch",
+    "lead": "Was du mit dieser Nutzung über die API ausgeben würdest. Bei Pro und Max zahlst du nicht pro Token: Der Verbrauch zählt gegen die Limits deines Plans.",
+    "day": "Pro Tag",
+    "week": "Pro Woche",
+    "month": "Pro Monat",
+    "tokens": "{n} Tokens",
+    "planTitle": "Empfohlener Plan",
+    "planNote": "Unsere Faustregel: Anthropic veröffentlicht keinen Dollar-Gegenwert pro Plan. Max 5x und Max 20x bieten das 5- bzw. 20-Fache der Pro-Nutzung pro Sitzung, mit Limits, die sich alle 5 Stunden und jede Woche erneuern. /usage zeigt, wie viel dir bleibt.",
+    "adjust": "Anpassen",
+    "disclaimer": "Schätzung. Der echte Verbrauch hängt von Projektgröße, Sitzungsdauer und davon ab, wie viel Claude liest. Kalibriert am offiziellen Durchschnitt: etwa 13 US$ pro Entwickler und aktivem Tag, und unter 30 US$ für 90 % der Nutzer.",
+    "you": "Du"
+  },
+  "plans": {
+    "pro": {
+      "t": "Pro · 20 US$/Monat",
+      "d": "Reicht zum Lernen und für leichte bis mittlere Nutzung."
+    },
+    "max5": {
+      "t": "Max 5x · 100 US$/Monat",
+      "d": "Für mehrere Stunden täglich mit Claude Code."
+    },
+    "max20": {
+      "t": "Max 20x · 200 US$/Monat",
+      "d": "Intensive Nutzung den ganzen Tag, mit Opus und Subagenten."
+    },
+    "max20plus": {
+      "t": "Max 20x + Guthaben, oder die API",
+      "d": "Bei diesem Volumen überschreitest du wahrscheinlich die Limits. Aktiviere Nutzungsguthaben oder zahle über die API mit Ausgabenlimits."
+    }
+  },
+  "charts": {
+    "modelsTitle": "Gleiche Nutzung, anderes Modell",
+    "modelsLead": "Was dein Tag mit jedem Modell allein kosten würde, ohne Berater und Subagenten. Der Unterschied ist der Preis pro Token: Opus 5.5 kostet doppelt so viel wie Sonnet 5.5, Fable 5.1 das Fünffache und Haiku 5.5 einen Bruchteil.",
+    "strategiesTitle": "Modelle kombinieren",
+    "strategiesLead": "Jedes Modell bei dem, was es am besten kann: Sonnet baut, Haiku erkundet, Opus prüft.",
+    "strategies": {
+      "opusAll": "Opus für alles",
+      "sonnetAll": "Sonnet für alles",
+      "trio": "Sonnet + Haiku-Subagenten + Opus-Berater",
+      "haikuAdvisor": "Haiku + Opus-Berater"
+    },
+    "trioNote": "Der Trick, der in sozialen Netzen kursiert, ist `claude --advisor opus --subagents haiku`. Das Flag `--advisor` gibt es, `--subagents` steht aber nicht in der Dokumentation. Der dokumentierte Weg, Subagenten auf Haiku laufen zu lassen, ist die Umgebungsvariable:",
+    "trioWhy": "Der Berater liest bei jedem Aufruf die ganze Unterhaltung, ohne Cache, das kostet also zusätzlich. Dafür bekommst du Qualität bei schwierigen Entscheidungen, ohne ständig für Opus zu zahlen.",
+    "breakdownTitle": "Wohin geht das Geld?",
+    "breakdownLead": "Claude Code schickt bei jeder Anfrage die ganze Unterhaltung erneut. Deshalb sind fast alle Tokens Cache-Lesezugriffe: pro Token spottbillig, aber es sind Millionen. In Dollar wiegen Cache-Schreibzugriffe und Ausgabe mehr: wenige Tokens, aber teuer. Kurze Sitzungen und /clear verringern beides.",
+    "parts": {
+      "cacheRead": "Cache lesen",
+      "cacheWrite": "Cache schreiben",
+      "input": "Neue Eingabe",
+      "output": "Ausgabe und Reasoning"
+    },
+    "perDay": "{v} pro Tag",
+    "table": "Als Tabelle anzeigen",
+    "model": "Modell",
+    "cost": "Kosten pro Tag",
+    "selected": "dein Modell",
+    "rowTokens": "Tokens",
+    "rowUsd": "Kosten"
+  },
+  "phases": {
+    "start": {
+      "t": "Erste Schritte",
+      "d": "Tag 1: installieren, Kontext geben, gut fragen."
+    },
+    "habits": {
+      "t": "Gewohnheiten",
+      "d": "Woche 1: planen, prüfen, Modell wählen."
+    },
+    "extend": {
+      "t": "Erweitern",
+      "d": "Monat 1: Skills, MCP, Hooks, Subagenten und Plugins."
+    },
+    "pro": {
+      "t": "Profi",
+      "d": "Automatisieren, parallelisieren und Modelle kombinieren."
+    }
+  },
+  "route": {
+    "title": "Dein Pfad",
+    "lead": "Hake ab, was du schon beherrschst. Starte beim markierten Abschnitt.",
+    "startHere": "Hier starten",
+    "done": "Beherrsche ich",
+    "progress": "{done} von {total} beherrscht",
+    "tryIt": "Probier es aus",
+    "doc": "In der Doku lesen",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "forYou": "Für deine Nutzung",
+    "inEstimate": "In deiner Schätzung"
+  },
+  "nodes": {
+    "install": {
+      "t": "Installieren und anmelden",
+      "d": "Installiere Claude Code, öffne ein Terminal in deinem Projekt und tippe claude. Melde dich mit deinem Pro- oder Max-Plan oder einem API-Schlüssel an."
+    },
+    "init": {
+      "t": "/init und CLAUDE.md",
+      "d": "/init liest dein Projekt und schreibt eine CLAUDE.md mit Befehlen, Konventionen und Struktur. Claude liest sie zu Beginn jeder Sitzung."
+    },
+    "prompting": {
+      "t": "Richtig fragen",
+      "d": "Sag, welche Datei, welches Szenario und woran es merkt, dass es fertig ist. Vage Anfragen lassen es das ganze Projekt lesen und mehr ausgeben.",
+      "p": "Nutzer können sich nach Ablauf der Sitzung nicht mehr anmelden. Prüfe src/auth, vor allem das Token-Refresh. Schreib einen fehlschlagenden Test, behebe den Fehler und führe die Tests aus."
+    },
+    "modes": {
+      "t": "Berechtigungsmodi",
+      "d": "Shift+Tab wechselt zwischen Manuell (fragt alles), Änderungen akzeptieren, Plan mode und Auto. Im Auto-Modus prüft ein Klassifikator jede Aktion im Hintergrund."
+    },
+    "mentions": {
+      "t": "@ und !",
+      "d": "@ erwähnt eine Datei, damit Claude sie liest. ! führt einen Befehl in deinem Terminal aus und fügt die Ausgabe der Unterhaltung hinzu."
+    },
+    "interrupt": {
+      "t": "Stoppen und zurückspulen",
+      "d": "Esc stoppt Claude, ohne erledigte Arbeit zu verlieren. Zweimal Esc oder /rewind setzt Unterhaltung und Code auf einen früheren Punkt zurück."
+    },
+    "context": {
+      "t": "Kontext pflegen",
+      "d": "/clear fängt neu an, /compact fasst das Bisherige zusammen und /context zeigt, was Platz belegt. Kleiner Kontext = bessere und günstigere Antworten."
+    },
+    "usage": {
+      "t": "Verbrauch ansehen",
+      "d": "/usage zeigt, was die Sitzung gekostet hat, wie viel vom Plan übrig ist und welche Skills, MCP-Server oder Subagenten am meisten verbrauchen."
+    },
+    "planmode": {
+      "t": "Erkunden, planen, programmieren",
+      "d": "Der empfohlene Ablauf: Plan mode zum Lesen und Vorschlagen, du genehmigst den Plan, Claude setzt um und committet. Wenn die Änderung in einen Satz passt, lass den Plan weg."
+    },
+    "verify": {
+      "t": "Eine Prüfmöglichkeit geben",
+      "d": "Das verbessert das Ergebnis am meisten: Tests, ein Screenshot zum Vergleichen oder die erwartete Ausgabe. Kann es selbst prüfen, behebt es eigene Fehler.",
+      "p": "Schreib eine Funktion validateEmail. Fälle: user@example.com ist gültig, invalid nicht, user@.com nicht. Führe nach der Umsetzung die Tests aus."
+    },
+    "models": {
+      "t": "Modell und Aufwand",
+      "d": "/model wechselt das Modell und /effort stellt ein, wie viel es nachdenkt. Schreib ultrathink in einen Prompt für tieferes Nachdenken nur in diesem Zug."
+    },
+    "sessions": {
+      "t": "Sitzungen",
+      "d": "claude --continue setzt die letzte Sitzung fort und /resume wählt eine aus. /rename benennt sie und /branch probiert einen anderen Weg, ohne den aktuellen zu verlieren."
+    },
+    "btw": {
+      "t": "Nebenfragen",
+      "d": "/btw stellt eine kurze Frage zur Sitzung, ohne sie der Unterhaltung hinzuzufügen oder den Kontext zu belasten."
+    },
+    "images": {
+      "t": "Bilder und Screenshots",
+      "d": "Füge mit Ctrl+V einen Screenshot ein: ein Design zum Umsetzen, einen Fehler auf dem Bildschirm oder ein Diagramm. Claude sieht es und vergleicht es mit dem Ergebnis."
+    },
+    "review": {
+      "t": "Vor dem Commit prüfen",
+      "d": "/diff zeigt die Änderungen, /code-review sucht Bugs in deinem Diff und /security-review sucht Sicherheitslücken."
+    },
+    "automode": {
+      "t": "Auto mode",
+      "d": "Claude arbeitet, ohne bei jedem Schritt um Erlaubnis zu fragen, mit Sicherheitsprüfungen im Hintergrund. Für lange Aufgaben."
+    },
+    "claudemd": {
+      "t": "Eine gute CLAUDE.md",
+      "d": "Unter 200 Zeilen: Befehle, die es nicht erraten würde, projekteigene Regeln und bekannte Stolperfallen. Was nicht immer gebraucht wird, gehört in einen Skill."
+    },
+    "skills": {
+      "t": "Skills",
+      "d": "Eine SKILL.md mit Anweisungen oder einem Workflow (Deploy, Release, Review). Bis zur Nutzung belegt nur die Beschreibung Kontext. Aufruf mit /name."
+    },
+    "mcp": {
+      "t": "MCP",
+      "d": "Verbindet Claude mit externen Diensten: GitHub, Notion, Slack, Datenbanken, Figma. Werkzeuge laden bei Bedarf. Gibt es eine CLI (gh, aws), ist sie meist günstiger."
+    },
+    "hooks": {
+      "t": "Hooks",
+      "d": "Skripte, die bei Ereignissen von selbst laufen: nach jeder Änderung formatieren oder gefährliche Befehle blockieren. Sie verbrauchen keinen Kontext, außer sie geben etwas zurück. Es sind Regeln, die immer gelten, keine Bitten."
+    },
+    "subagents": {
+      "t": "Subagenten",
+      "d": "Claude delegiert eine Aufgabe an einen Agenten mit eigenem Kontext (Explore, Plan oder deinen eigenen) und bekommt nur die Zusammenfassung. Deine Unterhaltung bleibt sauber."
+    },
+    "plugins": {
+      "t": "Plugins und Marketplaces",
+      "d": "Pakete, die Skills, Hooks, Subagenten und MCP bündeln. Installation über /plugin, auch aus den offiziellen Marketplaces von Anthropic."
+    },
+    "codeintel": {
+      "t": "Code Intelligence",
+      "d": "Language-Server-Plugins (TypeScript, Python …). Claude springt zur Definition und sieht Typfehler beim Bearbeiten, statt ganze Dateien zu lesen."
+    },
+    "mods": {
+      "t": "Mods",
+      "d": "Ändern Oberfläche und Verhalten von Claude Code: Panels, eigene Befehle und Regeln für Werkzeugaufrufe. Lass dir von Claude einen schreiben."
+    },
+    "styles": {
+      "t": "Output Styles",
+      "d": "Ändern Ton und Format aller Antworten: knapper, erklärender oder eine andere Rolle als Softwareentwickler."
+    },
+    "statusline": {
+      "t": "Statuszeile",
+      "d": "Eine Leiste mit dem, was du immer sehen willst: Modell, Kontext-%, Kosten, Git-Branch."
+    },
+    "advisor": {
+      "t": "Der Berater",
+      "d": "Claude fragt ein stärkeres Modell, bevor es sich auf einen Ansatz festlegt, wenn ein Fehler wiederkehrt oder bevor es etwas für erledigt erklärt. Aktivieren mit --advisor, /advisor oder advisorModel."
+    },
+    "subagentModel": {
+      "t": "Sonnet baut, Haiku erkundet, Opus prüft",
+      "d": "Sitzung auf Sonnet, Subagenten auf Haiku und Opus als Berater: jedes Modell in seiner Rolle. Achtung: --subagents ist kein dokumentiertes Flag; nutze die Variable CLAUDE_CODE_SUBAGENT_MODEL."
+    },
+    "opusplan": {
+      "t": "opusplan",
+      "d": "Nutzt Opus im Plan mode und wechselt zur Umsetzung zu Sonnet. Teuer denken, günstig ausführen."
+    },
+    "loop": {
+      "t": "/loop",
+      "d": "Wiederholt einen Prompt in einem Intervall, solange die Sitzung offen ist: ein Deployment beobachten, CI prüfen. Jeder Durchlauf schickt den Kontext erneut, also achte aufs Intervall."
+    },
+    "routines": {
+      "t": "Routines",
+      "d": "Geplante Aufgaben, die in der Cloud laufen, auch wenn dein Rechner aus ist: jeden Morgen PRs prüfen, Abhängigkeiten auditieren."
+    },
+    "background": {
+      "t": "Hintergrund-Agenten",
+      "d": "/background lässt die Sitzung allein weiterlaufen, /fork kopiert sie und /subtask startet einen Subagenten mit der ganzen Unterhaltung. claude agents zeigt alle an."
+    },
+    "worktrees": {
+      "t": "Worktrees",
+      "d": "Mehrere Sitzungen parallel im selben Repo, ohne sich in die Quere zu kommen: jede in ihrem eigenen Git-Worktree."
+    },
+    "goal": {
+      "t": "/goal",
+      "d": "Du gibst eine Abschlussbedingung vor und Claude arbeitet Zug um Zug weiter, bis sie erfüllt ist."
+    },
+    "workflows": {
+      "t": "Workflows und /batch",
+      "d": "Für Aufgaben, die über ein paar Subagenten hinausgehen: Claude schreibt ein Skript, das die Arbeit auf viele Agenten verteilt und die Ergebnisse gegenprüft."
+    },
+    "teams": {
+      "t": "Agent Teams",
+      "d": "Mehrere Claude-Instanzen mit gemeinsamen Aufgaben und Nachrichten. Experimentell: verbraucht etwa 7-mal mehr Tokens mit Teammitgliedern im Plan mode."
+    },
+    "headless": {
+      "t": "Headless-Modus und Agent SDK",
+      "d": "claude -p läuft ohne Oberfläche, für Skripte und CI. Mit dem Agent SDK (Python und TypeScript) baust du eigene Agenten auf der Engine von Claude Code."
+    },
+    "github": {
+      "t": "GitHub Actions",
+      "d": "Erwähne @claude in einem Issue oder PR und es antwortet, prüft oder öffnet einen PR über Actions."
+    },
+    "chrome": {
+      "t": "Claude in Chrome",
+      "d": "Claude öffnet deine App im Browser, klickt, liest die Konsole und prüft, ob die Änderung wirklich funktioniert."
+    },
+    "insights": {
+      "t": "/insights",
+      "d": "Ein Bericht über deine Arbeitsweise: welche Projekte, wo es hakt und welche Funktionen du ausprobieren solltest."
+    },
+    "runverify": {
+      "t": "/run und /verify",
+      "d": "Claude startet deine App und prüft, ob die Änderung wirklich funktioniert, nicht nur ob die Tests grün sind. /run-skill-generator bringt ihm bei, dein Projekt zu starten."
+    },
+    "simplify": {
+      "t": "/simplify",
+      "d": "Vor dem Commit prüfen vier Agenten deine Änderung auf doppelten Code, unnötige Komplexität und Langsamkeit und wenden die Korrekturen an."
+    },
+    "skilldoctor": {
+      "t": "/skill-doctor",
+      "d": "Zeigt, wie viele Tokens jeder Skill kostet und wie oft du ihn nutzt. Schalte überflüssige ab: Jede Beschreibung belegt bei jeder Nachricht Kontext."
+    },
+    "fewerprompts": {
+      "t": "/fewer-permission-prompts",
+      "d": "Schaut sich deine Sitzungen an und erlaubt deine häufigsten sicheren Befehle, damit es nicht bei jedem ls oder git status um Erlaubnis fragt."
+    },
+    "debug": {
+      "t": "/debug und /doctor",
+      "d": "Wenn etwas nicht klappt (ein Hook läuft nicht, ein MCP verbindet sich nicht), schaltet /debug das Log ein und liest es für dich. /doctor prüft die ganze Installation und schlägt Korrekturen vor."
+    },
+    "deepresearch": {
+      "t": "/deep-research",
+      "d": "Ein mitgelieferter Workflow, der parallel im Web sucht, Quellen abgleicht und dir einen Bericht mit Belegen liefert."
+    },
+    "ultrareview": {
+      "t": "/code-review ultra",
+      "d": "Tiefes Review mit mehreren Agenten in der Cloud vor dem Merge. /autofix-pr beobachtet deinen PR und pusht Korrekturen, wenn CI fehlschlägt."
+    },
+    "remote": {
+      "t": "Vom Handy oder einem anderen Rechner",
+      "d": "/remote-control öffnet die Sitzung auf claude.ai oder in der Handy-App, /teleport holt eine Cloud-Sitzung ins Terminal und /desktop übergibt sie an die Desktop-App."
+    }
+  },
+  "anatomy": {
+    "title": "Anatomie eines guten Prompts",
+    "bad": "Vorher",
+    "good": "Nachher",
+    "badPrompt": "behebe den Login-Bug",
+    "goodParts": [
+      "Nutzer können sich nach Ablauf der Sitzung nicht mehr anmelden.",
+      "Prüfe src/auth, vor allem das Token-Refresh.",
+      "Schreib einen Test, der den Fehler reproduziert, behebe ihn und führe die Tests aus.",
+      "Finde die Ursache, kaschiere nicht das Symptom."
+    ],
+    "why": "Der erste zwingt Claude zu raten und das halbe Projekt zu lesen. Der zweite sagt, was passiert, wo es suchen soll, woran es merkt, dass es fertig ist, und was es vermeiden soll.",
+    "parts": {
+      "symptom": "Das Symptom",
+      "where": "Wo suchen",
+      "verify": "Wie prüfen",
+      "constraint": "Was vermeiden"
+    }
+  },
+  "tips": {
+    "saveTitle": "Weniger ausgeben",
+    "save": [
+      "/clear bei jedem Aufgabenwechsel. Eine kurze Nachricht in einer langen Sitzung liest den gesamten Verlauf neu.",
+      "Sonnet für den Alltag; Opus oder Fable nur für schwierige Entscheidungen. Noch besser: Sonnet mit Opus als Berater.",
+      "Subagenten auf Haiku mit CLAUDE_CODE_SUBAGENT_MODEL=haiku.",
+      "Senke den Aufwand (/effort low) bei mechanischen Aufgaben.",
+      "Gibt es eine CLI (gh, aws), ist sie leichter als ein MCP-Server. Deaktiviere ungenutzte MCP-Server mit /mcp.",
+      "CLAUDE.md kurz halten; Spezielles gehört in Skills.",
+      "Nach über einer Stunde Pause läuft der Cache ab und die erste Nachricht verarbeitet alles neu. Lieber /clear, als etwas Riesiges fortzusetzen."
+    ],
+    "maxTitle": "Das Maximum herausholen",
+    "max": [
+      "Gib ihm immer eine Prüfmöglichkeit: Tests, Screenshots, erwartete Ausgabe.",
+      "Plan mode, wenn du beim Ansatz unsicher bist oder viele Dateien betroffen sind.",
+      "Ein Opus-Berater bei langen Aufgaben: Refactorings, wiederkehrende Bugs.",
+      "Eine Sitzung schreibt, eine andere prüft: Der Prüfer ist nicht von seinem eigenen Code voreingenommen.",
+      "Worktrees und Hintergrund-Agenten, um parallel zu arbeiten.",
+      "Hooks für das, was immer passieren muss; Skills für das, was Urteilsvermögen braucht.",
+      "Führe ab und zu /insights aus, um zu sehen, wo du Zeit verlierst."
+    ]
+  },
+  "guide": {
+    "title": "Claude Code Spickzettel",
+    "lead": "Die Befehle, Tastenkürzel und Modi, die sich am meisten lohnen. Alle mit der offiziellen Dokumentation abgeglichen.",
+    "commands": "Befehle",
+    "shortcuts": "Tastenkürzel",
+    "modes": "Berechtigungsmodi",
+    "filter": "Befehle und Skills filtern",
+    "empty": "Kein Befehl passt zu „{q}“. Versuch ein anderes Wort.",
+    "back": "Zurück zu meinem Pfad",
+    "skills": "Mitgelieferte Skills",
+    "skillsLead": "Sie sind in Claude Code enthalten: nichts zu installieren. Aufruf mit /name; Claude nutzt sie auch selbst, wenn sie helfen.",
+    "mods": "Mods",
+    "plugins": "Plugins",
+    "jump": "Springe zu",
+    "roles": "Nach Rolle",
+    "community": "Community-Repos",
+    "communityLead": "Die meistgenutzten, mit GitHub-Sternen vom 18. Oktober 2026. Sie sind nicht von Anthropic: Prüfe jedes vor der Installation.",
+    "group": {
+      "tokens": "Weniger Tokens verbrauchen",
+      "workflow": "Workflows und Sammlungen",
+      "video": "Video"
+    },
+    "askills": "Anthropic-Skills",
+    "askillsLead": "Das offizielle Repo anthropics/skills: Office-Dokumente und PDF, Design, generative Kunst, Web-Tests und mehr. Installation in zwei Paketen.",
+    "knowledge": "Plugins nach Arbeitsbereich",
+    "knowledgeLead": "anthropics/knowledge-work-plugins hat 123 Plugins für Arbeit jenseits von Code. Das hier sind die von Anthropic, eines pro Bereich."
+  },
+  "commands": {
+    "init": "Analysiert das Projekt und erstellt eine CLAUDE.md.",
+    "clear": "Neue Unterhaltung mit leerem Kontext.",
+    "compact": "Fasst die Unterhaltung zusammen, um Kontext freizugeben. Nimmt Anweisungen an, was erhalten bleiben soll.",
+    "context": "Zeigt als Raster, was den Kontext belegt, mit Vorschlägen.",
+    "usage": "Sitzungskosten, Plan-Limits und was am meisten verbraucht. Aliase: /cost, /stats.",
+    "model": "Wechselt das Modell; mit den Pfeiltasten stellst du den Aufwand ein.",
+    "effort": "Denkstufe: low, medium, high, xhigh, max oder ultracode.",
+    "plan": "Wechselt in den Plan mode und beginnt mit der angegebenen Aufgabe.",
+    "rewind": "Setzt Unterhaltung und Code auf einen früheren Punkt zurück.",
+    "resume": "Setzt eine frühere Unterhaltung fort.",
+    "btw": "Nebenfrage, die nicht in die Unterhaltung kommt.",
+    "diff": "Prüft die Änderungen im Arbeitsverzeichnis.",
+    "code-review": "Sucht Bugs in deinem Diff, einem PR oder einem Branch. --fix wendet die Korrekturen an.",
+    "security-review": "Sucht Sicherheitslücken in den Änderungen deines Branches.",
+    "memory": "Bearbeitet CLAUDE.md-Dateien und das automatische Gedächtnis.",
+    "skills": "Listet Skills auf; mit t nach Tokens sortieren.",
+    "mcp": "Verwaltet MCP-Server: verbinden, aktivieren, deaktivieren.",
+    "hooks": "Zeigt die konfigurierten Hooks.",
+    "plugin": "Installiert, aktiviert und deaktiviert Plugins.",
+    "agents": "Erinnerung zum Erstellen oder Bearbeiten von Subagenten.",
+    "advisor": "Schaltet den Berater ein: fable, opus, sonnet oder off.",
+    "loop": "Wiederholt einen Prompt in einem Intervall.",
+    "schedule": "Erstellt Routines, die in der Cloud laufen.",
+    "goal": "Claude arbeitet, bis eine Bedingung erfüllt ist.",
+    "background": "Schickt die Sitzung in den Hintergrund.",
+    "fork": "Kopiert die Unterhaltung in eine Hintergrundsitzung.",
+    "subtask": "Startet einen Subagenten mit der ganzen Unterhaltung.",
+    "batch": "Große Änderungen parallel: teilt in 5 bis 30 Einheiten auf.",
+    "output-style": "Ändert den Antwortstil.",
+    "statusline": "Richtet die Statuszeile ein.",
+    "insights": "HTML-Bericht darüber, wie du Claude Code nutzt.",
+    "doctor": "Prüft Installation, Einstellungen und CLAUDE.md und schlägt Korrekturen vor.",
+    "powerup": "Interaktive Lektionen zu Funktionen, mit animierten Demos.",
+    "fast": "Schaltet den Fast mode ein oder aus.",
+    "permissions": "Regeln zum Erlauben, Nachfragen und Verweigern.",
+    "export": "Exportiert die Unterhaltung als Text.",
+    "ultrareview": "Tiefes Code-Review mit mehreren Agenten in der Cloud. Alias für /code-review ultra.",
+    "autofix-pr": "Startet eine Cloud-Sitzung, die den PR deines Branches beobachtet und Korrekturen pusht, wenn CI fehlschlägt oder Kommentare kommen.",
+    "skill-doctor": "Wie viel Kontext jeder Skill kostet und wie oft du ihn nutzt, um überflüssige abzuschalten.",
+    "team-onboarding": "Erstellt aus deiner Nutzung der letzten 30 Tage einen Onboarding-Leitfaden für Teammitglieder.",
+    "import": "Übernimmt deine Konfiguration aus Codex, Gemini CLI oder Cursor: Anweisungen, MCP, Befehle, Subagenten und Skills.",
+    "remote-control": "Macht die Sitzung über claude.ai oder dein Handy erreichbar. Alias: /rc.",
+    "teleport": "Holt eine Cloud-Sitzung mit Branch und Unterhaltung in dein Terminal. Alias: /tp.",
+    "desktop": "Setzt die aktuelle Sitzung in der Desktop-App fort. Alias: /app.",
+    "focus": "Fokusansicht: nur dein letzter Prompt, eine Werkzeug-Zusammenfassung und die Antwort.",
+    "recap": "Einzeilige Zusammenfassung der Sitzung.",
+    "tasks": "Hintergrundarbeit ansehen und verwalten, auch beendete Subagenten.",
+    "workflows": "Fortschritt der Workflows: beobachten, pausieren, fortsetzen oder speichern.",
+    "sandbox": "Schaltet die Sandbox ein: begrenzt, welche Dateien und welches Netz Terminal-Befehle erreichen.",
+    "autocompact": "Wie voll der Kontext wird, bevor er automatisch komprimiert wird, zum Beispiel 500k.",
+    "add-dir": "Fügt der Sitzung ein weiteres Arbeitsverzeichnis hinzu.",
+    "cd": "Verschiebt die Sitzung in einen anderen Ordner, ohne die Unterhaltung zu verlieren.",
+    "keybindings": "Öffnet deine Tastenkürzel-Datei.",
+    "terminal-setup": "Richtet Shift+Enter für Zeilenumbrüche in VS Code, Cursor, Alacritty oder Zed ein.",
+    "voice": "Spracheingabe: halten oder tippen zum Aufnehmen.",
+    "usage-credits": "Nutzungsguthaben, um weiterzuarbeiten, wenn du das Plan-Limit erreichst.",
+    "rate-limit-options": "Optionen am Limit: warten und automatisch weitermachen, Guthaben oder Upgrade.",
+    "release-notes": "Changelog nach Version, ohne ihn der Unterhaltung hinzuzufügen.",
+    "artifacts": "Listet deine Artifacts, um sie anzuhängen, zu öffnen oder den Link zu kopieren.",
+    "auto-mode-setup": "Erstellt deine Auto-Mode-Konfiguration aus Projekt und letzten Sitzungen.",
+    "config": "Öffnet die Einstellungen oder setzt einen Wert direkt: /config theme=dark.",
+    "copy": "Kopiert die letzte Antwort oder einen Codeblock in die Zwischenablage.",
+    "rename": "Gibt der Sitzung einen Namen.",
+    "branch": "Verzweigt die Unterhaltung, um einen anderen Weg zu probieren, ohne den aktuellen zu verlieren.",
+    "theme": "Ändert das Farbschema, auch farbenblindfreundliche Themes.",
+    "tui": "Ändert die Terminal-Darstellung; fullscreen verhindert Flackern.",
+    "reload-plugins": "Lädt Plugins ohne Neustart neu.",
+    "reload-skills": "Sucht ohne Neustart nach neuen oder geänderten Skills.",
+    "list-agents": "Listet die Subagenten, Teammitglieder und Sitzungen, denen Claude schreiben kann.",
+    "artifact-capabilities": "Was ein veröffentlichtes Artifact kann: deine Konnektoren nutzen, Downloads anbieten und mehr.",
+    "artifact-diagramming": "Anleitung, damit Claude SVG-Diagramme zeichnet, die hell und dunkel gut lesbar sind.",
+    "claude-api": "Referenz für Claude API und Managed Agents: Modelle migrieren, Prompts prüfen, Kosten optimieren.",
+    "claude-in-chrome": "Claude erledigt eine Aufgabe in deinem Browser: Seite testen, Formular ausfüllen, Konsole lesen.",
+    "dataviz": "Leitfaden für Diagramme und Dashboards: wählt die Form, prüft die Palette auf Farbenblindheit und Kontrast.",
+    "debug": "Schaltet das Debug-Log ein und liest es, um Sitzungsprobleme zu diagnostizieren.",
+    "deep-research": "Workflow: sucht parallel im Web, gleicht Quellen ab und schreibt einen Bericht mit Belegen.",
+    "design": "Entwürfe für Screens, Abläufe oder Landingpages als Artboards auf einem Claude-Design-Canvas.",
+    "design-sync": "Lädt das React-Designsystem deines Repos zu Claude Design hoch, damit es deine echten Komponenten nutzt.",
+    "fewer-permission-prompts": "Durchsucht deine Sitzungen und erlaubt deine häufigsten Nur-Lese-Befehle, damit es weniger fragt.",
+    "run": "Startet und bedient deine App, um die Änderung funktionieren zu sehen, nicht nur grüne Tests.",
+    "run-skill-generator": "Bringt /run und /verify per Projekt-Skill bei, wie deine App gebaut und gestartet wird.",
+    "simplify": "Vier Agenten prüfen deine Änderung parallel (Wiederverwendung, Einfachheit, Effizienz, Abstraktionsebene) und wenden Korrekturen an.",
+    "slides": "Erstellt aus deiner Anfrage eine Präsentation als Claude-Slides-Artifact.",
+    "update-config": "Du beschreibst eine Änderung (eine Berechtigung, eine Variable, einen Hook) und Claude bearbeitet die passende settings.json.",
+    "verify": "Prüft, ob eine Änderung tut, was sie soll: baut, startet und beobachtet die App.",
+    "workflow-authoring": "Referenz zum Schreiben dynamischer Workflow-Skripte."
+  },
+  "shortcuts": {
+    "cycleModes": "Wechselt die Berechtigungsmodi (Manuell, Änderungen akzeptieren, Plan, Auto).",
+    "interrupt": "Stoppt Claude, ohne erledigte Arbeit zu verlieren.",
+    "rewind": "Bei leerer Eingabe öffnet es das Menü zum Zurückspulen.",
+    "shell": "Am Anfang: führt einen Terminal-Befehl aus.",
+    "mention": "Erwähnt eine Datei.",
+    "editor": "Bearbeitet den Prompt (oder den Plan) in deinem Editor.",
+    "transcript": "Zeigt Details zu Werkzeugen und Reasoning.",
+    "history": "Durchsucht frühere Prompts.",
+    "pasteImage": "Fügt ein Bild aus der Zwischenablage ein.",
+    "background": "Schickt Befehle und Agenten in den Hintergrund.",
+    "todo": "Zeigt oder versteckt Claudes Aufgabenliste.",
+    "stash": "Legt einen halb geschriebenen Prompt beiseite und holt ihn zurück.",
+    "switchModel": "Wechselt das Modell, ohne den Prompt zu löschen.",
+    "fastToggle": "Schaltet den Fast mode ein oder aus.",
+    "help": "Bei leerer Eingabe zeigt es alle Tastenkürzel."
+  },
+  "modes": {
+    "default": "Manuell: liest nur, ohne zu fragen. Für sensible Arbeit oder unbekannten Code.",
+    "acceptEdits": "Bearbeitet Dateien und nutzt einfache Dateibefehle, ohne zu fragen.",
+    "plan": "Liest und schlägt einen Plan vor; ändert nichts, bis du zustimmst.",
+    "auto": "Macht alles, mit Sicherheitsprüfungen im Hintergrund. Für lange Aufgaben.",
+    "dontAsk": "Nur Vorab-Genehmigtes; alles andere wird abgelehnt. Für CI und Skripte.",
+    "bypassPermissions": "Alles ohne Nachfrage. Nur in isolierten Containern oder VMs."
+  },
+  "modGuide": {
+    "lead": "Ein Mod ist ein Plugin mit JavaScript- oder TypeScript-Code, der innerhalb von Claude Code läuft. Anders als Hooks, Skills und MCP kann er in der Oberfläche zeichnen und bei jedem Ereignis eingreifen.",
+    "canTitle": "Was er kann",
+    "can": [
+      "Panels neben der Unterhaltung oder ein Band über dem Prompt zeichnen, mit Tabs, Buttons und Textfeldern.",
+      "Ändern, was Claude Code schon zeichnet: die Zeile eines Werkzeugaufrufs, den Spinner, den Fragedialog.",
+      "Einen Werkzeugaufruf anhalten oder ändern: dich vorher fragen, ihn beantworten, ohne das Werkzeug auszuführen, oder eine Anfrage an ein anderes Modell schicken.",
+      "Einen /Befehl hinzufügen, der deine Funktion sofort ausführt, ohne einen Claude-Zug zu verbrauchen.",
+      "Daten zwischen Ereignissen teilen: zum Beispiel Werkzeugaufrufe zählen und die Zahl neben dem Spinner anzeigen."
+    ],
+    "samplesTitle": "Beispiel-Mods von Anthropic",
+    "samples": {
+      "token-weather": "Eine Wettervorhersage für deinen Kontext über dem Prompt.",
+      "blast-radius": "Hält riskante Befehle an (rm -rf, Force-Push), zeigt, was sie ändern würden, und lässt dich fortfahren oder abbrechen.",
+      "replay-theater": "Fügt /replay hinzu, um die Dateiänderungen des letzten Zugs Schritt für Schritt durchzugehen."
+    },
+    "createTitle": "Einen eigenen bauen",
+    "create": "Beschreib Claude, was du willst: Es lädt den Skill /plugin-authoring und schreibt den Mod für dich. Danach mit /reload-plugins neu laden.",
+    "builtin": "Du nutzt schon Mods: /diff ist ein mitgelieferter. In /plugin, Tab Installed, stehen sie unter Built-in.",
+    "safetyTitle": "Achte auf Sicherheit",
+    "safety": "Ein Mod läuft mit deinen Rechten und ohne Sandbox: Er liest und schreibt Dateien, sieht deine Prompts und kann Werkzeuge ohne Rückfrage genehmigen. Installiere nur von Autoren, die du kennst, und prüfe vorher, was er tut:"
+  },
+  "pluginGuide": {
+    "lead": "Ein Plugin bündelt Skills, Hooks, Subagenten, MCP-Server und Mods zu etwas, das du mit einem Befehl installierst. Der offizielle Marketplace ist schon eingerichtet und hat {total} Plugins: {anthropic} von Anthropic, der Rest von Firmen wie GitHub, Figma oder Vercel.",
+    "install": "Stöbern mit /plugin (Tab Discover) oder auf claude.com/marketplace/plugins. Zum Installieren:",
+    "anthropicTitle": "Die von Anthropic",
+    "lspTitle": "Code Intelligence nach Sprache",
+    "lsp": "Ein Plugin pro Sprache: Claude springt zu Definitionen und sieht Typfehler beim Bearbeiten.",
+    "partnersTitle": "Beliebte Konnektoren",
+    "community": "Es gibt auch einen Community-Marketplace: /plugin marketplace add anthropics/claude-plugins-community. Anthropic prüft Marketplaces von Dritten nicht, lies also vorher die Seite zur Plugin-Sicherheit.",
+    "snapshot": "Katalog abgerufen am 18. Oktober 2026. Er ändert sich oft."
+  },
+  "plugins": {
+    "feature-dev": "Kompletter Ablauf für Features, mit Agenten, die den Code erkunden, die Architektur entwerfen und die Qualität prüfen.",
+    "code-review": "Prüft PRs mit mehreren spezialisierten Agenten und filtert Fehlalarme nach Konfidenz.",
+    "pr-review-toolkit": "PR-Review-Agenten: Kommentare, Tests, Fehlerbehandlung, Typen und Vereinfachung.",
+    "commit-commands": "Befehle für Commit, Push und PRs.",
+    "code-simplifier": "Ein Agent, der neuen Code vereinfacht, ohne zu ändern, was er tut.",
+    "security-guidance": "Warnt beim Bearbeiten vor unsicheren Mustern und prüft Diff und Commits auf Sicherheitslücken.",
+    "claude-security": "Tiefer Schwachstellen-Scan deines Codes, bei dem jeder Fund vor dem Bericht hinterfragt wird.",
+    "frontend-design": "Oberflächen mit eigenem Design, weit weg vom generischen KI-Look.",
+    "claude-code-setup": "Analysiert deinen Code und empfiehlt passende Hooks, Skills, MCP und Subagenten.",
+    "claude-md-management": "Prüft deine CLAUDE.md-Dateien und hält sie mit dem Gelernten jeder Sitzung aktuell.",
+    "hookify": "Erstellt Hooks, die unerwünschtes Verhalten anhand von Markdown-Regeln blockieren.",
+    "skill-creator": "Erstellt neue Skills, verbessert bestehende und misst ihre Leistung.",
+    "plugin-dev": "Toolkit zum Entwickeln von Plugins: Hooks, MCP, Befehle und Agenten.",
+    "mcp-server-dev": "Leitfaden zum Entwerfen und Bauen von MCP-Servern, die gut mit Claude funktionieren.",
+    "agent-sdk-dev": "Toolkit für die Arbeit mit dem Claude Agent SDK.",
+    "ralph-loop": "Schleifen, in denen Claude dieselbe Aufgabe wiederholt und auf die vorige Arbeit schaut, bis sie erledigt ist (die Ralph-Wiggum-Technik).",
+    "playground": "Erstellt interaktive HTML-Playgrounds mit Reglern, Live-Vorschau und einem Prompt zum Kopieren.",
+    "session-report": "HTML-Bericht deiner Nutzung: Tokens, Cache-Effizienz, Subagenten und die teuersten Prompts.",
+    "receipts": "Wirkungsbericht: was du geliefert hast und in welchen Projekten, um die Nutzung gegenüber Vorgesetzten oder in einer Selbsteinschätzung zu belegen.",
+    "explanatory-output-style": "Ergänzt lehrreiche Erklärungen zu Implementierungsentscheidungen.",
+    "learning-output-style": "Lernmodus: lässt dich die wichtigsten Teile des Codes selbst schreiben.",
+    "code-modernization": "Geführte Modernisierung von Legacy-Code mit /modernize: Analyse, Karte, Geschäftsregeln und Plan.",
+    "project-artifact": "Veröffentlicht eine Projektstatusseite als teilbares Artifact.",
+    "github": "Issues, Pull Requests, Reviews und Repo-Suche mit GitHubs offiziellem MCP-Server.",
+    "figma": "Liest Designdateien, Komponenten und Tokens und macht daraus Code.",
+    "context7": "Aktuelle, versionsgenaue Dokumentation für jede Bibliothek.",
+    "playwright": "Browserautomatisierung und End-to-End-Tests (von Microsoft).",
+    "supabase": "Datenbank, Auth, Storage und SQL deiner Supabase-Projekte.",
+    "vercel": "Deployments, Build-Status, Logs und Domains.",
+    "stripe": "Stripe-Werkzeuge zum Entwickeln von Zahlungsintegrationen.",
+    "sentry": "Produktionsfehler, Stacktraces und Issue-Suche.",
+    "linear": "Issues und Projekte in Linear anlegen und aktualisieren.",
+    "notion": "Notion-Seiten und -Datenbanken suchen, anlegen und bearbeiten.",
+    "slack": "Nachrichten, Kanäle und Threads in deinem Slack durchsuchen.",
+    "chrome-devtools-mcp": "Steuert und untersucht Chrome: Performance, Netzwerk und Konsole.",
+    "firebase": "Firestore, Auth, Functions und Hosting von Firebase.",
+    "atlassian": "Jira und Confluence: Issues, Dokumentation und Sprints.",
+    "cloudflare": "Workers, Durable Objects, Wrangler und der Rest der Cloudflare-Plattform.",
+    "datadog": "Logs, Metriken, Traces und Dashboards von Datadog (Preview).",
+    "canva": "Canva-Designs erstellen, bearbeiten, anpassen und prüfen, über den Canva-MCP-Server.",
+    "adobe-for-creativity": "Adobes Kreativwerkzeuge: Bilder bearbeiten, Hintergründe entfernen, vektorisieren und Design automatisieren.",
+    "expo": "Die offiziellen Expo-Skills zum Bauen, Ausliefern und Debuggen von React-Native-Apps.",
+    "aws-core": "Auf AWS bauen, ausliefern und betreiben: Infrastructure as Code und Kerndienste.",
+    "duckdb-skills": "Jede Datendatei lesen und mit DuckDB abfragen.",
+    "databricks": "CLI, Apps, Lakebase, Jobs und Pipelines von Databricks.",
+    "grafana-mcp": "Grafana-Dashboards, Datenquellen, Alarme und Incidents.",
+    "swift-lsp": "Code Intelligence für Swift (SourceKit-LSP).",
+    "kotlin-lsp": "Code Intelligence für Kotlin."
+  },
+  "roles": {
+    "frontend": {
+      "t": "Frontend",
+      "d": "Oberflächen, die gut aussehen und funktionieren: Design, Komponenten, Tests im Browser und aktuelle Doku."
+    },
+    "backend": {
+      "t": "Backend",
+      "d": "APIs, Datenbanken und Sicherheit: große Codebasen durchsuchen, ohne alles zu lesen, Schwachstellen prüfen und Fehler im Blick behalten."
+    },
+    "fullstack": {
+      "t": "Fullstack",
+      "d": "Vom Design bis zum Deploy: komplette Workflows, Git, Code-Review und Gedächtnis über Sitzungen hinweg."
+    },
+    "mobile": {
+      "t": "Mobile",
+      "d": "React-Native- oder native Apps: Expo, Language Server für Swift und Kotlin und ein Backend."
+    },
+    "devops": {
+      "t": "DevOps",
+      "d": "Cloud, Monitoring und Automatisierung: Deployments, Alarme, geplante Aufgaben und Regeln, die immer gelten."
+    },
+    "data": {
+      "t": "Daten",
+      "d": "SQL, Tabellen und Visualisierung: Daten erkunden, Diagramme und Berichte mit Quellen erstellen."
+    },
+    "designer": {
+      "t": "Grafikdesign",
+      "d": "Poster, generative Kunst, Themes, Markenidentität und Anbindung an Canva, Adobe und Figma."
+    },
+    "video": {
+      "t": "Video",
+      "d": "Videos aus Code: Animationen, Untertitel, Stimmen und Export, dazu GIFs und Bildbearbeitung."
+    },
+    "marketing": {
+      "t": "Marketing und Content",
+      "d": "Kampagnen, Markenstimme, Dokumente, Präsentationen und Recherche mit Quellen."
+    },
+    "pm": {
+      "t": "Produkt (PM)",
+      "d": "Specs, Roadmaps, Tickets und Präsentationen, verbunden mit Linear, Jira und Notion."
+    },
+    "qa": {
+      "t": "QA und Testing",
+      "d": "End-to-End-Tests, Browser-Inspektion, PR-Review und Fehlerverfolgung."
+    },
+    "student": {
+      "t": "Studierende",
+      "d": "Beim Arbeiten lernen: erklärende Stile, interaktive Lektionen und ein Blick auf deine Ausgaben."
+    }
+  },
+  "recs": {
+    "title": "Empfohlen für deine Rolle",
+    "lead": "Wähle deine Rolle und wir zeigen, welche Skills, Plugins und Repos sich lohnen, samt Installationsbefehl.",
+    "pickRole": "Wähle deine Rolle",
+    "saversTitle": "Weniger Tokens verbrauchen",
+    "saversLead": "Nützlich für jede Rolle. Die Sparzahlen veröffentlicht jedes Projekt selbst: miss mit /usage vorher und nachher.",
+    "src": {
+      "builtin": "In Claude Code enthalten",
+      "official": "Offizieller Marketplace",
+      "anthropicSkills": "Anthropic-Skills",
+      "knowledgeWork": "Anthropic · Knowledge Work",
+      "community": "Community"
+    }
+  },
+  "community": {
+    "caveman": "Lässt Claude kurz und auf den Punkt antworten. Das Projekt nennt im Schnitt 65 % weniger Ausgabe-Tokens.",
+    "rtk": "Rust-Proxy, der Terminal-Ausgaben komprimiert, bevor sie in den Kontext gelangen. Nennt 60 % bis 90 % Ersparnis.",
+    "headroom": "Komprimiert Werkzeugausgaben, Logs und Dateien, bevor sie beim Modell ankommen.",
+    "context-mode": "Isoliert Werkzeugausgaben in einer Sandbox und speichert Sitzungswissen, damit der Kontext nicht vollläuft.",
+    "claude-mem": "Dauerhaftes Gedächtnis über Sitzungen: zeichnet auf, was der Agent tut, komprimiert es und holt es bei Bedarf zurück.",
+    "serena": "MCP-Server, der Code wie eine IDE über Symbole durchsucht und bearbeitet, statt ganze Dateien zu lesen.",
+    "ponytail": "Lässt Claude die kleinste Änderung schreiben, die das ganze Problem löst, ohne überflüssigen Code.",
+    "ccusage": "Misst Tokens und Kosten pro Tag, Sitzung oder Modell aus lokalen Logs. Spart nichts: misst nur.",
+    "codeburn": "Lokales Dashboard für Token-Nutzung und Kosten von Claude Code und 36 weiteren Tools.",
+    "superpowers": "Eine komplette Methodik: Brainstorming, Planung, TDD, systematisches Debugging und Code-Review mit Subagenten.",
+    "mattpocock-skills": "Matt Pococks Skills für echtes Engineering: Specs, Tickets, TDD, Code-Review und Domänenmodellierung.",
+    "ecc": "Everything Claude Code: ein System aus Skills, Agenten, Gedächtnis, Sicherheit und Performance-Optimierung.",
+    "ui-ux-pro-max": "UI/UX-Designwissen: Stile, Paletten, Schriften und Muster für professionelle Oberflächen.",
+    "awesome-claude-skills": "Kuratierte Liste von Claude-Skills und Ressourcen, gepflegt von Composio.",
+    "awesome-claude-code": "Die bekannteste Liste mit Claude-Code-Ressourcen: Befehle, Hooks, Workflows und Tools.",
+    "wshobson-agents": "Marketplace mit Dutzenden Plugins für spezialisierte Agenten nach Sprache und Aufgabe.",
+    "claude-code-router": "Leitet Anfragen von Claude Code je nach Aufgabe an verschiedene Modelle und Anbieter weiter.",
+    "claude-code-templates": "CLI zum Installieren fertiger Agenten, Befehle, MCP-Server und Skills und zum Überwachen von Claude Code.",
+    "vercel-agent-skills": "Die offiziellen Skills von Vercel: Best Practices für React und Next.js, Performance und Deployment.",
+    "hyperframes": "Von HeyGen: Du schreibst HTML, es rendert ein Video mit Animationen, Untertiteln, Stimmen und Audio.",
+    "remotion-skills": "Die offiziellen Remotion-Skills zum Erstellen, Untertiteln und Rendern von Videos aus React."
+  },
+  "askills": {
+    "docx": "Word-Dokumente erstellen, lesen und bearbeiten.",
+    "pdf": "Text und Tabellen extrahieren, PDFs zusammenführen, teilen und Formulare ausfüllen.",
+    "pptx": "PowerPoint-Präsentationen erstellen und bearbeiten.",
+    "xlsx": "Excel-Tabellen öffnen, bearbeiten und erstellen, mit Formeln und Diagrammen.",
+    "canvas-design": "Poster, Grafiken und visuelle Kunst als PNG und PDF mit einer Designphilosophie.",
+    "algorithmic-art": "Generative Kunst mit p5.js, mit Seeds und Parametern zum Erkunden.",
+    "theme-factory": "Zehn Farb- und Schrift-Themes für Folien, Dokumente oder Landingpages.",
+    "brand-guidelines": "Wendet Anthropics visuelle Identität an. Vorlage für einen Skill deiner eigenen Marke.",
+    "frontend-design": "Oberflächen mit eigenem Design, weit weg vom generischen KI-Look.",
+    "web-artifacts-builder": "Komplexe HTML-Artifacts mit React, Tailwind und shadcn/ui.",
+    "webapp-testing": "Testet deine lokale Web-App mit Playwright: prüft Funktionen, macht Screenshots und liest Logs.",
+    "mcp-builder": "Leitfaden für hochwertige MCP-Server.",
+    "skill-creator": "Erstellt und verbessert Skills und misst ihre Leistung.",
+    "doc-coauthoring": "Geführter Ablauf, um Dokumentation, Vorschläge und Specs gemeinsam zu schreiben.",
+    "internal-comms": "Interne Kommunikation im Format deiner Firma: Neuigkeiten, Berichte, Ankündigungen.",
+    "slack-gif-creator": "Animierte GIFs, optimiert für Slack.",
+    "claude-api": "Doku zu Claude-API und SDKs für KI-Apps.",
+    "academy-guide": "Empfiehlt Kurse und Tutorials der Anthropic Academy passend zu dem, was du lernen willst.",
+    "discernment-nudge": "Fügt am Ende jeder Antwort zwei oder drei Fragen an, damit du das Wichtige prüfst."
+  },
+  "kw": {
+    "productivity": "Aufgaben, Tagesplanung und Gedächtnis deiner Arbeit, verbunden mit Kalender, Mail und Chat.",
+    "marketing": "Content, Kampagnen und Performance-Analyse, mit konsistenter Markenstimme.",
+    "brand-voice": "Findet deine Markenstimme, schreibt Leitlinien und prüft, ob Inhalte sie einhalten.",
+    "design": "Design-Kritik, Designsysteme, UX-Texte, Barrierefreiheits-Audits und Übergabe.",
+    "data": "SQL, Datenexploration, Visualisierungen und Dashboards.",
+    "engineering": "Standups, Code-Review, Architekturentscheidungen, Incidents und technische Doku.",
+    "product-management": "Specs, Roadmaps und Synthese der Nutzerforschung.",
+    "sales": "Gesprächsvorbereitung, Follow-ups, Account-Recherche und Prognosen.",
+    "customer-support": "Ticket-Triage, Antworten, Eskalationen und Wissensdatenbank.",
+    "finance": "Buchungen, Abstimmungen, Abschlüsse und Abweichungsanalysen.",
+    "legal": "Vertragsprüfung, NDAs und Compliance.",
+    "operations": "Lieferanten, Prozesse, Change-Management und Kapazität.",
+    "human-resources": "Recruiting, Onboarding, Beurteilungen und Richtlinien.",
+    "small-business": "Fertige Abläufe, um ein kleines Unternehmen mit deinen vorhandenen Tools wachsen zu lassen."
+  },
+  "builtinMods": {
+    "cc-plugin-diff": "Übernimmt /diff und zeichnet sein Panel.",
+    "cc-plugin-agents-md": "Lädt AGENTS.md als Projektanweisungen.",
+    "cc-plugin-plugin-authoring": "Gibt Claude den Skill zum Schreiben von Mods.",
+    "cc-plugin-you-should-know": "Ein Seitenagent weist dich über dem Prompt auf Übersehenes hin. Standardmäßig aus.",
+    "cc-plugin-sec-default": "Schützt, was deine Organisation verwaltet, vor selbst installierten Mods.",
+    "cc-plugin-telemetry": "Sendet die Metriken von Claude Code und seinen mitgelieferten Mods."
+  }
+}

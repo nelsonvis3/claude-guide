@@ -8,29 +8,20 @@ App para pasar de cero a pro en Claude Code. Tilde, la gatita con auriculares, h
 - recomendaciones por rol (frontend, diseño, video, datos, PM y más) con el comando para instalar cada skill, plugin o repo;
 - una chuleta (`/chuleta`): 65 comandos, las 21 skills incluidas, las 19 de anthropics/skills, repos famosos de la comunidad (incluidos los que ahorran tokens), plugins por área, atajos, modos de permiso, mods y plugins del marketplace oficial.
 
-En 9 idiomas: es, en, pt, fr, de, it, ja, zh, ko. Login con GitHub para guardar la ruta; sin login se guarda en el navegador.
+En 9 idiomas: es, en, pt, fr, de, it, ja, zh, ko. Sin cuenta: las respuestas y el progreso se guardan en el navegador (localStorage).
 
 Proyecto independiente, no afiliado a Anthropic. Datos verificados en code.claude.com/docs y platform.claude.com/docs/en/about-claude/pricing el 2026-10-18.
 
 ## Stack
 
-Next.js 16, React 19, Tailwind 4, Auth.js v5 (GitHub, sesión JWT), Postgres con `postgres`, `motion` para la mascota.
+Next.js 16, React 19, Tailwind 4 y `motion` para la mascota. Sin backend, sin base de datos y sin variables de entorno.
 
 ## Correr en local
 
 ```bash
 npm install
-cp .env.example .env.local   # completar los valores
 npm run dev
 ```
-
-Sin `AUTH_GITHUB_ID` el botón de login no aparece. Sin `DATABASE_URL` la ruta se guarda solo en el navegador. La tabla `profiles` se crea sola la primera vez.
-
-GitHub OAuth App (github.com/settings/developers → New OAuth App):
-- Homepage: `http://localhost:3000`
-- Callback: `http://localhost:3000/api/auth/callback/github`
-
-Con `next start` en local hace falta `AUTH_TRUST_HOST=true`; en Vercel no.
 
 ## Tests
 
@@ -47,7 +38,6 @@ npm test   # estimador + paridad de claves entre idiomas
 
 ## Deploy en Vercel
 
-1. Crear la base en Neon (Vercel → Storage → Neon) y copiar `DATABASE_URL`.
-2. Crear otra OAuth App de GitHub con el dominio de producción en el callback.
-3. Variables en Vercel: `AUTH_SECRET`, `AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`, `DATABASE_URL`.
+Importar el repo en Vercel y deployar. No hace falta configurar nada más.
+
 # claude-guide

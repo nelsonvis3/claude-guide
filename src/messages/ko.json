@@ -1,0 +1,849 @@
+{
+  "meta": {
+    "title": "Claude Code 로드맵",
+    "description": "Claude Code 초보에서 프로까지: 사용 방식에 따른 비용, 나에게 맞는 모델, 먼저 배울 것."
+  },
+  "nav": {
+    "route": "내 경로",
+    "guide": "치트 시트",
+    "savedLocal": "경로는 이 브라우저에 저장됩니다. 계정이 필요 없어요.",
+    "lang": "언어",
+    "unofficial": "Anthropic과 관련 없는 독립 프로젝트입니다. 가격과 기능은 Claude Code 공식 문서(2026년 10월 18일 기준)를 바탕으로 합니다.",
+    "docs": "공식 문서",
+    "skip": "본문으로 건너뛰기"
+  },
+  "mascot": {
+    "name": "Tilde",
+    "greet": "야옹! 나는 Tilde야. Claude Code를 초보에서 프로까지 쓸 수 있게 도와줄게.",
+    "greet2": "질문 일곱 개에 답하면 경로를 짜 줄게. 무엇을 배울지, 어떤 모델과 스킬이 맞는지, 비용이 얼마나 드는지.",
+    "askName": "먼저, 뭐라고 부르면 될까?",
+    "askUse": "좋아, {name}. Claude Code를 주로 어디에 쓸 거야?",
+    "askExp": "지금까지 얼마나 써 봤어?",
+    "askTime": "시간을 얼마나 쓸 거야?",
+    "askModel": "어떤 모델로 작업할 거야? 잘 모르겠으면 문서가 추천하는 출발점은 Sonnet이야.",
+    "askFeatures": "마지막: 무엇을 더할래? 초록색은 토큰을 아끼고, 나머지는 성능과 사용량을 늘려.",
+    "done": "다 됐어, {name}! 아래에 예상 사용량과 경로가 있어. 답을 바꾸면 숫자가 다시 계산돼.",
+    "reactCheap": "Pro 요금제로 넉넉해.",
+    "reactMid": "이 속도면 Max 요금제가 필요해.",
+    "reactHigh": "와, 엄청 많이 쓰는구나! 절약 팁을 봐 줘.",
+    "anon": "탐험가",
+    "askRole": "무슨 일을 해? 너한테 맞는 스킬과 플러그인을 추천해 줄게."
+  },
+  "onboarding": {
+    "start": "시작하기",
+    "next": "다음",
+    "back": "뒤로",
+    "skip": "건너뛰기",
+    "finish": "내 경로 보기",
+    "namePlaceholder": "이름 또는 닉네임",
+    "step": "질문 {n} / {total}",
+    "hours": "하루 시간",
+    "days": "주당 일수",
+    "hoursValue": "{n}시간",
+    "daysValue": "{n}일",
+    "effort": "추론 노력 수준",
+    "effortHint": "노력 수준이 높을수록 추론 토큰이 늘고, 출력으로 과금됩니다. Sonnet 5.5와 Opus 5.5의 기본값은 중간입니다.",
+    "subagentModel": "서브에이전트 모델",
+    "advisorModel": "어드바이저 모델",
+    "inherit": "세션과 동일",
+    "restart": "다시 답하기",
+    "more": "이게 뭐야?"
+  },
+  "uses": {
+    "learn": {
+      "t": "학습과 탐색",
+      "d": "남의 코드 이해하기, 언어 배우기, 질문하기."
+    },
+    "fixes": {
+      "t": "버그와 작은 변경",
+      "d": "오류 수정, 스타일 조정, 단발성 작업."
+    },
+    "fullstack": {
+      "t": "일상 개발",
+      "d": "매일 앱에 기능을 통째로 만들기."
+    },
+    "refactor": {
+      "t": "대규모 리팩터링",
+      "d": "마이그레이션, 여러 파일에 걸친 변경, 감사."
+    },
+    "automation": {
+      "t": "자동화",
+      "d": "CI, PR 리뷰, 예약 작업, 스크립트."
+    },
+    "content": {
+      "t": "코딩은 조금만",
+      "d": "간단한 웹사이트, 문서, 데이터, 프로토타입."
+    }
+  },
+  "experience": {
+    "new": {
+      "t": "써 본 적 없음",
+      "d": "설치부터 시작할게요."
+    },
+    "some": {
+      "t": "조금 써 봄",
+      "d": "기본적인 요청은 할 수 있어요."
+    },
+    "daily": {
+      "t": "자주 씀",
+      "d": "최대한 활용하고 싶어요."
+    }
+  },
+  "models": {
+    "haiku": {
+      "t": "Haiku 5.5",
+      "d": "가장 빠르고 저렴. 탐색과 서브에이전트에 적합."
+    },
+    "sonnet": {
+      "t": "Sonnet 5.5",
+      "d": "균형형: 대부분의 코딩 작업."
+    },
+    "opus": {
+      "t": "Opus 5.5",
+      "d": "복잡한 추론과 아키텍처. Pro와 Max의 기본 모델."
+    },
+    "fable": {
+      "t": "Fable 5.1",
+      "d": "가장 강력. 가장 길고 어려운 작업용. 가장 비쌈."
+    }
+  },
+  "effortLevels": {
+    "low": "낮음",
+    "medium": "중간",
+    "high": "높음",
+    "xhigh": "매우 높음",
+    "max": "최대"
+  },
+  "features": {
+    "clear": {
+      "t": "작업 사이에 /clear",
+      "d": "주제를 바꿀 때 새로 시작. 오래된 컨텍스트는 메시지마다 비용이 듭니다."
+    },
+    "plan": {
+      "t": "Plan mode",
+      "d": "Claude가 코드를 건드리기 전에 탐색하고 제안. 재작업을 막아 줍니다."
+    },
+    "hooks": {
+      "t": "필터링 훅",
+      "d": "Claude가 읽기 전에 긴 출력(테스트, 로그)을 잘라 내는 스크립트."
+    },
+    "codeintel": {
+      "t": "Code intelligence",
+      "d": "언어 플러그인: 파일 전체를 읽지 않고 정의로 바로 이동."
+    },
+    "skills": {
+      "t": "스킬",
+      "d": "필요할 때만 불러오는 재사용 가능한 지침과 워크플로."
+    },
+    "mcp": {
+      "t": "MCP 서버",
+      "d": "Claude를 GitHub, Notion, 데이터베이스, 브라우저 등에 연결."
+    },
+    "subagents": {
+      "t": "서브에이전트",
+      "d": "자체 컨텍스트로 일하고 요약만 돌려주는 작업자."
+    },
+    "advisor": {
+      "t": "어드바이저",
+      "d": "중요한 순간에 Claude가 조언을 구하는 더 강한 모델."
+    },
+    "loop": {
+      "t": "/loop",
+      "d": "세션이 열려 있는 동안 X분마다 프롬프트를 반복."
+    },
+    "ultracode": {
+      "t": "Ultracode / 워크플로",
+      "d": "큰 작업을 위해 Claude가 스크립트로 여러 서브에이전트를 지휘."
+    },
+    "teams": {
+      "t": "에이전트 팀",
+      "d": "여러 Claude 인스턴스를 조율. 실험적이고 매우 비쌈."
+    },
+    "fast": {
+      "t": "Fast mode",
+      "d": "두 배 가격으로 더 빠른 Opus. Opus에만 적용."
+    }
+  },
+  "results": {
+    "title": "예상 사용량",
+    "lead": "이 사용량으로 API를 쓰면 드는 비용입니다. Pro와 Max는 토큰당 과금이 없고, 사용량이 요금제 한도에서 차감됩니다.",
+    "day": "하루",
+    "week": "주간",
+    "month": "월간",
+    "tokens": "{n} 토큰",
+    "planTitle": "추천 요금제",
+    "planNote": "자체 기준입니다. Anthropic은 요금제별 달러 환산치를 공개하지 않습니다. Max 5x와 Max 20x는 Pro의 세션당 사용량의 5배와 20배를 제공하며, 한도는 5시간마다, 그리고 매주 초기화됩니다. 남은 양은 /usage로 확인하세요.",
+    "adjust": "조정",
+    "disclaimer": "추정치입니다. 실제 사용량은 프로젝트 규모, 세션 길이, Claude가 읽는 양에 따라 달라집니다. 공식 평균(활성일 하루 개발자 1인당 약 13달러, 사용자의 90%는 30달러 미만)에 맞춰 보정했습니다.",
+    "you": "나"
+  },
+  "plans": {
+    "pro": {
+      "t": "Pro · 월 20달러",
+      "d": "학습과 가벼운~중간 정도 사용에 충분."
+    },
+    "max5": {
+      "t": "Max 5x · 월 100달러",
+      "d": "매일 몇 시간씩 Claude Code로 일한다면."
+    },
+    "max20": {
+      "t": "Max 20x · 월 200달러",
+      "d": "Opus와 서브에이전트로 하루 종일 집중 사용."
+    },
+    "max20plus": {
+      "t": "Max 20x + 크레딧, 또는 API",
+      "d": "이 정도 양이면 한도를 넘을 가능성이 큽니다. 사용 크레딧을 켜거나, 지출 한도를 걸고 API로 결제하세요."
+    }
+  },
+  "charts": {
+    "modelsTitle": "같은 사용량, 다른 모델",
+    "modelsLead": "어드바이저나 서브에이전트 없이 각 모델만 썼을 때 하루 비용. 차이는 토큰당 가격입니다. Opus 5.5는 Sonnet 5.5의 2배, Fable 5.1은 5배, Haiku 5.5는 일부에 불과합니다.",
+    "strategiesTitle": "모델 조합하기",
+    "strategiesLead": "각 모델이 가장 잘하는 일을: Sonnet이 만들고, Haiku가 탐색하고, Opus가 검토합니다.",
+    "strategies": {
+      "opusAll": "모두 Opus",
+      "sonnetAll": "모두 Sonnet",
+      "trio": "Sonnet + Haiku 서브에이전트 + Opus 어드바이저",
+      "haikuAdvisor": "Haiku + Opus 어드바이저"
+    },
+    "trioNote": "SNS에서 도는 팁은 `claude --advisor opus --subagents haiku`입니다. `--advisor` 플래그는 있지만 `--subagents`는 문서에 없습니다. 서브에이전트를 Haiku로 돌리는 공식 방법은 환경 변수입니다:",
+    "trioWhy": "어드바이저는 호출될 때마다 캐시 없이 대화 전체를 읽기 때문에 비용이 늘어납니다. 대신 Opus를 계속 쓰지 않고도 어려운 결정의 품질을 높일 수 있습니다.",
+    "breakdownTitle": "돈은 어디로 갈까?",
+    "breakdownLead": "Claude Code는 요청할 때마다 대화 전체를 다시 보냅니다. 그래서 토큰의 대부분은 캐시 읽기입니다. 토큰당 아주 싸지만 수백만 개입니다. 금액으로는 캐시 쓰기와 출력이 더 큽니다. 토큰은 적지만 비쌉니다. 짧은 세션과 /clear가 둘 다 줄여 줍니다.",
+    "parts": {
+      "cacheRead": "캐시 읽기",
+      "cacheWrite": "캐시 쓰기",
+      "input": "새 입력",
+      "output": "출력과 추론"
+    },
+    "perDay": "하루 {v}",
+    "table": "표로 보기",
+    "model": "모델",
+    "cost": "하루 비용",
+    "selected": "내 모델",
+    "rowTokens": "토큰",
+    "rowUsd": "비용"
+  },
+  "phases": {
+    "start": {
+      "t": "첫걸음",
+      "d": "1일 차: 설치, 컨텍스트 주기, 잘 요청하기."
+    },
+    "habits": {
+      "t": "습관",
+      "d": "1주 차: 계획하고, 검증하고, 모델 고르기."
+    },
+    "extend": {
+      "t": "확장",
+      "d": "1개월 차: 스킬, MCP, 훅, 서브에이전트, 플러그인."
+    },
+    "pro": {
+      "t": "프로",
+      "d": "자동화, 병렬화, 모델 조합."
+    }
+  },
+  "route": {
+    "title": "나의 경로",
+    "lead": "이미 익힌 것에 체크하세요. 강조된 구간부터 시작하세요.",
+    "startHere": "여기서 시작",
+    "done": "익혔어요",
+    "progress": "{total}개 중 {done}개 익힘",
+    "tryIt": "해 보기",
+    "doc": "문서 보기",
+    "copy": "복사",
+    "copied": "복사됨",
+    "forYou": "내 용도에 맞음",
+    "inEstimate": "추정에 포함됨"
+  },
+  "nodes": {
+    "install": {
+      "t": "설치하고 로그인",
+      "d": "Claude Code를 설치하고, 프로젝트에서 터미널을 열어 claude를 입력하세요. Pro나 Max 요금제, 또는 API 키로 로그인합니다."
+    },
+    "init": {
+      "t": "/init과 CLAUDE.md",
+      "d": "/init은 프로젝트를 읽고 명령어, 규칙, 구조를 담은 CLAUDE.md를 씁니다. Claude는 세션을 시작할 때마다 이 파일을 읽습니다."
+    },
+    "prompting": {
+      "t": "요청하는 법",
+      "d": "어느 파일인지, 어떤 상황인지, 무엇이 완료인지 알려 주세요. 모호한 요청은 프로젝트 전체를 읽게 만들어 비용이 늘어납니다.",
+      "p": "세션이 만료된 뒤 사용자가 로그인하지 못해. src/auth, 특히 토큰 갱신을 확인해 줘. 실패하는 테스트를 쓰고, 고친 다음, 테스트를 실행해 줘."
+    },
+    "modes": {
+      "t": "권한 모드",
+      "d": "Shift+Tab으로 수동(모두 확인), 편집 수락, plan mode, auto를 전환합니다. auto에서는 분류기가 백그라운드에서 각 작업을 점검합니다."
+    },
+    "mentions": {
+      "t": "@와 !",
+      "d": "@는 파일을 지정해 읽게 합니다. !는 터미널에서 명령을 실행하고 출력을 대화에 추가합니다."
+    },
+    "interrupt": {
+      "t": "멈추고 되돌리기",
+      "d": "Esc는 한 작업을 잃지 않고 Claude를 멈춥니다. Esc 두 번이나 /rewind는 대화와 코드를 이전 시점으로 되돌립니다."
+    },
+    "context": {
+      "t": "컨텍스트 관리",
+      "d": "/clear는 새로 시작, /compact는 이전 내용을 요약, /context는 무엇이 공간을 차지하는지 보여 줍니다. 작은 컨텍스트 = 더 좋고 더 싼 답변."
+    },
+    "usage": {
+      "t": "사용량 확인",
+      "d": "/usage는 세션이 쓴 양, 요금제의 남은 양, 어떤 스킬·MCP·서브에이전트가 가장 많이 쓰는지 보여 줍니다."
+    },
+    "planmode": {
+      "t": "탐색, 계획, 코딩",
+      "d": "권장 흐름: plan mode로 읽고 제안하게 하고, 계획을 승인하면 Claude가 구현하고 커밋합니다. 변경을 한 문장으로 설명할 수 있다면 계획은 건너뛰세요."
+    },
+    "verify": {
+      "t": "검증 수단 주기",
+      "d": "결과를 가장 크게 개선하는 방법: 테스트, 비교할 스크린샷, 기대 출력. 스스로 확인할 수 있으면 자기 실수를 고칩니다.",
+      "p": "validateEmail 함수를 작성해 줘. 케이스: user@example.com은 유효, invalid는 무효, user@.com은 무효. 구현 후 테스트를 실행해 줘."
+    },
+    "models": {
+      "t": "모델과 노력 수준",
+      "d": "/model로 모델을 바꾸고 /effort로 추론량을 조절합니다. 프롬프트에 ultrathink를 쓰면 그 턴에서만 더 깊이 생각합니다."
+    },
+    "sessions": {
+      "t": "세션",
+      "d": "claude --continue는 마지막 세션을 이어 가고, /resume은 세션을 고릅니다. /rename은 이름을 붙이고, /branch는 현재 흐름을 잃지 않고 다른 방향을 시도합니다."
+    },
+    "btw": {
+      "t": "곁다리 질문",
+      "d": "/btw는 대화에 추가하지 않고, 컨텍스트를 어지럽히지 않고 세션에 대해 짧게 물어봅니다."
+    },
+    "images": {
+      "t": "이미지와 스크린샷",
+      "d": "Ctrl+V로 스크린샷을 붙여 넣으세요: 구현할 디자인, 화면의 오류, 차트. Claude가 보고 결과와 비교합니다."
+    },
+    "review": {
+      "t": "커밋 전 리뷰",
+      "d": "/diff는 변경 사항을, /code-review는 diff의 버그를, /security-review는 보안 취약점을 찾습니다."
+    },
+    "automode": {
+      "t": "Auto mode",
+      "d": "Claude가 단계마다 허락을 구하지 않고 일하며, 안전 점검은 백그라운드에서 합니다. 긴 작업용."
+    },
+    "claudemd": {
+      "t": "좋은 CLAUDE.md",
+      "d": "200줄 미만: 추측할 수 없는 명령어, 프로젝트 고유 규칙, 알려진 함정. 항상 필요하지 않은 내용은 스킬로."
+    },
+    "skills": {
+      "t": "스킬",
+      "d": "지침이나 워크플로(배포, 릴리스, 리뷰)를 담은 SKILL.md. 사용되기 전까지는 설명만 컨텍스트를 차지합니다. /이름으로 호출."
+    },
+    "mcp": {
+      "t": "MCP",
+      "d": "Claude를 외부 서비스에 연결합니다: GitHub, Notion, Slack, 데이터베이스, Figma. 도구는 필요할 때 불러옵니다. CLI(gh, aws)가 있으면 보통 그쪽이 더 저렴합니다."
+    },
+    "hooks": {
+      "t": "훅",
+      "d": "이벤트가 생기면 자동으로 실행되는 스크립트: 편집할 때마다 포맷팅하거나 위험한 명령을 차단. 무언가를 반환하지 않으면 컨텍스트를 쓰지 않습니다. 부탁이 아니라 항상 지켜지는 규칙입니다."
+    },
+    "subagents": {
+      "t": "서브에이전트",
+      "d": "Claude가 자체 컨텍스트를 가진 에이전트(Explore, Plan, 직접 만든 것)에 작업을 맡기고 요약만 받습니다. 대화가 깔끔하게 유지됩니다."
+    },
+    "plugins": {
+      "t": "플러그인과 마켓플레이스",
+      "d": "스킬, 훅, 서브에이전트, MCP를 묶은 패키지. /plugin에서 설치하며, Anthropic 공식 마켓플레이스도 있습니다."
+    },
+    "codeintel": {
+      "t": "Code intelligence",
+      "d": "언어 서버 플러그인(TypeScript, Python 등). 파일 전체를 읽는 대신 정의로 이동하고 편집하면서 타입 오류를 봅니다."
+    },
+    "mods": {
+      "t": "모드(Mods)",
+      "d": "Claude Code의 화면과 동작을 바꿉니다: 패널, 나만의 명령어, 도구 호출 규칙. Claude에게 만들어 달라고 하세요."
+    },
+    "styles": {
+      "t": "출력 스타일",
+      "d": "모든 답변의 톤과 형식을 바꿉니다: 더 간결하게, 더 자세히 설명하게, 혹은 엔지니어가 아닌 다른 역할로."
+    },
+    "statusline": {
+      "t": "상태 표시줄",
+      "d": "늘 보고 싶은 정보를 띄우는 바: 모델, 컨텍스트 %, 비용, git 브랜치."
+    },
+    "advisor": {
+      "t": "어드바이저",
+      "d": "방향을 정하기 전, 오류가 반복될 때, 완료를 선언하기 전에 Claude가 더 강한 모델에게 조언을 구합니다. --advisor, /advisor, advisorModel로 켭니다."
+    },
+    "subagentModel": {
+      "t": "Sonnet이 만들고, Haiku가 탐색하고, Opus가 검토",
+      "d": "세션은 Sonnet, 서브에이전트는 Haiku, 어드바이저는 Opus: 각 모델이 제 역할을. 주의: --subagents는 문서화된 플래그가 아닙니다. CLAUDE_CODE_SUBAGENT_MODEL 변수를 쓰세요."
+    },
+    "opusplan": {
+      "t": "opusplan",
+      "d": "plan mode에서는 Opus를 쓰고 구현할 때는 Sonnet으로 바꿉니다. 생각은 비싸게, 실행은 싸게."
+    },
+    "loop": {
+      "t": "/loop",
+      "d": "세션이 열려 있는 동안 일정 간격으로 프롬프트를 반복합니다: 배포 감시, CI 확인. 매번 컨텍스트를 다시 보내니 간격에 주의하세요."
+    },
+    "routines": {
+      "t": "루틴",
+      "d": "컴퓨터가 꺼져 있어도 클라우드에서 도는 예약 작업: 매일 아침 PR 리뷰, 의존성 감사."
+    },
+    "background": {
+      "t": "백그라운드 에이전트",
+      "d": "/background는 세션이 혼자 계속 돌게 하고, /fork는 복제하고, /subtask는 대화 전체를 가진 서브에이전트를 띄웁니다. claude agents로 모두 볼 수 있습니다."
+    },
+    "worktrees": {
+      "t": "워크트리",
+      "d": "같은 저장소에서 여러 세션을 서로 방해하지 않고 병렬로: 각자 자기 git 워크트리에서."
+    },
+    "goal": {
+      "t": "/goal",
+      "d": "완료 조건을 주면 Claude가 조건을 충족할 때까지 턴을 이어 가며 계속 일합니다."
+    },
+    "workflows": {
+      "t": "워크플로와 /batch",
+      "d": "서브에이전트 몇 개로는 부족한 작업에: Claude가 작업을 여러 에이전트에 나누는 스크립트를 쓰고 결과를 교차 검증합니다."
+    },
+    "teams": {
+      "t": "에이전트 팀",
+      "d": "작업을 공유하고 메시지를 주고받는 여러 Claude 인스턴스. 실험적: plan mode의 팀원이 있으면 토큰을 약 7배 씁니다."
+    },
+    "headless": {
+      "t": "헤드리스 모드와 Agent SDK",
+      "d": "claude -p는 화면 없이 실행되어 스크립트와 CI에 씁니다. Agent SDK(Python, TypeScript)로 Claude Code 엔진 위에 나만의 에이전트를 만들 수 있습니다."
+    },
+    "github": {
+      "t": "GitHub Actions",
+      "d": "이슈나 PR에서 @claude를 멘션하면 Actions에서 답하거나, 리뷰하거나, PR을 엽니다."
+    },
+    "chrome": {
+      "t": "Chrome의 Claude",
+      "d": "Claude가 브라우저에서 앱을 열고, 클릭하고, 콘솔을 읽어 변경이 실제로 동작하는지 확인합니다."
+    },
+    "insights": {
+      "t": "/insights",
+      "d": "작업 방식에 대한 보고서: 어떤 프로젝트에서, 어디서 막히는지, 어떤 기능을 써 보면 좋을지."
+    },
+    "runverify": {
+      "t": "/run과 /verify",
+      "d": "Claude가 앱을 실행해, 테스트 통과만이 아니라 변경이 실제로 동작하는지 확인합니다. /run-skill-generator로 프로젝트 실행 방법을 가르칠 수 있습니다."
+    },
+    "simplify": {
+      "t": "/simplify",
+      "d": "커밋 전에 에이전트 네 개가 중복 코드, 불필요한 복잡도, 느린 부분을 찾아 수정을 적용합니다."
+    },
+    "skilldoctor": {
+      "t": "/skill-doctor",
+      "d": "스킬별 토큰 사용량과 사용 빈도를 보여 줍니다. 필요 없는 건 끄세요. 설명 하나하나가 매 메시지마다 컨텍스트를 차지합니다."
+    },
+    "fewerprompts": {
+      "t": "/fewer-permission-prompts",
+      "d": "세션을 분석해 자주 쓰는 안전한 명령을 허용해서, ls나 git status마다 허락을 구하지 않게 합니다."
+    },
+    "debug": {
+      "t": "/debug와 /doctor",
+      "d": "뭔가 안 될 때(훅이 안 돌거나 MCP가 연결되지 않을 때) /debug가 로그를 켜고 대신 읽어 줍니다. /doctor는 설치 전체를 점검하고 수정을 제안합니다."
+    },
+    "deepresearch": {
+      "t": "/deep-research",
+      "d": "웹을 병렬로 검색하고 출처를 교차 확인해 인용이 달린 보고서를 돌려주는 기본 제공 워크플로."
+    },
+    "ultrareview": {
+      "t": "/code-review ultra",
+      "d": "머지 전에 클라우드에서 여러 에이전트가 깊이 리뷰합니다. /autofix-pr은 PR을 지켜보다가 CI가 실패하면 수정을 푸시합니다."
+    },
+    "remote": {
+      "t": "휴대폰이나 다른 컴퓨터에서",
+      "d": "/remote-control은 claude.ai나 모바일 앱에서 세션을 열고, /teleport는 클라우드 세션을 터미널로 가져오고, /desktop은 데스크톱 앱으로 넘깁니다."
+    }
+  },
+  "anatomy": {
+    "title": "좋은 프롬프트의 구조",
+    "bad": "전",
+    "good": "후",
+    "badPrompt": "로그인 버그 고쳐 줘",
+    "goodParts": [
+      "세션이 만료된 뒤 사용자가 로그인하지 못해.",
+      "src/auth, 특히 토큰 갱신을 확인해 줘.",
+      "오류를 재현하는 테스트를 쓰고, 고친 다음, 테스트를 실행해 줘.",
+      "증상을 덮지 말고 원인을 찾아 줘."
+    ],
+    "why": "첫 번째는 Claude가 추측하며 프로젝트 절반을 읽게 만듭니다. 두 번째는 무슨 일이 일어나는지, 어디를 볼지, 완료를 어떻게 확인할지, 무엇을 피할지 알려 줍니다.",
+    "parts": {
+      "symptom": "증상",
+      "where": "볼 곳",
+      "verify": "확인 방법",
+      "constraint": "피할 것"
+    }
+  },
+  "tips": {
+    "saveTitle": "덜 쓰기",
+    "save": [
+      "작업을 바꿀 때마다 /clear. 긴 세션에서는 짧은 메시지도 전체 기록을 다시 읽습니다.",
+      "평소에는 Sonnet, 어려운 결정에만 Opus나 Fable. 더 좋은 방법: Sonnet에 Opus 어드바이저.",
+      "CLAUDE_CODE_SUBAGENT_MODEL=haiku로 서브에이전트를 Haiku에서.",
+      "기계적인 작업에서는 노력 수준을 낮추세요(/effort low).",
+      "CLI(gh, aws)가 있으면 MCP 서버보다 가볍습니다. 안 쓰는 MCP는 /mcp로 끄세요.",
+      "CLAUDE.md는 짧게, 세부 내용은 스킬로.",
+      "한 시간 넘게 쉬면 캐시가 만료되어 첫 메시지가 모든 걸 다시 처리합니다. 거대한 세션을 이어 가느니 /clear가 낫습니다."
+    ],
+    "maxTitle": "최대한 활용하기",
+    "max": [
+      "항상 검증 수단을 주세요: 테스트, 스크린샷, 기대 출력.",
+      "방향이 확실하지 않거나 파일을 많이 건드릴 때는 plan mode.",
+      "긴 작업에는 Opus 어드바이저: 리팩터링, 반복되는 버그.",
+      "한 세션은 쓰고 다른 세션은 리뷰: 리뷰어가 자기 코드에 치우치지 않습니다.",
+      "워크트리와 백그라운드 에이전트로 병렬 작업.",
+      "항상 일어나야 하는 일은 훅으로, 판단이 필요한 일은 스킬로.",
+      "가끔 /insights를 실행해 어디서 시간을 잃는지 확인하세요."
+    ]
+  },
+  "guide": {
+    "title": "Claude Code 치트 시트",
+    "lead": "가장 알아 둘 만한 명령어, 단축키, 모드. 모두 공식 문서로 확인했습니다.",
+    "commands": "명령어",
+    "shortcuts": "키보드 단축키",
+    "modes": "권한 모드",
+    "filter": "명령어와 스킬 필터",
+    "empty": "“{q}”와 일치하는 명령어가 없습니다. 다른 단어로 시도해 보세요.",
+    "back": "내 경로로 돌아가기",
+    "skills": "기본 제공 스킬",
+    "skillsLead": "Claude Code에 기본으로 들어 있어 설치할 필요가 없습니다. /이름으로 호출하고, 도움이 될 때는 Claude가 스스로 쓰기도 합니다.",
+    "mods": "모드(Mods)",
+    "plugins": "플러그인",
+    "jump": "바로 가기",
+    "roles": "역할별",
+    "community": "커뮤니티 저장소",
+    "communityLead": "가장 많이 쓰이는 것들로, GitHub 스타 수는 2026년 10월 18일 기준입니다. Anthropic이 만든 것이 아니니 설치 전에 각각 확인하세요.",
+    "group": {
+      "tokens": "토큰 아끼기",
+      "workflow": "워크플로와 모음",
+      "video": "영상"
+    },
+    "askills": "Anthropic 스킬",
+    "askillsLead": "공식 저장소 anthropics/skills: Office 문서와 PDF, 디자인, 제너러티브 아트, 웹 테스트 등. 두 패키지로 설치합니다.",
+    "knowledge": "업무 분야별 플러그인",
+    "knowledgeLead": "anthropics/knowledge-work-plugins에는 코드 밖의 업무를 위한 플러그인이 123개 있습니다. 여기서는 분야별로 Anthropic이 만든 것을 소개합니다."
+  },
+  "commands": {
+    "init": "프로젝트를 분석해 CLAUDE.md를 만듭니다.",
+    "clear": "빈 컨텍스트로 새 대화.",
+    "compact": "대화를 요약해 컨텍스트를 비웁니다. 남길 내용을 지시할 수 있습니다.",
+    "context": "컨텍스트를 차지하는 것을 격자로 보여 주고 제안합니다.",
+    "usage": "세션 비용, 요금제 한도, 가장 많이 쓰는 항목. 별칭: /cost, /stats.",
+    "model": "모델을 바꿉니다. 화살표로 노력 수준을 조절.",
+    "effort": "추론 수준: low, medium, high, xhigh, max, ultracode.",
+    "plan": "plan mode로 들어가 주어진 작업부터 시작합니다.",
+    "rewind": "대화와 코드를 이전 시점으로 되돌립니다.",
+    "resume": "이전 대화를 이어 갑니다.",
+    "btw": "대화에 추가되지 않는 곁다리 질문.",
+    "diff": "작업 트리의 변경 사항을 검토합니다.",
+    "code-review": "diff, PR, 브랜치에서 버그를 찾습니다. --fix로 수정 적용.",
+    "security-review": "브랜치 변경 사항의 취약점을 찾습니다.",
+    "memory": "CLAUDE.md와 자동 메모리를 편집합니다.",
+    "skills": "스킬 목록. t를 누르면 토큰 순으로 정렬.",
+    "mcp": "MCP 서버 관리: 연결, 활성화, 비활성화.",
+    "hooks": "설정된 훅을 보여 줍니다.",
+    "plugin": "플러그인을 설치, 활성화, 비활성화합니다.",
+    "agents": "서브에이전트 생성·편집 안내.",
+    "advisor": "어드바이저 켜기: fable, opus, sonnet, off.",
+    "loop": "일정 간격으로 프롬프트를 반복합니다.",
+    "schedule": "클라우드에서 도는 루틴을 만듭니다.",
+    "goal": "조건을 충족할 때까지 Claude가 일합니다.",
+    "background": "세션을 백그라운드로 보냅니다.",
+    "fork": "대화를 백그라운드 세션으로 복제합니다.",
+    "subtask": "대화 전체를 가진 서브에이전트를 띄웁니다.",
+    "batch": "대규모 변경을 병렬로: 5~30개 단위로 나눕니다.",
+    "output-style": "답변 스타일을 바꿉니다.",
+    "statusline": "상태 표시줄을 설정합니다.",
+    "insights": "Claude Code 사용 방식에 대한 HTML 보고서.",
+    "doctor": "설치, 설정, CLAUDE.md를 점검하고 수정을 제안합니다.",
+    "powerup": "애니메이션 데모가 있는 대화형 기능 레슨.",
+    "fast": "fast mode 켜기/끄기.",
+    "permissions": "허용, 확인, 거부 규칙.",
+    "export": "대화를 텍스트로 내보냅니다.",
+    "ultrareview": "클라우드에서 여러 에이전트가 하는 심층 코드 리뷰. /code-review ultra의 별칭.",
+    "autofix-pr": "브랜치의 PR을 지켜보는 클라우드 세션을 띄워, CI가 실패하거나 코멘트가 달리면 수정을 푸시합니다.",
+    "skill-doctor": "스킬별 컨텍스트 사용량과 사용 빈도를 보여 줘서 필요 없는 스킬을 끌 수 있습니다.",
+    "team-onboarding": "최근 30일 사용 기록으로 팀원 온보딩 가이드를 만듭니다.",
+    "import": "Codex, Gemini CLI, Cursor의 설정(지침, MCP, 명령어, 서브에이전트, 스킬)을 가져옵니다.",
+    "remote-control": "세션을 claude.ai나 휴대폰에서 이어 쓸 수 있게 합니다. 별칭: /rc.",
+    "teleport": "클라우드 세션을 브랜치와 대화째 터미널로 가져옵니다. 별칭: /tp.",
+    "desktop": "현재 세션을 데스크톱 앱에서 이어 갑니다. 별칭: /app.",
+    "focus": "집중 보기: 마지막 프롬프트, 도구 요약, 최종 답변만 표시.",
+    "recap": "세션 한 줄 요약.",
+    "tasks": "끝난 서브에이전트를 포함해 백그라운드 작업을 보고 관리합니다.",
+    "workflows": "워크플로 진행 상황: 보기, 일시 정지, 재개, 저장.",
+    "sandbox": "샌드박스를 켭니다: 터미널 명령이 접근할 수 있는 파일과 네트워크를 제한.",
+    "autocompact": "자동 압축 전에 컨텍스트가 얼마나 찰지 정합니다. 예: 500k.",
+    "add-dir": "세션에 작업 폴더를 하나 더 추가합니다.",
+    "cd": "대화를 유지한 채 세션을 다른 폴더로 옮깁니다.",
+    "keybindings": "키보드 단축키 파일을 엽니다.",
+    "terminal-setup": "VS Code, Cursor, Alacritty, Zed에 줄바꿈용 Shift+Enter를 설정합니다.",
+    "voice": "음성 입력: 누르고 있거나 탭해서 녹음.",
+    "usage-credits": "요금제 한도에 도달해도 계속 작업할 수 있는 사용 크레딧.",
+    "rate-limit-options": "한도에 도달했을 때의 선택지: 기다렸다 자동 재개, 크레딧, 요금제 업그레이드.",
+    "release-notes": "버전별 변경 기록. 대화에는 추가되지 않습니다.",
+    "artifacts": "아티팩트 목록: 세션에 첨부, 브라우저로 열기, 링크 복사.",
+    "auto-mode-setup": "프로젝트와 최근 세션을 바탕으로 auto mode 설정 초안을 만듭니다.",
+    "config": "설정을 열거나 값을 바로 바꿉니다: /config theme=dark.",
+    "copy": "마지막 답변이나 코드 블록을 클립보드에 복사합니다.",
+    "rename": "세션에 이름을 붙입니다.",
+    "branch": "대화를 분기해 지금 흐름을 잃지 않고 다른 방향을 시도합니다.",
+    "theme": "색상 테마를 바꿉니다. 색각 이상을 고려한 테마도 있습니다.",
+    "tui": "터미널 렌더링 방식을 바꿉니다. fullscreen은 깜빡임을 없앱니다.",
+    "reload-plugins": "재시작 없이 플러그인을 다시 불러옵니다.",
+    "reload-skills": "재시작 없이 새로 추가되거나 수정된 스킬을 다시 찾습니다.",
+    "list-agents": "Claude가 메시지를 보낼 수 있는 서브에이전트, 팀원, 세션 목록.",
+    "artifact-capabilities": "게시한 아티팩트로 할 수 있는 일: 커넥터 사용, 다운로드 제공 등.",
+    "artifact-diagramming": "라이트·다크 모드 모두에서 잘 보이는 SVG 다이어그램을 그리는 가이드.",
+    "claude-api": "Claude API와 Managed Agents 레퍼런스: 모델 마이그레이션, 프롬프트 점검, 비용 최적화.",
+    "claude-in-chrome": "Claude가 브라우저에서 작업합니다: 페이지 테스트, 폼 작성, 콘솔 확인.",
+    "dataviz": "차트와 대시보드 가이드: 형태를 고르고, 색각 이상과 대비 기준으로 팔레트를 검증.",
+    "debug": "디버그 로그를 켜고 읽어서 세션 문제를 진단합니다.",
+    "deep-research": "워크플로: 웹을 병렬로 검색하고 출처를 교차 확인해 인용이 달린 보고서를 씁니다.",
+    "design": "Claude Design 캔버스에 화면, 흐름, 랜딩 페이지 시안을 아트보드로 그립니다.",
+    "design-sync": "저장소의 React 디자인 시스템을 Claude Design에 올려 실제 컴포넌트를 쓰게 합니다.",
+    "fewer-permission-prompts": "세션을 분석해 자주 쓰는 읽기 전용 명령을 허용하고, 확인을 줄입니다.",
+    "run": "앱을 실행하고 조작해서, 테스트 통과만이 아니라 실제로 동작하는지 봅니다.",
+    "run-skill-generator": "/run과 /verify에 앱을 빌드하고 실행하는 법을 프로젝트 스킬로 가르칩니다.",
+    "simplify": "에이전트 네 개가 변경 사항을 병렬로 검토하고(재사용, 단순성, 효율, 추상화 수준) 수정을 적용합니다.",
+    "slides": "요청을 바탕으로 Claude Slides 아티팩트 프레젠테이션을 만듭니다.",
+    "update-config": "바꿀 내용(권한, 변수, 훅)을 말하면 Claude가 해당 settings.json을 편집합니다.",
+    "verify": "변경이 의도대로 동작하는지 확인합니다: 빌드하고 실행하고 관찰.",
+    "workflow-authoring": "동적 워크플로 스크립트 작성 레퍼런스."
+  },
+  "shortcuts": {
+    "cycleModes": "권한 모드 전환(수동, 편집 수락, plan, auto).",
+    "interrupt": "한 작업을 잃지 않고 Claude를 멈춥니다.",
+    "rewind": "입력이 비어 있을 때 되돌리기 메뉴를 엽니다.",
+    "shell": "맨 앞에: 터미널 명령을 실행합니다.",
+    "mention": "파일을 지정합니다.",
+    "editor": "프롬프트(또는 계획)를 편집기에서 수정합니다.",
+    "transcript": "도구와 추론의 세부 내용을 보여 줍니다.",
+    "history": "이전 프롬프트를 검색합니다.",
+    "pasteImage": "클립보드의 이미지를 붙여 넣습니다.",
+    "background": "명령과 에이전트를 백그라운드로 보냅니다.",
+    "todo": "Claude의 할 일 목록을 보이거나 숨깁니다.",
+    "stash": "쓰다 만 프롬프트를 잠시 치워 두고 다시 불러옵니다.",
+    "switchModel": "프롬프트를 지우지 않고 모델을 바꿉니다.",
+    "fastToggle": "fast mode 켜기/끄기.",
+    "help": "입력이 비어 있을 때 모든 단축키를 보여 줍니다."
+  },
+  "modes": {
+    "default": "수동: 묻지 않고는 읽기만 합니다. 민감한 작업이나 낯선 코드용.",
+    "acceptEdits": "묻지 않고 파일을 편집하고 기본 파일 명령을 실행합니다.",
+    "plan": "읽고 계획을 제안합니다. 승인 전에는 편집하지 않습니다.",
+    "auto": "모두 실행하며, 안전 점검은 백그라운드에서. 긴 작업용.",
+    "dontAsk": "미리 승인된 것만, 나머지는 거부. CI와 스크립트용.",
+    "bypassPermissions": "모두 묻지 않고 실행. 격리된 컨테이너나 VM에서만."
+  },
+  "modGuide": {
+    "lead": "모드는 Claude Code 안에서 실행되는 JavaScript나 TypeScript 코드가 담긴 플러그인입니다. 훅, 스킬, MCP와 달리 화면에 그릴 수 있고 모든 이벤트에 끼어들 수 있습니다.",
+    "canTitle": "할 수 있는 일",
+    "can": [
+      "대화 옆에 패널을, 프롬프트 위에 띠를 그립니다. 탭, 버튼, 텍스트 입력란도 쓸 수 있습니다.",
+      "Claude Code가 원래 그리는 부분을 바꿉니다: 도구 호출 줄, 스피너, 질문 대화상자.",
+      "도구 호출을 붙잡거나 바꿉니다: 먼저 물어보기, 도구를 실행하지 않고 답하기, 다른 모델로 요청 보내기.",
+      "Claude의 턴을 쓰지 않고 바로 함수를 실행하는 /명령어를 추가합니다.",
+      "이벤트 사이에 데이터를 공유합니다: 예를 들어 도구 호출 횟수를 세서 스피너 옆에 표시."
+    ],
+    "samplesTitle": "Anthropic 예제 모드",
+    "samples": {
+      "token-weather": "프롬프트 위에 컨텍스트 날씨 예보를 보여 줍니다.",
+      "blast-radius": "위험한 명령(rm -rf, force push)을 붙잡고 무엇이 바뀔지 보여 준 뒤 계속할지 취소할지 고르게 합니다.",
+      "replay-theater": "/replay를 추가해 직전 턴의 파일 편집을 한 단계씩 돌려 봅니다."
+    },
+    "createTitle": "직접 만들기",
+    "create": "원하는 걸 Claude에게 설명하세요. /plugin-authoring 스킬을 불러와 모드를 대신 써 줍니다. 그다음 /reload-plugins로 다시 불러오세요.",
+    "builtin": "이미 모드를 쓰고 있습니다: /diff가 기본 제공 모드입니다. /plugin의 Installed 탭에서 Built-in 아래에 보입니다.",
+    "safetyTitle": "보안에 주의하세요",
+    "safety": "모드는 내 권한으로, 샌드박스 없이 실행됩니다. 파일을 읽고 쓰고, 프롬프트를 보고, 묻지 않고 도구 사용을 승인할 수 있습니다. 아는 작성자의 모드만 설치하고, 설치 전에 무엇을 하는지 확인하세요:"
+  },
+  "pluginGuide": {
+    "lead": "플러그인은 스킬, 훅, 서브에이전트, MCP 서버, 모드를 묶어 명령 하나로 설치할 수 있게 한 것입니다. 공식 마켓플레이스는 기본으로 추가되어 있고 플러그인이 {total}개 있습니다. {anthropic}개는 Anthropic이 만들었고, 나머지는 GitHub, Figma, Vercel 같은 회사가 만들었습니다.",
+    "install": "/plugin(Discover 탭)이나 claude.com/marketplace/plugins에서 둘러보세요. 설치 방법:",
+    "anthropicTitle": "Anthropic이 만든 것",
+    "lspTitle": "언어별 Code intelligence",
+    "lsp": "언어마다 플러그인 하나: Claude가 정의로 바로 이동하고 편집하면서 타입 오류를 봅니다.",
+    "partnersTitle": "인기 커넥터",
+    "community": "커뮤니티 마켓플레이스도 있습니다: /plugin marketplace add anthropics/claude-plugins-community. Anthropic은 서드파티 마켓플레이스를 검토하지 않으니, 추가하기 전에 플러그인 보안 페이지를 읽어 보세요.",
+    "snapshot": "2026년 10월 18일 기준 카탈로그입니다. 자주 바뀝니다."
+  },
+  "plugins": {
+    "feature-dev": "코드를 탐색하고, 아키텍처를 설계하고, 품질을 검토하는 에이전트로 이뤄진 기능 개발 흐름.",
+    "code-review": "여러 전문 에이전트로 PR을 리뷰하고 신뢰도에 따라 오탐을 걸러냅니다.",
+    "pr-review-toolkit": "PR 리뷰 에이전트: 코멘트, 테스트, 오류 처리, 타입, 단순화.",
+    "commit-commands": "커밋, 푸시, PR 생성을 위한 명령어.",
+    "code-simplifier": "최근 코드를 동작은 그대로 두고 단순하게 다듬는 에이전트.",
+    "security-guidance": "편집 중 위험한 패턴을 경고하고 diff와 커밋의 취약점을 검토합니다.",
+    "claude-security": "코드의 취약점을 깊이 스캔하고, 각 발견을 보고 전에 검증합니다.",
+    "frontend-design": "흔한 AI 느낌에서 벗어난, 개성 있는 디자인의 인터페이스.",
+    "claude-code-setup": "코드를 분석해 맞춤 훅, 스킬, MCP, 서브에이전트를 추천합니다.",
+    "claude-md-management": "CLAUDE.md를 점검하고, 세션마다 배운 내용으로 최신 상태를 유지합니다.",
+    "hookify": "마크다운으로 쓴 규칙으로 원치 않는 동작을 막는 훅을 만듭니다.",
+    "skill-creator": "새 스킬을 만들고, 기존 스킬을 개선하고, 성능을 측정합니다.",
+    "plugin-dev": "플러그인 개발 키트: 훅, MCP, 명령어, 에이전트.",
+    "mcp-server-dev": "Claude와 잘 맞는 MCP 서버를 설계하고 구축하는 가이드.",
+    "agent-sdk-dev": "Claude Agent SDK 작업용 키트.",
+    "ralph-loop": "Claude가 이전 작업을 보면서 같은 작업을 끝날 때까지 반복하는 루프(Ralph Wiggum 기법).",
+    "playground": "컨트롤, 실시간 미리보기, 복사용 프롬프트가 있는 인터랙티브 HTML 플레이그라운드를 만듭니다.",
+    "session-report": "사용량 HTML 보고서: 토큰, 캐시 효율, 서브에이전트, 가장 비싼 프롬프트.",
+    "receipts": "성과 보고서: 어떤 프로젝트에서 무엇을 출시했는지 정리해 상사 보고나 자기 평가에 씁니다.",
+    "explanatory-output-style": "구현 결정에 대한 학습용 설명을 덧붙입니다.",
+    "learning-output-style": "학습 모드: 코드의 핵심 부분을 직접 쓰도록 요청합니다.",
+    "code-modernization": "/modernize로 하는 레거시 코드 현대화: 진단, 지도, 업무 규칙, 계획.",
+    "project-artifact": "프로젝트 현황 페이지를 공유 가능한 아티팩트로 게시합니다.",
+    "github": "GitHub 공식 MCP 서버로 이슈, PR, 리뷰, 저장소 검색.",
+    "figma": "디자인 파일, 컴포넌트, 토큰을 읽어 코드로 옮깁니다.",
+    "context7": "모든 라이브러리의 최신 버전별 문서.",
+    "playwright": "브라우저 자동화와 엔드투엔드 테스트(Microsoft 제작).",
+    "supabase": "Supabase 프로젝트의 데이터베이스, 인증, 스토리지, SQL.",
+    "vercel": "배포, 빌드 상태, 로그, 도메인.",
+    "stripe": "결제 연동 개발을 위한 Stripe 도구.",
+    "sentry": "프로덕션 오류, 스택 트레이스, 이슈 검색.",
+    "linear": "Linear에서 이슈와 프로젝트를 만들고 업데이트.",
+    "notion": "Notion 페이지와 데이터베이스 검색, 생성, 편집.",
+    "slack": "Slack의 메시지, 채널, 스레드 검색.",
+    "chrome-devtools-mcp": "Chrome을 제어하고 검사합니다: 성능, 네트워크, 콘솔.",
+    "firebase": "Firebase의 Firestore, 인증, 함수, 호스팅.",
+    "atlassian": "Jira와 Confluence: 이슈, 문서, 스프린트.",
+    "cloudflare": "Workers, Durable Objects, Wrangler 등 Cloudflare 플랫폼 전반.",
+    "datadog": "Datadog 로그, 메트릭, 트레이스, 대시보드(프리뷰).",
+    "canva": "Canva MCP 서버로 디자인을 만들고 편집하고 크기를 바꾸고 검토합니다.",
+    "adobe-for-creativity": "Adobe의 크리에이티브 도구: 이미지 편집, 배경 제거, 벡터화, 디자인 자동화.",
+    "expo": "React Native 앱을 만들고 배포하고 디버깅하는 Expo 공식 스킬.",
+    "aws-core": "AWS에서 구축·배포·운영: 코드형 인프라와 핵심 서비스.",
+    "duckdb-skills": "어떤 데이터 파일이든 읽고 DuckDB로 조회합니다.",
+    "databricks": "Databricks CLI, Apps, Lakebase, 작업, 파이프라인.",
+    "grafana-mcp": "Grafana 대시보드, 데이터 소스, 알림, 인시던트.",
+    "swift-lsp": "Swift용 Code intelligence(SourceKit-LSP).",
+    "kotlin-lsp": "Kotlin용 Code intelligence."
+  },
+  "roles": {
+    "frontend": {
+      "t": "프론트엔드",
+      "d": "보기 좋고 잘 동작하는 인터페이스: 디자인, 컴포넌트, 브라우저 테스트, 최신 문서."
+    },
+    "backend": {
+      "t": "백엔드",
+      "d": "API, 데이터베이스, 보안: 큰 코드베이스를 다 읽지 않고 탐색하고, 취약점을 점검하고, 오류를 지켜보기."
+    },
+    "fullstack": {
+      "t": "풀스택",
+      "d": "디자인부터 배포까지: 전체 워크플로, git, 코드 리뷰, 세션을 넘나드는 기억."
+    },
+    "mobile": {
+      "t": "모바일",
+      "d": "React Native나 네이티브 앱: Expo, Swift·Kotlin 언어 서버, 백엔드."
+    },
+    "devops": {
+      "t": "DevOps",
+      "d": "클라우드, 모니터링, 자동화: 배포, 알림, 예약 작업, 항상 지켜지는 규칙."
+    },
+    "data": {
+      "t": "데이터",
+      "d": "SQL, 스프레드시트, 시각화: 데이터를 탐색하고 차트와 출처가 달린 보고서 만들기."
+    },
+    "designer": {
+      "t": "그래픽 디자인",
+      "d": "포스터, 제너러티브 아트, 테마, 브랜드 아이덴티티, 그리고 Canva·Adobe·Figma 연동."
+    },
+    "video": {
+      "t": "영상",
+      "d": "코드로 만드는 영상: 애니메이션, 자막, 내레이션, 내보내기. GIF와 이미지 편집도."
+    },
+    "marketing": {
+      "t": "마케팅·콘텐츠",
+      "d": "캠페인, 브랜드 보이스, 문서, 프레젠테이션, 출처가 있는 리서치."
+    },
+    "pm": {
+      "t": "프로덕트(PM)",
+      "d": "기획서, 로드맵, 티켓, 프레젠테이션. Linear, Jira, Notion과 연결."
+    },
+    "qa": {
+      "t": "QA·테스트",
+      "d": "엔드투엔드 테스트, 브라우저 점검, PR 리뷰, 오류 추적."
+    },
+    "student": {
+      "t": "학생",
+      "d": "일하면서 배우기: 설명해 주는 스타일, 인터랙티브 레슨, 사용량 관리."
+    }
+  },
+  "recs": {
+    "title": "내 역할에 맞는 추천",
+    "lead": "역할을 고르면 추가할 만한 스킬, 플러그인, 저장소를 설치 명령과 함께 보여 줍니다.",
+    "pickRole": "역할 선택",
+    "saversTitle": "토큰을 덜 쓰려면",
+    "saversLead": "어떤 역할에도 유용합니다. 절감률은 각 프로젝트가 직접 발표한 수치이니 /usage로 전후를 측정해 보세요.",
+    "src": {
+      "builtin": "Claude Code 기본 제공",
+      "official": "공식 마켓플레이스",
+      "anthropicSkills": "Anthropic 스킬",
+      "knowledgeWork": "Anthropic · knowledge work",
+      "community": "커뮤니티"
+    }
+  },
+  "community": {
+    "caveman": "Claude가 짧고 핵심만 답하게 합니다. 프로젝트에 따르면 출력 토큰을 평균 65% 줄입니다.",
+    "rtk": "터미널 명령 출력을 컨텍스트에 들어가기 전에 압축하는 Rust 프록시. 60~90% 절감을 내세웁니다.",
+    "headroom": "도구 출력, 로그, 파일을 모델에 닿기 전에 압축합니다.",
+    "context-mode": "도구 출력을 샌드박스에 격리하고 세션 기억을 저장해 컨텍스트가 차지 않게 합니다.",
+    "claude-mem": "세션을 넘나드는 영구 메모리: 에이전트의 행동을 기록·압축하고 필요할 때 불러옵니다.",
+    "serena": "파일 전체를 읽는 대신 IDE처럼 심볼 단위로 코드를 탐색하고 편집하는 MCP 서버.",
+    "ponytail": "Claude가 문제를 완전히 푸는 가장 작은 변경만 쓰게 해서 불필요한 코드를 막습니다.",
+    "ccusage": "로컬 로그로 하루·세션·모델별 토큰과 비용을 측정합니다. 아껴 주지는 않고 측정만 합니다.",
+    "codeburn": "Claude Code와 그 밖의 36개 도구의 토큰 사용량과 비용을 보여 주는 로컬 대시보드.",
+    "superpowers": "완전한 개발 방법론: 브레인스토밍, 계획, TDD, 체계적 디버깅, 서브에이전트 코드 리뷰.",
+    "mattpocock-skills": "Matt Pocock의 실무 엔지니어링 스킬: 기획서, 티켓, TDD, 코드 리뷰, 도메인 모델링.",
+    "ecc": "Everything Claude Code: 스킬, 에이전트, 메모리, 보안, 성능 최적화를 아우르는 시스템.",
+    "ui-ux-pro-max": "UI/UX 디자인 지식: 전문적인 인터페이스를 위한 스타일, 팔레트, 폰트, 패턴.",
+    "awesome-claude-skills": "Composio가 관리하는 Claude 스킬과 리소스 큐레이션 목록.",
+    "awesome-claude-code": "가장 유명한 Claude Code 리소스 목록: 명령어, 훅, 워크플로, 도구.",
+    "wshobson-agents": "언어와 작업별 전문 에이전트 플러그인 수십 개가 있는 마켓플레이스.",
+    "claude-code-router": "작업에 따라 Claude Code 요청을 여러 모델과 제공자로 보내 줍니다.",
+    "claude-code-templates": "완성된 에이전트, 명령어, MCP, 스킬을 설치하고 Claude Code를 모니터링하는 CLI.",
+    "vercel-agent-skills": "Vercel 공식 스킬: React와 Next.js 모범 사례, 성능, 배포.",
+    "hyperframes": "HeyGen 제작: HTML을 쓰면 애니메이션, 자막, 내레이션, 오디오가 있는 영상으로 렌더링합니다.",
+    "remotion-skills": "React로 만든 영상을 생성하고 자막을 달고 렌더링하는 Remotion 공식 스킬."
+  },
+  "askills": {
+    "docx": "Word 문서를 만들고 읽고 편집합니다.",
+    "pdf": "텍스트와 표 추출, PDF 합치기·나누기, 양식 작성.",
+    "pptx": "PowerPoint 프레젠테이션을 만들고 편집합니다.",
+    "xlsx": "Excel 시트를 열고 편집하고 만듭니다. 수식과 차트도 지원.",
+    "canvas-design": "디자인 철학에 따라 PNG와 PDF로 포스터와 시각 작품을 만듭니다.",
+    "algorithmic-art": "p5.js로 만드는 제너러티브 아트. 시드와 파라미터로 탐색.",
+    "theme-factory": "슬라이드, 문서, 랜딩 페이지에 적용할 수 있는 색상·폰트 테마 10가지.",
+    "brand-guidelines": "Anthropic의 시각적 아이덴티티를 적용합니다. 내 브랜드 스킬을 만들 때 본보기로 쓰세요.",
+    "frontend-design": "흔한 AI 느낌에서 벗어난, 개성 있는 디자인의 인터페이스.",
+    "web-artifacts-builder": "React, Tailwind, shadcn/ui로 만드는 복잡한 HTML 아티팩트.",
+    "webapp-testing": "Playwright로 로컬 웹앱을 테스트합니다: 기능 확인, 스크린샷, 로그 확인.",
+    "mcp-builder": "품질 좋은 MCP 서버를 만드는 가이드.",
+    "skill-creator": "스킬을 만들고 개선하며 성능을 측정합니다.",
+    "doc-coauthoring": "문서, 제안서, 기획서를 함께 쓰는 단계별 흐름.",
+    "internal-comms": "회사 형식에 맞춘 사내 커뮤니케이션: 소식, 보고서, 공지.",
+    "slack-gif-creator": "Slack에 최적화된 움직이는 GIF.",
+    "claude-api": "AI 앱을 만들기 위한 Claude API와 SDK 문서.",
+    "academy-guide": "배우고 싶은 내용에 맞춰 Anthropic Academy 강좌와 튜토리얼을 추천합니다.",
+    "discernment-nudge": "답변 끝에 질문 두세 개를 덧붙여 중요한 내용을 확인하게 합니다."
+  },
+  "kw": {
+    "productivity": "할 일, 하루 계획, 업무 기억. 캘린더, 메일, 채팅과 연결.",
+    "marketing": "브랜드 보이스를 지키면서 콘텐츠, 캠페인, 성과 분석.",
+    "brand-voice": "브랜드 보이스를 찾고 가이드라인을 만들어 콘텐츠가 따르는지 확인합니다.",
+    "design": "디자인 리뷰, 디자인 시스템, UX 라이팅, 접근성 점검, 핸드오프.",
+    "data": "SQL, 데이터 탐색, 시각화, 대시보드.",
+    "engineering": "스탠드업, 코드 리뷰, 아키텍처 결정, 장애 대응, 기술 문서.",
+    "product-management": "기획서, 로드맵, 사용자 리서치 정리.",
+    "sales": "통화 준비, 후속 조치, 고객 조사, 매출 예측.",
+    "customer-support": "티켓 분류, 답변, 에스컬레이션, 지식 베이스.",
+    "finance": "분개, 대사, 재무제표, 차이 분석.",
+    "legal": "계약 검토, NDA, 컴플라이언스.",
+    "operations": "공급업체, 프로세스, 변경 관리, 용량.",
+    "human-resources": "채용, 온보딩, 평가, 규정.",
+    "small-business": "이미 쓰는 도구로 작은 사업을 키우는 준비된 워크플로."
+  },
+  "builtinMods": {
+    "cc-plugin-diff": "/diff를 맡아 패널을 그립니다.",
+    "cc-plugin-agents-md": "AGENTS.md를 프로젝트 지침으로 불러옵니다.",
+    "cc-plugin-plugin-authoring": "Claude에게 모드를 쓰는 스킬을 줍니다.",
+    "cc-plugin-you-should-know": "놓친 게 있으면 사이드 에이전트가 프롬프트 위에서 알려 줍니다. 기본은 꺼짐.",
+    "cc-plugin-sec-default": "조직이 관리하는 것을 내가 설치한 모드로부터 보호합니다.",
+    "cc-plugin-telemetry": "Claude Code와 기본 제공 모드의 지표를 보냅니다."
+  }
+}

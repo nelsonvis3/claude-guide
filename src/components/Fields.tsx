@@ -14,8 +14,8 @@ function Choice({ selected, onClick, title, desc, compact }: {
       type="button"
       aria-pressed={selected}
       onClick={onClick}
-      className={`rounded-2xl border-2 text-left transition-colors ${compact ? "px-3 py-2" : "px-4 py-3"} ${
-        selected ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-line bg-surface hover:border-ink"
+      className={`rounded-2xl border text-left transition-colors ${compact ? "px-3 py-2" : "px-4 py-3"} ${
+        selected ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-line bg-surface hover:border-cobalt"
       }`}
     >
       <span className="block font-bold">{title}</span>
@@ -97,7 +97,7 @@ export function ModelPicker({ a, onChange, compact }: { a: Answers; onChange: Se
               type="button"
               aria-pressed={a.effort === e}
               onClick={() => onChange({ effort: e })}
-              className={`rounded-full border-2 px-3 py-1 text-[0.95rem] ${a.effort === e ? "border-ink bg-ink text-bg" : "border-line hover:border-ink"}`}
+              className={`rounded-full border px-3 py-1 text-[0.95rem] ${a.effort === e ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-line hover:border-cobalt"}`}
             >
               {t(`effortLevels.${e}`)}
             </button>
@@ -113,7 +113,7 @@ export function FeaturePicker({ a, onChange, compact }: { a: Answers; onChange: 
   const { t } = useI18n();
   const toggle = (f: FeatureId) =>
     onChange({ features: a.features.includes(f) ? a.features.filter((x) => x !== f) : [...a.features, f] });
-  const select = "rounded-lg border-2 border-line bg-surface px-2 py-1";
+  const select = "rounded-full border border-line bg-surface px-3 py-1";
   return (
     <div className="grid gap-3">
       <ul className={`grid gap-2 ${compact ? "" : "sm:grid-cols-2"}`}>
@@ -121,7 +121,7 @@ export function FeaturePicker({ a, onChange, compact }: { a: Answers; onChange: 
           const on = a.features.includes(id);
           return (
             <li key={id}>
-              <label className={`flex cursor-pointer gap-3 rounded-2xl border-2 px-3 py-2 ${on ? "border-ink bg-surface" : "border-line bg-surface/60 hover:border-ink"}`}>
+              <label className={`flex cursor-pointer gap-3 rounded-2xl border px-3 py-2 ${on ? "border-cobalt bg-surface" : "border-line bg-surface/60 hover:border-cobalt"}`}>
                 <input type="checkbox" checked={on} onChange={() => toggle(id)} className="mt-1.5 size-4 accent-[var(--cobalt)]" />
                 <span>
                   <span className="flex items-center gap-2 font-bold">

@@ -1,6 +1,7 @@
 import "server-only";
 import { cookies, headers } from "next/headers";
 import { LANGS, type Lang } from "./content";
+import type { LessonText } from "@/components/Lesson";
 import type { Messages } from "./i18n";
 
 export async function getLang(): Promise<Lang> {
@@ -29,4 +30,14 @@ export async function getMessages(lang: Lang): Promise<Messages> {
   if (lang !== "es") m = merge(m, await load("en").catch(() => ({})));
   if (lang !== "es" && lang !== "en") m = merge(m, await load(lang).catch(() => ({})));
   return m as Messages;
+}
+
+// Lecciones: si un idioma todavía no tiene una lección, se usa la inglesa y si no, la española (la original).
+export async function getLessons(lang: Lang): Promise<Record<string, LessonText>> {
+  const load = async (l: Lang) =>
+    ((await import(`../lessons/${l}.json`).catch(() => ({ default: {} }))).default as Record<string, LessonText>);
+  const chain = lang === "es" ? ["es"] : lang === "en" ? ["es", "en"] : ["es", "en", lang];
+  const out: Record<string, LessonText> = {};
+  for (const l of chain) Object.assign(out, await load(l as Lang));
+  return out;
 }

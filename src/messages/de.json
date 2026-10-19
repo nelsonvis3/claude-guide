@@ -1,16 +1,22 @@
 {
   "meta": {
-    "title": "Claude Code Pfad",
+    "title": "Procode",
     "description": "Vom Einsteiger zum Profi in Claude Code: was du je nach Arbeitsweise ausgibst, welches Modell passt und was du zuerst lernen solltest."
   },
   "nav": {
     "route": "Mein Pfad",
     "guide": "Spickzettel",
-    "savedLocal": "Dein Pfad wird in diesem Browser gespeichert. Kein Konto nötig.",
+    "savedLocal": "Ohne Konto wird dein Fortschritt gelöscht, wenn du den Tab schließt. Melde dich mit GitHub oder Google an, um ihn zu speichern.",
     "lang": "Sprache",
     "unofficial": "Unabhängiges Projekt, nicht mit Anthropic verbunden. Preise und Funktionen stammen aus der offiziellen Claude-Code-Dokumentation, Stand 18. Oktober 2026.",
     "docs": "Offizielle Dokumentation",
-    "skip": "Zum Inhalt springen"
+    "skip": "Zum Inhalt springen",
+    "login": "Anmelden",
+    "loginWith": "Weiter mit {provider}",
+    "loginWhy": "Speichere Punkte, Sticker und Serie in deinem Konto und mach auf jedem Gerät weiter.",
+    "logout": "Abmelden",
+    "savedCloud": "Dein Fortschritt wird in deinem Konto gespeichert.",
+    "usage": "Verbrauch"
   },
   "mascot": {
     "name": "Tilde",
@@ -22,7 +28,7 @@
     "askTime": "Wie viel Zeit wirst du damit verbringen?",
     "askModel": "Mit welchem Modell wirst du arbeiten? Wenn du unsicher bist: Sonnet ist der Startpunkt, den die Doku empfiehlt.",
     "askFeatures": "Letzte Frage: Was willst du dazunehmen? Die grünen sparen Tokens, die anderen bringen mehr Leistung und Verbrauch.",
-    "done": "Fertig, {name}! Unten siehst du deinen geschätzten Verbrauch und deinen Pfad. Ändere eine Antwort und die Zahlen passen sich an.",
+    "done": "Fertig, {name}! Unten ist deine Route: Fang mit dem ersten Schritt an. Deinen geschätzten Verbrauch findest du im Bereich Verbrauch.",
     "reactCheap": "Das passt locker in den Pro-Plan.",
     "reactMid": "Dieses Tempo verlangt schon einen Max-Plan.",
     "reactHigh": "Wow, intensive Nutzung! Schau dir die Spartipps an.",
@@ -244,7 +250,7 @@
   },
   "route": {
     "title": "Dein Pfad",
-    "lead": "Hake ab, was du schon beherrschst. Starte beim markierten Abschnitt.",
+    "lead": "Jeder Schritt ist eine kurze Lektion mit einem Terminal zum Üben und einem Test. Sie werden der Reihe nach freigeschaltet: Besteh den Test, um den nächsten zu öffnen.",
     "startHere": "Hier starten",
     "done": "Beherrsche ich",
     "progress": "{done} von {total} beherrscht",
@@ -845,5 +851,183 @@
     "cc-plugin-you-should-know": "Ein Seitenagent weist dich über dem Prompt auf Übersehenes hin. Standardmäßig aus.",
     "cc-plugin-sec-default": "Schützt, was deine Organisation verwaltet, vor selbst installierten Mods.",
     "cc-plugin-telemetry": "Sendet die Metriken von Claude Code und seinen mitgelieferten Mods."
+  },
+  "game": {
+    "levels": {
+      "kitten": "Kätzchen",
+      "curious": "Neugierig",
+      "hunter": "Jäger",
+      "explorer": "Entdecker",
+      "master": "Katzenmeister"
+    },
+    "progressTitle": "Dein Level",
+    "xp": "{n} XP",
+    "toNext": "noch {n} XP bis {level}",
+    "maxLevel": "du hast das höchste Level erreicht!",
+    "streak": "{n} Tage in Folge",
+    "streakNone": "Schließ heute einen Schritt ab, um deine Serie zu starten.",
+    "stickers": "Sticker",
+    "stickersLead": "Du hast {got} von {total}. Du bekommst sie für Schritte, Abschnitte und Serien.",
+    "locked": "Gesperrt",
+    "newSticker": "Neuer Sticker!",
+    "levelUp": "Du bist jetzt {level}!",
+    "levelUpSub": "Tilde ist stolz auf dich. Weiter so.",
+    "phaseDone": "Du hast {phase} geschafft!",
+    "plusXp": "+{n} XP",
+    "continue": "Weiter!",
+    "cheers": [
+      "Stark!",
+      "Miau, noch einer!",
+      "Du fliegst!",
+      "Jawohl!"
+    ],
+    "remind": "Schick mir eine E-Mail, wenn ich 2 Tage nicht vorbeikomme",
+    "remindNote": "Wir schreiben einmal pro Abwesenheit an die E-Mail-Adresse deines Kontos. Entferne das Häkchen, um es abzuschalten.",
+    "remindLogin": "Melde dich an, um deinen Fortschritt zu speichern und die Serien-Erinnerung per E-Mail einzuschalten."
+  },
+  "stickerNames": {
+    "first-step": {
+      "t": "Erster Schritt",
+      "d": "Du hast deinen ersten Schritt auf dem Pfad geschafft."
+    },
+    "phase-start": {
+      "t": "Keimling",
+      "d": "Du hast Erste Schritte geschafft."
+    },
+    "phase-habits": {
+      "t": "Kompass",
+      "d": "Du hast Gewohnheiten geschafft."
+    },
+    "phase-extend": {
+      "t": "Werkzeugkasten",
+      "d": "Du hast Erweitern geschafft."
+    },
+    "phase-pro": {
+      "t": "Gipfel",
+      "d": "Du hast den Profi-Abschnitt geschafft."
+    },
+    "all-done": {
+      "t": "Legende",
+      "d": "Du hast den ganzen Pfad geschafft."
+    },
+    "streak-3": {
+      "t": "Brennt",
+      "d": "Drei Tage in Folge."
+    },
+    "streak-7": {
+      "t": "Blitz",
+      "d": "Eine ganze Woche in Folge."
+    },
+    "streak-30": {
+      "t": "Stern",
+      "d": "Dreißig Tage in Folge."
+    },
+    "token-saver": {
+      "t": "Sparfuchs",
+      "d": "Du beherrschst Kontext, Verbrauch und Skills."
+    },
+    "model-combo": {
+      "t": "Dirigent",
+      "d": "Du kombinierst Modelle mit Berater und Subagenten."
+    },
+    "role-pick": {
+      "t": "Mit Profil",
+      "d": "Du hast deine Rolle gewählt."
+    }
+  },
+  "lesson": {
+    "start": "Lektion starten",
+    "review": "Wiederholen",
+    "passToMark": "Bestehe den Test, um es abzuhaken",
+    "back": "Mein Pfad",
+    "stepOf": "Schritt {n} von {total}",
+    "mastered": "Das beherrschst du schon. Wiederhole es, wann du willst.",
+    "keyPoints": "Das Wichtigste",
+    "practice": "Übe im Terminal",
+    "termHint": "Hinweis zeigen",
+    "termWrong": "Das ist nicht, was die Aufgabe verlangt. Versuch es nochmal oder sieh dir den Hinweis an.",
+    "termOk": "✓ Perfekt! Jetzt kannst du den Test machen.",
+    "termPlaceholder": "Hier tippen und Enter drücken",
+    "termDone": "Gelöst. Du kannst weiter Befehle ausprobieren.",
+    "quiz": "Test",
+    "quizLocked": "Löse das Terminal, um den Test freizuschalten.",
+    "check": "Prüfen",
+    "retry": "Nochmal versuchen",
+    "correct": "Richtig!",
+    "wrong": "Das ist es nicht.",
+    "pickAnswer": "Wähle bei jeder Frage eine Antwort.",
+    "allRight": "Du hast den Test bestanden!",
+    "allRightSub": "Du beherrschst „{title}“. Es ist auf deinem Pfad abgehakt.",
+    "next": "Nächste Lektion",
+    "finishRoute": "Meine Erfolge ansehen",
+    "source": "Quelle: offizielle Dokumentation",
+    "locked": "Schließ den vorherigen Schritt ab, um ihn freizuschalten.",
+    "lockedPage": "Diese Lektion ist noch gesperrt. Die Route geht Schritt für Schritt: Mach mit „{title}“ weiter.",
+    "goCurrent": "Zu meinem aktuellen Schritt"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten.",
+    "terms": "Nutzungsbedingungen",
+    "hi": "Miau! Kann ich helfen?",
+    "tagline": "Lerne Claude Code Schritt für Schritt, von null bis Profi, mit Tilde.",
+    "product": "Route",
+    "help": "Hilfe",
+    "legal": "Rechtliches",
+    "unofficial": "Unabhängiges Projekt, nicht mit Anthropic verbunden."
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "updated": "Zuletzt aktualisiert: 18. Oktober 2026.",
+    "body": [
+      "Procode ist ein kostenloser Leitfaden zum Lernen von Claude Code. Mit der Nutzung der Website akzeptierst du diese Bedingungen.",
+      "Die Inhalte dienen der Bildung. Verbrauch und Kosten sind Schätzungen auf Basis öffentlicher Preise und können von deiner tatsächlichen Rechnung abweichen; prüfe vor der Wahl eines Abos immer die offizielle Dokumentation.",
+      "Meldest du dich mit GitHub oder Google an, speichern wir nur deinen Kontonamen, deine Antworten und deinen Fortschritt, damit du auf einem anderen Gerät weitermachen kannst. Ohne Konto lebt der Fortschritt im Tab und wird beim Schließen gelöscht. Wir verkaufen oder teilen deine Daten nicht.",
+      "Befehle und Beispiele werden ohne Gewähr bereitgestellt. Prüfe, was du auf deinem Rechner ausführst; wir haften nicht für Schäden durch ihre Nutzung.",
+      "Design, Texte und das Maskottchen Tilde gehören ihrem Urheber. Claude und Claude Code sind Marken von Anthropic.",
+      "Wir können diese Bedingungen aktualisieren; das Datum oben zeigt die aktuelle Version. Für Fragen oder Beschwerden nutze das Hilfe-Formular unten auf der Seite."
+    ],
+    "mail": "E-Mail-Erinnerungen: Nur wenn du sie einschaltest, nutzen wir die E-Mail-Adresse deines Kontos, um dich nach 2 Tagen ohne Besuch zu erinnern, einmal pro Abwesenheit. Du kannst sie jederzeit in deinen Erfolgen abschalten."
+  },
+  "exam": {
+    "title": "Claude-Code-Pro-Prüfung",
+    "ready": "Du hast die Route abgeschlossen. Leg die Abschlussprüfung ab, um dein Zertifikat zu bekommen.",
+    "lockedRoute": "Wird freigeschaltet, wenn du alle 48 Schritte der Route beherrschst.",
+    "start": "Prüfung starten",
+    "seeCert": "Mein Zertifikat ansehen",
+    "lead": "{n} Fragen aus der ganzen Route. Mit {pass} richtigen Antworten bestehst du.",
+    "score": "{score} von {total} richtig",
+    "failed": "Du brauchst {pass} zum Bestehen. Wiederhole die Lektionen, bei denen du danebenlagst, und versuch es noch mal: Die Fragen ändern sich.",
+    "passedTitle": "Du bist Claude Code Pro!",
+    "passedSub": "Du hast die Abschlussprüfung bestanden. Dein Zertifikat ist fertig.",
+    "certFor": "Zertifikat verliehen an",
+    "certText": "für den Abschluss der Procode-Route und das Bestehen der Abschlussprüfung",
+    "print": "Drucken oder als PDF speichern",
+    "again": "Noch einmal ablegen",
+    "submit": "Prüfung abgeben"
+  },
+  "mail": {
+    "subject": "Deine Serie wartet, {name} 🐾",
+    "body": "Hallo {name}! Du warst seit 2 Tagen nicht mehr bei Procode, und Tilde vermisst dich.\n\nEin Schritt pro Tag reicht, um deine Serie zu halten: {url}\n\nWenn du keine Erinnerungen mehr willst, entferne das Häkchen bei „Schick mir eine E-Mail“ in deinen Erfolgen."
+  },
+  "contact": {
+    "title": "Fragen und Beschwerden",
+    "lead": "Schreib uns, wir antworten an die E-Mail-Adresse, die du angibst.",
+    "type": "Anliegen",
+    "name": "Name",
+    "email": "Deine E-Mail",
+    "message": "Nachricht",
+    "send": "Senden",
+    "sending": "Wird gesendet…",
+    "sent": "Nachricht gesendet!",
+    "sentSub": "Danke. Wir antworten so bald wie möglich per E-Mail.",
+    "invalid": "Prüf die Felder: Die E-Mail muss gültig sein und die Nachricht mindestens 10 Zeichen haben.",
+    "unavailable": "Das Formular ist noch nicht verfügbar. Versuch es später noch einmal.",
+    "error": "Wir konnten die Nachricht nicht senden. Versuch es gleich noch einmal.",
+    "types": {
+      "query": "Fragen",
+      "complaint": "Beschwerden",
+      "suggestion": "Vorschläge",
+      "other": "Sonstiges"
+    }
   }
 }

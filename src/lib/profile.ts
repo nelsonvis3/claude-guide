@@ -2,7 +2,9 @@ import { ROLE_IDS, type Role } from "./content";
 import type { Answers, Effort, FeatureId, ModelId, UseId } from "./estimate";
 
 export type Experience = "new" | "some" | "daily";
-export type Profile = { name: string; experience: Experience; role: Role; answers: Answers; done: string[] };
+// days: fechas (AAAA-MM-DD) en que completó algún paso; de ahí sale la racha.
+// remind: aceptó que le avisemos por correo si pasa 2 días sin entrar (solo con cuenta).
+export type Profile = { name: string; experience: Experience; role: Role; answers: Answers; done: string[]; days: string[]; remind: boolean };
 
 export const DEFAULT_ANSWERS: Answers = {
   use: "fullstack", hoursPerDay: 4, daysPerWeek: 5, model: "sonnet", effort: "medium",
@@ -42,5 +44,9 @@ export function parseProfile(x: unknown): Profile | null {
     done: Array.isArray(p.done)
       ? [...new Set(p.done.filter((s): s is string => typeof s === "string" && s.length <= 40))].slice(0, 100)
       : [],
+    days: Array.isArray(p.days)
+      ? [...new Set(p.days.filter((d): d is string => typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d)))].sort().slice(-400)
+      : [],
+    remind: p.remind === true,
   };
 }

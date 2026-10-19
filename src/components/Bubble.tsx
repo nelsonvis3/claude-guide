@@ -17,10 +17,10 @@ export default function Bubble({ text, sub }: { text: string; sub?: string }) {
   const visible = reduce ? text : text.slice(0, shown);
   return (
     <div
-      className="relative rounded-[22px] border-[3px] border-ink bg-surface px-5 py-4 shadow-[6px_6px_0_var(--ink)]"
+      className="relative rounded-3xl bg-surface px-5 py-4 shadow-soft"
       onClick={() => setShown(text.length)}
     >
-      <span aria-hidden="true" className="absolute -bottom-[15px] left-10 h-6 w-6 rotate-45 border-b-[3px] border-r-[3px] border-ink bg-surface" />
+      <span aria-hidden="true" className="absolute -bottom-2 left-12 h-5 w-5 rotate-45 rounded-[4px] bg-surface" />
       <p className="sr-only" aria-live="polite">{text} {sub}</p>
       <p aria-hidden="true" className="relative text-[1.3rem] leading-snug font-semibold">
         {visible}

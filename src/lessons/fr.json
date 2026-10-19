@@ -1,0 +1,2210 @@
+{
+  "install": {
+    "body": [
+      "Commençons par le début ! Claude Code s'installe en une commande et s'utilise dans le terminal, à l'intérieur de ton projet.",
+      "Sur macOS et Linux, installe-le avec `curl -fsSL https://claude.ai/install.sh | bash` ; sur Windows, il y a un installateur PowerShell. Ouvre ensuite un terminal dans le dossier du projet et tape `claude`.",
+      "La première fois, il te demande de te connecter. Utilise ton forfait Pro ou Max de claude.ai (l'usage compte dans les limites du forfait) ou une clé d'API de la Claude Console (tu paies au token)."
+    ],
+    "points": [
+      "Ouvre-le toujours dans le dossier du projet : Claude travaille sur ses fichiers.",
+      "Avec Pro ou Max tu ne paies pas au token ; avec une clé d'API, si.",
+      "`/status` affiche la version, le modèle et le compte connecté."
+    ],
+    "task": "Tu l'as installé. Ouvre Claude Code dans ton projet.",
+    "hint": "C'est un seul mot : le nom du programme.",
+    "quiz": [
+      {
+        "q": "Où faut-il ouvrir Claude Code ?",
+        "o": [
+          "Dans le dossier du projet sur lequel tu vas travailler",
+          "N'importe où, peu importe",
+          "Seulement dans le dossier personnel",
+          "Dans node_modules"
+        ],
+        "why": "Claude lit et modifie les fichiers du dossier où tu l'ouvres, donc ce doit être celui du projet."
+      },
+      {
+        "q": "Avec le forfait Max, comment l'usage est-il facturé ?",
+        "o": [
+          "Il compte dans les limites du forfait, pas au token",
+          "Chaque token est facturé à part",
+          "C'est gratuit et illimité",
+          "À la ligne de code"
+        ],
+        "why": "Avec Pro et Max, l'usage consomme le quota du forfait, renouvelé toutes les 5 heures et chaque semaine."
+      },
+      {
+        "q": "Quelle commande affiche la version, le modèle et le compte ?",
+        "o": [
+          "/status",
+          "/init",
+          "/clear",
+          "/plan"
+        ],
+        "why": "`/status` ouvre les réglages sur l'onglet d'état."
+      }
+    ]
+  },
+  "init": {
+    "body": [
+      "Avant de lui demander des choses, présente ton projet. C'est le rôle de `/init`.",
+      "`/init` parcourt le code et écrit un fichier `CLAUDE.md` avec ce qu'il a trouvé : comment installer, comment lancer les tests, la structure des dossiers et les conventions.",
+      "Claude lit `CLAUDE.md` au début de chaque session. C'est ta façon de ne pas te répéter : ce que tu y mets, Claude le sait dès le premier message."
+    ],
+    "points": [
+      "`CLAUDE.md` se charge en entier à chaque session, donc garde-le court.",
+      "Modifie-le à la main ou avec `/memory`.",
+      "Si Claude se trompe deux fois sur la même chose, ça va dans `CLAUDE.md`."
+    ],
+    "task": "Génère le CLAUDE.md de ton projet.",
+    "hint": "C'est une commande avec une barre qui veut dire « initialiser ».",
+    "quiz": [
+      {
+        "q": "Que fait `/init` ?",
+        "o": [
+          "Il analyse le projet et écrit un CLAUDE.md",
+          "Il efface la conversation",
+          "Il installe Claude Code",
+          "Il crée un dépôt git"
+        ],
+        "why": "`/init` explore le code et note commandes, structure et conventions."
+      },
+      {
+        "q": "Quand Claude lit-il le CLAUDE.md ?",
+        "o": [
+          "Au début de chaque session",
+          "Seulement quand tu le demandes",
+          "Une fois par mois",
+          "Jamais, c'est pour les humains"
+        ],
+        "why": "Il se charge au début de chaque session et reste dans le contexte de chaque message."
+      },
+      {
+        "q": "Claude utilise npm, toi pnpm, et il s'est trompé deux fois. Que faire ?",
+        "o": [
+          "L'ajouter au CLAUDE.md",
+          "Le répéter à chaque message",
+          "Changer de modèle",
+          "Désinstaller pnpm"
+        ],
+        "why": "Ce qu'il doit toujours savoir va dans CLAUDE.md, comme ça tu ne te répètes pas."
+      }
+    ]
+  },
+  "prompting": {
+    "body": [
+      "C'est celle qui va te faire économiser le plus ! Ta façon de demander change tout : la qualité du résultat et le nombre de tokens dépensés.",
+      "Une bonne demande dit trois choses : ce qui se passe (le symptôme), où regarder (fichier ou dossier) et comment savoir que c'est fini (un test qui passe, une sortie attendue). Si tu peux, ajoute quoi éviter.",
+      "Les demandes vagues comme « corrige la connexion » obligent Claude à deviner et à lire la moitié du projet. Ça coûte des tokens et finit souvent par quelque chose que tu ne voulais pas."
+    ],
+    "points": [
+      "Symptôme + où regarder + comment vérifier.",
+      "Nommer des fichiers précis évite des lectures inutiles.",
+      "Demander la cause, pas un pansement sur le symptôme."
+    ],
+    "task": "Écris une demande qui indique dans quel fichier Claude doit regarder (par exemple, un fichier dans src/).",
+    "hint": "Mentionne un chemin comme src/auth/session.ts.",
+    "quiz": [
+      {
+        "q": "Quelle est la meilleure demande ?",
+        "o": [
+          "« La connexion échoue quand la session expire. Regarde src/auth, écris un test qui échoue et corrige »",
+          "« Corrige la connexion »",
+          "« Améliore le code »",
+          "« Fais que ça marche »"
+        ],
+        "why": "Elle donne le symptôme, où regarder et comment vérifier."
+      },
+      {
+        "q": "Pourquoi les demandes vagues coûtent-elles plus de tokens ?",
+        "o": [
+          "Claude doit lire beaucoup plus pour comprendre ce que tu veux",
+          "Elles sont facturées double",
+          "Elles reçoivent une réponse en anglais",
+          "Elles ne coûtent pas plus"
+        ],
+        "why": "Sans indices, Claude explore tout le projet, et chaque fichier lu, ce sont des tokens."
+      },
+      {
+        "q": "Qu'ajouter à la fin d'une demande de bug ?",
+        "o": [
+          "Trouver la cause et ne pas masquer le symptôme",
+          "Faire vite",
+          "Ne lire aucun fichier",
+          "Changer de langage"
+        ],
+        "why": "Ça évite les correctifs qui cachent le problème, comme faire taire une erreur."
+      }
+    ]
+  },
+  "modes": {
+    "body": [
+      "Tu veux que Claude demande tout ou qu'il travaille seul ? Ce sont les modes de permission qui décident.",
+      "Avec `Shift+Tab` tu passes de l'un à l'autre : Manuel (demande avant de modifier ou d'exécuter), accepter les modifications (modifie sans demander), plan mode (lit et propose seulement) et auto (fait tout avec des contrôles de sécurité en arrière-plan).",
+      "Sous le prompt, tu vois toujours le mode actuel. Pour du code inconnu, commence en Manuel ou en plan ; pour de longues tâches que tu comprends, auto t'évite des dizaines de confirmations."
+    ],
+    "points": [
+      "`Shift+Tab` change de mode sans quitter la session.",
+      "Le plan mode ne modifie rien avant que tu approuves le plan.",
+      "`bypassPermissions` est réservé aux conteneurs ou VM isolés."
+    ],
+    "task": "Change de mode de permission avec le raccourci (appuie vraiment ou tape-le).",
+    "hint": "C'est Shift + Tab.",
+    "quiz": [
+      {
+        "q": "Quel raccourci alterne les modes de permission ?",
+        "o": [
+          "Shift+Tab",
+          "Ctrl+C",
+          "Échap",
+          "Ctrl+R"
+        ],
+        "why": "`Shift+Tab` passe par Manuel, accepter les modifications, plan et auto."
+      },
+      {
+        "q": "Que fait le plan mode ?",
+        "o": [
+          "Il lit et propose un plan sans rien modifier avant ton accord",
+          "Il modifie tout sans demander",
+          "Il supprime les fichiers inutilisés",
+          "Il répond seulement en anglais"
+        ],
+        "why": "Il sert à explorer et planifier avant de toucher au code."
+      },
+      {
+        "q": "Quand `bypassPermissions` a-t-il du sens ?",
+        "o": [
+          "Seulement dans un conteneur ou une VM isolés",
+          "Toujours, pour aller plus vite",
+          "En production",
+          "Sur ton ordinateur sans sauvegarde"
+        ],
+        "why": "Il fait tout sans demander : sûr seulement dans un environnement jetable."
+      }
+    ]
+  },
+  "mentions": {
+    "body": [
+      "Deux raccourcis que tu vas utiliser tout le temps : `@` et `!`.",
+      "Tape `@` et le nom d'un fichier pour le mentionner : Claude le lit et en tient compte. Grâce à l'autocomplétion, pas besoin d'écrire tout le chemin.",
+      "Si tu commences un message par `!`, la suite s'exécute directement dans ton terminal (par exemple `! npm test`) et la sortie reste dans la conversation pour que Claude la voie et l'utilise."
+    ],
+    "points": [
+      "`@fichier` = « lis ça ».",
+      "`! commande` = lance-la toi-même et partage le résultat.",
+      "Mentionner le bon fichier évite à Claude de fouiller tout le projet."
+    ],
+    "task": "Mentionne un fichier avec @ ou lance une commande avec !.",
+    "hint": "Par exemple : @src/app/page.tsx ou ! npm test",
+    "quiz": [
+      {
+        "q": "À quoi sert `@` dans le prompt ?",
+        "o": [
+          "À mentionner un fichier pour que Claude le lise",
+          "À envoyer un mail",
+          "À changer de modèle",
+          "À supprimer un fichier"
+        ],
+        "why": "`@` déclenche l'autocomplétion des chemins et ajoute ce fichier au contexte."
+      },
+      {
+        "q": "Que se passe-t-il si un message commence par `!` ?",
+        "o": [
+          "La commande s'exécute dans ton terminal et la sortie reste dans la conversation",
+          "Claude l'ignore",
+          "La session se ferme",
+          "Le plan mode s'active"
+        ],
+        "why": "C'est le mode shell : la commande s'exécute et Claude peut utiliser le résultat."
+      },
+      {
+        "q": "Pourquoi mentionner le fichier exact ?",
+        "o": [
+          "Pour que Claude n'ait pas à le chercher dans tout le projet",
+          "C'est obligatoire",
+          "Pour qu'il réponde en espagnol",
+          "Ça ne change rien"
+        ],
+        "why": "Moins de recherche, moins de lectures et moins de tokens."
+      }
+    ]
+  },
+  "interrupt": {
+    "body": [
+      "Tu vois Claude partir dans la mauvaise direction ? Arrête-le. Pas de souci.",
+      "`Échap` interrompt ce qu'il fait sans perdre le travail déjà fait, et te laisse le réorienter. Plus tôt tu l'arrêtes, moins de tokens et de changements à annuler.",
+      "Pour vraiment revenir en arrière, `Échap` deux fois (saisie vide) ou `/rewind` te laissent choisir un point antérieur et restaurer la conversation, le code ou les deux."
+    ],
+    "points": [
+      "`Échap` arrête ; il n'efface rien.",
+      "`Échap Échap` ou `/rewind` reviennent à un point de contrôle antérieur.",
+      "Corriger tôt coûte bien moins cher qu'annuler après."
+    ],
+    "task": "Arrête Claude : appuie sur Échap (ou tape /rewind pour revenir en arrière).",
+    "hint": "La touche Échap, en haut à gauche.",
+    "quiz": [
+      {
+        "q": "Que fait `Échap` pendant que Claude travaille ?",
+        "o": [
+          "Il l'arrête sans perdre ce qui est fait",
+          "Il ferme Claude Code",
+          "Il efface tous les changements",
+          "Il change de modèle"
+        ],
+        "why": "Il interrompt le tour et tu peux donner une autre instruction."
+      },
+      {
+        "q": "Comment ramener la conversation et le code à un point antérieur ?",
+        "o": [
+          "Avec `/rewind` ou `Échap` deux fois",
+          "Avec `/init`",
+          "En réinstallant",
+          "Avec Ctrl+V"
+        ],
+        "why": "Ça ouvre les points de contrôle pour restaurer conversation, code ou les deux."
+      },
+      {
+        "q": "Pourquoi arrêter tôt ?",
+        "o": [
+          "Tu économises des tokens et des changements à annuler",
+          "Sinon le compte est bloqué",
+          "Claude se vexe",
+          "Ce n'est pas utile"
+        ],
+        "why": "Chaque pas dans la mauvaise direction coûte des tokens et laisse plus à défaire."
+      }
+    ]
+  },
+  "context": {
+    "body": [
+      "Je te dis un secret : le contexte, c'est ce qui coûte le plus.",
+      "Claude Code renvoie toute la conversation à chaque requête. Si tu changes de sujet en restant dans la même session, tout ce qui précède est repayé à chaque message.",
+      "`/clear` repart de zéro (et ne coûte rien). `/compact` résume ce qui précède quand tu veux continuer sur le même sujet ; tu peux lui dire quoi garder. `/context` montre sous forme de grille ce qui prend de la place."
+    ],
+    "points": [
+      "Changement de tâche → `/clear`.",
+      "Même tâche mais longue session → `/compact` avec des consignes.",
+      "Petit contexte = réponses meilleures et moins chères."
+    ],
+    "task": "Libère du contexte : repars de zéro, résume ou regarde ce qui prend de la place.",
+    "hint": "Essaie /clear, /compact ou /context.",
+    "quiz": [
+      {
+        "q": "Tu as fini un bug et tu commences autre chose sans lien. Que fais-tu ?",
+        "o": [
+          "`/clear`",
+          "`/compact`",
+          "Rien, je reste dans la même session",
+          "Je réinstalle Claude Code"
+        ],
+        "why": "Le vieux contexte se paie à chaque message ; si tu n'en as pas besoin, repars de zéro."
+      },
+      {
+        "q": "À quoi sert `/compact` ?",
+        "o": [
+          "À résumer la conversation pour continuer le même sujet",
+          "À supprimer des fichiers",
+          "À compresser le dépôt",
+          "À changer la langue"
+        ],
+        "why": "Il résume et libère de la place sans perdre le fil."
+      },
+      {
+        "q": "Que montre `/context` ?",
+        "o": [
+          "Ce qui remplit le contexte, sous forme de grille",
+          "Le prix du forfait",
+          "La liste des commits",
+          "Les fichiers supprimés"
+        ],
+        "why": "Il montre si ce sont les outils, la mémoire ou la conversation qui pèsent."
+      }
+    ]
+  },
+  "usage": {
+    "body": [
+      "Mesure avant d'optimiser. C'est le rôle de `/usage`.",
+      "Il montre ce que la session a dépensé (tokens et leur valeur en dollars au prix catalogue), ce qui reste de ton forfait et, sur Pro et Max, ce qui a le plus consommé : skills, sous-agents, plugins ou serveurs MCP.",
+      "Il signale aussi ce qui pèse lourd, comme des sessions très longues ou un cache expiré. Ses alias sont `/cost` et `/stats`."
+    ],
+    "points": [
+      "`/usage` = ce que tu as dépensé et ce qu'il reste.",
+      "Sur Pro et Max, détail par skills, sous-agents et MCP.",
+      "Mesure avant et après avoir changé une habitude."
+    ],
+    "task": "Regarde combien cette session a dépensé.",
+    "hint": "C'est le mot « usage » avec une barre.",
+    "quiz": [
+      {
+        "q": "Quelle commande montre la consommation de la session et du forfait ?",
+        "o": [
+          "/usage",
+          "/init",
+          "/plan",
+          "/diff"
+        ],
+        "why": "`/usage` (alias `/cost` et `/stats`) réunit coût, limites et détail."
+      },
+      {
+        "q": "Sur un forfait Max, qu'ajoute `/usage` ?",
+        "o": [
+          "Quels skills, sous-agents, plugins ou MCP ont le plus consommé",
+          "Une réduction",
+          "Des tokens gratuits",
+          "Rien"
+        ],
+        "why": "Le détail aide à trouver quoi désactiver."
+      },
+      {
+        "q": "Quelle bonne habitude avec `/usage` ?",
+        "o": [
+          "Mesurer avant et après un changement",
+          "Ne jamais le regarder",
+          "Seulement quand l'app plante",
+          "Le supprimer"
+        ],
+        "why": "C'est comme ça que tu sais si un changement (comme `/clear` fréquent) économise vraiment."
+      }
+    ]
+  },
+  "planmode": {
+    "body": [
+      "Réfléchir avant de toucher au code : c'est l'habitude numéro un de ceux qui utilisent bien Claude Code.",
+      "Le flux recommandé a quatre étapes : explorer, planifier, implémenter et commit. En plan mode, Claude lit et propose un plan sans rien modifier ; tu le relis (`Ctrl+G` l'ouvre dans ton éditeur), tu l'approuves et seulement là il implémente.",
+      "Planifier a un coût, donc utilise-le quand tu doutes de l'approche ou que le changement touche plusieurs fichiers. Si le changement tient en une phrase, demande-le directement."
+    ],
+    "points": [
+      "`/plan description` entre en plan mode et lance la tâche.",
+      "`Ctrl+G` ouvre le plan dans ton éditeur pour le corriger.",
+      "Si le diff tient en une phrase, saute le plan."
+    ],
+    "task": "Entre en plan mode : avec /plan et une tâche, ou avec le raccourci.",
+    "hint": "Essaie /plan ajouter la connexion Google, ou Shift+Tab.",
+    "quiz": [
+      {
+        "q": "Quel est le flux recommandé ?",
+        "o": [
+          "Explorer, planifier, implémenter, commit",
+          "Implémenter, commit, explorer",
+          "Commit d'abord, on verra après",
+          "Tout demander en un message"
+        ],
+        "why": "Séparer exploration et implémentation évite de résoudre le mauvais problème."
+      },
+      {
+        "q": "Quand sauter le plan ?",
+        "o": [
+          "Quand le changement tient en une phrase",
+          "Jamais",
+          "Quand il touche 20 fichiers",
+          "Quand tu ne connais pas le code"
+        ],
+        "why": "Pour une coquille ou un renommage, planifier coûte sans rien apporter."
+      },
+      {
+        "q": "Que fait `Ctrl+G` avec le plan ?",
+        "o": [
+          "Il l'ouvre dans ton éditeur pour le modifier",
+          "Il le supprime",
+          "Il l'envoie sur GitHub",
+          "Il le traduit"
+        ],
+        "why": "Tu peux corriger le plan à la main avant que Claude l'exécute."
+      }
+    ]
+  },
+  "verify": {
+    "body": [
+      "Si Claude peut vérifier son travail, il corrige ses propres erreurs. C'est ce qui améliore le plus les résultats.",
+      "Donne-lui un moyen de vérifier : des cas de test, un test qui doit passer, une capture du design à comparer ou la sortie exacte attendue.",
+      "Sans ça, Claude te livre quelque chose qui a l'air de marcher et c'est toi qui trouves le bug. Avec ça, la boucle est : il écrit, teste, corrige et te prévient quand tout passe."
+    ],
+    "points": [
+      "Tests, captures ou sortie attendue : au moins un des trois.",
+      "Demande-lui de lancer les tests après l'implémentation.",
+      "Pour du visuel, colle une capture et demande de comparer."
+    ],
+    "task": "Écris une demande qui inclut comment vérifier (par exemple, lancer les tests).",
+    "hint": "Utilise le mot test, capture ou sortie attendue.",
+    "quiz": [
+      {
+        "q": "Qu'est-ce qui améliore le plus les résultats selon les bonnes pratiques ?",
+        "o": [
+          "Donner à Claude un moyen de vérifier son travail",
+          "Écrire en majuscules",
+          "Toujours prendre le modèle le plus cher",
+          "Tout demander en un message"
+        ],
+        "why": "S'il peut vérifier, il détecte et corrige ses erreurs avant de te livrer."
+      },
+      {
+        "q": "Tu veux faire réaliser un design. Que lui donnes-tu ?",
+        "o": [
+          "Une capture du design et lui demander de comparer",
+          "Juste le nom de la page",
+          "Rien, qu'il improvise",
+          "Le logo de l'entreprise"
+        ],
+        "why": "La capture sert de référence et Claude peut lister les différences."
+      },
+      {
+        "q": "Que demander après avoir implémenté une fonction ?",
+        "o": [
+          "Lancer les tests et corriger ce qui échoue",
+          "Commit sans tester",
+          "Supprimer les tests",
+          "Changer de langage"
+        ],
+        "why": "Finir avec les tests au vert, c'est savoir que c'est terminé."
+      }
+    ]
+  },
+  "runverify": {
+    "body": [
+      "Des tests au vert ne veulent pas toujours dire que l'app marche. C'est là qu'interviennent `/run` et `/verify`.",
+      "`/run` construit et lance ton app pour voir le changement fonctionner ; `/verify` va plus loin : il lance l'app et observe si le changement fait ce qu'il doit, au lieu de se fier aux seuls tests ou au typage.",
+      "Si ton projet a un démarrage particulier, `/run-skill-generator` écrit un skill de projet qui apprend à `/run` et `/verify` comment le construire et le lancer de zéro."
+    ],
+    "points": [
+      "`/verify` = vérifier dans la vraie app, pas seulement les tests.",
+      "`/run` = lancer et piloter l'app.",
+      "`/run-skill-generator` leur apprend à démarrer ton projet."
+    ],
+    "task": "Vérifie dans la vraie app que ton dernier changement fonctionne.",
+    "hint": "C'est le mot « verify » avec une barre.",
+    "quiz": [
+      {
+        "q": "Qu'ajoute `/verify` par rapport aux tests ?",
+        "o": [
+          "Il lance l'app et observe si le changement marche vraiment",
+          "Rien, c'est un alias de npm test",
+          "Il fait un commit automatique",
+          "Il met en production"
+        ],
+        "why": "Il vérifie le comportement réel, pas seulement la compilation ou les tests."
+      },
+      {
+        "q": "À quoi sert `/run-skill-generator` ?",
+        "o": [
+          "À apprendre à /run et /verify comment démarrer ton projet",
+          "À générer des mots de passe",
+          "À lancer le linter",
+          "À créer un dépôt"
+        ],
+        "why": "Il écrit un skill de projet avec les étapes pour construire et lancer l'app."
+      },
+      {
+        "q": "Que fait `/run` ?",
+        "o": [
+          "Il construit, lance et pilote ton app",
+          "Il ferme la session",
+          "Il vide le cache",
+          "Il installe Node"
+        ],
+        "why": "Il sert à voir le changement fonctionner dans l'app."
+      }
+    ]
+  },
+  "models": {
+    "body": [
+      "Tout n'a pas besoin du modèle le plus cher. Bien choisir est la façon la plus directe de ménager ton forfait.",
+      "`/model` change de modèle : Haiku (rapide et pas cher), Sonnet (la plupart des tâches), Opus (raisonnement complexe) ou Fable (le plus dur et long). `/effort` règle combien il raisonne : low, medium, high, xhigh ou max. Sonnet 5.5 et Opus 5.5 sont réglés sur medium.",
+      "Si un tour précis demande plus de réflexion, écris `ultrathink` dans le prompt : il raisonne plus sur ce message seulement, sans changer tes réglages."
+    ],
+    "points": [
+      "Sonnet au quotidien ; Opus ou Fable pour les décisions difficiles.",
+      "Le raisonnement est facturé comme sortie : plus d'effort, plus de tokens.",
+      "`ultrathink` = plus de raisonnement sur ce tour seulement."
+    ],
+    "task": "Change le modèle ou le niveau d'effort.",
+    "hint": "Essaie /model sonnet ou /effort high.",
+    "quiz": [
+      {
+        "q": "Quel modèle convient à la plupart des tâches de code ?",
+        "o": [
+          "Sonnet",
+          "Fable",
+          "Aucun",
+          "Toujours le plus cher"
+        ],
+        "why": "Sonnet équilibre capacité et coût pour le travail quotidien."
+      },
+      {
+        "q": "Que fait `ultrathink` dans un prompt ?",
+        "o": [
+          "Il demande plus de raisonnement sur ce tour seulement",
+          "Il change le modèle pour toujours",
+          "Il coupe le raisonnement",
+          "Il efface le contexte"
+        ],
+        "why": "Il ne touche pas tes réglages : il n'affecte que ce message."
+      },
+      {
+        "q": "Pourquoi plus d'effort coûte plus ?",
+        "o": [
+          "Le raisonnement est facturé en tokens de sortie",
+          "Il change ton forfait",
+          "Il redémarre la session",
+          "Ça ne coûte pas plus"
+        ],
+        "why": "Plus d'effort, c'est plus de raisonnement, donc des tokens de sortie."
+      }
+    ]
+  },
+  "sessions": {
+    "body": [
+      "Pas besoin de repartir de zéro à chaque fois. Les sessions sont enregistrées.",
+      "`claude --continue` (ou `-c`) reprend la dernière conversation du projet et `/resume` te laisse en choisir une. `/rename` lui donne un nom pour la retrouver facilement.",
+      "Avec `/branch` tu crées une branche de la conversation : tu essaies une autre piste sans perdre l'actuelle, puis tu y reviens avec `/resume`."
+    ],
+    "points": [
+      "`claude -c` = reprendre là où tu t'étais arrêté.",
+      "`/rename` avant `/clear` pour la retrouver.",
+      "`/branch` pour essayer une autre direction sans rien perdre."
+    ],
+    "task": "Reprends ta dernière conversation (ou choisis-en une).",
+    "hint": "claude --continue, claude -c ou /resume.",
+    "quiz": [
+      {
+        "q": "Comment reprendre la dernière conversation en ouvrant Claude Code ?",
+        "o": [
+          "claude --continue",
+          "claude --delete",
+          "/init",
+          "/clear"
+        ],
+        "why": "`--continue` (ou `-c`) ouvre la conversation la plus récente du projet."
+      },
+      {
+        "q": "À quoi sert `/branch` ?",
+        "o": [
+          "À essayer une autre piste sans perdre la conversation actuelle",
+          "À créer une branche git",
+          "À supprimer la session",
+          "À changer de modèle"
+        ],
+        "why": "C'est une branche de conversation, pas de git."
+      },
+      {
+        "q": "Que faire avant un `/clear` si tu veux revenir ?",
+        "o": [
+          "Lui donner un nom avec `/rename`",
+          "Rien, c'est perdu de toute façon",
+          "Réinstaller",
+          "Tout copier à la main"
+        ],
+        "why": "Avec un nom, tu la retrouves vite dans `/resume`."
+      }
+    ]
+  },
+  "btw": {
+    "body": [
+      "Une petite question en pleine longue tâche ? N'encombre pas la conversation.",
+      "`/btw` pose une question en aparté : Claude répond avec ce qu'il sait de la session, mais la question et la réponse ne s'ajoutent pas à la conversation principale.",
+      "Idéal pour « que faisait cette regex ? » ou « comment s'appelait ce fichier ? » sans détourner Claude de ce qu'il fait."
+    ],
+    "points": [
+      "`/btw question` = réponse rapide sans encombrer le contexte.",
+      "Ça ne change pas le cap de la tâche principale.",
+      "Sans question, il affiche ta dernière réponse en aparté."
+    ],
+    "task": "Pose une question en aparté sur la session.",
+    "hint": "/btw et ta question, par exemple /btw que fait cette regex ?",
+    "quiz": [
+      {
+        "q": "Qu'a de spécial `/btw` ?",
+        "o": [
+          "Il répond sans ajouter la question à la conversation",
+          "Il efface la conversation",
+          "Il répond dans une autre langue",
+          "Il change de modèle"
+        ],
+        "why": "C'est une question latérale qui ne prend pas de place dans la conversation principale."
+      },
+      {
+        "q": "Quand l'utiliser ?",
+        "o": [
+          "Pour des questions rapides au milieu d'une longue tâche",
+          "Pour implémenter des fonctionnalités",
+          "Pour déployer",
+          "Jamais"
+        ],
+        "why": "Il répond sans détourner Claude de sa tâche."
+      },
+      {
+        "q": "La réponse de `/btw` reste-t-elle dans le contexte ?",
+        "o": [
+          "Non",
+          "Oui, toujours",
+          "Seulement le lundi",
+          "Ça dépend du modèle"
+        ],
+        "why": "C'est justement son intérêt : ne pas encombrer le contexte."
+      }
+    ]
+  },
+  "images": {
+    "body": [
+      "Une image vaut mille mots, et Claude les comprend.",
+      "Colle une capture avec `Ctrl+V` (`Cmd+V` dans iTerm2, `Alt+V` sous Windows) : elle apparaît comme `[Image #1]` dans ton message et tu peux y faire référence.",
+      "Utile pour montrer un design à réaliser, une erreur à l'écran ou un graphique. Avec la vérification, tu peux demander : « réalise ceci, fais une capture du résultat et liste les différences »."
+    ],
+    "points": [
+      "`Ctrl+V` colle l'image du presse-papiers.",
+      "Designs, erreurs à l'écran et graphiques.",
+      "Demande-lui de comparer le résultat avec la capture."
+    ],
+    "task": "Colle une image du presse-papiers avec le raccourci.",
+    "hint": "C'est Ctrl + V.",
+    "quiz": [
+      {
+        "q": "Comment coller une capture dans Claude Code (Linux) ?",
+        "o": [
+          "Ctrl+V",
+          "Ctrl+Z",
+          "Shift+Tab",
+          "/image"
+        ],
+        "why": "Elle s'insère comme `[Image #N]` dans le prompt."
+      },
+      {
+        "q": "Pourquoi lui envoyer la capture d'un design ?",
+        "o": [
+          "Pour qu'il le réalise et compare le résultat",
+          "Pour qu'il le publie",
+          "Pour changer le fond d'écran",
+          "Ça ne sert à rien"
+        ],
+        "why": "La capture est la référence visuelle à comparer."
+      },
+      {
+        "q": "Comment l'image apparaît-elle dans ton message ?",
+        "o": [
+          "Comme [Image #1]",
+          "Comme un lien Drive",
+          "Elle n'apparaît pas",
+          "Comme du texte en base64"
+        ],
+        "why": "Ainsi tu peux y faire référence dans le prompt."
+      }
+    ]
+  },
+  "review": {
+    "body": [
+      "Avant de commit, regarde ce qui a changé. Claude Code a tout pour relire.",
+      "`/diff` montre les changements de l'arbre de travail. `/code-review` cherche des bugs dans ton diff, une PR ou une branche, avec des niveaux de profondeur (`low` à `max`) et `--fix` pour appliquer les corrections. `/security-review` cherche des vulnérabilités dans les changements de ta branche.",
+      "Une bonne habitude : une session écrit et une autre relit. Le relecteur n'est pas biaisé par le code qu'il vient d'écrire."
+    ],
+    "points": [
+      "`/diff` = voir ce qui a changé.",
+      "`/code-review high --fix` = trouver des bugs et les corriger.",
+      "`/security-review` avant de merger quelque chose de sensible."
+    ],
+    "task": "Relis les changements : regarde le diff ou demande une revue de code.",
+    "hint": "/diff, /code-review ou /security-review.",
+    "quiz": [
+      {
+        "q": "Que fait `/code-review --fix` ?",
+        "o": [
+          "Il cherche des bugs dans ton diff et applique les corrections",
+          "Il supprime le diff",
+          "Il fait un push",
+          "Il change de branche"
+        ],
+        "why": "Il relit et, avec `--fix`, applique ce qu'il a trouvé."
+      },
+      {
+        "q": "Que cherche `/security-review` ?",
+        "o": [
+          "Des vulnérabilités dans les changements de ta branche",
+          "Des fautes d'orthographe",
+          "Des mots de passe oubliés",
+          "Des images cassées"
+        ],
+        "why": "Il relit le diff par rapport à la branche principale : injections, problèmes d'auth, etc."
+      },
+      {
+        "q": "Pourquoi faire relire par une autre session ?",
+        "o": [
+          "Elle n'est pas biaisée par le code qu'elle vient d'écrire",
+          "C'est moins cher",
+          "La première se fatigue",
+          "Ce n'est pas utile"
+        ],
+        "why": "Un regard neuf voit ce que l'auteur laisse passer."
+      }
+    ]
+  },
+  "simplify": {
+    "body": [
+      "Que ça marche ne suffit pas : la simplicité compte aussi. C'est le rôle de `/simplify`.",
+      "Quatre agents relisent ton changement en parallèle : réutilise-t-il des helpers existants, peut-il être plus simple, est-il efficace, est-il au bon niveau d'abstraction. Puis il applique les corrections.",
+      "Il ne cherche pas les bugs (c'est le rôle de `/code-review`) : il traque le code dupliqué, la complexité inutile et la lenteur. Idéal juste avant un commit."
+    ],
+    "points": [
+      "4 agents en parallèle : réutilisation, simplicité, efficacité et abstraction.",
+      "Il applique les corrections lui-même.",
+      "`/simplify` nettoie ; `/code-review` cherche les bugs."
+    ],
+    "task": "Nettoie ton dernier changement avant de commit.",
+    "hint": "C'est le mot « simplify ».",
+    "quiz": [
+      {
+        "q": "Que relit `/simplify` ?",
+        "o": [
+          "Réutilisation, simplicité, efficacité et abstraction",
+          "Seulement l'orthographe",
+          "Les mots de passe",
+          "L'historique git"
+        ],
+        "why": "Quatre agents, un par aspect."
+      },
+      {
+        "q": "En quoi diffère-t-il de `/code-review` ?",
+        "o": [
+          "`/simplify` nettoie le code ; `/code-review` cherche des bugs",
+          "C'est pareil",
+          "`/simplify` déploie",
+          "`/code-review` supprime des fichiers"
+        ],
+        "why": "L'un, c'est qualité et propreté ; l'autre, la correction."
+      },
+      {
+        "q": "Quand le lancer ?",
+        "o": [
+          "Juste avant un commit",
+          "Avant d'écrire du code",
+          "Jamais",
+          "Seulement en production"
+        ],
+        "why": "Il relit le changement terminé et le rend plus propre."
+      }
+    ]
+  },
+  "automode": {
+    "body": [
+      "Marre de confirmer chaque étape ? Le mode auto travaille seul, avec un filet de sécurité.",
+      "En auto, Claude agit sans demander la permission, mais un classificateur vérifie chaque action en arrière-plan et bloque ce qui est risqué. Active-le avec `Shift+Tab` ou en lançant `claude --permission-mode auto`.",
+      "C'est pour les longues tâches que tu comprends déjà. `/auto-mode-setup` prépare la configuration du classificateur à partir de ton projet et de tes sessions récentes."
+    ],
+    "points": [
+      "Sans confirmations, avec des contrôles de sécurité en arrière-plan.",
+      "Pour les longues tâches, pas pour du code inconnu.",
+      "`/auto-mode-setup` règle ce qu'il considère comme sûr."
+    ],
+    "task": "Lance Claude Code en mode auto (ou active-le avec le raccourci).",
+    "hint": "claude --permission-mode auto, ou Shift+Tab.",
+    "quiz": [
+      {
+        "q": "Que fait le mode auto ?",
+        "o": [
+          "Il agit sans demander, avec des contrôles de sécurité en arrière-plan",
+          "Il coupe toute la sécurité",
+          "Il lit seulement des fichiers",
+          "Il change de modèle tout seul"
+        ],
+        "why": "Un classificateur vérifie chaque action pendant qu'il travaille."
+      },
+      {
+        "q": "Avec quel flag lancer le mode auto ?",
+        "o": [
+          "--permission-mode auto",
+          "--fast",
+          "--auto-delete",
+          "--yes"
+        ],
+        "why": "`claude --permission-mode auto`."
+      },
+      {
+        "q": "Pour quelles tâches convient-il ?",
+        "o": [
+          "Les longues tâches que tu comprends déjà",
+          "Du code inconnu",
+          "Des données sensibles sans sauvegarde",
+          "Aucune"
+        ],
+        "why": "Il t'épargne des confirmations quand tu sais où tu vas."
+      }
+    ]
+  },
+  "claudemd": {
+    "body": [
+      "Ton CLAUDE.md, c'est le guide d'accueil de ton projet. Faisons-le bien.",
+      "Comme il se charge en entier à chaque session, il doit être court : moins de 200 lignes. Mets-y ce que Claude ne pourrait pas deviner : commandes de build et de test, règles propres au projet, conventions de branches et de PR, pièges connus.",
+      "Ce qui n'est pas toujours utile (un long guide d'API, la checklist de déploiement) va dans un skill, chargé seulement quand il sert. `/memory` te permet de modifier les CLAUDE.md et de voir la mémoire automatique."
+    ],
+    "points": [
+      "Moins de 200 lignes.",
+      "Des commandes qu'il ne devinerait pas et tes propres règles, pas « écris du code propre ».",
+      "L'occasionnel va dans des skills ; `/doctor` propose des coupes."
+    ],
+    "task": "Ouvre l'éditeur de mémoire pour relire ton CLAUDE.md.",
+    "hint": "C'est « memory » avec une barre.",
+    "quiz": [
+      {
+        "q": "Que mettre dans CLAUDE.md ?",
+        "o": [
+          "Des commandes qu'il ne devinerait pas et les règles du projet",
+          "Toute la documentation de l'API",
+          "De longues explications sur la programmation",
+          "La description de chaque fichier"
+        ],
+        "why": "Ce que Claude peut déduire en lisant le code n'est pas nécessaire."
+      },
+      {
+        "q": "Pourquoi le garder court ?",
+        "o": [
+          "Il se charge en entier à chaque session et occupe toujours du contexte",
+          "Il est limité à 10 lignes",
+          "Sinon il est supprimé",
+          "La longueur n'a pas d'importance"
+        ],
+        "why": "Chaque ligne se paie à chaque message."
+      },
+      {
+        "q": "Où va une longue checklist de déploiement ?",
+        "o": [
+          "Dans un skill",
+          "Dans CLAUDE.md",
+          "Dans le README",
+          "Dans un commentaire du code"
+        ],
+        "why": "Les skills ne se chargent que quand on s'en sert."
+      }
+    ]
+  },
+  "skills": {
+    "body": [
+      "Les skills, ce sont des recettes que Claude apprend et utilise quand il le faut.",
+      "Un skill est un fichier `SKILL.md` avec des instructions, des connaissances ou un workflow : ta checklist de déploiement, le guide de style de l'API, la façon de relire une PR. Il vit dans `.claude/skills/<nom>/` (projet) ou `~/.claude/skills/` (les tiens).",
+      "Tant qu'il ne sert pas, seule sa description occupe du contexte. Tu l'appelles avec `/nom` ou Claude le charge seul quand la description correspond à la tâche. `/skills` les liste et `t` les trie par tokens."
+    ],
+    "points": [
+      "Un dossier avec un `SKILL.md`.",
+      "Seule la description occupe du contexte tant qu'il ne sert pas.",
+      "Si tu colles la même procédure pour la troisième fois, fais-en un skill."
+    ],
+    "task": "Liste les skills dont tu disposes.",
+    "hint": "Le mot « skills » avec une barre.",
+    "quiz": [
+      {
+        "q": "Qu'est-ce qu'un skill ?",
+        "o": [
+          "Un SKILL.md avec des instructions ou un workflow que Claude utilise au besoin",
+          "Un nouveau modèle",
+          "Un serveur web",
+          "Un type de commit"
+        ],
+        "why": "C'est une connaissance ou une procédure réutilisable."
+      },
+      {
+        "q": "Combien de contexte occupe un skill inutilisé ?",
+        "o": [
+          "Seulement sa description",
+          "Tout le fichier, toujours",
+          "Jamais rien",
+          "Le double de CLAUDE.md"
+        ],
+        "why": "Le contenu complet ne se charge qu'à l'utilisation."
+      },
+      {
+        "q": "Quand créer un skill ?",
+        "o": [
+          "Quand tu colles la même procédure pour la troisième fois",
+          "Pour chaque message",
+          "Jamais, CLAUDE.md suffit",
+          "Seulement pour Python"
+        ],
+        "why": "C'est le signe que cette procédure mérite d'être enregistrée."
+      }
+    ]
+  },
+  "skilldoctor": {
+    "body": [
+      "Les skills sont bon marché, mais pas gratuits. Chaque description occupe du contexte à chaque message.",
+      "`/skill-doctor` montre combien de tokens coûte chaque skill et combien de fois tu t'en es servi. Tu trouves ainsi ceux que tu n'utilises jamais et tu les désactives.",
+      "Pour les skills à effets de bord (comme un déploiement), `disable-model-invocation: true` dans l'en-tête fait qu'ils ne se chargent que quand tu les appelles, sans rien occuper en attendant."
+    ],
+    "points": [
+      "`/skill-doctor` = coût et usage de chaque skill.",
+      "Désactive ceux que tu n'utilises pas.",
+      "`disable-model-invocation: true` = seulement quand tu l'appelles."
+    ],
+    "task": "Regarde combien te coûte chaque skill.",
+    "hint": "/skill-doctor",
+    "quiz": [
+      {
+        "q": "Que montre `/skill-doctor` ?",
+        "o": [
+          "Le coût en contexte et l'usage de chaque skill",
+          "Les erreurs de code",
+          "La santé du serveur",
+          "Tes messages supprimés"
+        ],
+        "why": "Il t'aide à décider quels skills désactiver."
+      },
+      {
+        "q": "Pourquoi désactiver les skills inutilisés ?",
+        "o": [
+          "Leur description occupe du contexte à chaque message",
+          "Ils se cassent",
+          "Ils coûtent de l'argent à part",
+          "Pas besoin"
+        ],
+        "why": "Moins de descriptions, moins de tokens et moins de confusion."
+      },
+      {
+        "q": "Que fait `disable-model-invocation: true` ?",
+        "o": [
+          "Le skill ne se charge que quand tu l'appelles",
+          "Il supprime le skill",
+          "Il le fait toujours utiliser",
+          "Il change de modèle"
+        ],
+        "why": "Il n'occupe pas de contexte tant que tu ne l'appelles pas avec `/nom`."
+      }
+    ]
+  },
+  "fewerprompts": {
+    "body": [
+      "Claude te demande la permission pour chaque `ls` ? Il y a un skill pour ça.",
+      "`/fewer-permission-prompts` parcourt tes sessions, repère les commandes en lecture seule que tu utilises le plus (comme `git status` ou lancer les tests) et ajoute une liste d'autorisations priorisée dans le `.claude/settings.json` du projet.",
+      "Claude continue de demander pour ce qui modifie, mais arrête de t'interrompre pour l'inoffensif. Tu vois et modifies les règles avec `/permissions`."
+    ],
+    "points": [
+      "Autorise automatiquement les commandes en lecture seule fréquentes.",
+      "Les enregistre dans le `.claude/settings.json` du projet.",
+      "`/permissions` pour relire ou ajuster les règles."
+    ],
+    "task": "Réduis les demandes de permission.",
+    "hint": "/fewer-permission-prompts",
+    "quiz": [
+      {
+        "q": "Que fait `/fewer-permission-prompts` ?",
+        "o": [
+          "Il autorise les commandes en lecture seule que tu utilises le plus",
+          "Il coupe toutes les permissions",
+          "Il supprime les réglages",
+          "Il passe en mode auto"
+        ],
+        "why": "Il construit une liste d'autorisations à partir de tes sessions."
+      },
+      {
+        "q": "Où enregistre-t-il la liste ?",
+        "o": [
+          "Dans le .claude/settings.json du projet",
+          "Dans CLAUDE.md",
+          "Dans le README",
+          "Dans le cloud d'Anthropic"
+        ],
+        "why": "C'est une configuration du projet."
+      },
+      {
+        "q": "Quelle commande sert à relire les règles de permission ?",
+        "o": [
+          "/permissions",
+          "/rules",
+          "/config delete",
+          "/allow-all"
+        ],
+        "why": "`/permissions` montre les règles d'autorisation, de demande et de refus."
+      }
+    ]
+  },
+  "debug": {
+    "body": [
+      "Quelque chose cloche : un hook qui ne se lance pas, un MCP qui ne se connecte pas, un skill qui n'apparaît pas. Pas de panique, ça se diagnostique.",
+      "`/debug` active le journal de débogage à partir de ce moment et le lit pour toi afin de trouver la cause. `/doctor` vérifie toute l'installation, les réglages et tes CLAUDE.md, et propose des corrections qu'il applique quand tu confirmes.",
+      "Si tu as modifié quelque chose sur le disque pendant la session, `/reload-skills` et `/reload-plugins` le rechargent sans redémarrer."
+    ],
+    "points": [
+      "`/debug` = lire le journal et trouver la cause.",
+      "`/doctor` = bilan complet avec corrections.",
+      "`/reload-plugins` et `/reload-skills` évitent de redémarrer."
+    ],
+    "task": "Diagnostique ce qui ne marche pas.",
+    "hint": "/debug ou /doctor.",
+    "quiz": [
+      {
+        "q": "Un hook ne se lance pas. Que tentes-tu d'abord ?",
+        "o": [
+          "/debug",
+          "/clear",
+          "/plan",
+          "Tout réinstaller"
+        ],
+        "why": "Il active le journal et le lit à la recherche de l'erreur."
+      },
+      {
+        "q": "Que fait `/doctor` ?",
+        "o": [
+          "Il vérifie installation, réglages et CLAUDE.md, et propose des corrections",
+          "Il appelle le support",
+          "Il supprime les réglages",
+          "Il change de modèle"
+        ],
+        "why": "C'est un bilan général avec des corrections que tu valides."
+      },
+      {
+        "q": "Tu as ajouté un skill sur le disque. Comment le charger sans redémarrer ?",
+        "o": [
+          "/reload-skills",
+          "/init",
+          "/exit",
+          "Impossible"
+        ],
+        "why": "Il rescanne les dossiers de skills."
+      }
+    ]
+  },
+  "mcp": {
+    "body": [
+      "MCP, c'est la façon de connecter Claude au monde : GitHub, Notion, Slack, bases de données, Figma, le navigateur.",
+      "Un serveur MCP donne à Claude des outils pour un service externe. Ajoute-le avec `claude mcp add --transport http <nom> <url>` et gère-le avec `/mcp` (connecter, s'authentifier, activer ou désactiver).",
+      "Les outils se chargent à la demande, donc un MCP inutilisé prend peu de place. Mais s'il existe une CLI (`gh`, `aws`), elle coûte souvent moins qu'un MCP."
+    ],
+    "points": [
+      "MCP = des outils pour des services externes.",
+      "`/mcp` pour connecter et désactiver des serveurs.",
+      "S'il y a une CLI (gh, aws), elle est souvent plus légère."
+    ],
+    "task": "Gère tes serveurs MCP (ou ajoutes-en un).",
+    "hint": "/mcp ou claude mcp add --transport http …",
+    "quiz": [
+      {
+        "q": "À quoi sert un serveur MCP ?",
+        "o": [
+          "À connecter Claude à des services externes",
+          "À changer de modèle",
+          "À compresser le contexte",
+          "À traduire"
+        ],
+        "why": "Il donne des outils pour GitHub, Notion, des bases de données, etc."
+      },
+      {
+        "q": "Quand une CLI est-elle préférable à un MCP ?",
+        "o": [
+          "Quand il existe une CLI comme gh ou aws : elle coûte souvent moins",
+          "Jamais",
+          "Toujours",
+          "Seulement sous Windows"
+        ],
+        "why": "Les CLI n'ajoutent pas de définitions d'outils au contexte."
+      },
+      {
+        "q": "Quelle commande désactive un MCP inutilisé ?",
+        "o": [
+          "/mcp",
+          "/clear",
+          "/hooks",
+          "/skills"
+        ],
+        "why": "`/mcp` liste, connecte et désactive les serveurs."
+      }
+    ]
+  },
+  "hooks": {
+    "body": [
+      "Les hooks sont des règles qui s'appliquent toujours, sans dépendre de la mémoire de Claude.",
+      "Un hook exécute quelque chose (un script, une requête HTTP, un prompt ou un sous-agent) lors d'un événement : avant ou après un outil, à l'envoi d'un prompt, à la fin du tour. Par exemple : formater après chaque modification ou bloquer un `rm -rf`.",
+      "Ils ne coûtent pas de contexte sauf s'ils renvoient quelque chose. Et un hook qui filtre la sortie des tests (seulement les échecs) peut faire passer des milliers de tokens à quelques centaines. `/hooks` montre ceux que tu as configurés."
+    ],
+    "points": [
+      "Si ça doit toujours arriver, c'est un hook (pas une consigne).",
+      "Ils n'occupent pas de contexte sauf s'ils renvoient quelque chose.",
+      "Filtrer les longues sorties est une grosse économie."
+    ],
+    "task": "Regarde les hooks configurés.",
+    "hint": "/hooks",
+    "quiz": [
+      {
+        "q": "Tu ne veux jamais qu'on modifie `.env`. Qu'utilises-tu ?",
+        "o": [
+          "Un hook qui bloque la modification",
+          "Une ligne dans CLAUDE.md",
+          "Un skill",
+          "Le demander poliment"
+        ],
+        "why": "CLAUDE.md est une demande ; un hook est une règle qui s'applique toujours."
+      },
+      {
+        "q": "Combien de contexte coûte un hook ?",
+        "o": [
+          "Rien, sauf s'il renvoie quelque chose",
+          "Le fichier entier, toujours",
+          "Mille tokens fixes",
+          "Ça dépend du modèle"
+        ],
+        "why": "Il s'exécute en dehors de la conversation."
+      },
+      {
+        "q": "Comment un hook de tests économise-t-il des tokens ?",
+        "o": [
+          "En filtrant la sortie pour ne garder que les échecs",
+          "En supprimant les tests",
+          "En changeant de modèle",
+          "Il n'économise rien"
+        ],
+        "why": "Claude lit quelques centaines de lignes au lieu de milliers."
+      }
+    ]
+  },
+  "subagents": {
+    "body": [
+      "Les sous-agents sont des assistants avec leur propre contexte. Ils font le gros du travail et ne rapportent que le résumé.",
+      "Claude peut déléguer une tâche (trouver où la session expire, lire 30 fichiers, relire un module) à un sous-agent comme Explore, Plan ou l'un des tiens dans `.claude/agents/`. Le sous-agent lit tout ce qu'il faut et renvoie un court résumé.",
+      "Ta conversation reste propre. Attention : leurs requêtes consomment aussi ton forfait ; tu peux leur attribuer un modèle moins cher."
+    ],
+    "points": [
+      "Contexte séparé : ta conversation ne se remplit pas.",
+      "Idéal pour les tâches qui lisent beaucoup ou produisent beaucoup de sortie.",
+      "Ils consomment ton forfait : un modèle bon marché si possible."
+    ],
+    "task": "Ouvre le gestionnaire de sous-agents (ou demande à Claude d'en utiliser un).",
+    "hint": "/agents",
+    "quiz": [
+      {
+        "q": "Quel est le principal avantage d'un sous-agent ?",
+        "o": [
+          "Il travaille dans son propre contexte et ne renvoie qu'un résumé",
+          "Il est gratuit",
+          "Il est toujours plus rapide",
+          "Il n'a pas besoin de modèle"
+        ],
+        "why": "Les lectures lourdes ne remplissent pas ta conversation principale."
+      },
+      {
+        "q": "Les sous-agents consomment-ils ton forfait ?",
+        "o": [
+          "Oui, leurs requêtes comptent aussi",
+          "Non, ils sont gratuits",
+          "Seulement le dimanche",
+          "Seulement quand ils échouent"
+        ],
+        "why": "D'où l'intérêt de leur donner un modèle moins cher quand c'est possible."
+      },
+      {
+        "q": "Où définir un sous-agent de projet ?",
+        "o": [
+          "Dans .claude/agents/",
+          "Dans package.json",
+          "Dans le README",
+          "Dans .gitignore"
+        ],
+        "why": "Ceux du projet vont là ; les tiens dans `~/.claude/agents/`."
+      }
+    ]
+  },
+  "plugins": {
+    "body": [
+      "Un plugin est un paquet prêt à installer : skills, hooks, sous-agents, serveurs MCP et mods ensemble.",
+      "`/plugin` ouvre le menu : dans l'onglet Discover tu cherches dans les marketplaces (l'officielle est déjà ajoutée) et `/plugin install nom@marketplace` l'installe.",
+      "Regarde ce que fait un plugin avant de l'installer, surtout s'il vient d'une marketplace tierce : il s'exécute avec tes permissions."
+    ],
+    "points": [
+      "`/plugin` → Discover pour chercher.",
+      "La marketplace officielle est déjà ajoutée.",
+      "Vérifie les plugins tiers avant de les installer."
+    ],
+    "task": "Ouvre le menu des plugins.",
+    "hint": "/plugin",
+    "quiz": [
+      {
+        "q": "Que peut contenir un plugin ?",
+        "o": [
+          "Des skills, hooks, sous-agents, serveurs MCP et mods",
+          "Seulement des thèmes de couleurs",
+          "Seulement de nouveaux modèles",
+          "Rien, c'est un lien"
+        ],
+        "why": "C'est la façon d'empaqueter et partager une configuration complète."
+      },
+      {
+        "q": "Où chercher des plugins dans Claude Code ?",
+        "o": [
+          "Dans /plugin, onglet Discover",
+          "Dans /usage",
+          "Dans /init",
+          "Dans /diff"
+        ],
+        "why": "C'est là qu'apparaissent les plugins de tes marketplaces."
+      },
+      {
+        "q": "Que faire avant d'installer un plugin tiers ?",
+        "o": [
+          "Regarder ce qu'il fait, car il s'exécute avec tes permissions",
+          "Rien",
+          "Désactiver l'antivirus",
+          "Supprimer CLAUDE.md"
+        ],
+        "why": "Anthropic ne vérifie pas les marketplaces tierces."
+      }
+    ]
+  },
+  "codeintel": {
+    "body": [
+      "Claude lit des fichiers entiers pour trouver une fonction ? Avec le code intelligence, il y va directement.",
+      "Les plugins de serveurs de langage (TypeScript, Python, Go, Rust, Java et d'autres) donnent à Claude la navigation par symboles : aller à la définition, trouver les références et voir les erreurs de type juste après une modification.",
+      "Une requête « aller à la définition » remplace un grep plus la lecture de plusieurs fichiers, donc la consommation baisse souvent. Installe-le via `/plugin`, par exemple `typescript-lsp`."
+    ],
+    "points": [
+      "Aller à la définition plutôt que lire des fichiers entiers.",
+      "Voir les erreurs de type après chaque modification.",
+      "Un plugin par langage : typescript-lsp, pyright-lsp, gopls-lsp…"
+    ],
+    "task": "Installe le plugin de code intelligence TypeScript.",
+    "hint": "/plugin install typescript-lsp@claude-plugins-official",
+    "quiz": [
+      {
+        "q": "Qu'apporte le code intelligence à Claude ?",
+        "o": [
+          "La navigation par symboles et les erreurs de type",
+          "Un modèle plus gros",
+          "L'accès à Internet",
+          "Plus de RAM"
+        ],
+        "why": "Il utilise le serveur de langage comme ton éditeur."
+      },
+      {
+        "q": "Pourquoi économise-t-il souvent des tokens ?",
+        "o": [
+          "Il évite de lire des fichiers entiers pour trouver quelque chose",
+          "Il compresse le code",
+          "Il change de modèle",
+          "Il n'économise rien"
+        ],
+        "why": "Une requête précise remplace plusieurs lectures."
+      },
+      {
+        "q": "Quel est le plugin pour Python ?",
+        "o": [
+          "pyright-lsp",
+          "python-mcp",
+          "py-hook",
+          "snake-skill"
+        ],
+        "why": "Il y en a un par langage dans la marketplace officielle."
+      }
+    ]
+  },
+  "mods": {
+    "body": [
+      "Les mods sont des plugins qui changent Claude Code de l'intérieur : ce qu'on voit et comment il se comporte.",
+      "Un mod peut dessiner des panneaux, changer le spinner ou la ligne d'un outil, retenir ou modifier un appel d'outil, ou ajouter une commande qui s'exécute aussitôt. `/diff` est un mod intégré.",
+      "Pour en créer un, décris à Claude ce que tu veux : il charge le skill `/plugin-authoring` et l'écrit. Ils s'exécutent avec tes permissions et sans sandbox, donc installe seulement ceux que tu connais."
+    ],
+    "points": [
+      "Ils changent l'interface et le comportement de Claude Code.",
+      "`/plugin-authoring` pour que Claude en écrive un.",
+      "Sans sandbox : seulement d'auteurs de confiance."
+    ],
+    "task": "Charge le skill pour écrire des mods (ou recharge les plugins).",
+    "hint": "/plugin-authoring ou /reload-plugins.",
+    "quiz": [
+      {
+        "q": "Que peut faire un mod qu'un hook ne peut pas ?",
+        "o": [
+          "Dessiner dans l'interface de Claude Code",
+          "Lancer un script",
+          "Lire un fichier",
+          "Rien"
+        ],
+        "why": "Les mods tournent dans Claude Code et peuvent dessiner panneaux et boutons."
+      },
+      {
+        "q": "Comment demander à Claude d'écrire un mod ?",
+        "o": [
+          "En décrivant ce que tu veux ; il utilise le skill /plugin-authoring",
+          "C'est impossible",
+          "Avec /init",
+          "Avec /clear"
+        ],
+        "why": "Ce skill contient la référence pour écrire des mods."
+      },
+      {
+        "q": "Pourquoi être prudent en installant des mods ?",
+        "o": [
+          "Ils s'exécutent avec tes permissions et sans sandbox",
+          "Ils sont très lourds",
+          "Ils changent la langue",
+          "Ils effacent l'historique"
+        ],
+        "why": "Ils peuvent lire des fichiers, voir tes prompts et approuver des outils."
+      }
+    ]
+  },
+  "styles": {
+    "body": [
+      "Tu veux des réponses plus courtes, ou que Claude explique davantage ? C'est l'output style qui le décide.",
+      "Un output style change le ton et le format de toutes les réponses de la session : Concise pour aller droit au but, des styles qui expliquent les décisions, ou un rôle différent de celui d'ingénieur (par exemple pour écrire).",
+      "Choisis-le avec `/output-style` et change-le quand tu veux. Contrairement à CLAUDE.md (ce que Claude sait), le style définit comment il répond."
+    ],
+    "points": [
+      "`/output-style concise` pour des réponses courtes.",
+      "Il s'applique à toutes les réponses de la session.",
+      "CLAUDE.md = ce qu'il sait ; style = comment il répond."
+    ],
+    "task": "Change le style des réponses.",
+    "hint": "/output-style concise",
+    "quiz": [
+      {
+        "q": "Que change un output style ?",
+        "o": [
+          "Le ton et le format des réponses",
+          "Le modèle",
+          "Les permissions",
+          "La langue du système"
+        ],
+        "why": "Il définit comment Claude répond pendant toute la session."
+      },
+      {
+        "q": "En quoi diffère-t-il de CLAUDE.md ?",
+        "o": [
+          "CLAUDE.md, c'est ce qu'il sait ; le style, comment il répond",
+          "C'est pareil",
+          "Le style remplace CLAUDE.md",
+          "CLAUDE.md change les couleurs"
+        ],
+        "why": "Ils se complètent : l'un est le savoir, l'autre la forme."
+      },
+      {
+        "q": "Quel style donne des réponses plus courtes ?",
+        "o": [
+          "Concise",
+          "Verbose",
+          "Default long",
+          "Poetry"
+        ],
+        "why": "C'est l'un des styles intégrés."
+      }
+    ]
+  },
+  "statusline": {
+    "body": [
+      "Garde toujours sous les yeux l'essentiel : modèle, contexte utilisé, coût et branche.",
+      "La status line est une barre configurable sous le prompt. Avec `/statusline` tu décris ce que tu veux voir et Claude la configure (ou la copie depuis le prompt de ton terminal).",
+      "Voir le pourcentage de contexte en permanence est le meilleur moyen de penser à faire `/clear` ou `/compact` à temps."
+    ],
+    "points": [
+      "`/statusline` + ce que tu veux voir.",
+      "Affiche le % de contexte pour savoir quand nettoyer.",
+      "Elle peut afficher coût, modèle et branche git."
+    ],
+    "task": "Configure ta barre d'état.",
+    "hint": "/statusline affiche le modèle, le contexte et le coût",
+    "quiz": [
+      {
+        "q": "Qu'est-ce que la status line ?",
+        "o": [
+          "Une barre configurable avec des infos de session",
+          "Un journal d'erreurs",
+          "Une commande git",
+          "Un hook obligatoire"
+        ],
+        "why": "Elle affiche ce que tu choisis, toujours visible."
+      },
+      {
+        "q": "Pourquoi afficher le % de contexte ?",
+        "o": [
+          "Pour savoir quand faire /clear ou /compact",
+          "C'est obligatoire",
+          "Pour changer de modèle tout seul",
+          "Ça ne sert à rien"
+        ],
+        "why": "Voir l'occupation te rappelle de nettoyer à temps."
+      },
+      {
+        "q": "Comment la configurer ?",
+        "o": [
+          "Avec /statusline en décrivant ce que tu veux",
+          "En modifiant le binaire",
+          "Avec /clear",
+          "Impossible"
+        ],
+        "why": "Claude prépare la configuration pour toi."
+      }
+    ]
+  },
+  "advisor": {
+    "body": [
+      "Et si Claude pouvait demander conseil à un modèle plus fort seulement quand il en a besoin ? C'est le conseiller.",
+      "Avec le conseiller activé, Claude consulte un autre modèle (par exemple Opus) aux moments clés : avant de choisir une approche, quand une erreur se répète ou avant de déclarer une tâche terminée. Active-le avec `claude --advisor opus`, avec `/advisor opus` ou avec `advisorModel` dans les réglages.",
+      "Chaque consultation lit toute la conversation sans cache, donc ça ajoute du coût. Mais c'est moins cher qu'Opus tout le temps et ça améliore les décisions difficiles. `/advisor off` le désactive."
+    ],
+    "points": [
+      "Un modèle plus fort donne son avis aux moments clés.",
+      "`--advisor opus`, `/advisor opus` ou `advisorModel`.",
+      "Ça coûte plus, mais moins qu'Opus pour tout."
+    ],
+    "task": "Active le conseiller avec Opus.",
+    "hint": "claude --advisor opus ou /advisor opus",
+    "quiz": [
+      {
+        "q": "Quand Claude consulte-t-il le conseiller ?",
+        "o": [
+          "Aux moments clés : avant de décider, sur des erreurs répétées ou avant de finir",
+          "À chaque message",
+          "Jamais, sauf si tu le mentionnes",
+          "Seulement au début de la session"
+        ],
+        "why": "Claude décide quand le consulter, aux points de décision."
+      },
+      {
+        "q": "Pourquoi le conseiller ajoute-t-il du coût ?",
+        "o": [
+          "Il lit toute la conversation sans cache à chaque consultation",
+          "Il est facturé au mois",
+          "Il redémarre la session",
+          "Il n'ajoute rien"
+        ],
+        "why": "Chaque consultation retraite tout l'historique."
+      },
+      {
+        "q": "Comment le désactiver ?",
+        "o": [
+          "/advisor off",
+          "/clear",
+          "/exit",
+          "En réinstallant"
+        ],
+        "why": "Tu peux aussi choisir « No advisor » dans le sélecteur de `/advisor`."
+      }
+    ]
+  },
+  "subagentModel": {
+    "body": [
+      "Le combo qui circule sur les réseaux : Sonnet construit, Haiku explore et Opus relit.",
+      "La session tourne sur Sonnet, les sous-agents sur Haiku (bon marché et rapide pour lire et chercher) et Opus sert de conseiller pour les décisions difficiles. Chaque modèle fait ce qu'il fait le mieux.",
+      "Attention : l'astuce qui circule utilise `--subagents haiku`, mais ce flag n'est pas documenté. La méthode officielle est la variable `CLAUDE_CODE_SUBAGENT_MODEL=haiku`, par exemple : `CLAUDE_CODE_SUBAGENT_MODEL=haiku claude --advisor opus`."
+    ],
+    "points": [
+      "Session sur Sonnet, sous-agents sur Haiku, conseiller sur Opus.",
+      "`--subagents` n'existe pas ; utilise `CLAUDE_CODE_SUBAGENT_MODEL`.",
+      "L'exploration coûte moins sans perdre en qualité sur le difficile."
+    ],
+    "task": "Lance Claude Code avec les sous-agents sur Haiku.",
+    "hint": "CLAUDE_CODE_SUBAGENT_MODEL=haiku claude --advisor opus",
+    "quiz": [
+      {
+        "q": "Quelle est la méthode documentée pour mettre les sous-agents sur Haiku ?",
+        "o": [
+          "La variable CLAUDE_CODE_SUBAGENT_MODEL=haiku",
+          "Le flag --subagents haiku",
+          "/model haiku",
+          "Modifier CLAUDE.md"
+        ],
+        "why": "`--subagents` n'apparaît pas dans la doc de la CLI."
+      },
+      {
+        "q": "Pourquoi Haiku pour les sous-agents ?",
+        "o": [
+          "Lire et chercher ne nécessite pas le modèle le plus cher",
+          "C'est le plus intelligent",
+          "C'est obligatoire",
+          "Il ne consomme pas de tokens"
+        ],
+        "why": "L'exploration, c'est beaucoup de texte et peu de décisions : Haiku la rend bon marché."
+      },
+      {
+        "q": "Dans ce combo, que fait Opus ?",
+        "o": [
+          "Il conseille sur les décisions difficiles",
+          "Il écrit tout le code",
+          "Il cherche des fichiers",
+          "Rien"
+        ],
+        "why": "Il n'intervient que quand c'est nécessaire, comme conseiller."
+      }
+    ]
+  },
+  "opusplan": {
+    "body": [
+      "Réfléchir cher, exécuter pas cher. C'est l'idée d'`opusplan`.",
+      "Avec `/model opusplan`, Claude utilise Opus pendant le plan mode (pour raisonner sur l'approche et l'architecture) et passe à Sonnet quand tu approuves le plan et qu'il commence à écrire du code.",
+      "Contrairement au conseiller, que Claude consulte quand il veut, ici le changement est fixe : Opus pour le plan, Sonnet pour l'exécution."
+    ],
+    "points": [
+      "Opus en plan mode, Sonnet pour implémenter.",
+      "Choisis-le avec `/model opusplan`.",
+      "Le conseiller décide quand intervenir ; opusplan change au plan."
+    ],
+    "task": "Active opusplan.",
+    "hint": "/model opusplan",
+    "quiz": [
+      {
+        "q": "Que fait opusplan ?",
+        "o": [
+          "Il utilise Opus en plan mode et Sonnet pour implémenter",
+          "Il utilise Opus pour tout",
+          "Il utilise Haiku pour planifier",
+          "Il désactive le plan mode"
+        ],
+        "why": "Il raisonne avec le modèle fort et exécute avec le modèle efficace."
+      },
+      {
+        "q": "Comment l'activer ?",
+        "o": [
+          "/model opusplan",
+          "/plan opus",
+          "claude --opus",
+          "/effort plan"
+        ],
+        "why": "C'est un alias spécial du sélecteur de modèle."
+      },
+      {
+        "q": "En quoi diffère-t-il du conseiller ?",
+        "o": [
+          "opusplan change de modèle à l'approbation du plan ; le conseiller est consulté quand Claude le décide",
+          "C'est pareil",
+          "Le conseiller ne marche qu'en plan mode",
+          "opusplan est toujours plus cher"
+        ],
+        "why": "L'un est un changement fixe par phase ; l'autre, des consultations ponctuelles."
+      }
+    ]
+  },
+  "loop": {
+    "body": [
+      "Tu veux que Claude surveille quelque chose pendant que tu fais autre chose ? `/loop` répète un prompt à intervalles réguliers.",
+      "Par exemple `/loop 10m vérifie le déploiement et préviens-moi s'il échoue`. Sans intervalle, Claude choisit combien attendre entre les tours. Ça marche tant que la session reste ouverte.",
+      "Chaque tour renvoie le contexte, donc un intervalle très court coûte cher. `/usage` montre combien tes boucles ont consommé."
+    ],
+    "points": [
+      "`/loop 10m tâche` = répéter toutes les 10 minutes.",
+      "Seulement tant que la session est ouverte.",
+      "Intervalles courts = forte consommation."
+    ],
+    "task": "Programme une tâche qui se répète toutes les 10 minutes.",
+    "hint": "/loop 10m vérifie le déploiement",
+    "quiz": [
+      {
+        "q": "Que fait `/loop 5m vérifie la CI` ?",
+        "o": [
+          "Il répète le prompt toutes les 5 minutes tant que la session est ouverte",
+          "Il s'exécute une seule fois",
+          "Il le programme dans le cloud pour toujours",
+          "Il ferme la session dans 5 minutes"
+        ],
+        "why": "C'est une répétition au sein de la session."
+      },
+      {
+        "q": "Pourquoi faire attention à l'intervalle ?",
+        "o": [
+          "Chaque tour renvoie le contexte et consomme",
+          "Il y a un maximum de 3 tours",
+          "L'historique est effacé",
+          "Ça n'a pas d'importance"
+        ],
+        "why": "Plus de tours, plus de tokens."
+      },
+      {
+        "q": "Que se passe-t-il sans intervalle ?",
+        "o": [
+          "Claude choisit combien attendre entre les tours",
+          "Erreur",
+          "Il tourne chaque seconde",
+          "Il ne tourne pas"
+        ],
+        "why": "Il s'adapte à ce qu'il surveille."
+      }
+    ]
+  },
+  "routines": {
+    "body": [
+      "Et si la tâche doit tourner même ordinateur éteint ? C'est le rôle des routines.",
+      "Une routine est une tâche programmée qui tourne dans le cloud : relire les PR chaque matin, auditer les dépendances le lundi, préparer un résumé hebdo. Elles se déclenchent selon un horaire, par API ou sur des événements GitHub.",
+      "Crée-la avec `/schedule` et Claude te guide dans une conversation. Contrairement à `/loop`, elles ne dépendent pas de ta session ouverte."
+    ],
+    "points": [
+      "Elles tournent dans le cloud, ordinateur éteint.",
+      "Par horaire, par API ou sur des événements GitHub.",
+      "`/schedule` les crée ; `/loop` ne dure que le temps de ta session."
+    ],
+    "task": "Crée une routine dans le cloud.",
+    "hint": "/schedule chaque jour ouvré à 9 h relis les PR ouvertes",
+    "quiz": [
+      {
+        "q": "Où tourne une routine ?",
+        "o": [
+          "Dans le cloud",
+          "Seulement sur ton ordinateur",
+          "Dans le navigateur",
+          "Sur ton téléphone"
+        ],
+        "why": "C'est pour ça qu'elle marche même ordinateur éteint."
+      },
+      {
+        "q": "Avec quelle commande la crée-t-on ?",
+        "o": [
+          "/schedule",
+          "/loop",
+          "/cron",
+          "/plan"
+        ],
+        "why": "`/schedule` crée, liste et exécute les routines."
+      },
+      {
+        "q": "En quoi diffère-t-elle de `/loop` ?",
+        "o": [
+          "Elle ne dépend pas d'une session ouverte",
+          "Elle est toujours moins chère",
+          "Elle ne tourne qu'une fois",
+          "C'est pareil"
+        ],
+        "why": "`/loop` vit dans ta session ; la routine, dans le cloud."
+      }
+    ]
+  },
+  "background": {
+    "body": [
+      "Pas besoin de rester à regarder. Claude peut continuer en arrière-plan.",
+      "`/background` détache la session pour qu'elle continue seule et libère ton terminal. `/fork` copie la conversation dans une session en arrière-plan et tu continues dans l'actuelle. `/subtask` lance un sous-agent avec toute la conversation pour une tâche ponctuelle.",
+      "Avec `claude agents` tu vois toutes les sessions en arrière-plan, et `Ctrl+B` envoie une commande ou un agent en cours à l'arrière-plan."
+    ],
+    "points": [
+      "`/background` = la laisser continuer seule.",
+      "`/fork` = une copie qui travaille à part.",
+      "`claude agents` = les voir toutes."
+    ],
+    "task": "Envoie la session en arrière-plan (ou forke-la).",
+    "hint": "/background, /fork ou /subtask.",
+    "quiz": [
+      {
+        "q": "Que fait `/background` ?",
+        "o": [
+          "Il laisse la session travailler seule et libère ton terminal",
+          "Il ferme la session",
+          "Il supprime la session",
+          "Il la met en pause pour toujours"
+        ],
+        "why": "Elle continue comme agent en arrière-plan."
+      },
+      {
+        "q": "Quelle différence entre `/fork` et `/background` ?",
+        "o": [
+          "`/fork` copie la conversation et tu restes dans l'actuelle",
+          "C'est pareil",
+          "`/fork` supprime la session",
+          "`/background` crée une branche git"
+        ],
+        "why": "Avec fork tu en as deux : la tienne et la copie."
+      },
+      {
+        "q": "Comment voir toutes les sessions en arrière-plan ?",
+        "o": [
+          "claude agents",
+          "/clear",
+          "/diff",
+          "ls"
+        ],
+        "why": "Il montre et permet de gérer les agents en arrière-plan."
+      }
+    ]
+  },
+  "worktrees": {
+    "body": [
+      "Tu veux deux ou trois Claude qui travaillent en même temps sur le même dépôt ? Les worktrees le permettent.",
+      "Un worktree git est une copie de travail séparée du même dépôt. Avec `claude --worktree nom`, chaque session travaille dans son propre worktree, donc les fichiers ne se marchent pas dessus.",
+      "Idéal pour avancer une fonctionnalité pendant qu'une autre session corrige un bug, ou pour qu'une écrive et qu'une autre relise."
+    ],
+    "points": [
+      "`claude --worktree nom` = session isolée.",
+      "Plusieurs sessions en parallèle sans conflit.",
+      "Chacune dans son propre worktree git."
+    ],
+    "task": "Ouvre une session dans un nouveau worktree.",
+    "hint": "claude --worktree feature-auth",
+    "quiz": [
+      {
+        "q": "À quoi servent les worktrees dans Claude Code ?",
+        "o": [
+          "À faire tourner plusieurs sessions en parallèle sans conflit",
+          "À compresser le dépôt",
+          "À supprimer des branches",
+          "À changer de modèle"
+        ],
+        "why": "Chaque session travaille sur sa propre copie."
+      },
+      {
+        "q": "Avec quel flag ouvrir une session dans un worktree ?",
+        "o": [
+          "--worktree",
+          "--parallel",
+          "--copy",
+          "--branch-all"
+        ],
+        "why": "`claude --worktree nom`."
+      },
+      {
+        "q": "Qu'est-ce qu'un worktree git ?",
+        "o": [
+          "Une copie de travail séparée du même dépôt",
+          "Un type de commit",
+          "Un serveur",
+          "Un fichier de configuration"
+        ],
+        "why": "Ils partagent l'historique, mais chacun a ses fichiers."
+      }
+    ]
+  },
+  "goal": {
+    "body": [
+      "Donne-lui un objectif clair et laisse-le travailler jusqu'à l'atteindre.",
+      "`/goal` fixe une condition de fin, comme « tous les tests de src/billing passent ». Claude continue de travailler tour après tour jusqu'à ce qu'elle soit remplie, au lieu de s'arrêter après chaque réponse.",
+      "Ça marche mieux avec une condition vérifiable. `/goal` sans argument affiche l'objectif actuel et `/goal clear` l'enlève."
+    ],
+    "points": [
+      "Une condition de fin vérifiable.",
+      "Il travaille tour après tour jusqu'à la remplir.",
+      "`/goal clear` pour l'enlever."
+    ],
+    "task": "Fixe un objectif vérifiable.",
+    "hint": "/goal tous les tests de src/billing passent",
+    "quiz": [
+      {
+        "q": "Que fait `/goal` ?",
+        "o": [
+          "Claude travaille jusqu'à remplir une condition",
+          "Il ajoute un rappel au calendrier",
+          "Il change de modèle",
+          "Il termine la session"
+        ],
+        "why": "Il continue tour après tour jusqu'à atteindre l'objectif."
+      },
+      {
+        "q": "Quel est un bon objectif ?",
+        "o": [
+          "« Tous les tests de src/billing passent »",
+          "« Que ce soit joli »",
+          "« Tout améliorer »",
+          "« Faire ce qu'on peut »"
+        ],
+        "why": "On peut le vérifier objectivement."
+      },
+      {
+        "q": "Comment l'enlever ?",
+        "o": [
+          "/goal clear",
+          "/clear goal",
+          "/exit",
+          "Impossible"
+        ],
+        "why": "`/goal clear` supprime l'objectif actuel."
+      }
+    ]
+  },
+  "deepresearch": {
+    "body": [
+      "Besoin de creuser un sujet en profondeur ? `/deep-research` le fait pour toi, sources à l'appui.",
+      "C'est un workflow intégré : il lance des recherches web en parallèle, récupère et recoupe les sources, et rédige un rapport avec citations.",
+      "Utile pour choisir entre des bibliothèques, comprendre un changement d'API ou enquêter sur une erreur étrange. Comme il fait beaucoup de recherches, il consomme plus qu'une question normale."
+    ],
+    "points": [
+      "Recherches en parallèle + recoupement des sources.",
+      "Il renvoie un rapport avec citations.",
+      "Il consomme plus : à réserver aux questions qui en valent la peine."
+    ],
+    "task": "Fais une recherche approfondie sur une question.",
+    "hint": "/deep-research quelle bibliothèque d'auth pour Next.js 16 ?",
+    "quiz": [
+      {
+        "q": "Que renvoie `/deep-research` ?",
+        "o": [
+          "Un rapport avec citations",
+          "Un fichier de configuration",
+          "Un commit",
+          "Une image"
+        ],
+        "why": "Il recoupe les sources et les cite."
+      },
+      {
+        "q": "Quel type d'outil est-ce ?",
+        "o": [
+          "Un workflow intégré",
+          "Un serveur MCP",
+          "Un hook",
+          "Un mode de permission"
+        ],
+        "why": "Il orchestre plusieurs recherches en parallèle."
+      },
+      {
+        "q": "Quand l'utiliser ?",
+        "o": [
+          "Pour des questions qui valent la consommation en plus",
+          "À chaque message",
+          "Pour renommer des variables",
+          "Jamais"
+        ],
+        "why": "Il fait beaucoup de recherches : pas pour les questions triviales."
+      }
+    ]
+  },
+  "ultrareview": {
+    "body": [
+      "Avant de merger quelque chose d'important, une revue approfondie dans le cloud.",
+      "`/code-review ultra` (alias `/ultrareview`) lance une revue multi-agents dans un environnement cloud et renvoie des constats vérifiés. C'est la revue la plus poussée.",
+      "Et `/autofix-pr` laisse une session cloud surveiller ta PR : quand la CI échoue ou que quelqu'un commente, elle pousse les corrections."
+    ],
+    "points": [
+      "`/code-review ultra` = revue multi-agents approfondie dans le cloud.",
+      "`/autofix-pr` = surveille ta PR et la corrige.",
+      "Pour les changements importants avant de merger."
+    ],
+    "task": "Lance la revue approfondie dans le cloud.",
+    "hint": "/code-review ultra",
+    "quiz": [
+      {
+        "q": "Qu'est-ce que `/ultrareview` ?",
+        "o": [
+          "Un alias de /code-review ultra",
+          "Un nouveau modèle",
+          "Un plugin tiers",
+          "Un hook"
+        ],
+        "why": "Les deux lancent la revue multi-agents dans le cloud."
+      },
+      {
+        "q": "Que fait `/autofix-pr` ?",
+        "o": [
+          "Il surveille ta PR et pousse des corrections quand la CI échoue ou qu'il y a des commentaires",
+          "Il merge la PR",
+          "Il supprime la PR",
+          "Il change le titre de la PR"
+        ],
+        "why": "Il tourne dans le cloud et suit la PR de ta branche."
+      },
+      {
+        "q": "Quand utiliser la revue ultra ?",
+        "o": [
+          "Avant de merger des changements importants",
+          "Pour chaque coquille",
+          "Jamais",
+          "Seulement sur des projets perso"
+        ],
+        "why": "C'est la plus poussée, idéale pour ce qui compte."
+      }
+    ]
+  },
+  "workflows": {
+    "body": [
+      "Pour les très gros chantiers, deux sous-agents ne suffisent pas. C'est là qu'interviennent les workflows.",
+      "Un workflow dynamique est un script que Claude écrit pour répartir la tâche entre de nombreux agents en arrière-plan et vérifier les résultats : auditer tout le code, migrer des centaines de fichiers.",
+      "`/batch` fait ça pour les gros changements : il découpe le travail en 5 à 30 unités indépendantes et les lance en parallèle. Avec `/effort ultracode`, Claude prépare un workflow pour chaque grosse tâche. `/workflows` montre l'avancement."
+    ],
+    "points": [
+      "Beaucoup d'agents coordonnés par un script.",
+      "`/batch` = gros changements en parallèle.",
+      "Ça consomme beaucoup : pour les chantiers qui le valent."
+    ],
+    "task": "Lance un gros changement en parallèle.",
+    "hint": "/batch migre toutes les routes de l'API vers zod",
+    "quiz": [
+      {
+        "q": "En combien d'unités `/batch` découpe-t-il le travail ?",
+        "o": [
+          "De 5 à 30 unités indépendantes",
+          "Toujours 2",
+          "Une par fichier du projet",
+          "Il ne découpe pas"
+        ],
+        "why": "Il explore, découpe et présente le plan avant de lancer."
+      },
+      {
+        "q": "Que fait `/effort ultracode` ?",
+        "o": [
+          "Claude prépare un workflow pour chaque grosse tâche",
+          "Il baisse l'effort au minimum",
+          "Il passe sur Haiku",
+          "Il désactive les sous-agents"
+        ],
+        "why": "C'est un réglage qui active les workflows dynamiques."
+      },
+      {
+        "q": "Quand les workflows sont-ils utiles ?",
+        "o": [
+          "Pour les chantiers qui dépassent deux sous-agents",
+          "Pour une coquille",
+          "Pour chaque question",
+          "Jamais"
+        ],
+        "why": "Ils consomment beaucoup, donc ils sont pour les gros chantiers."
+      }
+    ]
+  },
+  "teams": {
+    "body": [
+      "Plusieurs instances de Claude qui travaillent en équipe : ce sont les agent teams.",
+      "Chaque coéquipier est une instance avec son propre contexte, avec des tâches partagées et des messages entre eux. C'est expérimental et désactivé par défaut : active-le avec `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.",
+      "C'est cher : avec des coéquipiers en plan mode, ça consomme environ 7 fois plus de tokens qu'une session normale. Garde des équipes petites, Sonnet pour les coéquipiers, et ferme-les à la fin."
+    ],
+    "points": [
+      "Expérimental : `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`.",
+      "Environ 7 fois plus de tokens avec des coéquipiers en plan mode.",
+      "Petites équipes, Sonnet, et on ferme à la fin."
+    ],
+    "task": "Active les agent teams pour cette session.",
+    "hint": "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 claude",
+    "quiz": [
+      {
+        "q": "Comment activer les agent teams ?",
+        "o": [
+          "Avec CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1",
+          "Ils sont activés par défaut",
+          "Avec /teams on",
+          "Avec /model team"
+        ],
+        "why": "C'est une fonction expérimentale désactivée par défaut."
+      },
+      {
+        "q": "Combien de plus peuvent-ils consommer ?",
+        "o": [
+          "Environ 7 fois plus avec des coéquipiers en plan mode",
+          "Pareil",
+          "La moitié",
+          "Rien, ils sont gratuits"
+        ],
+        "why": "Chaque coéquipier a son propre contexte."
+      },
+      {
+        "q": "Que faire pour économiser avec des équipes ?",
+        "o": [
+          "Petites équipes, Sonnet, et fermer à la fin",
+          "Grandes équipes sur Fable",
+          "Les laisser ouvertes",
+          "Ne pas utiliser CLAUDE.md"
+        ],
+        "why": "Chaque coéquipier actif continue de consommer."
+      }
+    ]
+  },
+  "headless": {
+    "body": [
+      "Claude Code marche aussi sans interface, pour les scripts et l'automatisation.",
+      "`claude -p \"demande\"` s'exécute une fois, affiche le résultat et se termine. Avec `--output-format json` tu le traites depuis un autre programme. C'est la base pour l'utiliser en CI ou dans tes scripts.",
+      "Pour aller plus loin, l'Agent SDK (Python et TypeScript) te permet de construire tes propres agents avec le même moteur que Claude Code."
+    ],
+    "points": [
+      "`claude -p` = une exécution sans interface.",
+      "`--output-format json` pour traiter le résultat.",
+      "Agent SDK = tes propres agents avec le moteur de Claude Code."
+    ],
+    "task": "Lance une demande sans interface.",
+    "hint": "claude -p \"résume les erreurs du jour\"",
+    "quiz": [
+      {
+        "q": "Que fait `claude -p` ?",
+        "o": [
+          "Il exécute une demande sans interface et se termine",
+          "Il ouvre le plan mode",
+          "Il met la session en pause",
+          "Il installe des plugins"
+        ],
+        "why": "C'est le mode non interactif, idéal pour les scripts."
+      },
+      {
+        "q": "À quoi sert `--output-format json` ?",
+        "o": [
+          "À traiter la réponse depuis un autre programme",
+          "À changer la langue",
+          "À compresser le dépôt",
+          "À payer moins"
+        ],
+        "why": "Il donne une sortie structurée."
+      },
+      {
+        "q": "Qu'est-ce que l'Agent SDK ?",
+        "o": [
+          "Une bibliothèque pour construire tes agents avec le moteur de Claude Code",
+          "Un forfait payant",
+          "Un éditeur de texte",
+          "Un hook"
+        ],
+        "why": "Il existe pour Python et TypeScript."
+      }
+    ]
+  },
+  "github": {
+    "body": [
+      "Fais venir Claude dans tes issues et PR GitHub.",
+      "`/install-github-app` installe l'app Claude sur ton dépôt et, en option, les workflows GitHub Actions. Ensuite, en mentionnant `@claude` dans une issue ou une PR, Claude répond, relit ou ouvre une PR via Actions.",
+      "C'est un moyen pour toute l'équipe d'utiliser Claude sans ouvrir de terminal."
+    ],
+    "points": [
+      "`/install-github-app` configure l'app et Actions.",
+      "`@claude` dans une issue ou une PR pour demander quelque chose.",
+      "Il peut répondre, relire ou ouvrir une PR."
+    ],
+    "task": "Installe l'app Claude sur ton dépôt GitHub.",
+    "hint": "/install-github-app",
+    "quiz": [
+      {
+        "q": "Comment demander quelque chose à Claude depuis une PR ?",
+        "o": [
+          "En mentionnant @claude",
+          "En envoyant un mail",
+          "Avec /plan dans la PR",
+          "Impossible"
+        ],
+        "why": "La mention déclenche le workflow Actions."
+      },
+      {
+        "q": "Quelle commande configure l'intégration ?",
+        "o": [
+          "/install-github-app",
+          "/github on",
+          "/init github",
+          "/plugin github"
+        ],
+        "why": "Elle installe l'app et, en option, les workflows."
+      },
+      {
+        "q": "Que peut faire Claude via Actions ?",
+        "o": [
+          "Répondre, relire ou ouvrir une PR",
+          "Supprimer le dépôt",
+          "Changer le forfait de paiement",
+          "Rien"
+        ],
+        "why": "Il travaille dans l'issue ou la PR où tu l'as mentionné."
+      }
+    ]
+  },
+  "chrome": {
+    "body": [
+      "Que Claude voie ton app fonctionner pour de vrai, dans le navigateur.",
+      "Avec l'extension Claude in Chrome et `claude --chrome` (ou `/chrome`), Claude ouvre ton app, clique, remplit des formulaires, lit la console et vérifie que le changement marche.",
+      "C'est le meilleur moyen de tester des changements visuels ou des parcours complets. Le skill `/claude-in-chrome` confie une tâche ponctuelle au navigateur."
+    ],
+    "points": [
+      "Il navigue, clique et lit la console.",
+      "`claude --chrome` ou `/chrome` pour le connecter.",
+      "Idéal pour tester des changements visuels et des parcours."
+    ],
+    "task": "Connecte Claude à Chrome.",
+    "hint": "claude --chrome",
+    "quiz": [
+      {
+        "q": "Que peut faire Claude avec Chrome ?",
+        "o": [
+          "Ouvrir ton app, cliquer et lire la console",
+          "Seulement lire du HTML statique",
+          "Changer ton mot de passe",
+          "Rien"
+        ],
+        "why": "Il teste l'app comme un utilisateur."
+      },
+      {
+        "q": "Comment le connecter ?",
+        "o": [
+          "claude --chrome ou /chrome",
+          "/browser on",
+          "claude --web",
+          "/plugin chrome"
+        ],
+        "why": "Avec l'extension installée dans Chrome."
+      },
+      {
+        "q": "Pour quoi est-ce idéal ?",
+        "o": [
+          "Pour tester des changements visuels et des parcours complets",
+          "Pour écrire CLAUDE.md",
+          "Pour changer de modèle",
+          "Pour faire des commits"
+        ],
+        "why": "Il voit le vrai résultat dans le navigateur."
+      }
+    ]
+  },
+  "remote": {
+    "body": [
+      "Continue ta session depuis ton téléphone, ton navigateur ou un autre ordinateur.",
+      "`/remote-control` (alias `/rc`) rend la session disponible sur claude.ai ou dans l'app mobile. `/teleport` (alias `/tp`) ramène dans ton terminal une session commencée dans le cloud. `/desktop` transfère la session vers l'app de bureau.",
+      "Tu peux ainsi laisser tourner quelque chose et le suivre depuis ton téléphone, ou commencer dans le navigateur et finir dans le terminal."
+    ],
+    "points": [
+      "`/remote-control` = suivre depuis claude.ai ou le téléphone.",
+      "`/teleport` = ramener une session cloud.",
+      "`/desktop` = passer à l'app de bureau."
+    ],
+    "task": "Rends la session disponible pour la suivre depuis ton téléphone.",
+    "hint": "/remote-control (ou /rc)",
+    "quiz": [
+      {
+        "q": "Que fait `/remote-control` ?",
+        "o": [
+          "Il rend la session disponible sur claude.ai et le téléphone",
+          "Il éteint l'ordinateur",
+          "Il partage ton écran",
+          "Il change de modèle"
+        ],
+        "why": "Il faut un abonnement claude.ai."
+      },
+      {
+        "q": "Que fait `/teleport` ?",
+        "o": [
+          "Il ramène dans ton terminal une session cloud",
+          "Il change de dossier",
+          "Il copie le dépôt",
+          "Il ferme la session"
+        ],
+        "why": "Il ramène la branche et la conversation."
+      },
+      {
+        "q": "Comment passer la session à l'app de bureau ?",
+        "o": [
+          "/desktop",
+          "/app-open",
+          "/export",
+          "/mobile"
+        ],
+        "why": "`/desktop` (alias `/app`)."
+      }
+    ]
+  },
+  "insights": {
+    "body": [
+      "Tu es arrivé au bout du parcours ! Terminons en regardant comment tu travailles.",
+      "`/insights` analyse tes sessions récentes et rédige un rapport : sur quels projets tu travailles, où ça coince (demandes que Claude n'a pas comprises, code avec erreurs) et quelles fonctions mériteraient d'être essayées.",
+      "Lance-le de temps en temps : c'est le meilleur moyen de continuer à progresser après ce parcours."
+    ],
+    "points": [
+      "Un rapport HTML sur ta façon d'utiliser Claude Code.",
+      "Il montre où tu perds du temps.",
+      "Il suggère des fonctions à essayer."
+    ],
+    "task": "Génère ton rapport d'utilisation.",
+    "hint": "/insights",
+    "quiz": [
+      {
+        "q": "Qu'analyse `/insights` ?",
+        "o": [
+          "Tes sessions récentes et ta façon de travailler",
+          "Le code des autres",
+          "Ton compte bancaire",
+          "Les prix des modèles"
+        ],
+        "why": "Il passe en revue jusqu'à 200 nouvelles sessions de ton ordinateur."
+      },
+      {
+        "q": "Que renvoie-t-il ?",
+        "o": [
+          "Un rapport HTML avec problèmes et suggestions",
+          "Un commit",
+          "Un fichier zip",
+          "Rien"
+        ],
+        "why": "Il l'enregistre dans ~/.claude/usage-data/report.html."
+      },
+      {
+        "q": "Quand le lancer ?",
+        "o": [
+          "De temps en temps, pour continuer à progresser",
+          "Une fois dans sa vie",
+          "Avant l'installation",
+          "Jamais"
+        ],
+        "why": "Il montre les habitudes à ajuster."
+      }
+    ]
+  }
+}

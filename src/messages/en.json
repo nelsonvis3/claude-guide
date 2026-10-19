@@ -1,16 +1,22 @@
 {
   "meta": {
-    "title": "Claude Code Trail",
+    "title": "Procode",
     "description": "From zero to pro in Claude Code: what you'll spend for the way you work, which model fits, and what to learn first."
   },
   "nav": {
     "route": "My trail",
     "guide": "Cheat sheet",
-    "savedLocal": "Your trail is saved in this browser. No account needed.",
+    "savedLocal": "Without an account, your progress is cleared when you close the tab. Sign in with GitHub or Google to save it.",
     "lang": "Language",
     "unofficial": "Independent project, not affiliated with Anthropic. Prices and features come from the official Claude Code documentation, checked on October 18, 2026.",
     "docs": "Official documentation",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "login": "Sign in",
+    "loginWith": "Continue with {provider}",
+    "loginWhy": "Save your points, stickers and streak to your account and continue on any device.",
+    "logout": "Sign out",
+    "savedCloud": "Your progress is saved to your account.",
+    "usage": "Usage"
   },
   "mascot": {
     "name": "Tilde",
@@ -22,7 +28,7 @@
     "askTime": "How much time will you spend with it?",
     "askModel": "Which model will you work with? If you're not sure, Sonnet is the starting point the docs recommend.",
     "askFeatures": "Last one: what do you want to add? Green ones save tokens; the rest add power and usage.",
-    "done": "All set, {name}! Below are your estimated usage and your trail. Change any answer and the numbers update.",
+    "done": "All set, {name}! Your trail is below: start with the first step. Your estimated usage is in the Usage section.",
     "reactCheap": "That fits comfortably in the Pro plan.",
     "reactMid": "That pace calls for a Max plan.",
     "reactHigh": "Whoa, heavy usage! Check the tips to save.",
@@ -244,7 +250,7 @@
   },
   "route": {
     "title": "Your trail",
-    "lead": "Check off what you've mastered. Start at the highlighted stretch.",
+    "lead": "Each step is a short lesson with a terminal to practice and a test. They unlock in order: pass the test to open the next one.",
     "startHere": "Start here",
     "done": "Mastered",
     "progress": "{done} of {total} mastered",
@@ -845,5 +851,183 @@
     "cc-plugin-you-should-know": "A side agent warns you above the prompt if you missed something. Off by default.",
     "cc-plugin-sec-default": "Protects what your organization manages from mods you install yourself.",
     "cc-plugin-telemetry": "Sends the metrics of Claude Code and its built-in mods."
+  },
+  "game": {
+    "levels": {
+      "kitten": "Kitten",
+      "curious": "Curious",
+      "hunter": "Hunter",
+      "explorer": "Explorer",
+      "master": "Feline master"
+    },
+    "progressTitle": "Your level",
+    "xp": "{n} XP",
+    "toNext": "{n} XP to {level}",
+    "maxLevel": "you've reached the top level!",
+    "streak": "{n}-day streak",
+    "streakNone": "Complete a step today to start your streak.",
+    "stickers": "Stickers",
+    "stickersLead": "You have {got} of {total}. Earn them by completing steps, stretches and streaks.",
+    "locked": "Locked",
+    "newSticker": "New sticker!",
+    "levelUp": "You reached {level}!",
+    "levelUpSub": "Tilde is proud of you. Keep going.",
+    "phaseDone": "You finished {phase}!",
+    "plusXp": "+{n} XP",
+    "continue": "Keep going!",
+    "cheers": [
+      "Nice one!",
+      "Meow, another one!",
+      "You're flying!",
+      "Yes!"
+    ],
+    "remind": "Email me if I go 2 days without coming back",
+    "remindNote": "We write to your account email once per absence. Untick this box to turn it off.",
+    "remindLogin": "Sign in to save your progress and turn on the streak email reminder."
+  },
+  "stickerNames": {
+    "first-step": {
+      "t": "First step",
+      "d": "You completed your first step on the trail."
+    },
+    "phase-start": {
+      "t": "Sprout",
+      "d": "You finished First steps."
+    },
+    "phase-habits": {
+      "t": "Compass",
+      "d": "You finished Habits."
+    },
+    "phase-extend": {
+      "t": "Toolbox",
+      "d": "You finished Extend."
+    },
+    "phase-pro": {
+      "t": "Summit",
+      "d": "You finished the Pro stretch."
+    },
+    "all-done": {
+      "t": "Legend",
+      "d": "You completed the whole trail."
+    },
+    "streak-3": {
+      "t": "On fire",
+      "d": "Three days in a row."
+    },
+    "streak-7": {
+      "t": "Lightning",
+      "d": "A full week in a row."
+    },
+    "streak-30": {
+      "t": "Star",
+      "d": "Thirty days in a row."
+    },
+    "token-saver": {
+      "t": "Saver",
+      "d": "You've mastered context, usage and skills."
+    },
+    "model-combo": {
+      "t": "Conductor",
+      "d": "You combine models with the advisor and subagents."
+    },
+    "role-pick": {
+      "t": "Got a role",
+      "d": "You picked your role."
+    }
+  },
+  "lesson": {
+    "start": "Start lesson",
+    "review": "Review",
+    "passToMark": "Pass the test to check it off",
+    "back": "My trail",
+    "stepOf": "step {n} of {total}",
+    "mastered": "You've mastered this. Review it whenever you like.",
+    "keyPoints": "Key points",
+    "practice": "Practice in the terminal",
+    "termHint": "Show hint",
+    "termWrong": "That's not what the task asks for. Try again or check the hint.",
+    "termOk": "✓ Perfect! You can take the test now.",
+    "termPlaceholder": "Type here and press Enter",
+    "termDone": "Solved. Feel free to keep trying commands.",
+    "quiz": "Test",
+    "quizLocked": "Solve the terminal to unlock the test.",
+    "check": "Check",
+    "retry": "Try again",
+    "correct": "Correct!",
+    "wrong": "Not that one.",
+    "pickAnswer": "Pick an answer for each question.",
+    "allRight": "You passed the test!",
+    "allRightSub": "You've mastered “{title}”. It's checked off on your trail.",
+    "next": "Next lesson",
+    "finishRoute": "See my achievements",
+    "source": "Source: official documentation",
+    "locked": "Finish the previous step to unlock it.",
+    "lockedPage": "This lesson is still locked. The trail goes step by step: continue with “{title}”.",
+    "goCurrent": "Go to my current step"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "terms": "Terms and conditions",
+    "hi": "Meow! Need a hand?",
+    "tagline": "Learn Claude Code step by step, from zero to pro, with Tilde.",
+    "product": "Trail",
+    "help": "Help",
+    "legal": "Legal",
+    "unofficial": "Independent project, not affiliated with Anthropic."
+  },
+  "terms": {
+    "title": "Terms and conditions",
+    "updated": "Last updated: October 18, 2026.",
+    "body": [
+      "Procode is a free guide to learning Claude Code. By using the site you accept these terms.",
+      "The content is educational. Usage and cost figures are estimates based on public prices and may not match your actual bill; always check the official documentation before choosing a plan.",
+      "If you sign in with GitHub or Google, we store only your account name, your answers and your progress, so you can continue on another device. Without an account, progress lives in the tab and is cleared when you close it. We do not sell or share your data.",
+      "Commands and examples are provided as is. Review what you run on your machine; we are not liable for damage resulting from their use.",
+      "The design, texts and the Tilde mascot belong to their author. Claude and Claude Code are trademarks of Anthropic.",
+      "We may update these terms; the date above shows the latest version. For questions or complaints, use the Help form at the bottom of the page."
+    ],
+    "mail": "Email reminders: only if you turn them on, we use your account email to let you know when 2 days pass without a visit, once per absence. Turn them off anytime from your achievements."
+  },
+  "exam": {
+    "title": "Claude Code Pro exam",
+    "ready": "You finished the trail. Take the final exam to earn your certificate.",
+    "lockedRoute": "Unlocks once you master all 48 steps of the trail.",
+    "start": "Take the exam",
+    "seeCert": "See my certificate",
+    "lead": "{n} questions from the whole trail. You pass with {pass} correct answers.",
+    "score": "{score} of {total} correct",
+    "failed": "You need {pass} to pass. Review the lessons you missed and try again: the questions change.",
+    "passedTitle": "You're a Claude Code Pro!",
+    "passedSub": "You passed the final exam. Your certificate is ready.",
+    "certFor": "Certificate awarded to",
+    "certText": "for completing the Procode trail and passing the final exam",
+    "print": "Print or save as PDF",
+    "again": "Take it again",
+    "submit": "Submit exam"
+  },
+  "mail": {
+    "subject": "Your streak is waiting, {name} 🐾",
+    "body": "Hi {name}! It's been 2 days since you visited Procode and Tilde misses you.\n\nOne step a day keeps your streak alive: {url}\n\nTo stop these reminders, untick “Email me” in your achievements."
+  },
+  "contact": {
+    "title": "Questions and complaints",
+    "lead": "Write to us and we'll reply to the email you leave.",
+    "type": "Topic",
+    "name": "Name",
+    "email": "Your email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending…",
+    "sent": "Message sent!",
+    "sentSub": "Thanks. We'll reply to your email as soon as we can.",
+    "invalid": "Check the fields: the email must be valid and the message at least 10 characters.",
+    "unavailable": "The form isn't available yet. Try again later.",
+    "error": "We couldn't send your message. Try again in a while.",
+    "types": {
+      "query": "Questions",
+      "complaint": "Complaints",
+      "suggestion": "Suggestions",
+      "other": "Other"
+    }
   }
 }

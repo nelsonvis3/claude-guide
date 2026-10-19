@@ -19,6 +19,7 @@ for (const file of readdirSync(dir).filter((f) => f !== "es.json")) {
 
 test("cada comando, skill, paso y plugin de content.ts tiene texto en es.json", async () => {
   const c = await import("./content.ts");
+  const g = await import("./game.ts");
   const es = load("es.json");
   const missing = [
     ...[...c.COMMANDS, ...c.SKILLS].filter((id) => !es.commands[id]).map((id) => `commands.${id}`),
@@ -30,6 +31,8 @@ test("cada comando, skill, paso y plugin de content.ts tiene texto en es.json", 
     ...c.KNOWLEDGE_WORK.filter((id) => !es.kw[id]).map((id) => `kw.${id}`),
     ...c.BUILTIN_MODS.filter((id) => !es.builtinMods[id]).map((id) => `builtinMods.${id}`),
     ...c.ROLE_IDS.filter((r) => !es.roles[r]).map((r) => `roles.${r}`),
+    ...g.STICKERS.filter((x) => !es.stickerNames[x]).map((x) => `stickerNames.${x}`),
+    ...g.LEVELS.filter((x) => !es.game.levels[x.id]).map((x) => `game.levels.${x.id}`),
     // cada recomendación por rol apunta a algo que existe y tiene texto
     ...[...Object.values(c.ROLES).flat(), ...c.TOKEN_SAVERS]
       .map((k) => c.resolve(k))

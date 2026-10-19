@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n";
 import { BarChart, StackChart } from "./Charts";
 import { FeaturePicker, ModelPicker, TimePicker, UsePicker } from "./Fields";
 import { Code } from "./Roadmap";
+import { Peek } from "./Mascot";
 import { RecList, RoleRecs } from "./Recs";
 
 // Los textos marcan código con `backticks`.
@@ -16,7 +17,7 @@ function Rich({ text }: { text: string }) {
 
 function Section({ title, lead, children }: { title: string; lead?: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-3xl border-2 border-line bg-surface p-5 sm:p-7">
+    <section className="rounded-3xl bg-surface p-5 shadow-soft sm:p-8">
       <h3 className="display text-[1.6rem] sm:text-[1.9rem]">{title}</h3>
       {lead && <p className="mt-2 max-w-[65ch] text-ink-2">{lead}</p>}
       <div className="mt-5">{children}</div>
@@ -62,7 +63,7 @@ export default function Results({ a, onChange, role, onRole }: {
             {stat(t("results.week"), e.perWeek)}
             {stat(t("results.month"), e.perMonth, true)}
           </div>
-          <div className="mt-5 rounded-2xl border-[3px] border-marker p-4">
+          <div className="mt-5 rounded-2xl bg-[var(--glow)] p-5">
             <p className="font-bold">{t("results.planTitle")}</p>
             <p className="display mt-1 text-[1.5rem]">{t(`plans.${e.plan}.t`)}</p>
             <p className="mt-1">{t(`plans.${e.plan}.d`)}</p>
@@ -71,7 +72,7 @@ export default function Results({ a, onChange, role, onRole }: {
           <p className="mt-4 text-[0.95rem] text-ink-2">{t("results.disclaimer")}</p>
         </Section>
 
-        <details className="rounded-3xl border-2 border-line bg-surface p-5 lg:hidden">
+        <details className="rounded-3xl bg-surface p-5 shadow-soft lg:hidden">
           <summary className="display cursor-pointer text-[1.4rem]">{t("results.adjust")}</summary>
           <div className="mt-4"><Adjust a={a} onChange={onChange} /></div>
         </details>
@@ -114,9 +115,12 @@ export default function Results({ a, onChange, role, onRole }: {
           />
         </Section>
 
-        <Section title={t("recs.title")} lead={t("recs.lead")}>
-          <RoleRecs role={role} onRole={onRole} />
-        </Section>
+        <div className="relative">
+          <Peek size={92} className="absolute -top-[56px] right-6" />
+          <Section title={t("recs.title")} lead={t("recs.lead")}>
+            <RoleRecs role={role} onRole={onRole} />
+          </Section>
+        </div>
 
         <Section title={t("recs.saversTitle")} lead={t("recs.saversLead")}>
           <RecList keys={TOKEN_SAVERS} />
@@ -126,11 +130,11 @@ export default function Results({ a, onChange, role, onRole }: {
           <div className="grid gap-4 md:grid-cols-[1fr_2fr]">
             <div>
               <p className="font-bold text-spend">{t("anatomy.bad")}</p>
-              <p className="mt-1 rounded-xl border-2 border-dashed border-line px-3 py-2 font-mono text-[0.95rem]">{t("anatomy.badPrompt")}</p>
+              <p className="mt-1 rounded-xl border border-dashed border-line px-3 py-2 font-mono text-[0.95rem]">{t("anatomy.badPrompt")}</p>
             </div>
             <div>
               <p className="font-bold text-save">{t("anatomy.good")}</p>
-              <p className="mt-1 rounded-xl border-2 border-line px-3 py-2 font-mono text-[0.95rem] leading-loose">
+              <p className="mt-1 rounded-xl bg-surface-2 px-3 py-2 font-mono text-[0.95rem] leading-loose">
                 {list("anatomy.goodParts").map((part, i) => (
                   <span key={i} className="underline decoration-[3px] underline-offset-[6px]" style={{ textDecorationColor: `var(--s${i + 1})` }}>
                     {part}{" "}
@@ -166,7 +170,7 @@ export default function Results({ a, onChange, role, onRole }: {
         </div>
       </div>
 
-      <aside className="sticky top-20 hidden max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-3xl border-2 border-line bg-surface p-5 lg:block">
+      <aside className="sticky top-20 hidden max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-3xl bg-surface p-5 shadow-soft lg:block">
         <h3 className="display mb-4 text-[1.4rem]">{t("results.adjust")}</h3>
         <Adjust a={a} onChange={onChange} />
       </aside>

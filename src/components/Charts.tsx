@@ -60,7 +60,7 @@ export function BarChart({ bars, reference, head }: { bars: Bar[]; reference?: n
                 />
                 <span className="font-mono text-[0.95rem] whitespace-nowrap">{usd(b.value)}</span>
                 {hover === b.id && ratio !== null && (
-                  <span role="status" className="absolute -top-9 left-0 z-10 rounded-lg border-2 border-ink bg-surface px-2 py-0.5 text-[0.9rem] whitespace-nowrap shadow-[3px_3px_0_var(--ink)]">
+                  <span role="status" className="absolute -top-9 left-0 z-10 rounded-lg bg-surface px-2 py-0.5 text-[0.9rem] whitespace-nowrap shadow-soft">
                     {b.label}: {usd(b.value)} · ×{ratio.toFixed(ratio < 1 ? 2 : 1)}
                   </span>
                 )}

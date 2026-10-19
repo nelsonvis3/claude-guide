@@ -1,75 +1,78 @@
 @import "tailwindcss";
 
-/* Mapa de senderismo: papel salvia con curvas de nivel, ruta en cobalto, hitos en amarillo señal. */
+/* Limpio y suave: base lila clara que combina con el violeta de Tilde, acento violeta y ámbar para logros. */
 :root {
   color-scheme: light;
-  --bg: #eef3ef;
+  --bg: #f6f4fa;
   --surface: #ffffff;
-  --surface-2: #e3ebe5;
-  --ink: #10232a;
-  --ink-2: #4a5f66;
-  --line: #c9d7ce;
-  --contour: #cfdcd3;
-  --cobalt: #2a5bd7;
+  --surface-2: #f1edf7;
+  --ink: #1d1830;
+  --ink-2: #625b78;
+  --line: #e7e1f0;
+  --cobalt: #7449c9;
   --cobalt-ink: #ffffff;
-  --marker: #f5c518;
-  --marker-ink: #10232a;
-  --save: #1d7f53;
-  --spend: #a34d16;
+  --marker: #ffb547;
+  --marker-ink: #1d1830;
+  --save: #1a8f60;
+  --spend: #c95a2c;
+  --soft: 0 1px 2px rgb(29 24 48 / 0.05), 0 10px 30px rgb(29 24 48 / 0.07);
+  --glow: #e9defa;
   /* Series de gráficos: paleta de referencia validada (adyacentes, CVD) */
   --s1: #2a78d6;
   --s2: #eb6834;
   --s3: #1baf7a;
   --s4: #eda100;
-  --bar-muted: #86b6ef;
-  --bar-strong: #1c5cab;
+  --bar-muted: #c9b6ef;
+  --bar-strong: #7449c9;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #0d1a1e;
-    --surface: #14252a;
-    --surface-2: #1b2f35;
-    --ink: #e3ede8;
-    --ink-2: #9db3ae;
-    --line: #2a4046;
-    --contour: #1a2d32;
-    --cobalt: #7096f2;
-    --cobalt-ink: #0d1a1e;
-    --marker: #f5c518;
-    --marker-ink: #0d1a1e;
+    --bg: #121019;
+    --surface: #1b1726;
+    --surface-2: #241f33;
+    --ink: #f1edf8;
+    --ink-2: #a9a1bd;
+    --line: #2f2940;
+    --cobalt: #a98bf0;
+    --cobalt-ink: #121019;
+    --marker: #ffc56b;
+    --marker-ink: #121019;
     --save: #4cc38a;
     --spend: #f0965f;
+    --soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px rgb(0 0 0 / 0.35);
+    --glow: #2a2140;
     --s1: #3987e5;
     --s2: #d95926;
     --s3: #199e70;
     --s4: #c98500;
-    --bar-muted: #256abf;
-    --bar-strong: #86b6ef;
+    --bar-muted: #4a3c6e;
+    --bar-strong: #a98bf0;
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0d1a1e;
-  --surface: #14252a;
-  --surface-2: #1b2f35;
-  --ink: #e3ede8;
-  --ink-2: #9db3ae;
-  --line: #2a4046;
-  --contour: #1a2d32;
-  --cobalt: #7096f2;
-  --cobalt-ink: #0d1a1e;
-  --marker: #f5c518;
-  --marker-ink: #0d1a1e;
+  --bg: #121019;
+  --surface: #1b1726;
+  --surface-2: #241f33;
+  --ink: #f1edf8;
+  --ink-2: #a9a1bd;
+  --line: #2f2940;
+  --cobalt: #a98bf0;
+  --cobalt-ink: #121019;
+  --marker: #ffc56b;
+  --marker-ink: #121019;
   --save: #4cc38a;
   --spend: #f0965f;
+  --soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px rgb(0 0 0 / 0.35);
+  --glow: #2a2140;
   --s1: #3987e5;
   --s2: #d95926;
   --s3: #199e70;
   --s4: #c98500;
-  --bar-muted: #256abf;
-  --bar-strong: #86b6ef;
+  --bar-muted: #4a3c6e;
+  --bar-strong: #a98bf0;
 }
 
 @theme inline {
@@ -88,6 +91,7 @@
   --color-marker-ink: var(--marker-ink);
   --color-save: var(--save);
   --color-spend: var(--spend);
+  --shadow-soft: var(--soft);
 }
 
 html {
@@ -105,10 +109,10 @@ body {
 /* Titulares expandidos, como rótulos de mapa */
 .display {
   font-family: var(--font-display), system-ui, sans-serif;
-  font-variation-settings: "wdth" 118;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  line-height: 1.05;
+  font-variation-settings: "wdth" 104;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
 }
 
 :focus-visible {

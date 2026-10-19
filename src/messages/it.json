@@ -1,16 +1,22 @@
 {
   "meta": {
-    "title": "Sentiero Claude Code",
+    "title": "Procode",
     "description": "Da principiante a pro su Claude Code: quanto spenderai in base a come lavori, quale modello ti conviene e cosa imparare per primo."
   },
   "nav": {
     "route": "Il mio sentiero",
     "guide": "Bigino",
-    "savedLocal": "Il tuo sentiero è salvato in questo browser. Non serve un account.",
+    "savedLocal": "Senza account, i tuoi progressi si cancellano quando chiudi la scheda. Accedi con GitHub o Google per salvarli.",
     "lang": "Lingua",
     "unofficial": "Progetto indipendente, non affiliato ad Anthropic. Prezzi e funzioni provengono dalla documentazione ufficiale di Claude Code, consultata il 18 ottobre 2026.",
     "docs": "Documentazione ufficiale",
-    "skip": "Vai al contenuto"
+    "skip": "Vai al contenuto",
+    "login": "Accedi",
+    "loginWith": "Continua con {provider}",
+    "loginWhy": "Salva punti, sticker e serie nel tuo account e continua da qualsiasi dispositivo.",
+    "logout": "Esci",
+    "savedCloud": "I tuoi progressi sono salvati nel tuo account.",
+    "usage": "Consumo"
   },
   "mascot": {
     "name": "Tilde",
@@ -22,7 +28,7 @@
     "askTime": "Quanto tempo gli dedicherai?",
     "askModel": "Con quale modello lavorerai? Se non lo sai, Sonnet è il punto di partenza consigliato dalla documentazione.",
     "askFeatures": "Ultima: cosa vuoi aggiungere? Quelle verdi fanno risparmiare token; le altre aggiungono potenza e consumo.",
-    "done": "Fatto, {name}! Qui sotto trovi il consumo stimato e il tuo sentiero. Cambia una risposta qualsiasi e i numeri si ricalcolano.",
+    "done": "Fatto, {name}! Qui sotto c'è il tuo percorso: parti dal primo passo. Il consumo stimato è nella sezione Consumo.",
     "reactCheap": "Ci sta comodamente nel piano Pro.",
     "reactMid": "Questo ritmo richiede già un piano Max.",
     "reactHigh": "Wow, uso intenso! Guarda i consigli per risparmiare.",
@@ -244,7 +250,7 @@
   },
   "route": {
     "title": "Il tuo sentiero",
-    "lead": "Spunta ciò che padroneggi già. Parti dal tratto evidenziato.",
+    "lead": "Ogni passo è una breve lezione con un terminale per esercitarti e una prova. Si sbloccano in ordine: supera la prova per aprire il successivo.",
     "startHere": "Parti da qui",
     "done": "Lo padroneggio",
     "progress": "{done} su {total} padroneggiati",
@@ -845,5 +851,183 @@
     "cc-plugin-you-should-know": "Un agente laterale ti avvisa sopra il prompt se ti è sfuggito qualcosa. Spento di default.",
     "cc-plugin-sec-default": "Protegge ciò che gestisce la tua organizzazione dai mod che installi tu.",
     "cc-plugin-telemetry": "Invia le metriche di Claude Code e dei suoi mod inclusi."
+  },
+  "game": {
+    "levels": {
+      "kitten": "Gattino",
+      "curious": "Curioso",
+      "hunter": "Cacciatore",
+      "explorer": "Esploratore",
+      "master": "Maestro felino"
+    },
+    "progressTitle": "Il tuo livello",
+    "xp": "{n} XP",
+    "toNext": "mancano {n} XP per {level}",
+    "maxLevel": "hai raggiunto il livello massimo!",
+    "streak": "{n} giorni di fila",
+    "streakNone": "Completa un passo oggi per iniziare la tua serie.",
+    "stickers": "Sticker",
+    "stickersLead": "Ne hai {got} su {total}. Si guadagnano completando passi, tratti e serie.",
+    "locked": "Bloccato",
+    "newSticker": "Nuovo sticker!",
+    "levelUp": "Sei arrivato a {level}!",
+    "levelUpSub": "Tilde è fiera di te. Continua così.",
+    "phaseDone": "Hai finito {phase}!",
+    "plusXp": "+{n} XP",
+    "continue": "Avanti!",
+    "cheers": [
+      "Bravo!",
+      "Miao, un altro!",
+      "Stai volando!",
+      "Sì!"
+    ],
+    "remind": "Avvisami via email se passo 2 giorni senza entrare",
+    "remindNote": "Scriviamo all'email del tuo account una sola volta per assenza. Togli la spunta per disattivarlo.",
+    "remindLogin": "Accedi con il tuo account per salvare i progressi e attivare l'avviso della serie via email."
+  },
+  "stickerNames": {
+    "first-step": {
+      "t": "Primo passo",
+      "d": "Hai completato il tuo primo passo del sentiero."
+    },
+    "phase-start": {
+      "t": "Germoglio",
+      "d": "Hai finito Primi passi."
+    },
+    "phase-habits": {
+      "t": "Bussola",
+      "d": "Hai finito Abitudini."
+    },
+    "phase-extend": {
+      "t": "Cassetta degli attrezzi",
+      "d": "Hai finito Estendere."
+    },
+    "phase-pro": {
+      "t": "Vetta",
+      "d": "Hai finito il tratto Pro."
+    },
+    "all-done": {
+      "t": "Leggenda",
+      "d": "Hai completato tutto il sentiero."
+    },
+    "streak-3": {
+      "t": "In fiamme",
+      "d": "Tre giorni di fila."
+    },
+    "streak-7": {
+      "t": "Fulmine",
+      "d": "Una settimana di fila."
+    },
+    "streak-30": {
+      "t": "Stella",
+      "d": "Trenta giorni di fila."
+    },
+    "token-saver": {
+      "t": "Risparmiatore",
+      "d": "Padroneggi contesto, consumo e skill."
+    },
+    "model-combo": {
+      "t": "Direttore d'orchestra",
+      "d": "Combini i modelli con il consulente e i subagenti."
+    },
+    "role-pick": {
+      "t": "Con identità",
+      "d": "Hai scelto il tuo ruolo."
+    }
+  },
+  "lesson": {
+    "start": "Inizia la lezione",
+    "review": "Ripassa",
+    "passToMark": "Supera il test per spuntarlo",
+    "back": "Il mio sentiero",
+    "stepOf": "passo {n} di {total}",
+    "mastered": "Lo padroneggi già. Ripassa quando vuoi.",
+    "keyPoints": "L'essenziale",
+    "practice": "Esercitati nel terminale",
+    "termHint": "Mostra suggerimento",
+    "termWrong": "Non è quello che chiede la consegna. Riprova o guarda il suggerimento.",
+    "termOk": "✓ Perfetto! Ora puoi fare il test.",
+    "termPlaceholder": "Scrivi qui e premi Invio",
+    "termDone": "Risolto. Puoi continuare a provare comandi.",
+    "quiz": "Test",
+    "quizLocked": "Risolvi il terminale per sbloccare il test.",
+    "check": "Verifica",
+    "retry": "Riprova",
+    "correct": "Corretto!",
+    "wrong": "Non è quella.",
+    "pickAnswer": "Scegli una risposta per ogni domanda.",
+    "allRight": "Hai superato il test!",
+    "allRightSub": "Padroneggi «{title}». È spuntato nel tuo sentiero.",
+    "next": "Lezione successiva",
+    "finishRoute": "Vedi i miei traguardi",
+    "source": "Fonte: documentazione ufficiale",
+    "locked": "Completa il passo precedente per sbloccarlo.",
+    "lockedPage": "Questa lezione è ancora bloccata. Il percorso va passo dopo passo: continua con «{title}».",
+    "goCurrent": "Vai al mio passo attuale"
+  },
+  "footer": {
+    "rights": "Tutti i diritti riservati.",
+    "terms": "Termini e condizioni",
+    "hi": "Miao! Ti aiuto?",
+    "tagline": "Impara Claude Code passo dopo passo, da zero a pro, con Tilde.",
+    "product": "Percorso",
+    "help": "Aiuto",
+    "legal": "Note legali",
+    "unofficial": "Progetto indipendente, non affiliato ad Anthropic."
+  },
+  "terms": {
+    "title": "Termini e condizioni",
+    "updated": "Ultimo aggiornamento: 18 ottobre 2026.",
+    "body": [
+      "Procode è una guida gratuita per imparare a usare Claude Code. Usando il sito accetti questi termini.",
+      "Il contenuto è educativo. Consumi e costi sono stime basate sui prezzi pubblici e potrebbero non coincidere con la tua fattura reale; controlla sempre la documentazione ufficiale prima di scegliere un piano.",
+      "Se accedi con GitHub o Google, salviamo solo il nome dell'account, le tue risposte e i tuoi progressi, così puoi continuare da un altro dispositivo. Senza account, i progressi restano nella scheda e si cancellano quando la chiudi. Non vendiamo né condividiamo i tuoi dati.",
+      "Comandi ed esempi sono forniti così come sono. Controlla ciò che esegui sul tuo computer; non siamo responsabili per danni derivanti dal loro uso.",
+      "Il design, i testi e la mascotte Tilde appartengono al loro autore. Claude e Claude Code sono marchi di Anthropic.",
+      "Possiamo aggiornare questi termini; la data in alto indica l'ultima versione. Per domande o reclami, usa il modulo Aiuto in fondo alla pagina."
+    ],
+    "mail": "Promemoria via email: solo se li attivi, usiamo l'email del tuo account per avvisarti quando passano 2 giorni senza visite, una volta per assenza. Puoi disattivarli quando vuoi dai tuoi traguardi."
+  },
+  "exam": {
+    "title": "Esame Claude Code Pro",
+    "ready": "Hai completato il percorso. Fai l'esame finale per ottenere il tuo certificato.",
+    "lockedRoute": "Si sblocca quando padroneggi tutti i 48 passi del percorso.",
+    "start": "Fai l'esame",
+    "seeCert": "Vedi il mio certificato",
+    "lead": "{n} domande da tutto il percorso. Passi con {pass} risposte corrette.",
+    "score": "{score} su {total} corrette",
+    "failed": "Te ne servono {pass} per passare. Ripassa le lezioni in cui hai sbagliato e riprova: le domande cambiano.",
+    "passedTitle": "Sei Claude Code Pro!",
+    "passedSub": "Hai superato l'esame finale. Il tuo certificato è pronto.",
+    "certFor": "Certificato rilasciato a",
+    "certText": "per aver completato il percorso di Procode e superato l'esame finale",
+    "print": "Stampa o salva in PDF",
+    "again": "Rifallo",
+    "submit": "Consegna l'esame"
+  },
+  "mail": {
+    "subject": "La tua serie ti aspetta, {name} 🐾",
+    "body": "Ciao {name}! Sono 2 giorni che non passi da Procode e a Tilde manchi.\n\nUn passo al giorno basta per non perdere la serie: {url}\n\nPer non ricevere più questi avvisi, togli la spunta da «Avvisami via email» nei tuoi traguardi."
+  },
+  "contact": {
+    "title": "Domande e reclami",
+    "lead": "Scrivici e ti rispondiamo all'email che lasci.",
+    "type": "Motivo",
+    "name": "Nome",
+    "email": "La tua email",
+    "message": "Messaggio",
+    "send": "Invia",
+    "sending": "Invio…",
+    "sent": "Messaggio inviato!",
+    "sentSub": "Grazie. Ti rispondiamo via email il prima possibile.",
+    "invalid": "Controlla i campi: l'email deve essere valida e il messaggio di almeno 10 caratteri.",
+    "unavailable": "Il modulo non è ancora disponibile. Riprova più tardi.",
+    "error": "Non siamo riusciti a inviare il messaggio. Riprova tra poco.",
+    "types": {
+      "query": "Domande",
+      "complaint": "Reclami",
+      "suggestion": "Suggerimenti",
+      "other": "Altro"
+    }
   }
 }

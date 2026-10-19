@@ -12,7 +12,7 @@ export function RecCard({ k }: { k: string }) {
   const { t, tokens } = useI18n();
   const r = resolve(k);
   return (
-    <li className="flex min-w-0 flex-col gap-2 rounded-2xl border-2 border-line bg-surface p-4 [overflow-wrap:anywhere]">
+    <li className="flex min-w-0 flex-col gap-2 rounded-2xl border border-line bg-surface p-4 [overflow-wrap:anywhere]">
       <div className="flex flex-wrap items-baseline justify-between gap-x-2">
         {r.url ? (
           <a href={r.url} target="_blank" rel="noreferrer" className="font-mono font-bold text-cobalt underline underline-offset-4">{r.id}</a>
@@ -49,7 +49,7 @@ export function RoleChips({ value, onChange }: { value: Role; onChange: (r: Role
           role="radio"
           aria-checked={value === r}
           onClick={() => onChange(r)}
-          className={`rounded-full border-2 px-3 py-1 font-bold ${value === r ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-line hover:border-ink"}`}
+          className={`rounded-full border px-3 py-1 font-bold ${value === r ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-line bg-surface hover:border-cobalt"}`}
         >
           {t(`roles.${r}.t`)}
         </button>

@@ -1,6 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
-import { NODES, PHASES, START_PHASE, type Node } from "@/lib/content";
+import { NODES, PHASES, type Node } from "@/lib/content";
+import { current } from "@/lib/game";
+import { Peek } from "./Mascot";
 import { useI18n } from "@/lib/i18n";
 import type { Profile } from "@/lib/profile";
 
@@ -19,7 +22,7 @@ export function CopyButton({ text }: { text: string }) {
           setOk(false);
         }
       }}
-      className="shrink-0 rounded-md border-2 border-current px-2 py-0.5 text-[0.85rem] font-bold"
+      className="shrink-0 rounded-full border border-current/30 px-3 py-0.5 text-[0.85rem] font-bold"
     >
       {ok ? t("route.copied") : t("route.copy")}
     </button>
@@ -28,69 +31,69 @@ export function CopyButton({ text }: { text: string }) {
 
 export function Code({ text }: { text: string }) {
   return (
-    <div className="flex items-start gap-2 rounded-xl bg-ink px-3 py-2 text-bg">
+    <div className="flex items-start gap-2 rounded-2xl bg-[#1d1830] px-4 py-3 text-[#f1edf8]">
       <pre className="flex-1 overflow-x-auto font-mono text-[0.9rem] leading-relaxed whitespace-pre-wrap break-words">{text}</pre>
       <CopyButton text={text} />
     </div>
   );
 }
 
-function Stop({ node, n, profile, onToggle }: { node: Node; n: number; profile: Profile; onToggle: () => void }) {
-  const { t, m } = useI18n();
+function Stop({ node, n, profile, locked }: { node: Node; n: number; profile: Profile; locked: boolean }) {
+  const { t } = useI18n();
   const done = profile.done.includes(node.id);
   const forYou = node.uses?.includes(profile.answers.use);
   const inEstimate = node.feature && profile.answers.features.includes(node.feature);
-  const prompt = (m.nodes as Record<string, { p?: string }>)[node.id]?.p;
   return (
-    <li className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 pb-6">
+    <li className="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 pb-5">
       <span
         aria-hidden="true"
-        className={`relative z-10 grid size-10 place-items-center rounded-full border-[3px] font-mono font-bold ${
-          done ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-ink bg-surface"
+        className={`relative z-10 grid size-10 place-items-center rounded-full border-2 font-mono font-bold ${
+          done ? "border-cobalt bg-cobalt text-cobalt-ink" : locked ? "border-line bg-surface-2 text-ink-2" : "border-cobalt bg-surface"
         }`}
       >
-        {done ? "✓" : n}
+        {done ? "✓" : locked ? "🔒" : n}
       </span>
-      <article className={`min-w-0 rounded-2xl border-2 p-4 [overflow-wrap:anywhere] ${done ? "border-line bg-surface/50" : "border-line bg-surface"}`}>
-        <header className="flex flex-wrap items-start justify-between gap-2">
-          <h4 className="min-w-0 text-[1.2rem] font-bold [overflow-wrap:anywhere]">{t(`nodes.${node.id}.t`)}</h4>
-          <label className="flex cursor-pointer items-center gap-2 text-[0.95rem]">
-            <input type="checkbox" checked={done} onChange={onToggle} className="size-4 accent-[var(--cobalt)]" />
-            {t("route.done")}
-          </label>
-        </header>
+      <article className={`min-w-0 rounded-2xl p-5 [overflow-wrap:anywhere] ${done ? "bg-surface/60" : locked ? "bg-surface/60 opacity-70" : "bg-surface shadow-soft"}`}>
+        <h4 className="min-w-0 text-[1.2rem] font-bold [overflow-wrap:anywhere]">{t(`nodes.${node.id}.t`)}</h4>
         {(forYou || inEstimate) && (
           <p className="mt-1 flex flex-wrap gap-1.5 text-[0.85rem] font-bold">
             {forYou && <span className="rounded-full bg-marker px-2 text-marker-ink">{t("route.forYou")}</span>}
-            {inEstimate && <span className="rounded-full border-2 border-cobalt px-2 text-cobalt">{t("route.inEstimate")}</span>}
+            {inEstimate && <span className="rounded-full bg-[var(--glow)] px-2 text-cobalt">{t("route.inEstimate")}</span>}
           </p>
         )}
         <p className="mt-2 max-w-[68ch] text-ink-2">{t(`nodes.${node.id}.d`)}</p>
-        {node.code && <div className="mt-3"><Code text={node.code} /></div>}
-        {prompt && (
-          <div className="mt-3">
-            <p className="text-[0.9rem] font-bold">{t("route.tryIt")}</p>
-            <div className="mt-1 flex items-start gap-2 rounded-xl border-2 border-dashed border-line px-3 py-2">
-              <p className="flex-1 text-[0.95rem]">{prompt}</p>
-              <CopyButton text={prompt} />
-            </div>
-          </div>
+        {locked ? (
+          <p className="mt-4 text-[0.9rem] font-bold text-ink-2">🔒 {t("lesson.locked")}</p>
+        ) : (
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <Link
+            href={`/leccion/${node.id}`}
+            className={`rounded-full px-5 py-2 font-bold ${done ? "bg-surface-2 text-ink" : "bg-cobalt text-cobalt-ink"}`}
+          >
+            {done ? t("lesson.review") : t("lesson.start")}
+          </Link>
+          {done ? (
+            <span className="font-bold text-save">✓ {t("route.done")}</span>
+          ) : (
+            <span className="text-[0.9rem] text-ink-2">{t("lesson.passToMark")}</span>
+          )}
+        </div>
         )}
-        <a href={node.doc} target="_blank" rel="noreferrer" className="mt-3 inline-block font-bold text-cobalt underline underline-offset-4">
-          {t("route.doc")}
-        </a>
       </article>
     </li>
   );
 }
 
-export default function Roadmap({ profile, onToggle }: { profile: Profile; onToggle: (id: string) => void }) {
+export default function Roadmap({ profile }: { profile: Profile }) {
   const { t } = useI18n();
-  const start = START_PHASE[profile.experience];
+  const now = current(profile.done);
+  // Se abre el tramo del paso en curso.
+  const start = NODES[now]?.phase;
   const total = NODES.length;
   const doneCount = NODES.filter((n) => profile.done.includes(n.id)).length;
   return (
-    <section id="ruta" className="scroll-mt-20">
+    <section id="ruta" className="relative scroll-mt-20">
+      <Peek size={92} className="absolute -top-[56px] right-6" />
       <h2 className="display text-[2.4rem] sm:text-[3rem]">{t("route.title")}</h2>
       <p className="mt-2 max-w-[60ch] text-ink-2">{t("route.lead")}</p>
       <div className="mt-4 max-w-md">
@@ -104,7 +107,7 @@ export default function Roadmap({ profile, onToggle }: { profile: Profile; onTog
           <details
             key={phase}
             open={phase === start}
-            className={`group rounded-3xl p-3 sm:p-5 ${phase === start ? "border-[3px] border-marker" : "border-2 border-line"}`}
+            className={`group rounded-3xl p-3 sm:p-5 ${phase === start ? "bg-[var(--glow)]" : "border border-line"}`}
           >
             <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-3 gap-y-1">
               <span aria-hidden="true" className="font-mono transition-transform group-open:rotate-90">▸</span>
@@ -116,11 +119,23 @@ export default function Roadmap({ profile, onToggle }: { profile: Profile; onTog
             </summary>
             <ol className="relative mt-5 before:absolute before:top-2 before:bottom-6 before:left-[1.2rem] before:border-l-[3px] before:border-dashed before:border-line">
               {NODES.filter((x) => x.phase === phase).map((node) => (
-                <Stop key={node.id} node={node} n={NODES.indexOf(node) + 1} profile={profile} onToggle={() => onToggle(node.id)} />
+                <Stop key={node.id} node={node} n={NODES.indexOf(node) + 1} profile={profile} locked={NODES.indexOf(node) > now} />
               ))}
             </ol>
           </details>
         ))}
+        <div className={`flex flex-wrap items-center gap-4 rounded-3xl p-5 ${now === total ? "bg-[var(--glow)]" : "border border-line opacity-70"}`}>
+          <span aria-hidden="true" className="text-[2rem]">{profile.done.includes("exam") ? "🏆" : now === total ? "🎓" : "🔒"}</span>
+          <div className="min-w-0 flex-1">
+            <h3 className="display text-[1.7rem]">{t("exam.title")}</h3>
+            <p className="text-ink-2">{now === total ? t("exam.ready") : t("exam.lockedRoute")}</p>
+          </div>
+          {now === total && (
+            <Link href="/examen" className="rounded-full bg-cobalt px-5 py-2 font-bold text-cobalt-ink">
+              {profile.done.includes("exam") ? t("exam.seeCert") : t("exam.start")}
+            </Link>
+          )}
+        </div>
       </div>
     </section>
   );

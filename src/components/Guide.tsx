@@ -6,6 +6,7 @@ import {
   PERMISSION_MODES, PLUGIN_TOTALS, SAMPLE_MODS, SHORTCUTS, SKILLS, type Role,
 } from "@/lib/content";
 import { useI18n } from "@/lib/i18n";
+import { Peek } from "./Mascot";
 import { RecList, RoleRecs } from "./Recs";
 import { Code, CopyButton } from "./Roadmap";
 
@@ -16,8 +17,8 @@ function CommandList({ ids }: { ids: readonly string[] }) {
   return (
     <ul className="mt-4 grid gap-2 sm:grid-cols-2">
       {ids.map((c) => (
-        <li key={c} className="flex items-start gap-3 rounded-2xl border-2 border-line bg-surface px-4 py-3">
-          <code className="max-w-[55%] rounded-md bg-ink px-2 py-0.5 font-mono text-[0.95rem] text-bg [overflow-wrap:anywhere]">/{c}</code>
+        <li key={c} className="flex items-start gap-3 rounded-2xl border border-line bg-surface px-4 py-3">
+          <code className="max-w-[55%] rounded-lg bg-[#1d1830] px-2 py-0.5 font-mono text-[0.95rem] text-[#f1edf8] [overflow-wrap:anywhere]">/{c}</code>
           <span className="min-w-0 flex-1 [overflow-wrap:anywhere]">{t(`commands.${c}`)}</span>
           <CopyButton text={`/${c}`} />
         </li>
@@ -31,7 +32,7 @@ function PluginList({ ids, ns = "plugins" }: { ids: string[]; ns?: string }) {
   return (
     <ul className="mt-3 grid gap-2 sm:grid-cols-2">
       {ids.map((p) => (
-        <li key={p} className="rounded-2xl border-2 border-line bg-surface px-4 py-3">
+        <li key={p} className="rounded-2xl border border-line bg-surface px-4 py-3">
           <code className="font-mono font-bold">{p}</code>
           <p className="text-ink-2">{t(`${ns}.${p}`)}</p>
         </li>
@@ -52,13 +53,14 @@ export default function Guide() {
   const h3 = "mt-6 text-[1.2rem] font-bold";
   return (
     <main id="main" className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)] gap-12 px-4 py-12">
-      <div>
+      <div className="relative">
+        <Peek size={110} className="absolute -top-[30px] right-0 hidden sm:block" />
         <h1 className="display text-[2.6rem] sm:text-[3.6rem]">{t("guide.title")}</h1>
         <p className="mt-3 max-w-[60ch] text-[1.15rem] text-ink-2">{t("guide.lead")}</p>
         <Link href="/#ruta" className="mt-4 inline-block font-bold text-cobalt underline underline-offset-4">{t("guide.back")}</Link>
         <nav aria-label={t("guide.jump")} className="mt-6 flex flex-wrap gap-2">
           {SECTIONS.map((s) => (
-            <a key={s} href={`#${s}`} className="rounded-full border-2 border-ink px-3 py-1 font-bold hover:bg-ink hover:text-bg">
+            <a key={s} href={`#${s}`} className="rounded-full bg-surface px-4 py-1.5 font-bold shadow-soft hover:bg-cobalt hover:text-cobalt-ink">
               {t(`guide.${s}`)}
             </a>
           ))}
@@ -73,7 +75,7 @@ export default function Guide() {
 
       <label className="grid max-w-sm gap-1">
         <span className="font-bold">{t("guide.filter")}</span>
-        <input value={q} onChange={(e) => setQ(e.target.value)} className="rounded-xl border-2 border-line bg-surface px-3 py-2" />
+        <input value={q} onChange={(e) => setQ(e.target.value)} className="rounded-full border border-line bg-surface px-4 py-2 outline-none focus:border-cobalt" />
       </label>
 
       <section>
@@ -116,10 +118,10 @@ export default function Guide() {
         <h2 id="shortcuts" className={h2}>{t("guide.shortcuts")}</h2>
         <dl className="mt-4 grid gap-2 sm:grid-cols-2">
           {SHORTCUTS.map((s) => (
-            <div key={s.id} className="flex items-start gap-3 rounded-2xl border-2 border-line bg-surface px-4 py-3">
+            <div key={s.id} className="flex items-start gap-3 rounded-2xl border border-line bg-surface px-4 py-3">
               <dt className="shrink-0">
                 {s.keys.split(" / ").map((k) => (
-                  <kbd key={k} className="mr-1 inline-block rounded-md border-2 border-b-4 border-ink px-1.5 font-mono text-[0.9rem]">{k}</kbd>
+                  <kbd key={k} className="mr-1 inline-block rounded-md border border-b-2 border-line bg-surface-2 px-1.5 font-mono text-[0.9rem]">{k}</kbd>
                 ))}
               </dt>
               <dd>{t(`shortcuts.${s.id}`)}</dd>
@@ -132,7 +134,7 @@ export default function Guide() {
         <h2 id="modes" className={h2}>{t("guide.modes")}</h2>
         <ol className="mt-4 grid gap-2">
           {PERMISSION_MODES.map((mode) => (
-            <li key={mode} className="grid gap-1 rounded-2xl border-2 border-line bg-surface px-4 py-3 sm:grid-cols-[12rem_1fr] sm:gap-4">
+            <li key={mode} className="grid gap-1 rounded-2xl border border-line bg-surface px-4 py-3 sm:grid-cols-[12rem_1fr] sm:gap-4">
               <code className="font-mono font-bold">{mode}</code>
               <span>{t(`modes.${mode}`)}</span>
             </li>
@@ -155,7 +157,7 @@ export default function Guide() {
         <h3 className={h3}>{t("modGuide.samplesTitle")}</h3>
         <ul className="mt-2 grid gap-2 sm:grid-cols-3">
           {SAMPLE_MODS.map((m) => (
-            <li key={m.id} className="rounded-2xl border-2 border-line bg-surface px-4 py-3">
+            <li key={m.id} className="rounded-2xl border border-line bg-surface px-4 py-3">
               <a href={m.url} target="_blank" rel="noreferrer" className="font-mono font-bold text-cobalt underline underline-offset-4">{m.id}</a>
               <p className="text-ink-2">{t(`modGuide.samples.${m.id}`)}</p>
             </li>
@@ -173,7 +175,7 @@ export default function Guide() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl border-[3px] border-marker p-4">
+          <div className="rounded-2xl bg-[var(--glow)] p-5">
             <h3 className="text-[1.2rem] font-bold">{t("modGuide.safetyTitle")}</h3>
             <p className="mt-1">{t("modGuide.safety")}</p>
             <div className="mt-2"><Code text="claude plugin validate ./some-mod" /></div>
@@ -192,7 +194,7 @@ export default function Guide() {
         <p className="mt-1 text-ink-2">{t("pluginGuide.lsp")}</p>
         <ul className="mt-2 flex flex-wrap gap-2">
           {LSP_PLUGINS.map((p) => (
-            <li key={p}><code className="rounded-md border-2 border-line bg-surface px-2 py-0.5 font-mono">{p}</code></li>
+            <li key={p}><code className="rounded-full border border-line bg-surface px-3 py-0.5 font-mono">{p}</code></li>
           ))}
         </ul>
         <h3 className={h3}>{t("pluginGuide.partnersTitle")}</h3>

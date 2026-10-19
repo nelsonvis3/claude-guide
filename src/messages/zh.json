@@ -1,16 +1,22 @@
 {
   "meta": {
-    "title": "Claude Code 路线图",
+    "title": "Procode",
     "description": "Claude Code 从入门到精通：按你的用法会花多少钱、哪个模型适合你、先学什么。"
   },
   "nav": {
     "route": "我的路线",
     "guide": "速查表",
-    "savedLocal": "你的路线保存在这个浏览器里，不需要账号。",
+    "savedLocal": "不登录时，关闭标签页后进度会被清除。使用 GitHub 或 Google 登录即可保存。",
     "lang": "语言",
     "unofficial": "独立项目，与 Anthropic 无关。价格和功能来自 Claude Code 官方文档，查阅日期为 2026 年 10 月 18 日。",
     "docs": "官方文档",
-    "skip": "跳到内容"
+    "skip": "跳到内容",
+    "login": "登录",
+    "loginWith": "使用 {provider} 继续",
+    "loginWhy": "把积分、贴纸和连续记录保存到账号，在任何设备上继续。",
+    "logout": "退出登录",
+    "savedCloud": "你的进度已保存到账号。",
+    "usage": "用量"
   },
   "mascot": {
     "name": "Tilde",
@@ -22,7 +28,7 @@
     "askTime": "你打算花多少时间在上面？",
     "askModel": "你会用哪个模型？不确定的话，文档推荐从 Sonnet 开始。",
     "askFeatures": "最后一个：你想加点什么？绿色的省 token，其余的增加能力也增加消耗。",
-    "done": "好了，{name}！下面是你的预估用量和路线。改任何答案，数字都会重新计算。",
+    "done": "准备好了，{name}！下面是你的路线：从第一步开始。预估用量在“用量”页面。",
     "reactCheap": "Pro 套餐完全够用。",
     "reactMid": "这个节奏需要 Max 套餐了。",
     "reactHigh": "哇，重度使用！看看省钱技巧吧。",
@@ -244,7 +250,7 @@
   },
   "route": {
     "title": "你的路线",
-    "lead": "勾选你已经掌握的内容。从高亮的路段开始。",
+    "lead": "每一步都是一节短课，配有练习用的终端和一个测验。按顺序解锁：通过测验即可打开下一步。",
     "startHere": "从这里开始",
     "done": "已掌握",
     "progress": "已掌握 {done} / {total}",
@@ -845,5 +851,183 @@
     "cc-plugin-you-should-know": "侧边代理会在提示框上方提醒你遗漏的事。默认关闭。",
     "cc-plugin-sec-default": "保护组织管理的内容不受你自己安装的 mods 影响。",
     "cc-plugin-telemetry": "发送 Claude Code 及其内置 mods 的指标。"
+  },
+  "game": {
+    "levels": {
+      "kitten": "小猫",
+      "curious": "好奇猫",
+      "hunter": "猎手",
+      "explorer": "探险家",
+      "master": "猫大师"
+    },
+    "progressTitle": "你的等级",
+    "xp": "{n} XP",
+    "toNext": "还差 {n} XP 升到{level}",
+    "maxLevel": "你已经到达最高等级！",
+    "streak": "连续 {n} 天",
+    "streakNone": "今天完成一步，开始你的连续记录。",
+    "stickers": "贴纸",
+    "stickersLead": "已获得 {got} / {total}。完成步骤、路段和连续记录就能获得。",
+    "locked": "未解锁",
+    "newSticker": "新贴纸！",
+    "levelUp": "你升到了{level}！",
+    "levelUpSub": "Tilde 为你骄傲，继续加油。",
+    "phaseDone": "你完成了{phase}！",
+    "plusXp": "+{n} XP",
+    "continue": "继续！",
+    "cheers": [
+      "干得好！",
+      "喵，又一个！",
+      "进展神速！",
+      "太棒了！"
+    ],
+    "remind": "连续 2 天没登录时发邮件提醒我",
+    "remindNote": "每次缺席只会向你的账户邮箱发送一封邮件。取消勾选即可关闭。",
+    "remindLogin": "登录即可保存进度，并开启连续打卡的邮件提醒。"
+  },
+  "stickerNames": {
+    "first-step": {
+      "t": "第一步",
+      "d": "你完成了路线上的第一步。"
+    },
+    "phase-start": {
+      "t": "嫩芽",
+      "d": "你完成了“第一步”。"
+    },
+    "phase-habits": {
+      "t": "指南针",
+      "d": "你完成了“习惯”。"
+    },
+    "phase-extend": {
+      "t": "工具箱",
+      "d": "你完成了“扩展”。"
+    },
+    "phase-pro": {
+      "t": "山顶",
+      "d": "你完成了“进阶”路段。"
+    },
+    "all-done": {
+      "t": "传奇",
+      "d": "你完成了整条路线。"
+    },
+    "streak-3": {
+      "t": "火热",
+      "d": "连续三天。"
+    },
+    "streak-7": {
+      "t": "闪电",
+      "d": "连续一周。"
+    },
+    "streak-30": {
+      "t": "明星",
+      "d": "连续三十天。"
+    },
+    "token-saver": {
+      "t": "节省达人",
+      "d": "你掌握了上下文、用量和 skills。"
+    },
+    "model-combo": {
+      "t": "指挥家",
+      "d": "你会用顾问和子代理组合模型。"
+    },
+    "role-pick": {
+      "t": "有身份了",
+      "d": "你选择了自己的角色。"
+    }
+  },
+  "lesson": {
+    "start": "开始课程",
+    "review": "复习",
+    "passToMark": "通过测验即可勾选",
+    "back": "我的路线",
+    "stepOf": "第 {n} 步，共 {total} 步",
+    "mastered": "你已经掌握了，随时可以复习。",
+    "keyPoints": "重点",
+    "practice": "在终端里练习",
+    "termHint": "查看提示",
+    "termWrong": "这不是任务要求的。再试一次，或看看提示。",
+    "termOk": "✓ 完美！现在可以做测验了。",
+    "termPlaceholder": "在这里输入并按回车",
+    "termDone": "已完成。可以继续试其他命令。",
+    "quiz": "测验",
+    "quizLocked": "完成终端练习即可解锁测验。",
+    "check": "检查答案",
+    "retry": "再试一次",
+    "correct": "正确！",
+    "wrong": "不是这个。",
+    "pickAnswer": "每道题选一个答案。",
+    "allRight": "你通过了测验！",
+    "allRightSub": "你已掌握“{title}”，已在路线上勾选。",
+    "next": "下一课",
+    "finishRoute": "查看我的成就",
+    "source": "来源：官方文档",
+    "locked": "完成上一步即可解锁。",
+    "lockedPage": "这节课还未解锁。路线需要一步一步来：先完成「{title}」。",
+    "goCurrent": "前往当前步骤"
+  },
+  "footer": {
+    "rights": "保留所有权利。",
+    "terms": "条款与条件",
+    "hi": "喵！需要帮忙吗？",
+    "tagline": "和 Tilde 一起，一步步从零到精通 Claude Code。",
+    "product": "路线",
+    "help": "帮助",
+    "legal": "法律",
+    "unofficial": "独立项目，与 Anthropic 无关。"
+  },
+  "terms": {
+    "title": "条款与条件",
+    "updated": "最后更新：2026年10月18日",
+    "body": [
+      "Procode 是学习使用 Claude Code 的免费指南。使用本网站即表示你接受这些条款。",
+      "内容仅供学习。用量和费用是根据公开价格得出的估算，可能与你的实际账单不同；选择套餐前请务必查看官方文档。",
+      "如果你使用 GitHub 或 Google 登录，我们只保存账户名称、你的回答和进度，方便你在其他设备上继续。不登录时，进度保存在标签页中，关闭后即清除。我们不会出售或分享你的数据。",
+      "命令和示例按原样提供。请检查你在自己电脑上运行的内容；我们不对因使用而造成的损失负责。",
+      "设计、文字和吉祥物 Tilde 归其作者所有。Claude 和 Claude Code 是 Anthropic 的商标。",
+      "我们可能会更新这些条款；上方日期表示最新版本。如有咨询或投诉，请使用页面底部“帮助”中的表单。"
+    ],
+    "mail": "邮件提醒：仅在你开启后，若连续 2 天没有访问，我们会用你的账户邮箱提醒你，每次缺席只发一封。你可以随时在成就页关闭。"
+  },
+  "exam": {
+    "title": "Claude Code Pro 考试",
+    "ready": "你已完成路线。参加期末考试，获取你的证书。",
+    "lockedRoute": "掌握路线的全部 48 步后解锁。",
+    "start": "开始考试",
+    "seeCert": "查看我的证书",
+    "lead": "来自整条路线的 {n} 道题。答对 {pass} 道即可通过。",
+    "score": "{total} 题中答对 {score} 题",
+    "failed": "需要答对 {pass} 道才能通过。复习答错的课程后再试一次：题目每次都会变。",
+    "passedTitle": "你是 Claude Code Pro！",
+    "passedSub": "你通过了期末考试，证书已准备好。",
+    "certFor": "证书授予",
+    "certText": "以表彰其完成 Procode 路线并通过期末考试",
+    "print": "打印或保存为 PDF",
+    "again": "再考一次",
+    "submit": "交卷"
+  },
+  "mail": {
+    "subject": "{name}，你的连续打卡在等你 🐾",
+    "body": "你好，{name}！你已经 2 天没来 Procode 了，Tilde 很想你。\n\n每天一步就能保住连续打卡：{url}\n\n如不想再收到提醒，请在成就页取消勾选“发邮件提醒我”。"
+  },
+  "contact": {
+    "title": "咨询与投诉",
+    "lead": "给我们留言，我们会回复到你填写的邮箱。",
+    "type": "类型",
+    "name": "姓名",
+    "email": "你的邮箱",
+    "message": "留言",
+    "send": "发送",
+    "sending": "发送中…",
+    "sent": "留言已发送！",
+    "sentSub": "谢谢。我们会尽快通过邮件回复你。",
+    "invalid": "请检查填写内容：邮箱必须有效，留言至少 10 个字符。",
+    "unavailable": "表单暂不可用，请稍后再试。",
+    "error": "留言发送失败，请稍后再试。",
+    "types": {
+      "query": "咨询",
+      "complaint": "投诉",
+      "suggestion": "建议",
+      "other": "其他"
+    }
   }
 }

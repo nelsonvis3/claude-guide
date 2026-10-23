@@ -11,7 +11,7 @@ import { Peek } from "./Mascot";
 export default async function Shell({ children }: { children: (user: User) => React.ReactNode }) {
   const lang = await getLang();
   const messages = await getMessages(lang);
-  const { cat } = await getPrefs();
+  const { cat, suit } = await getPrefs();
   const session = canLogin ? await auth() : null;
   const id = session?.user?.id;
   const user: User = session?.user && id
@@ -19,7 +19,7 @@ export default async function Shell({ children }: { children: (user: User) => Re
     : null;
   return (
     <I18nProvider lang={lang} messages={messages}>
-      <CatProvider cat={cat}>
+      <CatProvider cat={cat} suit={suit}>
         <Header user={user} canLogin={canLogin} />
         {children(user)}
         <footer className="relative mt-16 border-t border-line bg-surface">

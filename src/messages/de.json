@@ -1060,11 +1060,15 @@
     "theme": "Design",
     "accent": "Seitenfarbe",
     "tilde": "Tildes Farbe",
-    "shop": "Haustiere und Outfits",
-    "shopLead": "Bald kannst du das Haustier wechseln und Tilde besondere Outfits anziehen.",
-    "pets": "Haustiere",
-    "outfits": "Outfits",
-    "soon": "Demnächst",
+    "suit": "Tildes Kostüm",
+    "suitLead": "Alle kostenlos und passend zu jeder Farbe.",
+    "suitNone": "Ohne Kostüm",
+    "suitGroups": {
+      "anime": "Anime",
+      "movies": "Superhelden & Film",
+      "teams": "Nationalteams"
+    },
+    "england": "England",
     "notifications": "Benachrichtigungen",
     "security": "Sicherheit",
     "currentPassword": "Aktuelles Passwort",
@@ -1099,17 +1103,6 @@
       "negra": "Schwarz",
       "crema": "Creme"
     },
-    "petsNames": [
-      "Hund",
-      "Fuchs",
-      "Panda"
-    ],
-    "outfitsNames": [
-      "Astronaut",
-      "Zauberer",
-      "Pirat",
-      "Superheld"
-    ],
     "wrongCurrent": "Dein aktuelles Passwort ist nicht richtig."
   },
   "study": {

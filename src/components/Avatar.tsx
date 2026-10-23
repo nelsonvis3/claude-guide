@@ -10,7 +10,7 @@ export default function Avatar({ src, size = 32 }: { src: string | null; size?: 
     return (
       <span aria-hidden="true" className="relative inline-block shrink-0 overflow-hidden rounded-full" style={{ width: size, height: size, background: p.bg }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`${catDir(p.cat)}/head.png`} alt="" className="absolute max-w-none" style={{ width: w, left: size / 2 - w * 0.48, top: size * 0.08 - w * 0.06 }} />
+        <img src={`${catDir(p.cat)}/head.webp`} alt="" className="absolute max-w-none" style={{ width: w, left: size / 2 - w * 0.48, top: size * 0.08 - w * 0.06 }} />
       </span>
     );
   }

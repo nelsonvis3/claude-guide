@@ -50,5 +50,5 @@ export async function getPrefs() {
     const v = jar.get(key)?.value;
     return ((PREFS[key] as readonly string[]).includes(v ?? "") ? v : fallback) as T;
   };
-  return { theme: pick<Theme>("theme", "system"), accent: pick<Accent>("accent", "violet"), cat: pick<Cat>("cat", "blanca") };
+  return { theme: pick<Theme>("theme", "system"), accent: pick<Accent>("accent", "violet"), cat: pick<Cat>("cat", "blanca"), suit: pick<string>("suit", "none") };
 }

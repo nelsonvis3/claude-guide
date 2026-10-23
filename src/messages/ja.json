@@ -1060,11 +1060,15 @@
     "theme": "テーマ",
     "accent": "ページの色",
     "tilde": "Tilde の色",
-    "shop": "ペットと衣装",
-    "shopLead": "まもなくペットを変えたり、Tilde に特別な衣装を着せたりできるようになります。",
-    "pets": "ペット",
-    "outfits": "衣装",
-    "soon": "近日公開",
+    "suit": "Tildeの衣装",
+    "suitLead": "すべて無料で、どの色にも合わせられます。",
+    "suitNone": "衣装なし",
+    "suitGroups": {
+      "anime": "アニメ",
+      "movies": "ヒーロー・映画",
+      "teams": "サッカー代表"
+    },
+    "england": "イングランド",
     "notifications": "通知",
     "security": "セキュリティ",
     "currentPassword": "現在のパスワード",
@@ -1099,17 +1103,6 @@
       "negra": "ブラック",
       "crema": "クリーム"
     },
-    "petsNames": [
-      "イヌ",
-      "キツネ",
-      "パンダ"
-    ],
-    "outfitsNames": [
-      "宇宙飛行士",
-      "魔法使い",
-      "海賊",
-      "スーパーヒーロー"
-    ],
     "wrongCurrent": "現在のパスワードが正しくありません。"
   },
   "study": {

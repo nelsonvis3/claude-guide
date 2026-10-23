@@ -4,7 +4,7 @@ import { useActionState, useState, useTransition } from "react";
 import { changePassword, logout, saveAvatar, setPref } from "@/app/actions";
 import type { FormState } from "@/lib/account";
 import { useI18n } from "@/lib/i18n";
-import { ACCENTS, AVATAR_PRESETS, CATS, catDir, MAX_AVATAR, THEMES, type Accent, type Cat, type PrefKey, type Theme } from "@/lib/prefs";
+import { ACCENTS, AVATAR_PRESETS, CATS, catDir, MAX_AVATAR, SUIT_GROUPS, THEMES, type Accent, type Cat, type PrefKey, type Theme } from "@/lib/prefs";
 import { useProfile } from "@/lib/useProfile";
 import Avatar from "./Avatar";
 import type { User } from "./Header";
@@ -12,7 +12,6 @@ import Mascot from "./Mascot";
 
 const ACCENT_SWATCH: Record<Accent, string> = { violet: "#7449c9", blue: "#2f62d0", green: "#1d7f55", pink: "#c03a7c", orange: "#b8530f" };
 const PROVIDER_NAMES: Record<string, string> = { github: "GitHub", google: "Google", discord: "Discord", gitlab: "GitLab" };
-const SOON = { pets: ["🐶", "🦊", "🐼"], outfits: ["🚀", "🧙", "🏴‍☠️", "🦸"] } as const;
 
 // Recorta al centro y achica a 160 px en webp: la foto entra cómoda en la base sin servicio de archivos aparte.
 async function shrink(file: File) {
@@ -24,6 +23,18 @@ async function shrink(file: File) {
   return canvas.toDataURL("image/webp", 0.85);
 }
 
+// Tilde entera (cuerpo + cabeza) en miniatura, para elegir traje.
+function CatThumb({ dir }: { dir: string }) {
+  return (
+    <span aria-hidden="true" className="relative block aspect-[208/242] w-full">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`${dir}/body.webp`} alt="" loading="lazy" className="absolute inset-0 size-full" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`${dir}/head.webp`} alt="" loading="lazy" className="absolute inset-0 size-full" />
+    </span>
+  );
+}
+
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="rounded-3xl bg-surface p-5 shadow-soft sm:p-7">
@@ -33,8 +44,12 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-export default function Settings({ user, prefs }: { user: NonNullable<User>; prefs: { theme: Theme; accent: Accent; cat: Cat } }) {
-  const { t } = useI18n();
+export default function Settings({ user, prefs }: { user: NonNullable<User>; prefs: { theme: Theme; accent: Accent; cat: Cat; suit: string } }) {
+  const { t, lang } = useI18n();
+  const regions = new Intl.DisplayNames([lang], { type: "region" });
+  // Inglaterra no tiene código de país propio: su nombre va en los textos.
+  const suitName = (group: keyof typeof SUIT_GROUPS, id: string, v: string) =>
+    group !== "teams" ? v : id === "inglaterra" ? t("account.england") : (regions.of(v) ?? id);
   const router = useRouter();
   const { profile, setProfile, hydrated } = useProfile(user);
   const [current, setCurrent] = useState(prefs);
@@ -143,7 +158,7 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
             {CATS.map((c) => (
               <button key={c} onClick={() => pick("cat", c)} aria-pressed={current.cat === c} className={`${chip(current.cat === c)} flex items-center gap-2`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${catDir(c)}/head.png`} alt="" className="size-9 object-cover object-top" />
+                <img src={`${catDir(c)}/head.webp`} alt="" className="size-9 object-cover object-top" />
                 {t(`account.cats.${c}`)}
               </button>
             ))}
@@ -151,20 +166,24 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
         </div>
       </Section>
 
-      <Section title={t("account.shop")}>
-        <p className="text-ink-2">{t("account.shopLead")}</p>
-        {(["pets", "outfits"] as const).map((k) => (
-          <div key={k} className="mt-4">
-            <p className="font-bold">{t(`account.${k}`)}</p>
-            <ul className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {SOON[k].map((emoji, i) => (
-                <li key={emoji} className="grid justify-items-center gap-1 rounded-2xl bg-surface-2 p-3 text-center opacity-80">
-                  <span aria-hidden="true" className="text-[1.8rem] grayscale-[40%]">{emoji}</span>
-                  <span className="text-[0.9rem] font-bold">{t(`account.${k}Names.${i}`)}</span>
-                  <span className="rounded-full bg-marker px-2 text-[0.75rem] font-bold text-marker-ink">🔒 {t("account.soon")}</span>
-                </li>
+      <Section title={t("account.suit")}>
+        <p className="text-ink-2">{t("account.suitLead")}</p>
+        {([["none", null], ...Object.entries(SUIT_GROUPS)] as const).map(([group, suits]) => (
+          <div key={group} className="mt-4">
+            {suits && <p className="font-bold">{t(`account.suitGroups.${group}`)}</p>}
+            <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-5">
+              {(suits ? Object.entries(suits) : [["none", t("account.suitNone")]]).map(([id, v]) => (
+                <button
+                  key={id}
+                  onClick={() => pick("suit", id)}
+                  aria-pressed={current.suit === id}
+                  className={`${chip(current.suit === id)} grid justify-items-center gap-1 !p-2 text-center text-[0.85rem]`}
+                >
+                  <CatThumb dir={catDir(current.cat, id)} />
+                  {suits ? suitName(group as keyof typeof SUIT_GROUPS, id, v) : v}
+                </button>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </Section>

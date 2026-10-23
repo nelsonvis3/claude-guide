@@ -1,10 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
-import { CATS, catDir, validAvatar } from "./prefs.ts";
+import { CATS, catDir, SUITS, validAvatar } from "./prefs.ts";
 
-test("cada color de Tilde tiene sus dos capas", () => {
-  for (const c of CATS) for (const part of ["head", "body"]) assert.ok(existsSync(`public${catDir(c)}/${part}.png`), `${c}/${part}`);
+test("cada color y traje de Tilde tiene sus capas", () => {
+  for (const c of CATS) for (const s of SUITS) for (const part of ["head", "body"]) {
+    assert.ok(existsSync(`public${catDir(c, s)}/${part}.webp`), `${c}/${s}/${part}`);
+  }
 });
 
 test("foto de perfil: solo presets conocidos o imágenes chicas", () => {

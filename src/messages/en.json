@@ -1060,11 +1060,15 @@
     "theme": "Theme",
     "accent": "Page color",
     "tilde": "Tilde's color",
-    "shop": "Pets and outfits",
-    "shopLead": "Soon you'll be able to switch pets and dress Tilde in special outfits.",
-    "pets": "Pets",
-    "outfits": "Outfits",
-    "soon": "Coming soon",
+    "suit": "Tilde's outfit",
+    "suitLead": "All free, and they work with any color.",
+    "suitNone": "No outfit",
+    "suitGroups": {
+      "anime": "Anime",
+      "movies": "Superheroes & movies",
+      "teams": "National teams"
+    },
+    "england": "England",
     "notifications": "Notifications",
     "security": "Security",
     "currentPassword": "Current password",
@@ -1099,17 +1103,6 @@
       "negra": "Black",
       "crema": "Cream"
     },
-    "petsNames": [
-      "Dog",
-      "Fox",
-      "Panda"
-    ],
-    "outfitsNames": [
-      "Astronaut",
-      "Wizard",
-      "Pirate",
-      "Superhero"
-    ],
     "wrongCurrent": "Your current password isn't correct."
   },
   "study": {

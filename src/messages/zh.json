@@ -1060,11 +1060,15 @@
     "theme": "主题",
     "accent": "页面颜色",
     "tilde": "Tilde 的颜色",
-    "shop": "宠物和服装",
-    "shopLead": "很快你就可以更换宠物，并给 Tilde 穿上特别的服装。",
-    "pets": "宠物",
-    "outfits": "服装",
-    "soon": "即将推出",
+    "suit": "Tilde 的服装",
+    "suitLead": "全部免费，可搭配任何颜色。",
+    "suitNone": "不穿服装",
+    "suitGroups": {
+      "anime": "动漫",
+      "movies": "超级英雄与电影",
+      "teams": "国家队"
+    },
+    "england": "英格兰",
     "notifications": "通知",
     "security": "安全",
     "currentPassword": "当前密码",
@@ -1099,17 +1103,6 @@
       "negra": "黑色",
       "crema": "奶油色"
     },
-    "petsNames": [
-      "小狗",
-      "狐狸",
-      "熊猫"
-    ],
-    "outfitsNames": [
-      "宇航员",
-      "魔法师",
-      "海盗",
-      "超级英雄"
-    ],
     "wrongCurrent": "当前密码不正确。"
   },
   "study": {

@@ -1060,11 +1060,15 @@
     "theme": "Thème",
     "accent": "Couleur de la page",
     "tilde": "Couleur de Tilde",
-    "shop": "Animaux et tenues",
-    "shopLead": "Bientôt, tu pourras changer d'animal et habiller Tilde de tenues spéciales.",
-    "pets": "Animaux",
-    "outfits": "Tenues",
-    "soon": "Bientôt",
+    "suit": "Costume de Tilde",
+    "suitLead": "Tous gratuits, et ils vont avec toutes les couleurs.",
+    "suitNone": "Sans costume",
+    "suitGroups": {
+      "anime": "Anime",
+      "movies": "Super-héros et cinéma",
+      "teams": "Équipes nationales"
+    },
+    "england": "Angleterre",
     "notifications": "Notifications",
     "security": "Sécurité",
     "currentPassword": "Mot de passe actuel",
@@ -1099,17 +1103,6 @@
       "negra": "Noire",
       "crema": "Crème"
     },
-    "petsNames": [
-      "Chien",
-      "Renard",
-      "Panda"
-    ],
-    "outfitsNames": [
-      "Astronaute",
-      "Magicien",
-      "Pirate",
-      "Super-héros"
-    ],
     "wrongCurrent": "Ton mot de passe actuel n'est pas correct."
   },
   "study": {

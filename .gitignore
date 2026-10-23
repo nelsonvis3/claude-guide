@@ -41,3 +41,9 @@ yarn-error.log*
 next-env.d.ts
 
 !.env.example
+
+# arte fuente de Tilde (pesado); scripts/tilde.py genera public/tilde
+/art/
+
+# arte fuente de Tilde (pesado); scripts/tilde.py genera public/tilde
+/art/

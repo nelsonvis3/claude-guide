@@ -1060,11 +1060,15 @@
     "theme": "테마",
     "accent": "페이지 색상",
     "tilde": "Tilde 색상",
-    "shop": "펫과 의상",
-    "shopLead": "곧 펫을 바꾸고 Tilde에게 특별한 의상을 입힐 수 있어요.",
-    "pets": "펫",
-    "outfits": "의상",
-    "soon": "출시 예정",
+    "suit": "Tilde 의상",
+    "suitLead": "모두 무료이고 어떤 색과도 어울려요.",
+    "suitNone": "의상 없음",
+    "suitGroups": {
+      "anime": "애니메이션",
+      "movies": "슈퍼히어로·영화",
+      "teams": "국가대표"
+    },
+    "england": "잉글랜드",
     "notifications": "알림",
     "security": "보안",
     "currentPassword": "현재 비밀번호",
@@ -1099,17 +1103,6 @@
       "negra": "검은색",
       "crema": "크림색"
     },
-    "petsNames": [
-      "강아지",
-      "여우",
-      "판다"
-    ],
-    "outfitsNames": [
-      "우주비행사",
-      "마법사",
-      "해적",
-      "슈퍼히어로"
-    ],
     "wrongCurrent": "현재 비밀번호가 올바르지 않습니다."
   },
   "study": {

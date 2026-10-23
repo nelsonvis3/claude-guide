@@ -3,13 +3,15 @@ import { notFound } from "next/navigation";
 import Lesson from "@/components/Lesson";
 import Shell from "@/components/Shell";
 import { NODES } from "@/lib/content";
-import { getLang, getLessons, getMessages } from "@/lib/i18n-server";
+import { getLang, getLessons, pageMetadata } from "@/lib/i18n-server";
 
 export async function generateMetadata(props: PageProps<"/leccion/[id]">): Promise<Metadata> {
   const { id } = await props.params;
-  const m = await getMessages(await getLang());
-  const title = (m.nodes as Record<string, { t: string }>)[id]?.t;
-  return { title: title ? `${title} · ${m.meta.title}` : m.meta.title };
+  if (!NODES.some((n) => n.id === id)) return {};
+  return pageMetadata(`/leccion/${id}`, (m) => {
+    const n = (m.nodes as Record<string, { t: string; d: string }>)[id];
+    return { title: n.t, description: n.d };
+  });
 }
 
 export default async function LessonPage(props: PageProps<"/leccion/[id]">) {

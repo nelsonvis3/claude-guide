@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "Claude Code 从入门到精通：按你的用法会花多少钱、哪个模型适合你、先学什么。"
+    "description": "Claude Code 从入门到精通：按你的用法会花多少钱、哪个模型适合你、先学什么。",
+    "seoTitle": "Procode:免费从零到专业学习 Claude Code"
   },
   "nav": {
     "route": "我的路线",
@@ -1103,7 +1104,9 @@
       "negra": "黑色",
       "crema": "奶油色"
     },
-    "wrongCurrent": "当前密码不正确。"
+    "wrongCurrent": "当前密码不正确。",
+    "restore": "重置",
+    "restoreNote": "回到 Tilde 的 7 个问题。你的进度、XP 和贴纸都会保留。"
   },
   "study": {
     "title": "如何学习而不放弃",
@@ -1259,5 +1262,30 @@
       "summary": "最后，总结你改了什么，以及哪些没能验证。",
       "stop": "。"
     }
+  },
+  "stackGuide": {
+    "nav": "指南",
+    "title": "按技术栈分类的指南",
+    "lead": "为每个角色准备的 Claude Code 指南,包含最有用的步骤和工具,最后还有基础测试。和这里的一切一样,完全免费。",
+    "pageTitle": "面向{role}的 Claude Code",
+    "yours": "你的角色",
+    "steps": "分步说明",
+    "tools": "推荐工具",
+    "quiz": "基础测试",
+    "quizLead": "共 {n} 题,答对 {pass} 题即通过。",
+    "score": "{total} 题中答对 {score} 题",
+    "passed": "你通过了{role}指南!",
+    "passedSub": "已保存到你的成就中。",
+    "failed": "差一点:需要答对 {pass} 题。复习一下步骤再试一次。",
+    "done": "✓ 测试已通过",
+    "other": "其他指南",
+    "open": "查看指南"
+  },
+  "support": {
+    "title": "别忘了支持我们!",
+    "text": "别忘了支持我们,让网站继续成长、变得更好。",
+    "sub": "在 GitHub 上点个星对我们帮助很大。",
+    "star": "支持 Tilde",
+    "keep": "继续浏览"
   }
 }

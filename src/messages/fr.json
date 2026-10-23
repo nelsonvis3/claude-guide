@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "De débutant à pro sur Claude Code : combien tu vas dépenser selon ta façon de travailler, quel modèle te convient et quoi apprendre en premier."
+    "description": "De débutant à pro sur Claude Code : combien tu vas dépenser selon ta façon de travailler, quel modèle te convient et quoi apprendre en premier.",
+    "seoTitle": "Procode : apprends Claude Code de zéro à pro, gratuitement"
   },
   "nav": {
     "route": "Mon sentier",
@@ -1103,7 +1104,9 @@
       "negra": "Noire",
       "crema": "Crème"
     },
-    "wrongCurrent": "Ton mot de passe actuel n'est pas correct."
+    "wrongCurrent": "Ton mot de passe actuel n'est pas correct.",
+    "restore": "Restaurer",
+    "restoreNote": "Reviens aux 7 questions de Tilde. Ta progression, tes XP et tes stickers sont conservés."
   },
   "study": {
     "title": "Étudier sans abandonner",
@@ -1259,5 +1262,30 @@
       "summary": "À la fin, résume ce que tu as changé et ce que tu n'as pas pu vérifier.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "Guides",
+    "title": "Guides par stack",
+    "lead": "Un guide Claude Code pour chaque rôle, avec les étapes et les outils les plus utiles et un test des bases à la fin. Gratuit, comme tout ici.",
+    "pageTitle": "Claude Code pour {role}",
+    "yours": "Ton rôle",
+    "steps": "Étape par étape",
+    "tools": "Outils recommandés",
+    "quiz": "Test des bases",
+    "quizLead": "{n} questions. Tu réussis avec {pass} bonnes réponses.",
+    "score": "{score} sur {total} correctes",
+    "passed": "Tu as réussi le guide {role} !",
+    "passedSub": "C'est enregistré dans tes succès.",
+    "failed": "Presque : il te faut {pass} bonnes réponses. Relis les étapes et réessaie.",
+    "done": "✓ Test réussi",
+    "other": "Autres guides",
+    "open": "Voir le guide"
+  },
+  "support": {
+    "title": "N'oublie pas de nous soutenir !",
+    "text": "N'oublie pas de nous soutenir pour que le site continue de grandir et de s'améliorer.",
+    "sub": "Une étoile sur GitHub nous aide beaucoup.",
+    "star": "Soutenir Tilde",
+    "keep": "Continuer la visite"
   }
 }

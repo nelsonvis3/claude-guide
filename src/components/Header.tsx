@@ -67,6 +67,7 @@ export default function Header({ user, canLogin }: { user: User; canLogin: boole
         {/* En celular no entran todos: el menú se desliza de costado en vez de sumar otro renglón al header fijo. */}
         <nav className="flex max-w-full gap-1 overflow-x-auto whitespace-nowrap [scrollbar-width:none] text-[0.95rem] font-bold text-ink-2">
           <Link href="/#ruta" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.route")}</Link>
+          <Link href="/guia" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("stackGuide.nav")}</Link>
           <Link href="/consumo" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.usage")}</Link>
           <Link href="/chuleta" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.guide")}</Link>
           <Link href="/estudiar" className="rounded-full px-3 py-1 hover:bg-surface-2 hover:text-ink">{t("nav.study")}</Link>

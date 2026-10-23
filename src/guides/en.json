@@ -1,0 +1,218 @@
+{
+  "frontend": {
+    "lead": "For frontend, Claude Code shines when it knows your framework, sees type errors and can look at the page just like you do.",
+    "steps": [
+      { "t": "Tell it your stack in CLAUDE.md", "d": "Run `/init` and add the framework and its version, the commands (`dev`, `build`, `test`) and how you handle styles and components. It reads this at the start of every session." },
+      { "t": "Add a language server", "d": "With `typescript-lsp`, Claude sees type errors after every edit and fixes them before you find them." },
+      { "t": "Up-to-date docs", "d": "Context7 brings the docs for the exact version of your library, so it doesn't use old React, Next or Tailwind APIs." },
+      { "t": "Show it how it should look", "d": "Paste a screenshot with `Ctrl+V` or connect Figma. A marked-up image explains more than three paragraphs." },
+      { "t": "Let it test in the browser", "d": "With `claude --chrome` it opens the page, clicks around and reads the console; `/verify` builds and watches the app. Check it yourself too, on desktop and on mobile." }
+    ],
+    "quiz": [
+      { "q": "What is a language server plugin like `typescript-lsp` for?", "o": ["Claude sees type errors after every edit", "The page loads faster", "It replaces tests"], "why": "The language server gives Claude the same errors you see in your editor, right after it edits." },
+      { "q": "Claude uses an old API from your framework. What helps?", "o": ["Context7, which brings the docs for the version you use", "Raising effort to max", "Deleting `node_modules`"], "why": "The model learned from earlier versions; Context7 gives it the current docs." },
+      { "q": "How do you show Claude how a screen should look?", "o": ["With a screenshot (`Ctrl+V`) or the Figma design", "Describing the colors from memory", "You can't: it only understands text"], "why": "Claude reads images: a screenshot or the original design saves back-and-forth." },
+      { "q": "What goes in a frontend project's CLAUDE.md?", "o": ["The framework, the commands and the styling conventions", "Your npm token", "The history of every conversation"], "why": "CLAUDE.md holds what Claude always needs to know about the project, never secrets." },
+      { "q": "What does `claude --chrome` do?", "o": ["Connects Claude to Chrome to browse the page, click and read the console", "Installs Chrome", "Changes the model"], "why": "That way Claude checks the result in a real browser instead of assuming it." },
+      { "q": "Before calling a visual change done, you should…", "o": ["Look at it in the browser on desktop and on mobile", "Trust that it compiles", "Ask it to make it prettier"], "why": "Compiling says nothing about how it looks: check it at real widths." }
+    ]
+  },
+  "backend": {
+    "lead": "In backend work, what matters is that Claude understands the code before touching it, tests what it changes and doesn't open security holes.",
+    "steps": [
+      { "t": "A CLAUDE.md that starts everything", "d": "With `/init` and by hand: how to start the database, run migrations and tests, and which folders are off limits. Without it, Claude guesses." },
+      { "t": "Plan before a big change", "d": "In plan mode Claude explores the code and proposes the steps without editing anything. You correct it there, while it's cheap." },
+      { "t": "Test first", "d": "Ask for a test that reproduces the bug and fails, then the fix. That way you know it really fixed it." },
+      { "t": "Check security", "d": "`/security-review` looks for vulnerabilities in your branch's changes: injections, exposed data, weak permissions." },
+      { "t": "Real production errors", "d": "With the Sentry plugin, Claude reads production errors and stack traces to investigate them without you copying anything." }
+    ],
+    "quiz": [
+      { "q": "What is plan mode for in a big backend change?", "o": ["Claude explores and proposes the steps before editing", "It runs everything without asking", "It clears the context"], "why": "Fixing a plan costs far less than undoing twenty edited files." },
+      { "q": "What does `/security-review` do?", "o": ["Looks for vulnerabilities in your branch's changes", "Encrypts the database", "Changes your passwords"], "why": "It reviews the diff with a focus on security before it reaches production." },
+      { "q": "To fix a bug, you should ask for…", "o": ["First a test that reproduces it, then the fix", "A rewrite of the whole module", "Disabling the failing tests"], "why": "The failing test proves the bug and, once it passes, proves the fix." },
+      { "q": "What does the Sentry plugin give it?", "o": ["Reading real production errors with their stack traces", "Hosting the API", "Generating fake data"], "why": "It investigates with real data instead of guessing what happened." },
+      { "q": "What should go in a backend's CLAUDE.md?", "o": ["How to start the database, migrate and run the tests", "The production database keys", "Nothing, Claude figures it out"], "why": "Commands and rules yes; secrets never." },
+      { "q": "What is an MCP server?", "o": ["A connection that gives Claude external tools, like your database or your tickets", "A bigger model", "A kind of test"], "why": "MCP connects Claude to other systems; the Supabase one, for example, lets it query your database." }
+    ]
+  },
+  "fullstack": {
+    "lead": "Fullstack means running the whole loop: plan, code, see it working, review and open the PR. Claude Code has a piece for each part.",
+    "steps": [
+      { "t": "Start with a plan", "d": "`/plan` plus the request: Claude goes through front and back and proposes the steps. You adjust them before it touches anything." },
+      { "t": "Let it run and test it", "d": "`/run` starts the app to see the change working and `/verify` checks it does what it should, not just that the tests are green." },
+      { "t": "Commits and PRs without leaving", "d": "The `commit-commands` plugin commits, pushes and opens the PR; with `/install-github-app` you can mention @claude in issues and PRs." },
+      { "t": "Two tasks at once", "d": "`claude --worktree` opens a separate copy of the repo on another branch: one session fixes a bug while another builds a feature." },
+      { "t": "Review before merging", "d": "`/diff` shows what changed and `/code-review` looks for bugs in the diff with several agents." }
+    ],
+    "quiz": [
+      { "q": "What is `claude --worktree` for?", "o": ["Working on another branch in a separate copy without stepping on your work", "Deleting old branches", "Deploying"], "why": "Each worktree is its own folder: two sessions don't overwrite each other's files." },
+      { "q": "What does `/run` do?", "o": ["Starts the app to see the change working", "Runs a single test", "Restarts Claude Code"], "why": "Seeing the app running catches problems tests don't." },
+      { "q": "What's a good order for a new feature?", "o": ["Plan, code, verification and review", "Code and straight to deploy", "Review before writing anything"], "why": "Each stage catches mistakes while they're still cheap to fix." },
+      { "q": "What is `/install-github-app` for?", "o": ["Mentioning @claude in GitHub issues and PRs", "Installing Git", "Cloning repos faster"], "why": "It installs the Claude app on your repo and it replies where you mention it." },
+      { "q": "What does `/diff` show?", "o": ["The changes it made to the files", "Token usage", "The list of models"], "why": "Reviewing the diff is the fastest way to know what it touched." },
+      { "q": "You finished a task and are starting a different one. What do you do?", "o": ["`/clear` to start with a clean context", "Stay in the same conversation", "Switch to Opus"], "why": "Old context confuses it and spends tokens on every message." }
+    ]
+  },
+  "mobile": {
+    "lead": "In mobile, Claude doesn't touch your phone, but it does understand the compiler, the simulator and your backend if you introduce them.",
+    "steps": [
+      { "t": "Tell it how to run the app", "d": "In CLAUDE.md: platform (iOS, Android or both), whether you use Expo or native, and the commands to run in the simulator and build." },
+      { "t": "Language servers", "d": "`swift-lsp` and `kotlin-lsp` show Claude the compiler errors after every edit." },
+      { "t": "React Native with Expo", "d": "The official Expo plugin brings skills to create, debug and ship React Native apps." },
+      { "t": "Simulator screenshots", "d": "If a screen looks wrong, paste the screenshot with `Ctrl+V` and tell it what you expected to see." },
+      { "t": "The app's backend", "d": "With the Firebase plugin it handles the database, auth and functions without leaving the terminal." }
+    ],
+    "quiz": [
+      { "q": "What do you get from `swift-lsp` or `kotlin-lsp`?", "o": ["Claude sees compiler errors after every edit", "A smaller app", "It publishes itself to the store"], "why": "It fixes build errors right away, without you copying them." },
+      { "q": "A screen looks wrong in the simulator. What do you give Claude?", "o": ["A screenshot with `Ctrl+V` and what you expected", "Just \"it's wrong\"", "The whole app installer"], "why": "The screenshot and the expectation tell it exactly what to fix." },
+      { "q": "What should go in a mobile app's CLAUDE.md?", "o": ["The platform and the commands to run and build it", "The store signing keys", "Nothing"], "why": "Without the commands it can't build or test; signing keys never go there." },
+      { "q": "Which stack is the `expo` plugin for?", "o": ["React Native with Expo", "Windows desktop apps", "Unity games"], "why": "They're Expo's official skills for React Native." },
+      { "q": "Claude can't touch your phone. How do you verify a change?", "o": ["Run the tests and try it yourself in the simulator or on the phone", "Trust that it compiles", "Ask it to promise"], "why": "What you see and tap has to be checked by a person on the device." },
+      { "q": "Why use plan mode before migrating a whole screen?", "o": ["To review the steps before it edits many files", "So it writes faster", "To use less internet"], "why": "A big change is worth agreeing on before starting." }
+    ]
+  },
+  "devops": {
+    "lead": "In DevOps, Claude Code is for automation: rules that always apply, tasks that run on their own and Claude inside your scripts.",
+    "steps": [
+      { "t": "Rules that always apply", "d": "With `/hooks` you run a command on each event: format after editing or block an `rm -rf`. A hook never forgets; an instruction in CLAUDE.md sometimes does." },
+      { "t": "Repeating tasks", "d": "`/loop` repeats a request in your session; `/schedule` creates a routine in the cloud that runs even if you close the terminal." },
+      { "t": "Claude in scripts and CI", "d": "`claude -p` runs without a UI and with `--output-format json` the script reads the answer without guessing." },
+      { "t": "Your cloud and your monitoring", "d": "There are official plugins for AWS, Cloudflare and Datadog: Claude reads logs and metrics, and operates the infrastructure." },
+      { "t": "Clear limits", "d": "`/sandbox` limits which files and network the commands can reach; `/permissions` defines what's allowed, what's asked and what's denied." }
+    ],
+    "quiz": [
+      { "q": "What's the difference between a hook and an instruction in CLAUDE.md?", "o": ["The hook always runs; Claude can skip the instruction", "None", "Hooks only work in the cloud"], "why": "Claude Code runs the hook, not the model: it doesn't depend on remembering." },
+      { "q": "What is `claude -p` for?", "o": ["Running Claude without a UI, in scripts or CI", "Pausing the session", "Picking a plugin"], "why": "It's the non-interactive mode: question, answer and exit." },
+      { "q": "What's the difference between `/loop` and `/schedule`?", "o": ["`/loop` repeats in your session; `/schedule` runs in the cloud even if you close the terminal", "They're the same", "`/schedule` only works at night"], "why": "For something that must happen every day even when you're away, use a routine with `/schedule`." },
+      { "q": "What does `/sandbox` do?", "o": ["Limits which files and network the commands can reach", "Creates a test project", "Deletes temp files"], "why": "It isolates commands so a mistake stays where it belongs." },
+      { "q": "Why use `--output-format json` in CI?", "o": ["So the script reads the result without parsing free text", "Because it uses fewer tokens", "Because it's required"], "why": "A fixed format doesn't break when the wording changes." },
+      { "q": "You want to know if the deploy fails while you work on something else. What do you use?", "o": ["A `/loop` that checks it every so often and tells you", "Checking by hand every hour", "Turning off deploys"], "why": "The loop keeps watch for you in the same session." }
+    ]
+  },
+  "data": {
+    "lead": "With data, Claude Code explores files, writes queries and charts, and does research. Your job is to check that the numbers add up.",
+    "steps": [
+      { "t": "Open any data file", "d": "With `duckdb-skills` Claude reads CSV, Parquet or JSON and queries them with SQL without loading anything into a database." },
+      { "t": "Spreadsheets and PDFs", "d": "Anthropic's `xlsx` and `pdf` skills open, edit and create spreadsheets with formulas, and pull tables out of PDFs." },
+      { "t": "Charts people understand", "d": "`/dataviz` picks the chart form and validates the palette for color blindness and contrast." },
+      { "t": "Research with sources", "d": "`/deep-research` searches the web in parallel, cross-checks sources and writes a report with citations." },
+      { "t": "Check the math", "d": "Ask for the query it used and compare it with a total you know. An unchecked number doesn't go in a report." }
+    ],
+    "quiz": [
+      { "q": "What does the `xlsx` skill do?", "o": ["Opens, edits and creates Excel spreadsheets with formulas", "Only converts to CSV", "Opens Excel on your computer"], "why": "It works on the file directly, with formulas and charts." },
+      { "q": "A number in the report looks odd. What do you do?", "o": ["Ask for the query and check it against a known total", "Publish it anyway", "Ask it to round it"], "why": "The query shows where the number came from; the known total, whether it adds up." },
+      { "q": "What is `/deep-research` for?", "o": ["Researching the web and writing a report with cited sources", "Searching files on your disk", "Deleting old data"], "why": "The citations let you check every fact." },
+      { "q": "What's wise before analyzing a big CSV?", "o": ["Have Claude look at the schema and a sample before concluding", "Paste the whole file into the chat", "Sort it by hand"], "why": "Understanding the columns and odd values avoids false conclusions." },
+      { "q": "What is `/dataviz`?", "o": ["A built-in guide for clear charts and dashboards", "A new model", "A file format"], "why": "It ships with Claude Code and checks the colors and form of the chart." },
+      { "q": "A dataset has personal data. What do you do before working on it with AI?", "o": ["Anonymize it or use a sample without personal data", "Upload it as is", "Email it"], "why": "Personal data shouldn't leave where it lives unless it has to." }
+    ]
+  },
+  "designer": {
+    "lead": "For design, Claude Code turns your screens into code, sketches layouts and pieces, and respects a visual system if you give it one.",
+    "steps": [
+      { "t": "Connect Figma", "d": "The Figma plugin reads your files, components and tokens, and turns them into code with the real measurements." },
+      { "t": "Quick sketches", "d": "`/design` sketches screens, flows or landing pages on a Claude Design canvas." },
+      { "t": "A consistent system", "d": "The `theme-factory` skill applies color and type themes; `brand-guidelines` is the model for building your own brand's skill." },
+      { "t": "Pieces in Canva", "d": "With the Canva plugin it creates, adapts and reviews designs without leaving the terminal." },
+      { "t": "Look at it for real", "d": "With `claude --chrome` Claude opens the page; you check it on mobile and desktop before approving it." }
+    ],
+    "quiz": [
+      { "q": "What do you get by connecting Figma?", "o": ["Claude reads the design and turns it into code with the real measurements", "Figma becomes free", "It exports lighter images"], "why": "It works with the real components and tokens instead of copying them from a screenshot." },
+      { "q": "What is a design token?", "o": ["A named value (color, spacing, font) reused across the whole design", "A Figma password", "A kind of image"], "why": "Tokens make changing a color a matter of changing one value." },
+      { "q": "How do you explain a visual detail?", "o": ["With a marked-up screenshot and what you want changed", "With \"make it prettier\"", "Without any reference"], "why": "The more concrete the reference, the less back-and-forth." },
+      { "q": "What does `/design` do?", "o": ["Sketches screens, flows or landing pages on a canvas", "Buys fonts", "Publishes the site"], "why": "It's a built-in skill for sketching in Claude Design." },
+      { "q": "What is the `brand-guidelines` skill for?", "o": ["It's the model for building a skill with your brand's identity", "It registers your brand", "It generates random logos"], "why": "It applies Anthropic's identity; copying it, you build yours." },
+      { "q": "Before approving a screen you should…", "o": ["See it on mobile and on desktop", "See it only on desktop", "Approve it if it compiles"], "why": "What looks good at 1440 px can break at 375 px." }
+    ]
+  },
+  "video": {
+    "lead": "With video, Claude Code writes the video as code, runs ffmpeg for you and makes GIFs. The final eye is still yours.",
+    "steps": [
+      { "t": "Video with React", "d": "The Remotion skills teach Claude to build videos with code: text, animations and scenes that get rendered." },
+      { "t": "HyperFrames", "d": "The HyperFrames plugin turns HTML into video, great for pieces with data or changing text." },
+      { "t": "GIFs to share", "d": "The `slack-gif-creator` skill makes light animated GIFs for Slack or social media." },
+      { "t": "ffmpeg from the conversation", "d": "With `!` in front you run the command in the terminal and Claude sees the output: trim, scale or compress without looking up flags." },
+      { "t": "Watch it all the way through", "d": "Watch the full render before publishing: cuts, audio and text. Claude doesn't see the video the way you do." }
+    ],
+    "quiz": [
+      { "q": "What is Remotion?", "o": ["A library for making videos with React and code", "An audio editor", "A camera"], "why": "You describe the video in code and it renders: changing a text is editing one line." },
+      { "q": "What is the `!` at the start of a line for?", "o": ["It runs that command in the terminal and Claude sees the output", "It marks an urgent message", "It changes the model"], "why": "It's bash mode: handy for ffmpeg and any command-line tool." },
+      { "q": "Who reviews the final video?", "o": ["You, watching it all before publishing", "Nobody: if it rendered, it's fine", "Only Claude"], "why": "Pacing, audio and fine details are judged by a person." },
+      { "q": "What's the advantage of making video with code?", "o": ["Changing text, colors or length and rendering again", "No need to render", "It always comes out shorter"], "why": "Versions and variants come out without manual editing." },
+      { "q": "You want to shrink a video without distorting it. What do you ask?", "o": ["Use ffmpeg with `scale=1280:-2`", "Crop it to a square", "Turn it into a GIF"], "why": "The `-2` computes the height to keep the aspect ratio." },
+      { "q": "Which music and photos can you use?", "o": ["Your own or licensed material", "Anything from the internet", "Whatever Claude finds"], "why": "Copyright still applies even if an AI puts it together." }
+    ]
+  },
+  "marketing": {
+    "lead": "For marketing, Claude Code isn't just for coding: it does research, writes in your brand's voice and builds documents and decks.",
+    "steps": [
+      { "t": "Your brand's voice", "d": "The `brand-voice` plugin finds how your brand speaks, writes a guide and checks that every text follows it." },
+      { "t": "Research before writing", "d": "`/deep-research` searches the web, cross-checks sources and gives you a report with citations to back every fact." },
+      { "t": "Documents and decks", "d": "The `docx` and `pptx` skills create Word and PowerPoint files; `/slides` builds a deck from your request." },
+      { "t": "Pieces in Canva", "d": "With the Canva plugin it creates and adapts pieces for each network without redoing them." },
+      { "t": "Check before publishing", "d": "Verify every fact and every promise at its source. What gets published is on you." }
+    ],
+    "quiz": [
+      { "q": "What is the `brand-voice` plugin for?", "o": ["Making texts come out in your brand's tone", "Recording audio", "Registering your brand"], "why": "It builds the voice guide and checks that content follows it." },
+      { "q": "What do you give it for campaign copy?", "o": ["Audience, goal, tone and an example you like", "Just \"write something\"", "Your social media passwords"], "why": "With concrete context the first draft is already useful." },
+      { "q": "Claude wrote a market statistic. What do you do?", "o": ["Verify it at the source before publishing", "Publish it", "Ask it to sound more confident"], "why": "A false fact in a campaign is costly." },
+      { "q": "What does `/deep-research` return?", "o": ["A report with cited sources", "A video", "A logo"], "why": "The citations let you check everything." },
+      { "q": "What does `/slides` do?", "o": ["Builds a deck from your request", "Advances slides in a meeting", "Converts PDF to images"], "why": "It creates the deck as a Claude Slides artifact." },
+      { "q": "Is Claude Code useful if you don't code?", "o": ["Yes: it works with files, documents and tools, not just code", "No, it's only for code", "Only in English"], "why": "Many skills and plugins are for documents, research and design." }
+    ]
+  },
+  "pm": {
+    "lead": "As a PM, Claude Code lets you read the code without programming, work tickets where they live and write specs and decks.",
+    "steps": [
+      { "t": "Your tickets, where they are", "d": "With the Linear or Atlassian (Jira and Confluence) plugins, Claude reads and updates issues without copy and paste." },
+      { "t": "Ask the code", "d": "Open Claude in the repo and ask how something works. `/btw` asks a side question without adding it to the conversation." },
+      { "t": "Specs together", "d": "The `doc-coauthoring` skill guides writing specs and proposals section by section." },
+      { "t": "Product management", "d": "The `product-management` plugin builds specs, roadmaps and syntheses of user interviews." },
+      { "t": "Tell it in a deck", "d": "`/slides` turns your request into a deck ready to present." }
+    ],
+    "quiz": [
+      { "q": "What do you get by connecting Linear or Jira?", "o": ["Claude reads and updates tickets without copy and paste", "Tickets close themselves", "Nothing"], "why": "It works with the team's real information." },
+      { "q": "You want to understand how checkout works. What do you do?", "o": ["Ask Claude in the repo where it is and how it works", "Read all the code", "Wait for someone to explain"], "why": "Claude navigates the code and explains it in words." },
+      { "q": "What is `/btw`?", "o": ["A side question that isn't added to the conversation", "A delete command", "A voice mode"], "why": "It's for a quick doubt without cluttering the context." },
+      { "q": "What does a good spec for Claude include?", "o": ["Problem, users, acceptance criteria and what's out of scope", "Just the title", "Just the design"], "why": "Acceptance criteria tell it when it's done." },
+      { "q": "What is `doc-coauthoring` for?", "o": ["Writing specs and documents together, section by section", "Signing contracts", "Automatic translation"], "why": "It's an Anthropic skill for collaborative documents." },
+      { "q": "What does the `product-management` plugin do?", "o": ["Specs, roadmaps and user research syntheses", "Hires people", "Designs logos"], "why": "It's one of Anthropic's plugins by line of work." }
+    ]
+  },
+  "qa": {
+    "lead": "In QA, Claude Code tests like a user, reproduces bugs with tests and reviews each change before it reaches production.",
+    "steps": [
+      { "t": "Browser tests", "d": "The Playwright plugin automates the browser and builds end-to-end tests that walk through the app like a user." },
+      { "t": "Reproduce the bug", "d": "Ask first for a test that fails with the bug. If it doesn't fail, the problem isn't understood yet." },
+      { "t": "Console, network and performance", "d": "`chrome-devtools-mcp` lets Claude read the page's console and network requests." },
+      { "t": "Diff review", "d": "`/code-review` looks for bugs in the diff, a PR or a branch; the `pr-review-toolkit` plugin adds agents for tests and error handling." },
+      { "t": "Real verification", "d": "`/verify` builds, runs and watches the app to check the change does what it should." }
+    ],
+    "quiz": [
+      { "q": "What does Playwright do?", "o": ["Automates the browser to test flows like a user", "Measures internet speed", "Writes the docs"], "why": "It really walks through the app: clicks, forms and navigation." },
+      { "q": "What's wise before fixing a bug?", "o": ["A test that reproduces it and fails", "Changing code to see what happens", "Closing the issue"], "why": "The test confirms the bug and then confirms the fix." },
+      { "q": "A test always passes, even with broken code. What's going on?", "o": ["It's useless: it has to fail when the code is wrong", "It's the best test", "It adds coverage"], "why": "A test that never fails protects nothing." },
+      { "q": "What does `chrome-devtools-mcp` let Claude see?", "o": ["The page's console, network and performance", "Saved passwords", "Your other tabs"], "why": "It's the same thing you look at in DevTools." },
+      { "q": "What does `/code-review` do?", "o": ["Looks for bugs in your diff, a PR or a branch", "Approves the PR", "Merges it"], "why": "It reviews; approving and merging is still the team's call." },
+      { "q": "What does `/verify` do?", "o": ["Builds, runs and watches the app to check the change", "Verifies your account", "Signs the commits"], "why": "It checks real behavior, not just the tests." }
+    ]
+  },
+  "student": {
+    "lead": "If you're learning, Claude Code is a teacher with endless patience, as long as you don't ask it to do everything for you.",
+    "steps": [
+      { "t": "Learning mode", "d": "With `learning-output-style`, Claude lets you write the key parts of the code and explains the why." },
+      { "t": "Ask it to explain", "d": "Ask \"why?\" and ask for another example when something doesn't click. Copying without understanding leaves you nothing." },
+      { "t": "Interactive lessons", "d": "`/powerup` brings lessons with animated demos of Claude Code's features." },
+      { "t": "Track what you use", "d": "`/usage` shows how much you've used; if you're near the limit, `/clear` between tasks saves a lot." },
+      { "t": "A project of your own", "d": "Pick something small you can finish, start with `/init` and show it. A finished project teaches more than ten started ones." }
+    ],
+    "quiz": [
+      { "q": "What does `learning-output-style` do?", "o": ["Asks you to write the key parts and explains the why", "Does the whole assignment", "Changes the language"], "why": "You learn by doing, not by watching." },
+      { "q": "If Claude solves everything for you…", "o": ["You learn less: ask it to explain and write parts yourself", "You learn faster", "It makes no difference"], "why": "What you don't practice doesn't stick." },
+      { "q": "What does `/usage` show?", "o": ["How much you've used and how much you have left", "Plans for sale", "Command history"], "why": "It helps you not run out halfway through the week." },
+      { "q": "What's a good first project?", "o": ["Something small you can finish and show", "A full social network clone", "Nothing until you know it all"], "why": "Finishing gives you confidence and something to show." },
+      { "q": "You don't understand an answer. What do you do?", "o": ["Ask for a simpler explanation or another example", "Copy it anyway", "Close the session"], "why": "Asking again is free and it's how you learn most." },
+      { "q": "What is `/powerup`?", "o": ["Interactive feature lessons with animated demos", "A paid plan", "A faster model"], "why": "It comes with Claude Code." }
+    ]
+  }
+}

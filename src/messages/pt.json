@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "Do zero ao pro no Claude Code: quanto você vai gastar do jeito que trabalha, qual modelo combina com você e o que aprender primeiro."
+    "description": "Do zero ao pro no Claude Code: quanto você vai gastar do jeito que trabalha, qual modelo combina com você e o que aprender primeiro.",
+    "seoTitle": "Procode: aprenda Claude Code do zero ao pro, grátis"
   },
   "nav": {
     "route": "Minha trilha",
@@ -1103,7 +1104,9 @@
       "negra": "Preta",
       "crema": "Creme"
     },
-    "wrongCurrent": "A senha atual não está correta."
+    "wrongCurrent": "A senha atual não está correta.",
+    "restore": "Restaurar",
+    "restoreNote": "Volte às 7 perguntas da Tilde. Seu progresso, XP e figurinhas continuam."
   },
   "study": {
     "title": "Como estudar sem desistir",
@@ -1259,5 +1262,30 @@
       "summary": "No final, resuma o que você mudou e o que não conseguiu verificar.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "Guias",
+    "title": "Guias por stack",
+    "lead": "Um guia de Claude Code para cada função, com os passos e as ferramentas que mais rendem e um teste do básico no final. Grátis, como tudo aqui.",
+    "pageTitle": "Claude Code para {role}",
+    "yours": "Sua função",
+    "steps": "Passo a passo",
+    "tools": "Ferramentas recomendadas",
+    "quiz": "Teste do básico",
+    "quizLead": "{n} perguntas. Você passa com {pass} corretas.",
+    "score": "{score} de {total} corretas",
+    "passed": "Você passou no guia de {role}!",
+    "passedSub": "Ficou salvo nas suas conquistas.",
+    "failed": "Quase: você precisa de {pass} corretas. Revise os passos e tente de novo.",
+    "done": "✓ Teste aprovado",
+    "other": "Outros guias",
+    "open": "Ver o guia"
+  },
+  "support": {
+    "title": "Não esqueça de nos apoiar!",
+    "text": "Não esqueça de nos apoiar para continuarmos crescendo e melhorando o site.",
+    "sub": "Uma estrela no GitHub ajuda muito.",
+    "star": "Apoiar a Tilde",
+    "keep": "Continuar navegando"
   }
 }

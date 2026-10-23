@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "Da principiante a pro su Claude Code: quanto spenderai in base a come lavori, quale modello ti conviene e cosa imparare per primo."
+    "description": "Da principiante a pro su Claude Code: quanto spenderai in base a come lavori, quale modello ti conviene e cosa imparare per primo.",
+    "seoTitle": "Procode: impara Claude Code da zero a pro, gratis"
   },
   "nav": {
     "route": "Il mio sentiero",
@@ -1103,7 +1104,9 @@
       "negra": "Nera",
       "crema": "Crema"
     },
-    "wrongCurrent": "La password attuale non è corretta."
+    "wrongCurrent": "La password attuale non è corretta.",
+    "restore": "Ripristina",
+    "restoreNote": "Torna alle 7 domande di Tilde. Progressi, XP e adesivi restano."
   },
   "study": {
     "title": "Come studiare senza arrendersi",
@@ -1259,5 +1262,30 @@
       "summary": "Alla fine, riassumi cosa hai cambiato e cosa non sei riuscito a verificare.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "Guide",
+    "title": "Guide per stack",
+    "lead": "Una guida a Claude Code per ogni ruolo, con i passi e gli strumenti che rendono di più e un test di base alla fine. Gratis, come tutto qui.",
+    "pageTitle": "Claude Code per {role}",
+    "yours": "Il tuo ruolo",
+    "steps": "Passo dopo passo",
+    "tools": "Strumenti consigliati",
+    "quiz": "Test di base",
+    "quizLead": "{n} domande. Passi con {pass} risposte giuste.",
+    "score": "{score} su {total} giuste",
+    "passed": "Hai superato la guida {role}!",
+    "passedSub": "È salvato nei tuoi traguardi.",
+    "failed": "Quasi: ti servono {pass} risposte giuste. Rivedi i passi e riprova.",
+    "done": "✓ Test superato",
+    "other": "Altre guide",
+    "open": "Vai alla guida"
+  },
+  "support": {
+    "title": "Non dimenticare di sostenerci!",
+    "text": "Non dimenticare di sostenerci per continuare a crescere e migliorare il sito.",
+    "sub": "Una stella su GitHub ci aiuta tantissimo.",
+    "star": "Sostieni Tilde",
+    "keep": "Continua a navigare"
   }
 }

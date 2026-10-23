@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { resolve, ROLE_IDS, ROLES, type Role } from "@/lib/content";
 import { useI18n } from "@/lib/i18n";
 import { Code } from "./Roadmap";
@@ -63,7 +64,10 @@ export function RoleRecs({ role, onRole }: { role: Role; onRole: (r: Role) => vo
   return (
     <div className="grid gap-4">
       <RoleChips value={role} onChange={onRole} />
-      <p className="max-w-[65ch] text-ink-2">{t(`roles.${role}.d`)}</p>
+      <p className="max-w-[65ch] text-ink-2">
+        {t(`roles.${role}.d`)}{" "}
+        <Link href={`/guia/${role}`} className="font-bold text-cobalt underline underline-offset-4">{t("stackGuide.open")} →</Link>
+      </p>
       <RecList keys={ROLES[role]} />
     </div>
   );

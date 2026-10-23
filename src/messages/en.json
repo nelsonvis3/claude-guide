@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "From zero to pro in Claude Code: what you'll spend for the way you work, which model fits, and what to learn first."
+    "description": "From zero to pro in Claude Code: what you'll spend for the way you work, which model fits, and what to learn first.",
+    "seoTitle": "Procode: learn Claude Code from zero to pro, free"
   },
   "nav": {
     "route": "My trail",
@@ -1103,7 +1104,9 @@
       "negra": "Black",
       "crema": "Cream"
     },
-    "wrongCurrent": "Your current password isn't correct."
+    "wrongCurrent": "Your current password isn't correct.",
+    "restore": "Restore",
+    "restoreNote": "Go back to Tilde's 7 questions. Your progress, XP and stickers stay."
   },
   "study": {
     "title": "How to study without giving up",
@@ -1259,5 +1262,30 @@
       "summary": "At the end, summarize what you changed and what you couldn't verify.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "Guides",
+    "title": "Guides by stack",
+    "lead": "A Claude Code guide for each role, with the steps and tools that pay off most and a basics test at the end. Free, like everything here.",
+    "pageTitle": "Claude Code for {role}",
+    "yours": "Your role",
+    "steps": "Step by step",
+    "tools": "Recommended tools",
+    "quiz": "Basics test",
+    "quizLead": "{n} questions. You pass with {pass} correct.",
+    "score": "{score} of {total} correct",
+    "passed": "You passed the {role} guide!",
+    "passedSub": "It's saved in your achievements.",
+    "failed": "Not quite: you need {pass} correct. Review the steps and try again.",
+    "done": "✓ Test passed",
+    "other": "Other guides",
+    "open": "Open the guide"
+  },
+  "support": {
+    "title": "Don't forget to support us!",
+    "text": "Don't forget to support us so we can keep growing and improving the site.",
+    "sub": "A star on GitHub helps us a lot.",
+    "star": "Support Tilde",
+    "keep": "Keep browsing"
   }
 }

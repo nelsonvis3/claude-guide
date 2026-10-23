@@ -5,7 +5,7 @@ import { getAvatar } from "@/lib/db";
 import { I18nProvider } from "@/lib/i18n";
 import { getLang, getMessages, getPrefs } from "@/lib/i18n-server";
 import Header, { type User } from "./Header";
-import { Peek } from "./Mascot";
+import Mascot from "./Mascot";
 
 // Marco común de las páginas: idioma, sesión, header y footer.
 export default async function Shell({ children }: { children: (user: User) => React.ReactNode }) {
@@ -19,13 +19,15 @@ export default async function Shell({ children }: { children: (user: User) => Re
     : null;
   return (
     <I18nProvider lang={lang} messages={messages}>
-      <CatProvider cat={cat} suit={suit}>
+      {/* El traje es para quien tiene cuenta: sin sesión Tilde va sin traje aunque quede la cookie. */}
+      <CatProvider cat={cat} suit={user ? suit : "none"}>
         <Header user={user} canLogin={canLogin} />
         {children(user)}
         <footer className="relative mt-16 border-t border-line bg-surface">
-          <div className="absolute -top-[58px] left-4 flex items-end gap-2 sm:left-[max(1rem,calc((100vw-72rem)/2+1rem))]">
-            <Peek size={92} />
-            <span className="mb-4 rounded-2xl rounded-bl-sm bg-surface px-3 py-1.5 text-[0.9rem] font-bold shadow-soft">{messages.footer.hi}</span>
+          {/* Tilde sentada sobre el borde del footer, de frente y respirando con la panza. */}
+          <div className="absolute -top-[95px] left-4 flex items-end gap-2 sm:left-[max(1rem,calc((100vw-72rem)/2+1rem))]">
+            <Mascot mood="sit" size={84} backdrop={false} />
+            <span className="mb-16 rounded-2xl rounded-bl-sm bg-surface px-3 py-1.5 text-[0.9rem] font-bold shadow-soft">{messages.footer.hi}</span>
           </div>
           <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 pt-12 pb-8 lg:grid-cols-[2fr_1fr_1fr_1fr]">
             <div className="col-span-2 lg:col-span-1">
@@ -37,7 +39,7 @@ export default async function Shell({ children }: { children: (user: User) => Re
               <p className="mt-2 max-w-[40ch] text-[0.95rem] text-ink-2">{messages.footer.tagline}</p>
             </div>
             {[
-              { title: messages.footer.product, links: [["/#ruta", messages.nav.route], ["/examen", messages.exam.title], ["/consumo", messages.nav.usage], ["/chuleta", messages.nav.guide], ["/estudiar", messages.nav.study], ["/prompts", messages.nav.prompt]] },
+              { title: messages.footer.product, links: [["/#ruta", messages.nav.route], ["/guia", messages.stackGuide.title], ["/examen", messages.exam.title], ["/consumo", messages.nav.usage], ["/chuleta", messages.nav.guide], ["/estudiar", messages.nav.study], ["/prompts", messages.nav.prompt]] },
               { title: messages.footer.help, links: [["/contacto?tipo=query", messages.contact.types.query], ["/contacto?tipo=complaint", messages.contact.types.complaint], ["/contacto?tipo=suggestion", messages.contact.types.suggestion]] },
               { title: messages.footer.legal, links: [["/terminos", messages.footer.terms], ["https://code.claude.com/docs", messages.nav.docs]] },
             ].map((col) => (

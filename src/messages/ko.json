@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "Claude Code 초보에서 프로까지: 사용 방식에 따른 비용, 나에게 맞는 모델, 먼저 배울 것."
+    "description": "Claude Code 초보에서 프로까지: 사용 방식에 따른 비용, 나에게 맞는 모델, 먼저 배울 것.",
+    "seoTitle": "Procode: Claude Code를 무료로 처음부터 프로까지"
   },
   "nav": {
     "route": "내 경로",
@@ -1103,7 +1104,9 @@
       "negra": "검은색",
       "crema": "크림색"
     },
-    "wrongCurrent": "현재 비밀번호가 올바르지 않습니다."
+    "wrongCurrent": "현재 비밀번호가 올바르지 않습니다.",
+    "restore": "초기화",
+    "restoreNote": "Tilde의 7가지 질문으로 돌아가요. 진행 상황, XP, 스티커는 그대로예요."
   },
   "study": {
     "title": "포기하지 않고 공부하는 법",
@@ -1259,5 +1262,30 @@
       "summary": "마지막에 무엇을 바꿨고 무엇을 확인하지 못했는지 요약해 주세요.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "가이드",
+    "title": "스택별 가이드",
+    "lead": "역할마다 준비한 Claude Code 가이드. 가장 도움이 되는 단계와 도구, 마지막에 기초 테스트까지. 여기 있는 모든 것처럼 무료예요.",
+    "pageTitle": "{role}를 위한 Claude Code",
+    "yours": "내 역할",
+    "steps": "단계별 안내",
+    "tools": "추천 도구",
+    "quiz": "기초 테스트",
+    "quizLead": "{n}문제. {pass}문제를 맞히면 통과예요.",
+    "score": "{total}문제 중 {score}문제 정답",
+    "passed": "{role} 가이드를 통과했어요!",
+    "passedSub": "업적에 저장됐어요.",
+    "failed": "조금 부족해요: {pass}문제를 맞혀야 해요. 단계를 다시 보고 도전해 보세요.",
+    "done": "✓ 테스트 통과",
+    "other": "다른 가이드",
+    "open": "가이드 보기"
+  },
+  "support": {
+    "title": "응원 잊지 마세요!",
+    "text": "사이트가 계속 성장하고 더 좋아질 수 있도록 응원해 주세요.",
+    "sub": "GitHub 별 하나가 큰 힘이 돼요.",
+    "star": "Tilde 응원하기",
+    "keep": "계속 둘러보기"
   }
 }

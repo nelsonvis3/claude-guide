@@ -37,6 +37,9 @@ export function useProfile(user: User) {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // /?responder (el botón Restaurar de Ajustes) vuelve a las preguntas sin borrar el progreso.
+    const redo = new URLSearchParams(location.search).has("responder");
+    if (redo) history.replaceState(null, "", location.pathname + location.hash);
     const local = readLocal();
     if (local) {
       // sessionStorage solo existe en el navegador: hidratar después de montar evita el desfasaje con el SSR.
@@ -45,6 +48,7 @@ export function useProfile(user: User) {
       setStep(local.step);
     }
     if (!user) {
+      if (redo) setStep(1);
       setHydrated(true);
       return;
     }
@@ -59,7 +63,10 @@ export function useProfile(user: User) {
         }
       })
       .catch(() => {})
-      .finally(() => setHydrated(true));
+      .finally(() => {
+        if (redo) setStep(1);
+        setHydrated(true);
+      });
   }, [user]);
 
   useEffect(() => {

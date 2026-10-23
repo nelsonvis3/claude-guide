@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "De cero a pro en Claude Code: cuánto vas a gastar según cómo lo uses, qué modelo te conviene y qué aprender primero."
+    "description": "De cero a pro en Claude Code: cuánto vas a gastar según cómo lo uses, qué modelo te conviene y qué aprender primero.",
+    "seoTitle": "Procode: aprendé Claude Code de cero a pro, gratis"
   },
   "nav": {
     "route": "Mi ruta",
@@ -1103,7 +1104,9 @@
       "negra": "Negra",
       "crema": "Crema"
     },
-    "wrongCurrent": "La contraseña actual no es correcta."
+    "wrongCurrent": "La contraseña actual no es correcta.",
+    "restore": "Restaurar",
+    "restoreNote": "Volvés a las 7 preguntas de Tilde. Tu progreso, XP y stickers se mantienen."
   },
   "study": {
     "title": "Cómo estudiar sin rendirte",
@@ -1259,5 +1262,30 @@
       "summary": "Al final, resumí qué cambiaste y qué no pudiste verificar.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "Guías",
+    "title": "Guías por stack",
+    "lead": "Una guía de Claude Code para cada rol, con los pasos y las herramientas que más rinden y una prueba de lo básico al final. Gratis, como todo.",
+    "pageTitle": "Claude Code para {role}",
+    "yours": "Tu rol",
+    "steps": "Paso a paso",
+    "tools": "Herramientas recomendadas",
+    "quiz": "Prueba de lo básico",
+    "quizLead": "{n} preguntas. Aprobás con {pass} correctas.",
+    "score": "{score} de {total} correctas",
+    "passed": "¡Aprobaste la guía de {role}!",
+    "passedSub": "Quedó guardado en tus logros.",
+    "failed": "Te faltan respuestas correctas: necesitás {pass}. Repasá los pasos y probá de nuevo.",
+    "done": "✓ Prueba aprobada",
+    "other": "Otras guías",
+    "open": "Ver la guía"
+  },
+  "support": {
+    "title": "¡No olvides apoyarnos!",
+    "text": "No olvides apoyarnos para seguir creciendo y mejorando la página.",
+    "sub": "Una estrella en GitHub nos ayuda un montón.",
+    "star": "Apoyar a Tilde",
+    "keep": "Seguir navegando"
   }
 }

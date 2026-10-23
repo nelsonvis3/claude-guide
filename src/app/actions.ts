@@ -1,7 +1,7 @@
 "use server";
 import { AuthError } from "next-auth";
 import { cookies } from "next/headers";
-import { auth, passwordLogin, providerIds, signIn, signOut } from "@/auth";
+import { auth, canLogin, passwordLogin, providerIds, signIn, signOut } from "@/auth";
 import type { FormState } from "@/lib/account";
 import { createUser, findUser, setAvatar, setPassword } from "@/lib/db";
 import { hashPassword, validEmail, validPassword, verifyPassword } from "@/lib/password";
@@ -28,6 +28,7 @@ export async function setLang(lang: string) {
 
 export async function setPref(key: PrefKey, value: string) {
   if (!(key in PREFS) || !(PREFS[key] as readonly string[]).includes(value)) return;
+  if (key === "suit" && !(canLogin && (await auth())?.user)) return; // los trajes son solo con cuenta
   (await cookies()).set(key, value, { maxAge: YEAR, sameSite: "lax", path: "/" });
 }
 

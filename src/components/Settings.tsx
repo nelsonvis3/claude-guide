@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useActionState, useState, useTransition } from "react";
 import { changePassword, logout, saveAvatar, setPref } from "@/app/actions";
@@ -158,7 +159,7 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
             {CATS.map((c) => (
               <button key={c} onClick={() => pick("cat", c)} aria-pressed={current.cat === c} className={`${chip(current.cat === c)} flex items-center gap-2`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${catDir(c)}/head.webp`} alt="" className="size-9 object-cover object-top" />
+                <img src={`${catDir(c, current.suit)}/head.webp`} alt="" className="size-9 object-cover object-top" />
                 {t(`account.cats.${c}`)}
               </button>
             ))}
@@ -199,6 +200,11 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
           />
           <span>{t("game.remind")}<span className="block text-[0.85rem] text-ink-2">{t("game.remindNote")}</span></span>
         </label>
+      </Section>
+
+      <Section title={t("account.restore")}>
+        <p className="text-ink-2">{t("account.restoreNote")}</p>
+        <Link href="/?responder" className="mt-4 inline-block rounded-full bg-surface-2 px-5 py-2 font-bold">{t("onboarding.restart")}</Link>
       </Section>
 
       <Section title={t("account.security")}>

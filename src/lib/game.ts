@@ -23,6 +23,10 @@ export type StickerId = (typeof STICKERS)[number];
 const known = new Set(NODES.map((n) => n.id));
 const valid = (done: string[]) => done.filter((id) => known.has(id));
 
+// Pruebas aprobadas: las de cada lección y las de las guías por stack ("stack:<rol>"). Cada SUPPORT_EVERY sale el aviso de apoyo.
+export const SUPPORT_EVERY = 5;
+export const passedTests = (done: string[]) => done.filter((id) => known.has(id) || id.startsWith("stack:")).length;
+
 // Paso en curso: el primero sin dominar. La ruta se hace en orden, así que todo lo posterior queda bloqueado.
 export const current = (done: string[]) => {
   const i = NODES.findIndex((n) => !done.includes(n.id));

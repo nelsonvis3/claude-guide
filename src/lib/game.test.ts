@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { NODES } from "./content.ts";
-import { bestStreak, current, level, MAX_XP, stickers, streak, unlocked, xp } from "./game.ts";
+import { bestStreak, current, level, MAX_XP, passedTests, stickers, streak, unlocked, xp } from "./game.ts";
 
 const all = NODES.map((n) => n.id);
 const start = NODES.filter((n) => n.phase === "start").map((n) => n.id);
@@ -55,4 +55,9 @@ test("la ruta se desbloquea en orden", () => {
   assert.ok(!unlocked(["install", "prompting"], "prompting"), "saltear un paso no desbloquea los siguientes");
   assert.ok(unlocked(["install"], "install"), "lo dominado se puede repasar");
   assert.equal(current(all), NODES.length);
+});
+
+test("pruebas aprobadas: lecciones y guías, sin el examen ni ids desconocidos", () => {
+  assert.equal(passedTests(["install", "init", "stack:qa", "exam", "basura"]), 3);
+  assert.equal(passedTests([]), 0);
 });

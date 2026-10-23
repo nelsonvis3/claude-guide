@@ -115,7 +115,6 @@ export default function Experience({ user }: { user: User }) {
                 <div className="mt-6 flex flex-wrap gap-3">
                   <a href="#ruta" className={`${btn} bg-cobalt text-cobalt-ink`}>{t("onboarding.finish")}</a>
                   <Link href="/consumo" className={`${btn} bg-surface shadow-soft`}>{t("nav.usage")}</Link>
-                  <button onClick={() => setStep(1)} className={`${btn} bg-surface shadow-soft`}>{t("onboarding.restart")}</button>
                 </div>
                 <p className="mt-4 max-w-[48ch] text-[0.95rem] text-ink-2">{user && cloud ? t("nav.savedCloud") : t("nav.savedLocal")}</p>
               </div>

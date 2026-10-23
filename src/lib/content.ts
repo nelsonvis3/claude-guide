@@ -3,6 +3,8 @@
 import type { FeatureId, ModelId, UseId } from "./estimate";
 
 const DOCS = "https://code.claude.com/docs/en/";
+// «Apoyar a Tilde» lleva acá: una estrella en GitHub (la app es gratis, sin pagos).
+export const REPO_URL = "https://github.com/nelsonvis3/claude-guide";
 
 export type Phase = "start" | "habits" | "extend" | "pro";
 export const PHASES: Phase[] = ["start", "habits", "extend", "pro"];

@@ -26,7 +26,7 @@ function draw(): Q[] {
   return pool.slice(0, EXAM_SIZE);
 }
 
-export default function Exam({ lessons, user }: { lessons: Record<string, LessonText>; user: User }) {
+export default function Exam({ lessons, user }: { lessons: Record<string, Pick<LessonText, "quiz">>; user: User }) {
   const { t, lang } = useI18n();
   const { profile, setProfile, hydrated } = useProfile(user);
   const [qs, setQs] = useState<Q[]>([]);

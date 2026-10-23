@@ -1,6 +1,7 @@
 # Capas de Tilde a partir del arte de Nelson (art/tilde, fuera del repo). No se dibuja nada: solo se recorta, escala y separa.
 # Por color: public/tilde/<color>/head.webp + body.webp, y lo mismo por traje en public/tilde/<color>/<traje>/.
-# Con --icons rehace el logo (public/tilde/icon.png, src/app/icon.png y apple-icon.png) desde la cabeza de la blanca.
+# Con --icons rehace el logo (public/tilde/icon.png, src/app/icon.png y apple-icon.png) desde la cabeza de la blanca,
+# y public/tilde/full.png (la blanca entera, en PNG para la imagen de redes de src/app/opengraph-image.tsx).
 # Uso: python3 scripts/tilde.py [--icons]
 import glob
 import os
@@ -99,6 +100,12 @@ def icons():
         im.resize((size, size), Image.LANCZOS).save(path, optimize=True)
 
 
+def full():
+    body = Image.open(f"{OUT}/blanca/body.webp").convert("RGBA")
+    body.alpha_composite(Image.open(f"{OUT}/blanca/head.webp").convert("RGBA"))
+    body.save(f"{OUT}/full.png", optimize=True)
+
+
 if __name__ == "__main__":
     only = [a for a in sys.argv[1:] if not a.startswith("--")]  # colores a rehacer; sin nada, todos
     for cat, path in BASE.items():
@@ -112,4 +119,5 @@ if __name__ == "__main__":
         print(cat, "ok")
     if "--icons" in sys.argv:
         icons()
+        full()
         print("logo ok")

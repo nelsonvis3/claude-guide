@@ -1,7 +1,8 @@
 {
   "meta": {
     "title": "Procode",
-    "description": "Vom Einsteiger zum Profi in Claude Code: was du je nach Arbeitsweise ausgibst, welches Modell passt und was du zuerst lernen solltest."
+    "description": "Vom Einsteiger zum Profi in Claude Code: was du je nach Arbeitsweise ausgibst, welches Modell passt und was du zuerst lernen solltest.",
+    "seoTitle": "Procode: Claude Code von null auf Profi lernen, kostenlos"
   },
   "nav": {
     "route": "Mein Pfad",
@@ -1103,7 +1104,9 @@
       "negra": "Schwarz",
       "crema": "Creme"
     },
-    "wrongCurrent": "Dein aktuelles Passwort ist nicht richtig."
+    "wrongCurrent": "Dein aktuelles Passwort ist nicht richtig.",
+    "restore": "Zurücksetzen",
+    "restoreNote": "Zurück zu Tildes 7 Fragen. Fortschritt, XP und Sticker bleiben erhalten."
   },
   "study": {
     "title": "Lernen, ohne aufzugeben",
@@ -1259,5 +1262,30 @@
       "summary": "Fass am Ende zusammen, was du geändert hast und was du nicht prüfen konntest.",
       "stop": "."
     }
+  },
+  "stackGuide": {
+    "nav": "Guides",
+    "title": "Guides nach Stack",
+    "lead": "Ein Claude-Code-Guide für jede Rolle, mit den Schritten und Tools, die am meisten bringen, und einem Grundlagentest am Ende. Kostenlos, wie alles hier.",
+    "pageTitle": "Claude Code für {role}",
+    "yours": "Deine Rolle",
+    "steps": "Schritt für Schritt",
+    "tools": "Empfohlene Tools",
+    "quiz": "Grundlagentest",
+    "quizLead": "{n} Fragen. Mit {pass} richtigen bestehst du.",
+    "score": "{score} von {total} richtig",
+    "passed": "Du hast den Guide {role} bestanden!",
+    "passedSub": "Ist in deinen Erfolgen gespeichert.",
+    "failed": "Knapp daneben: Du brauchst {pass} richtige. Lies die Schritte nochmal und versuch es erneut.",
+    "done": "✓ Test bestanden",
+    "other": "Weitere Guides",
+    "open": "Zum Guide"
+  },
+  "support": {
+    "title": "Vergiss nicht, uns zu unterstützen!",
+    "text": "Vergiss nicht, uns zu unterstützen, damit die Seite weiter wachsen und besser werden kann.",
+    "sub": "Ein Stern auf GitHub hilft uns sehr.",
+    "star": "Tilde unterstützen",
+    "keep": "Weiter stöbern"
   }
 }

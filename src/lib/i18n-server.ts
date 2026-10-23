@@ -1,7 +1,9 @@
 import "server-only";
+import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
 import { LANGS, type Lang } from "./content";
 import type { LessonText } from "@/components/Lesson";
+import type { GuideText } from "@/components/StackGuide";
 import type { Messages } from "./i18n";
 import { PREFS, type Accent, type Cat, type Theme } from "./prefs";
 
@@ -41,6 +43,33 @@ export async function getLessons(lang: Lang): Promise<Record<string, LessonText>
   const out: Record<string, LessonText> = {};
   for (const l of chain) Object.assign(out, await load(l as Lang));
   return out;
+}
+
+// Guías por stack: el mismo respaldo que las lecciones.
+export async function getGuides(lang: Lang): Promise<Record<string, GuideText>> {
+  const load = async (l: Lang) =>
+    ((await import(`../guides/${l}.json`).catch(() => ({ default: {} }))).default as Record<string, GuideText>);
+  const chain = lang === "es" ? ["es"] : lang === "en" ? ["es", "en"] : ["es", "en", lang];
+  const out: Record<string, GuideText> = {};
+  for (const l of chain) Object.assign(out, await load(l as Lang));
+  return out;
+}
+
+// Metadata de una página en el idioma de quien la pide. Las privadas (index: false) no van a los buscadores.
+export async function pageMetadata(
+  path: string,
+  pick: (m: Messages) => { title: string; description?: string },
+  index = true,
+): Promise<Metadata> {
+  const { title, description } = pick(await getMessages(await getLang()));
+  // openGraph de una página pisa entero al del layout: la imagen (src/app/opengraph-image.tsx) va de nuevo acá.
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: { type: "website", siteName: "Procode", title, description, url: path, images: "/opengraph-image" },
+    robots: index ? undefined : { index: false },
+  };
 }
 
 // Apariencia guardada en cookies; lo desconocido vuelve al valor de base.

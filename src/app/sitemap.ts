@@ -1,13 +1,18 @@
 import type { MetadataRoute } from "next";
 import { NODES, ROLE_IDS } from "@/lib/content";
-import { SITE_URL } from "@/lib/site";
+import { langAlternates, SITE_URL } from "@/lib/site";
 
-// Páginas públicas, lecciones y guías. El idioma va por cookie, así que cada URL es una sola para los 9.
+// Páginas públicas, lecciones y guías, cada una con sus 9 idiomas (?lang=xx) como alternativas.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/guia", "/consumo", "/chuleta", "/estudiar", "/prompts", "/examen", "/contacto", "/terminos"];
+  const pages = ["/", "/guia", "/consumo", "/chuleta", "/estudiar", "/prompts", "/examen", "/contacto", "/terminos"];
+  const entry = (path: string, priority: number) => ({
+    url: SITE_URL + path,
+    priority,
+    alternates: { languages: Object.fromEntries(Object.entries(langAlternates(path)).map(([l, u]) => [l, SITE_URL + u])) },
+  });
   return [
-    ...pages.map((p) => ({ url: SITE_URL + p, priority: p ? 0.8 : 1 })),
-    ...ROLE_IDS.map((r) => ({ url: `${SITE_URL}/guia/${r}`, priority: 0.7 })),
-    ...NODES.map((n) => ({ url: `${SITE_URL}/leccion/${n.id}`, priority: 0.6 })),
+    ...pages.map((p) => entry(p, p === "/" ? 1 : 0.8)),
+    ...ROLE_IDS.map((r) => entry(`/guia/${r}`, 0.7)),
+    ...NODES.map((n) => entry(`/leccion/${n.id}`, 0.6)),
   ];
 }

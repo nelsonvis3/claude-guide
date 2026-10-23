@@ -79,7 +79,12 @@ export default function Header({ user, canLogin }: { user: User; canLogin: boole
             id="lang"
             value={lang}
             disabled={pending}
-            onChange={(e) => start(async () => { await setLang(e.target.value); router.refresh(); })}
+            onChange={(e) => start(async () => {
+              await setLang(e.target.value);
+              // Un ?lang= en la URL ganaría sobre la cookie nueva: se saca al cambiar de idioma.
+              if (new URLSearchParams(location.search).has("lang")) router.replace(location.pathname + location.hash);
+              else router.refresh();
+            })}
             className="rounded-full border border-line bg-surface px-3 py-1.5 text-[0.9rem]"
           >
             {LANGS.map((l) => <option key={l} value={l}>{LANG_NAMES[l]}</option>)}

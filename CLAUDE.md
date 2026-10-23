@@ -21,7 +21,7 @@ Páginas: `/` (preguntas + ruta + logros), `/leccion/<id>` (lección con termina
 - **Tilde es arte de Nelson. No redibujarla ni generar arte nuevo** (tampoco párpados, cola aparte, etc.). Para algo que no exista, pedirle el archivo. Solo se mueven las dos capas: la cabeza se ladea y el cuerpo respira, lento (Nelson pidió movimientos suaves, no rápidos).
 - Estilo: limpio y moderno, base lila (`--bg #f6f4fa`), acento violeta y sombras suaves (`shadow-soft`). Nada de bordes gruesos ni sombras duras. Los tokens están en `src/app/globals.css`.
 - El juego (XP, nivel, racha, stickers) se calcula a partir de `done` y `days` en `src/lib/game.ts`; no se guarda aparte. El examen aprobado se guarda como `"exam"` en `done` y la prueba de cada guía como `"stack:<rol>"`. Cada 5 pruebas aprobadas (lecciones y guías, `passedTests`) sale el aviso «Apoyar a Tilde», que lleva a dejar una estrella en el repo (`REPO_URL`); nunca un pago.
-- La ruta va en orden: cada lección se desbloquea al pasar la prueba de la anterior (`current`/`unlocked` en `game.ts`). El examen se habilita con los 48 pasos.
+- Las 48 lecciones están abiertas desde el principio y se hacen en cualquier orden (pedido de Nelson, 2026-10-23). `current` en `game.ts` marca el primer paso sin hacer; el examen se habilita con los 48 aprobados.
 - Sin cuenta el progreso vive en `sessionStorage` y se borra al cerrar la pestaña (pedido de Nelson). Con sesión se guarda en Postgres.
 - Lecciones: datos neutros en `src/lib/lessons.ts` y textos en `src/lessons/<idioma>.json`, con la opción correcta primera en cada pregunta. Las guías por stack siguen el mismo esquema: `src/lib/guides.ts` (comando de cada paso y respuestas) y `src/guides/<idioma>.json`, para los 12 roles de `ROLES`.
 - Precios, estrellas de GitHub y catálogos son al 2026-10-18. Verificarlos contra la doc oficial antes de tocarlos.
@@ -30,8 +30,10 @@ Páginas: `/` (preguntas + ruta + logros), `/leccion/<id>` (lección con termina
 ## Arquitectura
 
 - `src/components/Shell.tsx` es el marco de todas las páginas (server component): lee idioma, preferencias y sesión, y arma header, footer e `I18nProvider`. Las páginas le pasan `children(user)`.
-- Idioma y apariencia (tema, acento, color y traje de Tilde) van en cookies para pintar sin parpadeo: `src/lib/prefs.ts`, `getLang`/`getPrefs` en `i18n-server.ts`, server actions en `src/app/actions.ts`. El color y el traje llegan a los componentes por `CatProvider`/`useCatDir` (`src/lib/cat.tsx`), que devuelve `catDir(cat, suit)`. El traje es solo con cuenta: `Shell` pasa `suit="none"` sin sesión y `setPref` rechaza el traje sin sesión.
-- SEO: `pageMetadata` en `i18n-server.ts` arma título, descripción, canonical y Open Graph de cada página; `src/app/robots.ts`, `sitemap.ts` y `opengraph-image.tsx` (usa `public/tilde/full.png`). El dominio sale de `SITE_URL` o de `VERCEL_PROJECT_PRODUCTION_URL` (`src/lib/site.ts`).
+- Idioma y apariencia (tema, acento, color y traje de Tilde) van en cookies para pintar sin parpadeo: `src/lib/prefs.ts`, `getLang`/`getPrefs` en `i18n-server.ts`, server actions en `src/app/actions.ts`. El color y el traje llegan a los componentes por `CatProvider`/`useCatDir` (`src/lib/cat.tsx`), que devuelve `catDir(cat, suit)`. El traje es solo con cuenta: `Shell` pasa `suit="none"` sin sesión y `setPref` rechaza el traje sin sesión. Con sesión, color y traje se guardan también en la tabla `looks` y `getPrefs(userId)` los prefiere a la cookie, así siguen a la cuenta en cualquier dispositivo.
+- `/ajustes` se abre sin cuenta (apariencia, color, Restaurar); perfil, trajes, avisos y seguridad piden sesión.
+- Textos que usa una sola página (`PAGE_TEXTS` en `Shell.tsx`) viajan al navegador solo si la página los pide con `<Shell texts={[...]}>`. Si un componente nuevo usa uno de esos bloques en otra página, sumalo ahí.
+- SEO: `pageMetadata` en `i18n-server.ts` arma título, descripción, canonical y Open Graph de cada página; `src/app/robots.ts`, `sitemap.ts` y `opengraph-image.tsx` (usa `public/tilde/full.png`). El dominio sale de `SITE_URL` o de `VERCEL_PROJECT_PRODUCTION_URL` (`src/lib/site.ts`). Cada idioma tiene su URL con `?lang=xx`: `src/proxy.ts` la pasa a `getLang` como header `x-lang` y a la cookie, y cada página declara las 9 con hreflang (`langAlternates`).
 - Login con Auth.js v5 en `src/auth.ts`, sesión JWT sin adapter. Cada proveedor OAuth (GitHub, Google, Discord, GitLab) aparece solo si tiene su `AUTH_<PROV>_ID`; email y contraseña solo con `DATABASE_URL`. El id de usuario es `<proveedor>:<id>`.
 - `src/lib/db.ts` crea las tablas solas (`profiles` con el progreso en `data jsonb`, `users` para email y contraseña). `src/app/api/profile` lee y guarda el perfil; `src/app/api/cron/streak` manda el aviso de racha (Vercel Cron en `vercel.json`).
 - Datos no traducibles (nodos de la ruta, catálogos, comandos) en `src/lib/content.ts`; estimador de consumo en `src/lib/estimate.ts`.
@@ -57,11 +59,13 @@ Páginas: `/` (preguntas + ruta + logros), `/leccion/<id>` (lección con termina
 Hecho hasta el 2026-10-19: lecciones con terminal y prueba, bloqueo en orden, examen final con certificado, `/consumo`, footer y términos, aviso de racha, ajustes (tema, acento, color de Tilde, foto de perfil), login con email y contraseña, `/estudiar`, `/prompts` y `/contacto`.
 Hecho el 2026-10-23: la gata gorda como personaje y logo nuevo, 40 trajes gratis por color en Ajustes, animación más lenta con respiración, fuera la sección «Mascotas y trajes — Próximamente».
 
-Hecho el 2026-10-23 (tarde): guías por stack para los 12 roles con prueba de lo básico (textos en es, en, pt, fr, de, it; ja, zh y ko caen al inglés), aviso de apoyo cada 5 pruebas, «Restaurar» (volver a las preguntas) movido del home a Ajustes, Tilde sentada en el footer, SEO (metadata por página, sitemap, robots, imagen para redes).
+Hecho el 2026-10-23 (tarde): guías por stack para los 12 roles con prueba de lo básico (en los 9 idiomas), aviso de apoyo cada 5 pruebas, «Restaurar» (volver a las preguntas) movido del home a Ajustes, Tilde sentada en el footer, SEO (metadata por página, sitemap, robots, imagen para redes).
 
 Con esto se cierra el proyecto:
 
-1. **Traducir las lecciones y las guías a ja, zh y ko** (`src/lessons/<idioma>.json` y `src/guides/<idioma>.json`); hoy solo existen es, en, pt, fr, de e it, y esos tres caen al inglés.
-2. **Hosting:** deploy en Vercel siguiendo el README (Neon, OAuth con el dominio de producción, Resend). Mostrarle todo a Nelson y esperar su OK antes de publicar.
+1. **Traducir las lecciones a ja, zh y ko** (`src/lessons/<idioma>.json`); hoy caen al inglés. Las guías ya están en los 9 idiomas.
+2. **Trajes con marca registrada** (anime, Marvel/DC, selecciones): decisión de Nelson.
+
+Producción: proyecto `claude-guide` en Vercel, https://procode-guide.vercel.app, se publica con cada push a `main`. Ya tiene Neon, `AUTH_SECRET`, GitHub y Google, Resend, `MAIL_FROM`, `CONTACT_TO` y `CRON_SECRET`.
 
 Para otra ocasión: el curso de inglés (A1 → conversacional). No empezar hasta que Nelson lo pida.

@@ -253,7 +253,7 @@
   },
   "route": {
     "title": "Your trail",
-    "lead": "Each step is a short lesson with a terminal to practice and a test. They unlock in order: pass the test to open the next one.",
+    "lead": "Each step is a short lesson with a terminal to practice and a test. They're all open: take them in any order you like.",
     "startHere": "Start here",
     "done": "Mastered",
     "progress": "{done} of {total} mastered",
@@ -963,10 +963,7 @@
     "allRightSub": "You've mastered “{title}”. It's checked off on your trail.",
     "next": "Next lesson",
     "finishRoute": "See my achievements",
-    "source": "Source: official documentation",
-    "locked": "Finish the previous step to unlock it.",
-    "lockedPage": "This lesson is still locked. The trail goes step by step: continue with “{title}”.",
-    "goCurrent": "Go to my current step"
+    "source": "Source: official documentation"
   },
   "footer": {
     "rights": "All rights reserved.",
@@ -1106,7 +1103,8 @@
     },
     "wrongCurrent": "Your current password isn't correct.",
     "restore": "Restore",
-    "restoreNote": "Go back to Tilde's 7 questions. Your progress, XP and stickers stay."
+    "restoreNote": "Go back to Tilde's 7 questions. Your progress, XP and stickers stay.",
+    "suitLocked": "Outfits are for people with an account. Sign in or create one for free and dress Tilde up however you like."
   },
   "study": {
     "title": "How to study without giving up",

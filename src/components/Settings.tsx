@@ -45,7 +45,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
-export default function Settings({ user, prefs }: { user: NonNullable<User>; prefs: { theme: Theme; accent: Accent; cat: Cat; suit: string } }) {
+export default function Settings({ user, prefs }: { user: User; prefs: { theme: Theme; accent: Accent; cat: Cat; suit: string } }) {
   const { t, lang } = useI18n();
   const regions = new Intl.DisplayNames([lang], { type: "region" });
   // Inglaterra no tiene código de país propio: su nombre va en los textos.
@@ -83,14 +83,14 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
   return (
     <main id="main" className="mx-auto grid max-w-3xl grid-cols-[minmax(0,1fr)] gap-6 px-4 py-10 pb-24">
       <header className="flex flex-wrap items-center gap-4">
-        <Avatar src={user.image} size={72} />
+        {user && <Avatar src={user.image} size={72} />}
         <div className="min-w-0">
           <h1 className="display text-[2.2rem]">{t("account.settings")}</h1>
-          <p className="truncate text-ink-2">{user.name}</p>
+          {user && <p className="truncate text-ink-2">{user.name}</p>}
         </div>
       </header>
 
-      <Section title={t("account.profile")}>
+      {user && <Section title={t("account.profile")}>
         <label className="grid gap-1 font-bold">
           {t("account.displayName")}
           <input
@@ -125,7 +125,7 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
           {saving && <span className="text-[0.9rem] text-ink-2">{t("account.saving")}</span>}
         </div>
         {photoError && <p role="alert" className="mt-2 font-bold text-spend">{t("account.photoError")}</p>}
-      </Section>
+      </Section>}
 
       <Section title={t("account.appearance")}>
         <p className="font-bold">{t("account.theme")}</p>
@@ -168,8 +168,9 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
       </Section>
 
       <Section title={t("account.suit")}>
-        <p className="text-ink-2">{t("account.suitLead")}</p>
-        {([["none", null], ...Object.entries(SUIT_GROUPS)] as const).map(([group, suits]) => (
+        <p className="text-ink-2">{t(user ? "account.suitLead" : "account.suitLocked")}</p>
+        {!user && <Link href="/entrar" className="mt-4 inline-block rounded-full bg-cobalt px-6 py-2.5 font-bold text-cobalt-ink">{t("nav.login")}</Link>}
+        {user && ([["none", null], ...Object.entries(SUIT_GROUPS)] as const).map(([group, suits]) => (
           <div key={group} className="mt-4">
             {suits && <p className="font-bold">{t(`account.suitGroups.${group}`)}</p>}
             <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-5">
@@ -189,7 +190,7 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
         ))}
       </Section>
 
-      <Section title={t("account.notifications")}>
+      {user && <Section title={t("account.notifications")}>
         <label className="flex cursor-pointer items-start gap-2">
           <input
             type="checkbox"
@@ -200,14 +201,14 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
           />
           <span>{t("game.remind")}<span className="block text-[0.85rem] text-ink-2">{t("game.remindNote")}</span></span>
         </label>
-      </Section>
+      </Section>}
 
       <Section title={t("account.restore")}>
         <p className="text-ink-2">{t("account.restoreNote")}</p>
         <Link href="/?responder" className="mt-4 inline-block rounded-full bg-surface-2 px-5 py-2 font-bold">{t("onboarding.restart")}</Link>
       </Section>
 
-      <Section title={t("account.security")}>
+      {user && <Section title={t("account.security")}>
         {user.provider === "credentials" ? (
           <form action={pwAction} className="grid gap-4">
             <label className="grid gap-1 font-bold">
@@ -234,7 +235,7 @@ export default function Settings({ user, prefs }: { user: NonNullable<User>; pre
         <form action={logout} className="mt-6 border-t border-line pt-5">
           <button className="rounded-full bg-surface-2 px-5 py-2 font-bold">{t("nav.logout")}</button>
         </form>
-      </Section>
+      </Section>}
     </main>
   );
 }

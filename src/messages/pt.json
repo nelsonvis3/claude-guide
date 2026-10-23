@@ -253,7 +253,7 @@
   },
   "route": {
     "title": "Sua trilha",
-    "lead": "Cada passo é uma lição curta com um terminal para praticar e um teste. Eles se desbloqueiam em ordem: passe no teste para abrir o próximo.",
+    "lead": "Cada passo é uma lição curta com um terminal para praticar e um teste. Estão todas abertas: faça na ordem que quiser.",
     "startHere": "Comece aqui",
     "done": "Já domino",
     "progress": "{done} de {total} dominados",
@@ -963,10 +963,7 @@
     "allRightSub": "Você já domina “{title}”. Ficou marcado na sua trilha.",
     "next": "Próxima lição",
     "finishRoute": "Ver minhas conquistas",
-    "source": "Fonte: documentação oficial",
-    "locked": "Conclua o passo anterior para desbloqueá-lo.",
-    "lockedPage": "Esta lição ainda está bloqueada. A trilha vai passo a passo: continue por «{title}».",
-    "goCurrent": "Ir para meu passo atual"
+    "source": "Fonte: documentação oficial"
   },
   "footer": {
     "rights": "Todos os direitos reservados.",
@@ -1106,7 +1103,8 @@
     },
     "wrongCurrent": "A senha atual não está correta.",
     "restore": "Restaurar",
-    "restoreNote": "Volte às 7 perguntas da Tilde. Seu progresso, XP e figurinhas continuam."
+    "restoreNote": "Volte às 7 perguntas da Tilde. Seu progresso, XP e figurinhas continuam.",
+    "suitLocked": "As roupas da Tilde são para quem tem conta. Entre ou crie uma grátis e vista a Tilde como quiser."
   },
   "study": {
     "title": "Como estudar sem desistir",

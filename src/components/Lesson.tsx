@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { NODES } from "@/lib/content";
-import { current, unlocked as stepUnlocked, XP_PER_STEP } from "@/lib/game";
+import { XP_PER_STEP } from "@/lib/game";
 import { useI18n } from "@/lib/i18n";
 import { LESSONS } from "@/lib/lessons";
 import { useComplete } from "@/lib/useComplete";
@@ -64,17 +64,6 @@ export default function Lesson({ id, text, user }: { id: string; text: LessonTex
   };
 
   const card = "rounded-3xl bg-surface p-5 shadow-soft sm:p-7";
-  if (hydrated && !stepUnlocked(profile.done, id)) {
-    const go = NODES[current(profile.done)];
-    return (
-      <main id="main" className="mx-auto grid max-w-3xl justify-items-start gap-5 px-4 py-16">
-        <Mascot mood="think" size={150} role={profile.role} />
-        <h1 className="display text-[2.2rem]">🔒 {t(`nodes.${id}.t`)}</h1>
-        <p className="max-w-[55ch] text-[1.1rem] text-ink-2">{t("lesson.lockedPage", { title: t(`nodes.${go.id}.t`) })}</p>
-        <Link href={`/leccion/${go.id}`} className="rounded-full bg-cobalt px-6 py-2.5 font-bold text-cobalt-ink">{t("lesson.goCurrent")} →</Link>
-      </main>
-    );
-  }
   return (
     <main id="main" className="mx-auto grid max-w-3xl grid-cols-[minmax(0,1fr)] gap-8 px-4 py-8 pb-24">
       <div className="flex flex-wrap items-center justify-between gap-3 text-[0.95rem]">

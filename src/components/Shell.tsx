@@ -2,23 +2,30 @@ import Link from "next/link";
 import { auth, canLogin } from "@/auth";
 import { CatProvider } from "@/lib/cat";
 import { getAvatar } from "@/lib/db";
-import { I18nProvider } from "@/lib/i18n";
+import { I18nProvider, type Messages } from "@/lib/i18n";
 import { getLang, getMessages, getPrefs } from "@/lib/i18n-server";
 import Header, { type User } from "./Header";
 import Mascot from "./Mascot";
 
+// Textos que usa una sola página: al navegador viajan solo si esa página los pide con `texts`.
+const PAGE_TEXTS = ["study", "prompt", "terms", "contact", "modGuide", "pluginGuide", "builtinMods", "shortcuts", "modes"] as const;
+export type PageTexts = (typeof PAGE_TEXTS)[number];
+
 // Marco común de las páginas: idioma, sesión, header y footer.
-export default async function Shell({ children }: { children: (user: User) => React.ReactNode }) {
+export default async function Shell({ children, texts = [] }: { children: (user: User) => React.ReactNode; texts?: PageTexts[] }) {
   const lang = await getLang();
   const messages = await getMessages(lang);
-  const { cat, suit } = await getPrefs();
+  const client = Object.fromEntries(
+    Object.entries(messages).filter(([k]) => !PAGE_TEXTS.includes(k as PageTexts) || texts.includes(k as PageTexts)),
+  ) as Messages;
   const session = canLogin ? await auth() : null;
   const id = session?.user?.id;
+  const { cat, suit } = await getPrefs(id);
   const user: User = session?.user && id
     ? { name: session.user.name ?? "", image: (await getAvatar(id)) ?? session.user.image ?? null, provider: id.split(":")[0] }
     : null;
   return (
-    <I18nProvider lang={lang} messages={messages}>
+    <I18nProvider lang={lang} messages={client}>
       {/* El traje es para quien tiene cuenta: sin sesión Tilde va sin traje aunque quede la cookie. */}
       <CatProvider cat={cat} suit={user ? suit : "none"}>
         <Header user={user} canLogin={canLogin} />
@@ -39,7 +46,7 @@ export default async function Shell({ children }: { children: (user: User) => Re
               <p className="mt-2 max-w-[40ch] text-[0.95rem] text-ink-2">{messages.footer.tagline}</p>
             </div>
             {[
-              { title: messages.footer.product, links: [["/#ruta", messages.nav.route], ["/guia", messages.stackGuide.title], ["/examen", messages.exam.title], ["/consumo", messages.nav.usage], ["/chuleta", messages.nav.guide], ["/estudiar", messages.nav.study], ["/prompts", messages.nav.prompt]] },
+              { title: messages.footer.product, links: [["/#ruta", messages.nav.route], ["/guia", messages.stackGuide.title], ["/examen", messages.exam.title], ["/consumo", messages.nav.usage], ["/chuleta", messages.nav.guide], ["/estudiar", messages.nav.study], ["/prompts", messages.nav.prompt], ["/ajustes", messages.account.settings]] },
               { title: messages.footer.help, links: [["/contacto?tipo=query", messages.contact.types.query], ["/contacto?tipo=complaint", messages.contact.types.complaint], ["/contacto?tipo=suggestion", messages.contact.types.suggestion]] },
               { title: messages.footer.legal, links: [["/terminos", messages.footer.terms], ["https://code.claude.com/docs", messages.nav.docs]] },
             ].map((col) => (

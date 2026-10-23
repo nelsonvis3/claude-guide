@@ -27,12 +27,12 @@ const valid = (done: string[]) => done.filter((id) => known.has(id));
 export const SUPPORT_EVERY = 5;
 export const passedTests = (done: string[]) => done.filter((id) => known.has(id) || id.startsWith("stack:")).length;
 
-// Paso en curso: el primero sin dominar. La ruta se hace en orden, así que todo lo posterior queda bloqueado.
+// Paso en curso: el primero sin dominar. Las lecciones están todas abiertas; esto marca por dónde seguir
+// y, cuando llega a NODES.length, habilita el examen.
 export const current = (done: string[]) => {
   const i = NODES.findIndex((n) => !done.includes(n.id));
   return i === -1 ? NODES.length : i;
 };
-export const unlocked = (done: string[], id: string) => NODES.findIndex((n) => n.id === id) <= current(done);
 
 export function phaseDone(done: string[], phase: Phase) {
   const ids = NODES.filter((n) => n.phase === phase).map((n) => n.id);

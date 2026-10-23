@@ -253,7 +253,7 @@
   },
   "route": {
     "title": "Ton sentier",
-    "lead": "Chaque étape est une courte leçon avec un terminal pour t'entraîner et un test. Elles se débloquent dans l'ordre : réussis le test pour ouvrir la suivante.",
+    "lead": "Chaque étape est une courte leçon avec un terminal pour t'entraîner et un test. Elles sont toutes ouvertes : fais-les dans l'ordre que tu veux.",
     "startHere": "Commence ici",
     "done": "Je maîtrise",
     "progress": "{done} sur {total} maîtrisés",
@@ -963,10 +963,7 @@
     "allRightSub": "Tu maîtrises « {title} ». C'est coché sur ton sentier.",
     "next": "Leçon suivante",
     "finishRoute": "Voir mes succès",
-    "source": "Source : documentation officielle",
-    "locked": "Termine l'étape précédente pour la débloquer.",
-    "lockedPage": "Cette leçon est encore verrouillée. Le parcours se fait étape par étape : continue avec « {title} ».",
-    "goCurrent": "Aller à mon étape actuelle"
+    "source": "Source : documentation officielle"
   },
   "footer": {
     "rights": "Tous droits réservés.",
@@ -1106,7 +1103,8 @@
     },
     "wrongCurrent": "Ton mot de passe actuel n'est pas correct.",
     "restore": "Restaurer",
-    "restoreNote": "Reviens aux 7 questions de Tilde. Ta progression, tes XP et tes stickers sont conservés."
+    "restoreNote": "Reviens aux 7 questions de Tilde. Ta progression, tes XP et tes stickers sont conservés.",
+    "suitLocked": "Les costumes sont réservés aux comptes. Connecte-toi ou crées-en un gratuitement et habille Tilde comme tu veux."
   },
   "study": {
     "title": "Étudier sans abandonner",

@@ -253,7 +253,7 @@
   },
   "route": {
     "title": "Dein Pfad",
-    "lead": "Jeder Schritt ist eine kurze Lektion mit einem Terminal zum Üben und einem Test. Sie werden der Reihe nach freigeschaltet: Besteh den Test, um den nächsten zu öffnen.",
+    "lead": "Jeder Schritt ist eine kurze Lektion mit einem Terminal zum Üben und einem Test. Alle sind offen: Mach sie in beliebiger Reihenfolge.",
     "startHere": "Hier starten",
     "done": "Beherrsche ich",
     "progress": "{done} von {total} beherrscht",
@@ -963,10 +963,7 @@
     "allRightSub": "Du beherrschst „{title}“. Es ist auf deinem Pfad abgehakt.",
     "next": "Nächste Lektion",
     "finishRoute": "Meine Erfolge ansehen",
-    "source": "Quelle: offizielle Dokumentation",
-    "locked": "Schließ den vorherigen Schritt ab, um ihn freizuschalten.",
-    "lockedPage": "Diese Lektion ist noch gesperrt. Die Route geht Schritt für Schritt: Mach mit „{title}“ weiter.",
-    "goCurrent": "Zu meinem aktuellen Schritt"
+    "source": "Quelle: offizielle Dokumentation"
   },
   "footer": {
     "rights": "Alle Rechte vorbehalten.",
@@ -1106,7 +1103,8 @@
     },
     "wrongCurrent": "Dein aktuelles Passwort ist nicht richtig.",
     "restore": "Zurücksetzen",
-    "restoreNote": "Zurück zu Tildes 7 Fragen. Fortschritt, XP und Sticker bleiben erhalten."
+    "restoreNote": "Zurück zu Tildes 7 Fragen. Fortschritt, XP und Sticker bleiben erhalten.",
+    "suitLocked": "Kostüme gibt es mit Konto. Melde dich an oder erstelle kostenlos eins und zieh Tilde an, wie du willst."
   },
   "study": {
     "title": "Lernen, ohne aufzugeben",

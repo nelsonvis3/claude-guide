@@ -3,7 +3,7 @@ import { AuthError } from "next-auth";
 import { cookies } from "next/headers";
 import { auth, canLogin, passwordLogin, providerIds, signIn, signOut } from "@/auth";
 import type { FormState } from "@/lib/account";
-import { createUser, findUser, setAvatar, setPassword } from "@/lib/db";
+import { createUser, findUser, setAvatar, setLook, setPassword } from "@/lib/db";
 import { hashPassword, validEmail, validPassword, verifyPassword } from "@/lib/password";
 import { PREFS, type PrefKey, validAvatar } from "@/lib/prefs";
 import { LANGS, type Lang } from "@/lib/content";
@@ -28,7 +28,9 @@ export async function setLang(lang: string) {
 
 export async function setPref(key: PrefKey, value: string) {
   if (!(key in PREFS) || !(PREFS[key] as readonly string[]).includes(value)) return;
-  if (key === "suit" && !(canLogin && (await auth())?.user)) return; // los trajes son solo con cuenta
+  const id = (key === "cat" || key === "suit") && canLogin ? (await auth())?.user?.id : undefined;
+  if (key === "suit" && !id) return; // los trajes son solo con cuenta
+  if (id) await setLook(id, key as "cat" | "suit", value);
   (await cookies()).set(key, value, { maxAge: YEAR, sameSite: "lax", path: "/" });
 }
 

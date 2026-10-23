@@ -253,7 +253,7 @@
   },
   "route": {
     "title": "你的路线",
-    "lead": "每一步都是一节短课，配有练习用的终端和一个测验。按顺序解锁：通过测验即可打开下一步。",
+    "lead": "每一步都是一节短课,带有练习用的终端和一个测验。所有课程都已开放,可以按任意顺序学习。",
     "startHere": "从这里开始",
     "done": "已掌握",
     "progress": "已掌握 {done} / {total}",
@@ -963,10 +963,7 @@
     "allRightSub": "你已掌握“{title}”，已在路线上勾选。",
     "next": "下一课",
     "finishRoute": "查看我的成就",
-    "source": "来源：官方文档",
-    "locked": "完成上一步即可解锁。",
-    "lockedPage": "这节课还未解锁。路线需要一步一步来：先完成「{title}」。",
-    "goCurrent": "前往当前步骤"
+    "source": "来源：官方文档"
   },
   "footer": {
     "rights": "保留所有权利。",
@@ -1106,7 +1103,8 @@
     },
     "wrongCurrent": "当前密码不正确。",
     "restore": "重置",
-    "restoreNote": "回到 Tilde 的 7 个问题。你的进度、XP 和贴纸都会保留。"
+    "restoreNote": "回到 Tilde 的 7 个问题。你的进度、XP 和贴纸都会保留。",
+    "suitLocked": "服装需要账号才能使用。登录或免费注册一个,随心给 Tilde 换装吧。"
   },
   "study": {
     "title": "如何学习而不放弃",

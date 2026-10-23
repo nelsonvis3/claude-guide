@@ -32,6 +32,14 @@ function ensureSchema() {
         locked_until timestamptz,
         created_at timestamptz not null default now()
       )`;
+    // Color y traje de Tilde de cada cuenta, para que la sigan a cualquier dispositivo (la cookie es el respaldo).
+    await sql!`
+      create table if not exists looks (
+        user_id text primary key,
+        cat text,
+        suit text,
+        updated_at timestamptz not null default now()
+      )`;
     // Foto de perfil: un avatar prearmado ("preset:<id>") o una imagen chica subida (data URL).
     await sql!`
       create table if not exists avatars (
@@ -128,4 +136,23 @@ export async function setAvatar(userId: string, image: string | null) {
     await sql!`
       insert into avatars (user_id, image) values (${userId}, ${image})
       on conflict (user_id) do update set image = excluded.image, updated_at = now()`;
+}
+
+export async function getLook(userId: string) {
+  if (!sql) return null;
+  await ensureSchema();
+  const [row] = await sql<{ cat: string | null; suit: string | null }[]>`select cat, suit from looks where user_id = ${userId}`;
+  return row ?? null;
+}
+
+// key ya validada contra PREFS en setPref.
+export async function setLook(userId: string, key: "cat" | "suit", value: string) {
+  if (!sql) return;
+  await ensureSchema();
+  const cat = key === "cat" ? value : null;
+  const suit = key === "suit" ? value : null;
+  await sql`
+    insert into looks (user_id, cat, suit) values (${userId}, ${cat}, ${suit})
+    on conflict (user_id) do update
+      set cat = coalesce(${cat}, looks.cat), suit = coalesce(${suit}, looks.suit), updated_at = now()`;
 }

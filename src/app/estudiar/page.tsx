@@ -5,5 +5,5 @@ import { pageMetadata } from "@/lib/i18n-server";
 export const generateMetadata = () => pageMetadata("/estudiar", (m) => ({ title: m.study.title, description: m.study.lead }));
 
 export default function Estudiar() {
-  return <Shell>{() => <Study />}</Shell>;
+  return <Shell texts={["study"]}>{() => <Study />}</Shell>;
 }

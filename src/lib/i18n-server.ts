@@ -5,9 +5,13 @@ import { LANGS, type Lang } from "./content";
 import type { LessonText } from "@/components/Lesson";
 import type { GuideText } from "@/components/StackGuide";
 import type { Messages } from "./i18n";
+import { getLook } from "./db";
 import { PREFS, type Accent, type Cat, type Theme } from "./prefs";
+import { langAlternates, langUrl } from "./site";
 
 export async function getLang(): Promise<Lang> {
+  const fromUrl = (await headers()).get("x-lang"); // ?lang=xx, puesto por src/proxy.ts
+  if (LANGS.includes(fromUrl as Lang)) return fromUrl as Lang;
   const fromCookie = (await cookies()).get("lang")?.value;
   if (LANGS.includes(fromCookie as Lang)) return fromCookie as Lang;
   const accept = (await headers()).get("accept-language") ?? "";
@@ -61,23 +65,31 @@ export async function pageMetadata(
   pick: (m: Messages) => { title: string; description?: string },
   index = true,
 ): Promise<Metadata> {
-  const { title, description } = pick(await getMessages(await getLang()));
+  const lang = await getLang();
+  const { title, description } = pick(await getMessages(lang));
   // openGraph de una página pisa entero al del layout: la imagen (src/app/opengraph-image.tsx) va de nuevo acá.
   return {
     title,
     description,
-    alternates: { canonical: path },
-    openGraph: { type: "website", siteName: "Procode", title, description, url: path, images: "/opengraph-image" },
+    alternates: { canonical: langUrl(path, lang), languages: langAlternates(path) },
+    openGraph: { type: "website", siteName: "Procode", locale: lang, title, description, url: langUrl(path, lang), images: "/opengraph-image" },
     robots: index ? undefined : { index: false },
   };
 }
 
-// Apariencia guardada en cookies; lo desconocido vuelve al valor de base.
-export async function getPrefs() {
+// Apariencia guardada en cookies; lo desconocido vuelve al valor de base. Con sesión, el color y el traje
+// salen de la cuenta (tabla looks) y la cookie queda de respaldo.
+export async function getPrefs(userId?: string) {
   const jar = await cookies();
-  const pick = <T extends string>(key: keyof typeof PREFS, fallback: T) => {
-    const v = jar.get(key)?.value;
+  const look = userId ? await getLook(userId) : null;
+  const pick = <T extends string>(key: keyof typeof PREFS, fallback: T, saved?: string | null) => {
+    const v = saved ?? jar.get(key)?.value;
     return ((PREFS[key] as readonly string[]).includes(v ?? "") ? v : fallback) as T;
   };
-  return { theme: pick<Theme>("theme", "system"), accent: pick<Accent>("accent", "violet"), cat: pick<Cat>("cat", "blanca"), suit: pick<string>("suit", "none") };
+  return {
+    theme: pick<Theme>("theme", "system"),
+    accent: pick<Accent>("accent", "violet"),
+    cat: pick<Cat>("cat", "blanca", look?.cat),
+    suit: pick<string>("suit", "none", look?.suit),
+  };
 }

@@ -6,5 +6,5 @@ export const generateMetadata = () => pageMetadata("/contacto", (m) => ({ title:
 
 export default async function Contacto(props: PageProps<"/contacto">) {
   const { tipo } = await props.searchParams;
-  return <Shell>{() => <Contact initial={typeof tipo === "string" ? tipo : "query"} />}</Shell>;
+  return <Shell texts={["contact"]}>{() => <Contact initial={typeof tipo === "string" ? tipo : "query"} />}</Shell>;
 }

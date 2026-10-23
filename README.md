@@ -2,7 +2,7 @@
 
 Juego gratis para pasar de cero a pro en Claude Code. Tilde, la gatita, hace siete preguntas (uso, rol, experiencia, horas, modelo, funciones) y arma:
 
-- una ruta de 48 pasos en cuatro tramos que se desbloquean en orden. Cada paso es una lección propia (`/leccion/<id>`) con Tilde explicando, una terminal simulada para practicar y una prueba de 3 preguntas; aprobarla marca el paso y abre el siguiente;
+- una ruta de 48 pasos en cuatro tramos, todos abiertos para hacer en cualquier orden. Cada paso es una lección propia (`/leccion/<id>`) con Tilde explicando, una terminal simulada para practicar y una prueba de 3 preguntas; aprobarla marca el paso;
 - un examen final de 20 preguntas al azar (`/examen`) con certificado «Claude Code Pro»;
 - XP por paso, 5 niveles, racha de días y 12 stickers; Tilde celebra cada logro. Con cuenta, aviso opcional por correo si pasan 2 días sin entrar;
 - en `/consumo`, una estimación de tokens y US$ por día, semana y mes con el plan sugerido (Pro, Max 5x, Max 20x) y gráficos: el mismo uso con cada modelo, combinaciones de modelos (Sonnet + subagentes Haiku + asesor Opus) y tokens contra costo;
@@ -30,7 +30,7 @@ Cada proveedor OAuth aparece solo si tiene su `AUTH_<GITHUB|GOOGLE|DISCORD|GITLA
 ## Tests
 
 ```bash
-npm test   # estimador, juego (XP, niveles, racha, stickers, bloqueo en orden), lecciones y paridad de idiomas
+npm test   # estimador, juego (XP, niveles, racha, stickers, paso en curso), lecciones y paridad de idiomas
 ```
 
 ## Dónde está cada cosa

@@ -38,7 +38,7 @@ export function Code({ text }: { text: string }) {
   );
 }
 
-function Stop({ node, n, profile, locked }: { node: Node; n: number; profile: Profile; locked: boolean }) {
+function Stop({ node, n, profile }: { node: Node; n: number; profile: Profile }) {
   const { t } = useI18n();
   const done = profile.done.includes(node.id);
   const forYou = node.uses?.includes(profile.answers.use);
@@ -48,12 +48,12 @@ function Stop({ node, n, profile, locked }: { node: Node; n: number; profile: Pr
       <span
         aria-hidden="true"
         className={`relative z-10 grid size-10 place-items-center rounded-full border-2 font-mono font-bold ${
-          done ? "border-cobalt bg-cobalt text-cobalt-ink" : locked ? "border-line bg-surface-2 text-ink-2" : "border-cobalt bg-surface"
+          done ? "border-cobalt bg-cobalt text-cobalt-ink" : "border-cobalt bg-surface"
         }`}
       >
-        {done ? "✓" : locked ? "🔒" : n}
+        {done ? "✓" : n}
       </span>
-      <article className={`min-w-0 rounded-2xl p-5 [overflow-wrap:anywhere] ${done ? "bg-surface/60" : locked ? "bg-surface/60 opacity-70" : "bg-surface shadow-soft"}`}>
+      <article className={`min-w-0 rounded-2xl p-5 [overflow-wrap:anywhere] ${done ? "bg-surface/60" : "bg-surface shadow-soft"}`}>
         <h4 className="min-w-0 text-[1.2rem] font-bold [overflow-wrap:anywhere]">{t(`nodes.${node.id}.t`)}</h4>
         {(forYou || inEstimate) && (
           <p className="mt-1 flex flex-wrap gap-1.5 text-[0.85rem] font-bold">
@@ -62,9 +62,6 @@ function Stop({ node, n, profile, locked }: { node: Node; n: number; profile: Pr
           </p>
         )}
         <p className="mt-2 max-w-[68ch] text-ink-2">{t(`nodes.${node.id}.d`)}</p>
-        {locked ? (
-          <p className="mt-4 text-[0.9rem] font-bold text-ink-2">🔒 {t("lesson.locked")}</p>
-        ) : (
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <Link
             href={`/leccion/${node.id}`}
@@ -78,7 +75,6 @@ function Stop({ node, n, profile, locked }: { node: Node; n: number; profile: Pr
             <span className="text-[0.9rem] text-ink-2">{t("lesson.passToMark")}</span>
           )}
         </div>
-        )}
       </article>
     </li>
   );
@@ -119,7 +115,7 @@ export default function Roadmap({ profile }: { profile: Profile }) {
             </summary>
             <ol className="relative mt-5 before:absolute before:top-2 before:bottom-6 before:left-[1.2rem] before:border-l-[3px] before:border-dashed before:border-line">
               {NODES.filter((x) => x.phase === phase).map((node) => (
-                <Stop key={node.id} node={node} n={NODES.indexOf(node) + 1} profile={profile} locked={NODES.indexOf(node) > now} />
+                <Stop key={node.id} node={node} n={NODES.indexOf(node) + 1} profile={profile} />
               ))}
             </ol>
           </details>

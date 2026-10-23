@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { NODES } from "./content.ts";
-import { bestStreak, current, level, MAX_XP, passedTests, stickers, streak, unlocked, xp } from "./game.ts";
+import { bestStreak, current, level, MAX_XP, passedTests, stickers, streak, xp } from "./game.ts";
 
 const all = NODES.map((n) => n.id);
 const start = NODES.filter((n) => n.phase === "start").map((n) => n.id);
@@ -47,14 +47,11 @@ test("stickers", () => {
   assert.ok(s.includes("all-done") && s.includes("phase-pro") && s.includes("streak-3") && !s.includes("streak-7"));
 });
 
-test("la ruta se desbloquea en orden", () => {
+test("el paso en curso es el primero sin hacer, aunque se hagan en cualquier orden", () => {
   assert.equal(current([]), 0);
-  assert.ok(unlocked([], "install"));
-  assert.ok(!unlocked([], "init"));
-  assert.ok(unlocked(["install"], "init"));
-  assert.ok(!unlocked(["install", "prompting"], "prompting"), "saltear un paso no desbloquea los siguientes");
-  assert.ok(unlocked(["install"], "install"), "lo dominado se puede repasar");
-  assert.equal(current(all), NODES.length);
+  assert.equal(current(["init", "prompting"]), 0, "saltear pasos no mueve el paso en curso");
+  assert.equal(current(["install"]), 1);
+  assert.equal(current(all), NODES.length, "con los 48 se habilita el examen");
 });
 
 test("pruebas aprobadas: lecciones y guías, sin el examen ni ids desconocidos", () => {

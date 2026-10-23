@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, Atkinson_Hyperlegible_Next, JetBrains_Mono } from "next/font/google";
 import { getLang, getMessages, getPrefs } from "@/lib/i18n-server";
-import { SITE_URL } from "@/lib/site";
+import { langAlternates, langUrl, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const archivo = Archivo({ variable: "--font-archivo", subsets: ["latin", "latin-ext"], axes: ["wdth"] });
@@ -16,8 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
     title: { default: m.meta.seoTitle, template: `%s · ${m.meta.title}` },
     description: m.meta.description,
     applicationName: m.meta.title,
-    alternates: { canonical: "/" },
-    openGraph: { type: "website", siteName: m.meta.title, locale: lang, title: m.meta.seoTitle, description: m.meta.description, url: "/" },
+    alternates: { canonical: langUrl("/", lang), languages: langAlternates("/") },
+    openGraph: { type: "website", siteName: m.meta.title, locale: lang, title: m.meta.seoTitle, description: m.meta.description, url: langUrl("/", lang) },
     twitter: { card: "summary_large_image" },
   };
 }

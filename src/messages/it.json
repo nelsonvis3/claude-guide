@@ -253,7 +253,7 @@
   },
   "route": {
     "title": "Il tuo sentiero",
-    "lead": "Ogni passo è una breve lezione con un terminale per esercitarti e una prova. Si sbloccano in ordine: supera la prova per aprire il successivo.",
+    "lead": "Ogni passo è una breve lezione con un terminale per esercitarti e un test. Sono tutte aperte: falle nell'ordine che preferisci.",
     "startHere": "Parti da qui",
     "done": "Lo padroneggio",
     "progress": "{done} su {total} padroneggiati",
@@ -963,10 +963,7 @@
     "allRightSub": "Padroneggi «{title}». È spuntato nel tuo sentiero.",
     "next": "Lezione successiva",
     "finishRoute": "Vedi i miei traguardi",
-    "source": "Fonte: documentazione ufficiale",
-    "locked": "Completa il passo precedente per sbloccarlo.",
-    "lockedPage": "Questa lezione è ancora bloccata. Il percorso va passo dopo passo: continua con «{title}».",
-    "goCurrent": "Vai al mio passo attuale"
+    "source": "Fonte: documentazione ufficiale"
   },
   "footer": {
     "rights": "Tutti i diritti riservati.",
@@ -1106,7 +1103,8 @@
     },
     "wrongCurrent": "La password attuale non è corretta.",
     "restore": "Ripristina",
-    "restoreNote": "Torna alle 7 domande di Tilde. Progressi, XP e adesivi restano."
+    "restoreNote": "Torna alle 7 domande di Tilde. Progressi, XP e adesivi restano.",
+    "suitLocked": "I costumi sono per chi ha un account. Entra o creane uno gratis e vesti Tilde come vuoi."
   },
   "study": {
     "title": "Come studiare senza arrendersi",
